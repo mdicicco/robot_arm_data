@@ -1,0 +1,362 @@
+Name,MFG,Type,DOF,Payload_kg,Reach_m,Weight_kg,Repeatability_mm,Cost_KUSD,Notes
+xArm,uFactory,collaborative,7,5,0.691,10,0.1,4.8,
+IRB14000 YUMI,ABB,collaborative,7,0.5,0.559,9.5,0.02,20,"mass is estimate, 38kg for whole robot, cost is an estimate, 40k is for 2 arms"
+OUR-1,AUBO,collaborative,6,5,0.85,15,0.05,,
+I5,AUBO,collaborative,7,5,0.88,24,0.05,18,
+Eva,Automata,collaborative,6,1.25,0.6,8,0.5,7,cost is 4990 british pounds
+Eva-0,Automata,collaborative,6,0.75,,2.3,,3,
+Racer 5.6,Comau,collaborative,6,5,0.63,30,0.03,,
+Racer 5.8,Comau,collaborative,6,5,0.8,32,0.03,,
+Racer 3,Comau,collaborative,6,3,0.63,30,0.02,,
+Aura,Comau,collaborative,6,110,2.21,685,0.07,80,
+Cobotta,Denso,collaborative,6,0.5,0.3425,4,0.05,,
+S-5,Elephant Robotics,collaborative,6,5,0.81,21,0.05,10,
+Amor,Exact Dynamics,collaborative,7,2.5,0.95,9,,39.6,"35k euro, from website"
+CR-35iA,FANUC,collaborative,6,35,1.813,990,0.08,,
+CR-4iA,FANUC,collaborative,6,4,0.55,48,0.02,45.7,
+CR-7iA,FANUC,collaborative,6,7,0.717,53,0.02,48,
+CR-7iA/L,FANUC,collaborative,6,7,0.711,55,0.03,48,
+P-Rob 2R-24,FP Robotics,collaborative,6,3,0.775,20,0.1,27.5,
+P-Rob 2R-48,FP Robotics,collaborative,6,3,0.775,20,0.1,,
+Emika,Franka,collaborative,7,3,0.859,18.5,0.1,12.1,"10.5k eruos, listed elsewhere"
+Dexter,Haddington Dynamics,collaborative,6,1,0.67,6,0.05,4.8,
+Elfin 3,Han's Robot,collaborative,6,3,0.59,15,0.1,,
+Elfin 5,Han's Robot,collaborative,6,5,0.8,21,0.1,25,
+Elfin 10,Han's Robot,collaborative,6,10,1,45,0.1,,
+HCR-5,Hanwha,collaborative,6,5,0.915,20,0.1,33.5,
+Nextage,Kawada,collaborative,15,1.5,0.577,29,0.03,60,"29kg might be whole robot, 60k for whole robot"
+Jaco 7,Kinova,collaborative,7,2.1,0.985,5.7,,34.9,
+Jaco 6,Kinova,collaborative,6,2.2,0.9,4.4,,30,
+Jaco 4,Kinova,collaborative,4,4.4,0.75,3.6,,,
+Mico 6,Kinova,collaborative,6,2.1,0.7,4.6,,20.9,
+Mico 4,Kinova,collaborative,4,5.2,0.55,3.8,,,
+LBR iiwa 7 R800,KUKA,collaborative,7,7,0.8,23.9,0.1,80,
+LBR iiwa 14 R820,KUKA,collaborative,7,14,0.82,29.9,0.15,96,
+LBR iisy,KUKA,collaborative,6,3,0.6,18.8,,,
+CORO,Life Robotics,collaborative,6,2,0.865,26,1,,
+Speedy 12,MABI,collaborative,6,12,1.25,35,0.1,55,
+Speedy 6,MABI,collaborative,6,6,0.8,28,0.1,,
+KR-5-SI,MRK System,collaborative,6,5,1.423,150,0.04,16,
+PAVP6,Precise Automation,collaborative,6,2.5,0.432,28,0.02,,
+OB7,Productive Robotics,collaborative,7,5,1,24,0.1,20,
+Baxter,Rethink Robotics,collaborative,14,2.2,1.21,18.75,3,25,"mass is estimate, 75 kg is 2 arms + base"
+Sawyer,Rethink Robotics,collaborative,7,4,1.26,19,0.1,37,
+Pulse 75,Rozum Robotics,collaborative,6,4,0.75,12.6,0.1,22,18990 euro
+Pulse 90,Rozum Robotics,collaborative,6,5.5,0.9,17.4,0.1,26,22490 euro
+TX2-40,Staubli,collaborative,6,2.3,0.515,27,0.02,,
+TX2-60,Staubli,collaborative,6,3.5,0.67,51.4,0.02,40,
+TX2-60L,Staubli,collaborative,6,2,0.92,52.5,0.03,40,
+TX2-90,Staubli,collaborative,6,7,1,114,0.03,,
+TX2-90L,Staubli,collaborative,6,6,1.2,117,0.035,,
+TX2-90XL,Staubli,collaborative,6,5,1.45,119,0.04,,
+TM5-700,Techman,collaborative,6,6,0.7,22,0.05,40,
+TM5-900,Techman,collaborative,6,4,0.9,22.2,0.05,40,
+TM12,Techman,collaborative,6,12,1.3,33.3,0.1,,
+TM14,Techman,collaborative,6,14,1.1,32.6,0.1,,
+UR3,UR,collaborative,6,3,0.5,11,0.1,28,
+UR5,UR,collaborative,6,5,0.85,18.4,0.1,35,
+UR10,UR,collaborative,6,10,1.3,28.9,0.1,40,
+UR3e,UR,collaborative,6,3,0.5,11.2,0.03,,
+UR5e,UR,collaborative,6,5,0.85,20.6,0.05,,
+UR10e,UR,collaborative,6,10,1.3,33.5,0.05,,
+HC10,Yaskawa-Motoman,collaborative,6,10,1.2,47,0.1,48,
+KR810,Kassow Robots,collaborative,7,10,0.85,23.5,0.1,29,25k Euros
+KR1205,Kassow Robots,collaborative,7,5,1.2,25,0.1,41,35k Euros
+KR1805,Kassow Robots,collaborative,7,5,1.8,45,0.1,47,40k Euros (estimate)
+IRB120,ABB,industrial,6,3,0.58,25,0.01,18.2,Estimate from robotraders.co.uk sale of 'new' robot
+IRB1200-5,ABB,industrial,6,5,0.7,52,0.06,,
+IRB1200-7,ABB,industrial,6,7,0.9,54,0.06,,
+IRB140,ABB,industrial,6,6,0.81,98,0.03,23.8,found this price online somewhere
+IRB1410,ABB,industrial,6,5,1.44,225,0.05,,
+IRB1520ID,ABB,industrial,6,4,1.5,170,0.05,,
+IRB1600-6,ABB,industrial,6,6,1.45,250,0.02,30.1,Estimate from robotraders.co.uk sale of 'new' robot
+IRB1500-10,ABB,industrial,6,10,1.2,250,0.02,,
+IRB1600ID,ABB,industrial,6,4,1.5,250,0.02,30.1,Estimate from robotraders.co.uk sale of 'new' robot
+IRB2400-7,ABB,industrial,6,7,1.81,380,0.03,33.6,Estimate from robotraders.co.uk sale of 'new' robot
+IRB2400-20,ABB,industrial,6,20,1.5,380,0.03,33.6,Estimate from robotraders.co.uk sale of 'new' robot
+IRB260,ABB,industrial,4,30,1.5,340,0.1,,
+IRB2600-12,ABB,industrial,6,12,1.85,272,0.04,,
+IRB2600-20,ABB,industrial,6,20,1.65,284,0.04,,
+IRB4400,ABB,industrial,6,60,1.95,1040,0.19,,
+IRB460,ABB,industrial,4,110,2.4,925,0.2,50,Estimate from web
+IRB4600-20,ABB,industrial,6,20,2.55,412,0.06,,
+IRB4600-60,ABB,industrial,6,60,2.05,435,0.05,,
+IRB6600,ABB,industrial,4,180,3.15,1650,0.1,51.8,Estimate from robotraders.co.uk sale of 'new' robot
+IRB6620,ABB,industrial,6,150,2.2,900,0.03,,
+IRB6640,ABB,industrial,6,130,3.2,1310,0.07,,
+IRB6650S-125,ABB,industrial,6,125,3.5,2250,0.13,63,Estimate from robotraders.co.uk sale of 'new' robot
+IRB6650S-200,ABB,industrial,6,200,3,2250,0.14,63,Estimate from robotraders.co.uk sale of 'new' robot
+IRB6660-pm 100,ABB,industrial,6,100,3.35,1950,0.07,,
+IRB6660-pm 205,ABB,industrial,6,205,1.93,1730,0.11,,
+IRB6660-pt,ABB,industrial,6,130,3.1,1910,0.09,,
+IRB6700,ABB,industrial,6,150,3.2,1225,0.1,,
+IRB7600,ABB,industrial,4,450,3.18,2310,0.05,,Estimate from robotraders.co.uk sale of 'new' robot
+IRB7600 150,ABB,industrial,6,150,3.5,2425,,91,Estimate from robotraders.co.uk sale of 'new' robot
+IRB7600 500,ABB,industrial,6,500,2.55,2425,,91,Estimate from robotraders.co.uk sale of 'new' robot
+IRB8700 550,ABB,industrial,6,550,4.2,4550,0.08,91,Estimate from robotraders.co.uk sale of 'new' robot
+IRB8700 800,ABB,industrial,6,800,3.5,4550,0.05,91,Estimate from robotraders.co.uk sale of 'new' robot
+Viper s650,Adept,industrial,6,2.5,0.653,28,0.02,,
+Viper s850,Adept,industrial,6,2.5,0.854,29,0.03,,
+Viper s1300,Adept,industrial,6,5,1.298,78,0.07,,
+Viper s1700D,Adept,industrial,6,10,1.717,268,0.06,,
+C8,Epson,industrial,6,8,0.791,49,0.02,,
+C8L,Epson,industrial,6,8,0.981,52,0.03,,
+C8XL,Epson,industrial,6,8,1.4,62,0.05,,
+S5,Epson,industrial,6,5,0.786,38,0.03,,
+S5L,Epson,industrial,6,5,0.975,38,0.03,,
+C4,Epson,industrial,6,4,0.665,27,0.02,,
+C4L,Epson,industrial,6,4,0.9,29,0.03,,
+ARC Mate 7-7c,FANUC,industrial,6,7,0.717,25,,35,total estimate based on a blog
+ARC Mate 7wp,FANUC,industrial,6,7,0.717,25,,35,total estimate based on a blog
+ARC Mate 7h,FANUC,industrial,5,7,0.717,24,,35,total estimate based on a blog
+ARC Mate 7l-7lc,FANUC,industrial,6,7,0.911,27,,35,total estimate based on a blog
+ARC Mate 4s-4sc,FANUC,industrial,6,4,0.55,20,,25,total estimate based on a blog
+ARC Mate 4sh,FANUC,industrial,5,4,0.55,19,,,total estimate based on a blog
+ARC Mate 0iB,FANUC,industrial,6,4,1.437,130,0.08,25,total estimate based on a blog
+ARC Mate 12S,FANUC,industrial,6,12,1.098,130,,,
+ARC Mate 12,FANUC,industrial,6,12,1.42,130,,,
+ARC Mate 7l,FANUC,industrial,6,7,1.632,135,,35,total estimate based on a blog
+ARC Mate 8l,FANUC,industrial,6,8,2.028,150,,,
+ARC Mate 10m,FANUC,industrial,6,10,1.422,130,,50,total estimate based on a blog
+ARC Mate 10ms,FANUC,industrial,6,10,1.101,130,,50,total estimate based on a blog
+ARC Mate 20,FANUC,industrial,6,20,1.811,250,,50,total estimate based on a blog
+ARC Mate 12l,FANUC,industrial,6,12,2.009,250,,50,total estimate based on a blog
+ARC Mate 20m,FANUC,industrial,6,20,1.813,250,,50,total estimate based on a blog
+ARC Mate 35m,FANUC,industrial,6,35,1.813,252,,,
+M-710iC 12l,FANUC,industrial,6,12,3.123,540,,,
+M-710iC 20l,FANUC,industrial,6,20,3.11,540,,,
+M-710iC 45m,FANUC,industrial,6,45,2.606,570,,,
+M-710iC 50h,FANUC,industrial,5,50,2.003,540,,,
+M-710iC 50s,FANUC,industrial,6,50,1.359,545,,,
+M-710iC 50,FANUC,industrial,6,50,2.05,560,,,
+M-710iC 70,FANUC,industrial,6,70,2.05,560,,,
+R-1000iA 80h,FANUC,industrial,5,80,2.23,610,,,
+R-1000iA 80f,FANUC,industrial,6,80,2.23,620,,,
+R-1000iA 100f,FANUC,industrial,6,100,2.23,665,,,
+Toploader M-20iA/20T,FANUC,industrial,6,20,1.662,185,,,
+Toploader M-20iA/20MT,FANUC,industrial,6,20,1.663,185,,,
+Toploader M-20iA/35MT,FANUC,industrial,6,35,1.663,185,,,
+Toploader M-710iC/50T,FANUC,industrial,6,50,1.9,410,,,
+Toploader M-710iC/70T,FANUC,industrial,6,70,1.9,410,,,
+Toploader R-200iB/200T,FANUC,industrial,6,200,2.207,1080,,,
+R-2000iC 125L,FANUC,industrial,6,125,3.1,1115,0.2,96,R2000 and M900 series go 90-130 scaled by payload
+R-2000iC 165F,FANUC,industrial,6,165,2.655,1090,0.2,104,R2000 series go 90-130 scaled by payload
+R-2000iC 165R,FANUC,industrial,6,165,3.095,1370,0.3,104,R2000 series go 90-130 scaled by payload
+R-2000iC 210F,FANUC,industrial,6,210,2.655,1090,0.3,114,R2000 series go 90-130 scaled by payload
+R-2000iC 210R,FANUC,industrial,6,210,3.095,1370,0.3,114,R2000 series go 90-130 scaled by payload
+R-2000iB 100H,FANUC,industrial,5,100,2.655,1150,,90,R2000 series go 90-130 scaled by payload
+R-2000iB 100P,FANUC,industrial,6,100,3.5,1560,,90,R2000 series go 90-130 scaled by payload
+R-2000iB a50U,FANUC,industrial,6,150,2.655,1070,,101,R2000 series go 90-130 scaled by payload
+R-2000iB 170CF,FANUC,industrial,6,210,1.52,800,,114,R2000 series go 90-130 scaled by payload
+R-2000iB 175L,FANUC,industrial,6,175,2.852,1260,,107,R2000 series go 90-130 scaled by payload
+R-2000iB 185L,FANUC,industrial,6,185,3.06,1290,,109,R2000 series go 90-130 scaled by payload
+R-2000iB 210FS,FANUC,industrial,6,210,2.605,1250,,114,R2000 series go 90-130 scaled by payload
+R-2000iB 210WE,FANUC,industrial,6,210,2.655,1280,,114,R2000 series go 90-130 scaled by payload
+R-2000iB 220U,FANUC,industrial,6,220,2.47,1150,,117,R2000 series go 90-130 scaled by payload
+R-2000iB 220US,FANUC,industrial,6,220,2.443,1160,,117,R2000 series go 90-130 scaled by payload
+R-2000iB 250F,FANUC,industrial,6,250,2.655,1270,,130,R2000 series go 90-130 scaled by payload
+M-900iB 280,FANUC,industrial,6,280,2.655,1700,,,
+M-900iB 280L,FANUC,industrial,6,280,3.103,1600,,,
+M-900iB 360,FANUC,industrial,6,360,2.655,1540,,,
+M-900iB 400L,FANUC,industrial,6,400,3.705,3150,,,
+M-900iB 700,FANUC,industrial,6,700,2.832,2800,,,
+M-900iA 150P,FANUC,industrial,6,150,3.507,1860,,,
+M-900iA 200P,FANUC,industrial,6,200,3.507,2670,,,
+M-2000iA 900L,FANUC,industrial,6,900,4.683,9600,,150,m2000 range goes 150-400 based on payload
+M-2000iA 1200,FANUC,industrial,6,1200,3.734,8600,,273,m2000 range goes 150-400 based on payload
+M-2000iA 1700L,FANUC,industrial,6,1700,4.683,12500,,357,m2000 range goes 150-400 based on payload
+M-2000iA 2300,FANUC,industrial,6,2300,3.734,11500,,400,m2000 range goes 150-400 based on payload
+M-410iC 185,FANUC,industrial,4,185,3.143,1330,,,
+M-410iC 315,FANUC,industrial,4,315,3.143,1330,,,
+M-410iB 140H,FANUC,industrial,5,140,2.85,1200,,,
+M-410iB 450,FANUC,industrial,4,450,3.13,2430,,,
+M-410iB 700,FANUC,industrial,4,700,3.143,2700,,,
+M-430iA 2P,FANUC,industrial,6,2,0.7,45,,,
+M-430iA 2PH,FANUC,industrial,6,2,0.9,57,,,
+M-430iA 4FH,FANUC,industrial,5,4,0.9,55,,,
+Paint Mate 200iA 200iA,FANUC,industrial,6,5,0.704,35,,,
+Paint Mate 200iA 200iA/5L,FANUC,industrial,6,5,0.892,37,,,
+P-50iB 15,FANUC,industrial,6,15,1.4,356,0.2,,
+P-50iB 10L,FANUC,industrial,6,10,1.4,356,0.2,,
+P-250iB 15,FANUC,industrial,6,15,2.8,530,,,
+P-350iA,FANUC,industrial,6,45,2.606,590,,,
+P-500iA,FANUC,industrial,5,15,2.75,450,0.1,,
+P-700iA,FANUC,industrial,7,15,2.632,545,,,
+P-1000iA,FANUC,industrial,7,15,2.848,442,,,
+RS003N,Kawasaki,industrial,6,3,0.62,20,0.02,,
+RS005N,Kawasaki,industrial,6,5,0.705,34,0.02,,
+RS005L,Kawasaki,industrial,6,5,0.903,37,0.03,,
+RS006L,Kawasaki,industrial,6,6,1.65,150,0.05,,
+RS010N,Kawasaki,industrial,6,10,1.45,150,0.04,,
+RS010L,Kawasaki,industrial,6,10,1.925,230,0.06,,
+RS015X,Kawasaki,industrial,6,15,3.15,545,0.15,,
+RS020N,Kawasaki,industrial,6,20,1.725,230,0.05,,
+RS030N,Kawasaki,industrial,6,30,2.1,555,0.07,,
+RS050N,Kawasaki,industrial,6,50,2.1,555,0.07,,
+RS080N,Kawasaki,industrial,6,80,2.1,555,0.07,,
+BX100S,Kawasaki,industrial,6,100,1.634,720,0.2,,
+BX100N,Kawasaki,industrial,6,100,2.2,740,0.2,,
+BX100L,Kawasaki,industrial,6,100,2.597,930,0.2,,
+BX130X,Kawasaki,industrial,6,130,2.991,970,0.2,,
+BX165N,Kawasaki,industrial,6,165,2.325,903,0.2,,
+BX165L,Kawasaki,industrial,6,165,2.597,930,0.2,,
+BX200L,Kawasaki,industrial,6,200,2.597,930,0.2,,
+BX250L,Kawasaki,industrial,6,250,2.812,1460,0.2,,
+BX300L,Kawasaki,industrial,6,300,2.812,1460,0.2,,
+BT200L,Kawasaki,industrial,6,200,3.151,1100,0.2,,
+KF121,Kawasaki,industrial,6,5,1.24,140,0.2,,
+KJ264 F,Kawasaki,industrial,6,15,2.64,540,0.5,,
+KJ264 S,Kawasaki,industrial,6,15,2.64,530,0.5,,
+KJ264 W,Kawasaki,industrial,6,15,2.64,530,0.5,,
+KJ314,Kawasaki,industrial,7,15,3.1,720,0.5,,
+CP180L,Kawasaki,industrial,4,180,1.8,1600,0.5,,
+CP300L,Kawasaki,industrial,4,300,1.8,1600,0.5,,
+CP500L,Kawasaki,industrial,4,500,1.8,1650,0.5,,
+RD080N,Kawasaki,industrial,5,80,2.1,540,0.07,,
+ZD130S,Kawasaki,industrial,4,130,3.255,1350,0.5,,
+ZD250S,Kawasaki,industrial,4,250,3.255,1350,0.5,,
+MC004N,Kawasaki,industrial,6,4,0.506,25,0.1,,
+MS005N,Kawasaki,industrial,7,5,0.66,50,0.1,,
+KR 3 R540 ,KUKA,industrial,6,3,0.541,26,0.02,,
+KR 6 R700 five,KUKA,industrial,5,6,0.7067,48,0.03,,
+KR 6 R700 six,KUKA,industrial,6,6,0.7067,50,0.03,,
+KR 6 R900 five,KUKA,industrial,5,6,0.901,51,0.03,,
+KR 6 R900 six,KUKA,industrial,6,6,0.901,52,0.03,,
+KR 10 R900,KUKA,industrial,6,10,0.9015,52,0.03,,
+KR 10 R1100 five,KUKA,industrial,5,10,1.101,53,0.03,,
+KR 10 R1100 six,KUKA,industrial,6,10,1.101,54,0.03,,
+KR 6 R900 six,KUKA,industrial,6,6,0.9015,52,0.03,,
+KR 6 R900 six HM-SC,KUKA,industrial,6,6,0.9015,62,0.03,,
+KR 5 arc,KUKA,industrial,6,5,1.412,127,0.04,,
+KR 6-2,KUKA,industrial,6,6,1.611,235,0.05,,
+KR 16-2,KUKA,industrial,6,16,1.61,235,0.05,,
+KR 20-3,KUKA,industrial,6,20,1.61,254,0.05,,
+KR 5-2 ARC HW,KUKA,industrial,6,5,1.423,126,0.04,,
+KR 16 ARC HW,KUKA,industrial,6,16,1.636,245,0.05,35,
+KR 16-2 F,KUKA,industrial,6,16,1.61,235,0.05,35,
+KR 16-2 KS-F,KUKA,industrial,6,16,1.801,235,0.05,35,
+KR 16 L6-2 KS,KUKA,industrial,6,6,2.101,245,0.05,35,
+KR 16-2 CR,KUKA,industrial,6,16,1.61,235,0.05,35,
+KR 30-3,KUKA,industrial,6,30,2.033,665,0.06,,
+KR 30 L16-2,KUKA,industrial,6,16,3.102,700,0.07,,
+KR 40 PA,KUKA,industrial,4,40,2.091,700,0.05,,
+KR 60-3 1,KUKA,industrial,6,60,2.033,665,0.06,,
+KR 60-3 2,KUKA,industrial,6,45,2.23,671,0.06,,
+KR 60-3 3,KUKA,industrial,6,30,2.429,679,0.06,,
+KR 30-3 F,KUKA,industrial,6,30,2.033,665,0.15,,
+KR 30-4 KS-F,KUKA,industrial,6,30,2.233,600,0.06,,
+KR 30-4 KS,KUKA,industrial,6,30,2.233,600,0.06,,
+KR 30-3 CR,KUKA,industrial,6,30,2.033,665,0.06,,
+KR 30 HA,KUKA,industrial,6,30,2.033,665,0.05,,
+KR 60-3 F 1,KUKA,industrial,6,30,2.441,895,0.06,,
+KR 60-3 F 2,KUKA,industrial,6,45,2.241,888,0.06,,
+KR 60-3 F 3,KUKA,industrial,6,60,2.041,880,0.06,,
+KR 60-4 KS-F,KUKA,industrial,6,60,2.233,600,0.06,,
+KR 60-4 KS 1,KUKA,industrial,6,60,2.233,600,0.06,,
+KR 60-4 KS 2,KUKA,industrial,6,45,2.43,610,0.06,,
+KR 60-4 KS 3,KUKA,industrial,6,30,2.63,615,0.06,,
+KR 60 L16-2 KS,KUKA,industrial,6,16,2.952,650,0.06,,
+KR 60 HA 1,KUKA,industrial,6,60,2.033,665,0.05,,
+KR 60 HA 2,KUKA,industrial,6,45,2.239,665,0.05,,
+KR 60 HA 3,KUKA,industrial,6,30,2.429,665,0.05,,
+KR 120 R2100 nano F,KUKA,industrial,6,120,2.1,963,0.06,,
+KR 120 R1800 nano,KUKA,industrial,6,120,1.803,684,0.06,,
+KR 160 R1570 nano,KUKA,industrial,6,160,1.573,677,0.06,,
+KR 90 R2700 pro,KUKA,industrial,6,90,2.696,1058,0.06,,
+KR 120 R2500 pro,KUKA,industrial,6,120,2.496,1049,0.06,,
+KR 90 R3100 EXTRA,KUKA,industrial,6,90,3.095,1092,0.06,,
+KR 120 R2900 EXTRA,KUKA,industrial,6,120,2.896,1084,0.06,,
+KR 150 R2700 EXTRA,KUKA,industrial,6,150,2.696,1068,0.06,,
+KR 180 R2500 EXTRA,KUKA,industrial,6,180,2.496,1059,0.06,,
+KR 210 R2700 EXTRA,KUKA,industrial,6,210,2.7,1078,0.06,,
+KR 90 R3100 EXTRA F-HP,KUKA,industrial,6,90,3.095,1092,0.06,,
+KR 120 R2900 EXTRA F-HP,KUKA,industrial,6,120,2.896,1084,0.06,,
+KR 120 R3200 PA,KUKA,industrial,5,120,3.195,1075,0.06,,
+KR 150 R2700 EXTRA F-HP,KUKA,industrial,6,150,2.696,1068,0.06,,
+KR 180 R2500 EXTRA F-HP,KUKA,industrial,6,180,2.496,1059,0.06,,
+KR 150 R3100 PRIME,KUKA,industrial,6,150,3.095,1114,0.06,,
+KR 180 R2900 PRIME,KUKA,industrial,6,180,2.896,1106,0.06,,
+KR 210 R2700 PRIME,KUKA,industrial,6,210,2.696,1111,0.06,,
+KR 240 R2500 PRIME,KUKA,industrial,6,240,2.496,1102,0.06,,
+KR 240 R2700 PRIME,KUKA,industrial,6,240,2.696,1111,0.06,,
+KR 90 R3700 PRIME K,KUKA,industrial,6,90,3.701,1204,0.06,,
+KR 120 R3500 PRIME K,KUKA,industrial,6,120,3.501,1192,0.06,,
+KR 150 R3300 PRIME K,KUKA,industrial,6,150,3.301,1184,0.06,,
+KR 150 R3100 PRIME K,KUKA,industrial,6,180,3.101,1168,0.06,,
+KR 210 R2900 PRIME K,KUKA,industrial,6,210,2.901,1180,0.06,,
+KR 180 R3200 PA,KUKA,industrial,5,180,3.195,1093,0.06,,
+KR 210 R2700 PRIME F,KUKA,industrial,6,210,2.696,1111,0.06,,
+KR 240 R3200 PA,KUKA,industrial,5,240,3.195,1103,0.06,,
+KR 210 R3100 ULTRA,KUKA,industrial,6,210,3.095,1154,0.06,,
+KR 240 R2900 ULTRA,KUKA,industrial,6,240,2.896,1145,0.06,,
+KR 270 R2700 ULTRA,KUKA,industrial,6,270,2.696,1129,0.06,,
+KR 300 R2500 ULTRA,KUKA,industrial,6,300,2.496,1120,0.06,,
+KR 210 R3100 ULTRA F,KUKA,industrial,6,210,3.095,1154,0.06,,
+KR 120 R3900 ULTRA K,KUKA,industrial,6,120,3.901,1221,0.06,,
+KR 150 R3700 ULTRA K,KUKA,industrial,6,150,3.701,1215,0.06,,
+KR 180 R3500 ULTRA K-HP,KUKA,industrial,6,180,3.501,1201,0.06,,
+KR 210 R3300 ULTRA K,KUKA,industrial,6,210,3.301,1214,0.06,,
+KR 240 R3100 ULTRA K,KUKA,industrial,6,240,3.101,1189,0.06,,
+KR 270 R2900 ULTRA K,KUKA,industrial,6,270,2.901,1189,0.06,,
+KR 240 R2900 ULTRA F,KUKA,industrial,6,240,2.896,1145,0.06,,
+KR 270 R2700 ULTRA F,KUKA,industrial,6,270,2.686,1129,0.06,,
+KR 300 R2500 ULTRA F,KUKA,industrial,6,300,2.496,1120,0.06,,
+KR 240 R3330,KUKA,industrial,6,240,3.326,2421,0.08,,
+KR 280 R3080,KUKA,industrial,6,280,3.08,2415,0.08,,
+KR 360 R2830,KUKA,industrial,6,360,2.826,2385,0.08,,
+Meca500,Mecademic,industrial,6,0.5,0.26,4.5,0.005,15,price from website
+R12-5,RT Robotics,industrial,5,0.5,0.5,12.8,0.1,10.2,price from website
+R12-6,RT Robotics,industrial,6,0.4,0.5,13,0.1,12,price from website
+R17-5,RT Robotics,industrial,5,2,0.75,22,0.2,12.6,price from website
+R17-6,RT Robotics,industrial,6,1,0.75,23,0.2,15.8,price from website
+R17HPL,RT Robotics,industrial,5,5,0.75,23.1,0.2,14.6,price from website
+R17HS,RT Robotics,industrial,5,1,0.75,22.5,0.2,16.6,price from website
+F5,Thermo Fisher,industrial,6,5,,,0.02,,
+TV800,Toshiba,industrial,6,3,0.892,20,0.02,,
+HP20D,Yaskawa-Motoman,industrial,6,20,1.717,268,0.06,,
+MH50,Yaskawa-Motoman,industrial,6,50,2.061,550,0.07,,
+MH50-20,Yaskawa-Motoman,industrial,6,20,3.106,495,0.15,,
+MH50-35,Yaskawa-Motoman,industrial,6,35,2.538,570,0.07,,
+MH5S,Yaskawa-Motoman,industrial,6,5,0.706,27,0.02,,
+MH5LS,Yaskawa-Motoman,industrial,6,5,0.895,29,0.03,,
+MH6-10,Yaskawa-Motoman,industrial,6,10,1.422,130,0.08,,
+MH6D,Yaskawa-Motoman,industrial,6,6,1.422,130,0.08,,
+MH6S,Yaskawa-Motoman,industrial,6,6,0.997,120,0.08,,
+MH6S-10,Yaskawa-Motoman,industrial,6,10,0.907,120,0.08,,
+MPK2,Yaskawa-Motoman,industrial,5,2,0.9,72,0.5,,
+MPK2F-5,Yaskawa-Motoman,industrial,5,5,0.9,72,0.5,,
+MPK50,Yaskawa-Motoman,industrial,4,50,1.893,670,0.5,,
+SDA5F,Yaskawa-Motoman,industrial,7,5,0.845,36.66666667,0.06,,
+GP25,Yaskawa-Motoman,industrial,6,25,1.73,250,0.06,,
+GP12,Yaskawa-Motoman,industrial,6,12,1.44,130,0.08,,
+GP7,Yaskawa-Motoman,industrial,6,7,0.927,34,0.03,,
+GP8,Yaskawa-Motoman,industrial,6,8,0.727,32,0.02,,
+MotoMini,Yaskawa-Motoman,industrial,6,0.5,0.35,7,0.02,,
+PUMA 560,Puma,research,6,2.5,0.864,55,0.1,,
+WAM 4,Barrett,research,4,4,1,25,0.1,90,"listed with ""high precision"" package"
+WAM 7,Barrett,research,7,3,1,27,0.2,120,"listed with ""high precision"" package"
+LWR III,DLR,research,7,14,0.936,14,,,ca 2003
+LWR II,DLR,research,7,7,1.024,18,,,ca 2000
+LWR I,DLR,research,7,7,1.338,14.5,,,ca 1995
+KIT Arm,Kit.edu,research,8,11,1.077,25,,,
+MER,NASA,research,5,5,0.5,10,,,
+MSL,NASA,research,5,15,2.1,50,,,
+MGS,NASA,research,4,1,2,5,0.5,,
+LWA 4P,Schunk,research,6,6,0.61,15,0.15,,
+LWA 4P-2,Schunk,research,6,6,0.61,12.5,0.06,,
+LWA 4D,Schunk,research,7,10,1.1134,18,0.15,72,"estimate is power cube derived, 2 large, 2 medium, 1 small, 1 ball wrist"
+PR2,Willow Garage,research,7,1.8,0.881,,,115,"cost is delta between full robot and 1 arm version, full robot 220kg"
+VP-5243,Denso,industrial,5,3,0.5,13,0.02,,
+VP-6242,Denso,industrial,6,3,0.502,15,0.02,,
+VS-050,Denso,industrial,5,4,0.505,34,0.02,,
+VS-060,Denso,industrial,6,4,0.605,35,0.02,,
+VS-068,Denso,industrial,6,7,0.71,49,0.02,,
+VS-087,Denso,industrial,6,7,0.905,51,0.03,,
+VS-6556,Denso,industrial,6,7,0.733,35,0.02,,
+VS-6577,Denso,industrial,6,7,0.934,36,0.03,,
+VM-6083,Denso,industrial,6,13,1.021,82,0.05,,
+VM-60B1,Denso,industrial,6,13,1.298,88,0.07,,
+VS-050S2,Denso,industrial,6,4,0.52,34,0.02,,
+TV800,TM Robotics,industrial,6,5,0.8,45,0.02,,
+TV1000,TM Robotics,industrial,6,5,1,48,0.03,,
+TV1000H,TM Robotics,industrial,6,10,1,47,0.04,,
