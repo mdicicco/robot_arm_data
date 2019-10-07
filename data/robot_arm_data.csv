@@ -69,6 +69,10 @@ HC10,Yaskawa-Motoman,collaborative,6,10,1.2,47,0.1,48,
 KR810,Kassow Robots,collaborative,7,10,0.85,23.5,0.1,29,25k Euros
 KR1205,Kassow Robots,collaborative,7,5,1.2,25,0.1,41,35k Euros
 KR1805,Kassow Robots,collaborative,7,5,1.8,45,0.1,47,40k Euros (estimate)
+M069,Doosan Robotics,collaborative,6,6,0.9,27,0.1,,
+M1509,Doosan Robotics,collaborative,6,15,0.9,32,0.1,,
+M1013,Doosan Robotics,collaborative,6,10,1.3,33,0.1,,
+M0617,Doosan Robotics,collaborative,6,6,1.7,34,0.1,,
 IRB120,ABB,industrial,6,3,0.58,25,0.01,18.2,Estimate from robotraders.co.uk sale of 'new' robot
 IRB1200-5,ABB,industrial,6,5,0.7,52,0.06,,
 IRB1200-7,ABB,industrial,6,7,0.9,54,0.06,,
@@ -341,6 +345,7 @@ MotoMini,Yaskawa-Motoman,industrial,6,0.5,0.35,7,0.02,,
 PUMA 560,Puma,research,6,2.5,0.864,55,0.1,,
 WAM 4,Barrett,research,4,4,1,25,0.1,90,"listed with ""high precision"" package"
 WAM 7,Barrett,research,7,3,1,27,0.2,120,"listed with ""high precision"" package"
+SARA,DLR,research,7,12,1.024,22.6,,,
 LWR III,DLR,research,7,14,0.936,14,,,ca 2003
 LWR II,DLR,research,7,7,1.024,18,,,ca 2000
 LWR I,DLR,research,7,7,1.338,14.5,,,ca 1995
