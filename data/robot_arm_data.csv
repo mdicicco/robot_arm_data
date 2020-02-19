@@ -72,6 +72,8 @@ UR3e,UR,collaborative,6,3,0.5,11.2,0.03,,
 UR5e,UR,collaborative,6,5,0.85,20.6,0.05,,
 UR10e,UR,collaborative,6,10,1.3,33.5,0.05,,
 HC10,Yaskawa-Motoman,collaborative,6,10,1.2,47,0.1,48,
+HC10DT,Yaskawa-Motoman,collaborative,6,10,1.2,48,0.1,,
+HC20XP,Yaskawa-Motoman,collaborative,6,20,1.7,140,0.05,,
 KR810,Kassow Robots,collaborative,7,10,0.85,23.5,0.1,29,25k Euros
 KR1205,Kassow Robots,collaborative,7,5,1.2,25,0.1,41,35k Euros
 KR1805,Kassow Robots,collaborative,7,5,1.8,45,0.1,47,40k Euros (estimate)
