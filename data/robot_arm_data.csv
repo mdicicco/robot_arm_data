@@ -386,3 +386,4 @@ TV800,TM Robotics,industrial,6,5,0.8,45,0.02,,
 TV1000,TM Robotics,industrial,6,5,1,48,0.03,,
 TV1000H,TM Robotics,industrial,6,10,1,47,0.04,,
 duAro2,Kawasaki,industrial,4,3,0.785,50,0.05,16.5,"listed price and mass was for dual arm system, so both were divided in half"
+Dorna Arm,Dorna Robotics,industrial,5,1.1,0.4971,5.4,0.025,1.5,dorna.ai
