@@ -1,6 +1,8 @@
 Name,MFG,Type,DOF,Payload_kg,Reach_m,Weight_kg,Repeatability_mm,Cost_KUSD,Notes
 xArm,uFactory,collaborative,7,5,0.691,10,0.1,4.8,
-IRB14000 YUMI,ABB,collaborative,7,0.5,0.559,9.5,0.02,20,"mass is estimate, 38kg for whole robot, cost is an estimate, 40k is for 2 arms"
+IRB14000 YUMI,ABB,collaborative,7,0.5,0.559,9.6,0.02,20,"cost is an estimate, 40k is for 2 arms"
+Gofa,ABB,collaborative,6,5,0.950,27,0.05,25,"cost is estimate based on article saying 25-35k"
+Swifti,ABB,collaborative,6,4,0.58,21,0.01,35,"cost is estimate based on article saying 25-35k"
 OUR-1,AUBO,collaborative,6,5,0.85,15,0.05,,
 I5,AUBO,collaborative,7,5,0.88,24,0.05,18,
 Eva,Automata,collaborative,6,1.25,0.6,8,0.5,7,cost is 4990 british pounds
