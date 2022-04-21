@@ -389,3 +389,8 @@ TV1000,TM Robotics,industrial,6,5,1,48,0.03,,
 TV1000H,TM Robotics,industrial,6,10,1,47,0.04,,
 duAro2,Kawasaki,industrial,4,3,0.785,50,0.05,16.5,"listed price and mass was for dual arm system, so both were divided in half"
 Dorna Arm,Dorna Robotics,industrial,5,1.1,0.4971,5.4,0.025,1.5,dorna.ai
+ReBel,igus,industrial,6,2,0.665,8,1.0,5500,igus website had price (with controller) in euro but was removed
+ReBel,igus,industrial,4,3,0.495,7,1.0,4500,igus website had price for 6dof but this 4dof is estimate
+Rizon 4,Flexiv,collaborative,7,4,0.955,20,0.10,,
+Rizon 4s,Flexiv,collaborative,7,3.5,0.990,20,0.10,,
+Rizon 10,Flexiv,collaborative,7,10,1.015,33,0.10,,
