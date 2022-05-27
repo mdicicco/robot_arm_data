@@ -1,8 +1,8 @@
 Name,MFG,Type,DOF,Payload_kg,Reach_m,Weight_kg,Repeatability_mm,Cost_KUSD,Notes
 xArm,uFactory,collaborative,7,5,0.691,10,0.1,4.8,
-IRB14000 YUMI,ABB,collaborative,7,0.5,0.559,9.6,0.02,20,"cost is an estimate, 40k is for 2 arms"
-Gofa,ABB,collaborative,6,5,0.950,27,0.05,25,"cost is estimate based on article saying 25-35k"
-Swifti,ABB,collaborative,6,4,0.58,21,0.01,35,"cost is estimate based on article saying 25-35k"
+IRB14000 YUMI,ABB,collaborative,7,0.5,0.559,9.6,0.02,20,cost is an estimate 40k is for 2 arms
+Gofa,ABB,collaborative,6,5,0.95,27,0.05,25,cost is estimate based on article saying 25-35k
+Swifti,ABB,collaborative,6,4,0.58,21,0.01,35,cost is estimate based on article saying 25-35k
 OUR-1,AUBO,collaborative,6,5,0.85,15,0.05,,
 I5,AUBO,collaborative,7,5,0.88,24,0.05,18,
 Eva,Automata,collaborative,6,1.25,0.6,8,0.5,7,cost is 4990 british pounds
@@ -17,18 +17,18 @@ Panda 3,Elephant Robotics,collaborative,6,3,0.55,17,0.05,,
 Panda 5,Elephant Robotics,collaborative,6,5,0.85,24.5,0.05,,
 Catbot,Elephant Robotics,collaborative,6,3,0.6,18,0.05,,
 Elephant 5,Elephant Robotics,collaborative,6,5,0.81,23,0.05,,
-Amor,Exact Dynamics,collaborative,7,2.5,0.95,9,,39.6,"35k euro, from website"
+Amor,Exact Dynamics,collaborative,7,2.5,0.95,9,,39.6,35k euro from website
 CR-35iA,FANUC,collaborative,6,35,1.813,990,0.08,,
 CR-4iA,FANUC,collaborative,6,4,0.55,48,0.02,45.7,
 CR-7iA,FANUC,collaborative,6,7,0.717,53,0.02,48,
 CR-7iA/L,FANUC,collaborative,6,7,0.711,55,0.03,48,
 CR-14iA/L,FANUC,collaborative,6,14,9.911,55,0.01,,
 CR-15iA,FANUC,collaborative,6,15,1.441,255,0.02,,
-CRX-10iA,FANUC,collaborative,6,10,1.240,,,,
-CRX-10iA/L,FANUC,collaborative,6,10,1.410,,,,
+CRX-10iA,FANUC,collaborative,6,10,1.24,,,,
+CRX-10iA/L,FANUC,collaborative,6,10,1.41,,,,
 P-Rob 2R-24,FP Robotics,collaborative,6,3,0.775,20,0.1,27.5,
 P-Rob 2R-48,FP Robotics,collaborative,6,3,0.775,20,0.1,,
-Emika,Franka,collaborative,7,3,0.859,18.5,0.1,12.1,"10.5k eruos, listed elsewhere"
+Emika,Franka,collaborative,7,3,0.859,18.5,0.1,12.1,10.5k eruos listed elsewhere
 Dexter,Haddington Dynamics,collaborative,6,1,0.67,6,0.05,4.8,
 Elfin 3,Han's Robot,collaborative,6,3,0.59,15,0.1,,
 Elfin 5,Han's Robot,collaborative,6,5,0.8,21,0.1,25,
@@ -36,7 +36,7 @@ Elfin 10,Han's Robot,collaborative,6,10,1,45,0.1,,
 HCR-3,Hanwha,collaborative,6,3,0.63,13,0.1,,
 HCR-5,Hanwha,collaborative,6,5,0.915,20,0.1,33.5,
 HCR-12,Hanwha,collaborative,6,12,1.3,52,0.1,,
-Nextage,Kawada,collaborative,15,1.5,0.577,29,0.03,60,"29kg might be whole robot, 60k for whole robot"
+Nextage,Kawada,collaborative,15,1.5,0.577,29,0.03,60,29kg might be whole robot 60k for whole robot
 Jaco 7,Kinova,collaborative,7,2.1,0.985,5.7,,34.9,
 Jaco 6,Kinova,collaborative,6,2.2,0.9,4.4,,30,
 Jaco 4,Kinova,collaborative,4,4.4,0.75,3.6,,,
@@ -44,22 +44,23 @@ Mico 6,Kinova,collaborative,6,2.1,0.7,4.6,,20.9,
 Mico 4,Kinova,collaborative,4,5.2,0.55,3.8,,,
 Gen3 LWR,Kinova,collaborative,7,4,0.902,8.2,,,
 Gen2 LWR,Kinova,collaborative,7,2.4,0.984,5.5,,,
+Link 6,Kinova,collaborative,6,6,1,23.45,0.1,,
 LBR iiwa 7 R800,KUKA,collaborative,7,7,0.8,23.9,0.1,80,
 LBR iiwa 14 R820,KUKA,collaborative,7,14,0.82,29.9,0.15,96,
 LBR iisy,KUKA,collaborative,6,3,0.6,18.8,,,
-Indy7,Neuromeka,collaborative,6,7,0.8,28.0,0.1,,
+Indy7,Neuromeka,collaborative,6,7,0.8,28,0.1,,
 Indy12,Neuromeka,collaborative,6,12,1.2,53,0.1,,
 Indy-RP2,Neuromeka,collaborative,7,5,0.8,30.5,0.1,,
 Indy3,Neuromeka,collaborative,6,3,0.59,17,0.1,,
 Indy5,Neuromeka,collaborative,6,5,0.8,25,0.1,,
-Indy10,Neuromeka,collaborative,6,10,1.0,40.0,0.1,,
+Indy10,Neuromeka,collaborative,6,10,1,40,0.1,,
 CORO,Life Robotics,collaborative,6,2,0.865,26,1,,
 Speedy 12,MABI,collaborative,6,12,1.25,35,0.1,55,
 Speedy 6,MABI,collaborative,6,6,0.8,28,0.1,,
 KR-5-SI,MRK System,collaborative,6,5,1.423,150,0.04,16,
 PAVP6,Precise Automation,collaborative,6,2.5,0.432,28,0.02,,
 OB7,Productive Robotics,collaborative,7,5,1,24,0.1,20,
-Baxter,Rethink Robotics,collaborative,14,2.2,1.21,18.75,3,25,"mass is estimate, 75 kg is 2 arms + base"
+Baxter,Rethink Robotics,collaborative,14,2.2,1.21,18.75,3,25,mass is estimate 75 kg is 2 arms + base
 Sawyer,Rethink Robotics,collaborative,7,4,1.26,19,0.1,37,
 Pulse 75,Rozum Robotics,collaborative,6,4,0.75,12.6,0.1,22,18990 euro
 Pulse 90,Rozum Robotics,collaborative,6,5.5,0.9,17.4,0.1,26,22490 euro
@@ -76,9 +77,11 @@ TM14,Techman,collaborative,6,14,1.1,32.6,0.1,,
 UR3,UR,collaborative,6,3,0.5,11,0.1,28,
 UR5,UR,collaborative,6,5,0.85,18.4,0.1,35,
 UR10,UR,collaborative,6,10,1.3,28.9,0.1,40,
+UR16,UR,collaborative,6,16,0.9,28.1,0.1,,not precise numbers since the UR16 is no longer for sale
 UR3e,UR,collaborative,6,3,0.5,11.2,0.03,,
 UR5e,UR,collaborative,6,5,0.85,20.6,0.05,,
 UR10e,UR,collaborative,6,10,1.3,33.5,0.05,,
+UR16e,UR,collaborative,6,16,0.9,33.1,0.05,,
 HC10,Yaskawa-Motoman,collaborative,6,10,1.2,47,0.1,48,
 HC10DT,Yaskawa-Motoman,collaborative,6,10,1.2,48,0.1,,
 HC20XP,Yaskawa-Motoman,collaborative,6,20,1.7,140,0.05,,
@@ -331,6 +334,7 @@ KR 240 R3330,KUKA,industrial,6,240,3.326,2421,0.08,,
 KR 280 R3080,KUKA,industrial,6,280,3.08,2415,0.08,,
 KR 360 R2830,KUKA,industrial,6,360,2.826,2385,0.08,,
 Meca500,Mecademic,industrial,6,0.5,0.26,4.5,0.005,15,price from website
+MCS500,Mecademic,industrial,4,0.5,0.225,4.9,0.005,,
 R12-5,RT Robotics,industrial,5,0.5,0.5,12.8,0.1,10.2,price from website
 R12-6,RT Robotics,industrial,6,0.4,0.5,13,0.1,12,price from website
 R17-5,RT Robotics,industrial,5,2,0.75,22,0.2,12.6,price from website
@@ -371,8 +375,8 @@ MSL,NASA,research,5,15,2.1,50,,,
 MGS,NASA,research,4,1,2,5,0.5,,
 LWA 4P,Schunk,research,6,6,0.61,15,0.15,,
 LWA 4P-2,Schunk,research,6,6,0.61,12.5,0.06,,
-LWA 4D,Schunk,research,7,10,1.1134,18,0.15,72,"estimate is power cube derived, 2 large, 2 medium, 1 small, 1 ball wrist"
-PR2,Willow Garage,research,7,1.8,0.881,,,115,"cost is delta between full robot and 1 arm version, full robot 220kg"
+LWA 4D,Schunk,research,7,10,1.1134,18,0.15,72,estimate is power cube derived (2 large 2 medium 1 small 1 ball wrist)
+PR2,Willow Garage,research,7,1.8,0.881,,,115,cost is delta between full robot and 1 arm version - full robot mass is 220kg
 VP-5243,Denso,industrial,5,3,0.5,13,0.02,,
 VP-6242,Denso,industrial,6,3,0.502,15,0.02,,
 VS-050,Denso,industrial,5,4,0.505,34,0.02,,
@@ -387,10 +391,27 @@ VS-050S2,Denso,industrial,6,4,0.52,34,0.02,,
 TV800,TM Robotics,industrial,6,5,0.8,45,0.02,,
 TV1000,TM Robotics,industrial,6,5,1,48,0.03,,
 TV1000H,TM Robotics,industrial,6,10,1,47,0.04,,
-duAro2,Kawasaki,industrial,4,3,0.785,50,0.05,16.5,"listed price and mass was for dual arm system, so both were divided in half"
-Dorna Arm,Dorna Robotics,industrial,5,1.1,0.4971,5.4,0.025,1.5,dorna.ai
-ReBel,igus,industrial,6,2,0.665,8,1.0,5500,igus website had price (with controller) in euro but was removed
-ReBel,igus,industrial,4,3,0.495,7,1.0,4500,igus website had price for 6dof but this 4dof is estimate
-Rizon 4,Flexiv,collaborative,7,4,0.955,20,0.10,,
-Rizon 4s,Flexiv,collaborative,7,3.5,0.990,20,0.10,,
-Rizon 10,Flexiv,collaborative,7,10,1.015,33,0.10,,
+duAro2,Kawasaki,industrial,4,3,0.785,50,0.05,16.5,listed price and mass was for dual arm system so both were divided in half
+Dorna Arm,Dorna Robotics,hobby,5,1.1,0.4971,5.4,0.025,1.5,dorna.ai
+ReBel,igus,industrial,6,2,0.665,8,1,5500,igus website had price (with controller) in euro but was removed
+ReBel,igus,industrial,4,3,0.495,7,1,4500,igus website had price for 6dof but this 4dof is estimate
+Rizon 4,Flexiv,collaborative,7,4,0.955,20,0.1,,
+Rizon 4s,Flexiv,collaborative,7,3.5,0.99,20,0.1,,
+Rizon 10,Flexiv,collaborative,7,10,1.015,33,0.1,,
+CR3,DOBOT,collaborative,6,3,0.795,16.5,0.02,19990,trossen robotics webpage
+CR5,DOBOT,collaborative,6,5,1.096,23,0.02,22990,trossen robotics webpage
+CR10,DOBOT,collaborative,6,10,1.525,38,0.02,31990,trossen robotics webpage
+CR16,DOBOT,collaborative,6,16,1.223,37,0.02,34990,trossen robotics webpage
+MG400,DOBOT,hobby,4,0.5,0.44,8,0.05,2699,trossen robotics webpage
+ViperX 300 6DOF,Interbotix,hobby,6,0.75,0.75,4.1,1,5195.95,trossen robotics webpage
+ViperX 300,Interbotix,hobby,5,0.75,0.75,3.6,1,4695.95,trossen robotics webpage
+ViperX 250,Interbotix,hobby,5,0.45,0.65,3.6,1,3095.95,trossen robotics webpage (typo on price)
+ViperX 250 6DOF,Interbotix,hobby,6,0.25,0.65,3.6,1,3995.95,trossen robotics webpage (typo on price)
+WidowX 250 6DOF,Interbotix,hobby,6,0.25,0.65,4.1,1,3095.95,trossen robotics webpage
+WidowX 250 Mobile 6DOF,Interbotix,hobby,6,0.25,0.65,3.6,1,2995.95,trossen robotics webpage
+WidowX 250,Interbotix,hobby,5,0.25,0.65,2.6,1,2695.95,trossen robotics webpage
+WidowX 200,Interbotix,hobby,5,0.2,0.55,2.5,2.5,2395.95,trossen robotics webpage
+ReactorX 200,Interbotix,hobby,5,0.15,0.55,1.9,2.5,1795.95,trossen robotics webpage
+ReactorX 150,Interbotix,hobby,5,0.1,0.45,1.8,2.5,1395.95,trossen robotics webpage
+PincherX 150,Interbotix,hobby,5,0.05,0.45,1.8,5,949.95,trossen robotics webpage
+PincherX 100,Interbotix,hobby,4,0.05,0.3,0.8,5,549.95,trossen robotics webpage
