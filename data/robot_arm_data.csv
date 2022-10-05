@@ -397,28 +397,28 @@ TV1000,TM Robotics,industrial,6,5,1,48,0.03,,
 TV1000H,TM Robotics,industrial,6,10,1,47,0.04,,
 duAro2,Kawasaki,industrial,4,3,0.785,50,0.05,16.5,listed price and mass was for dual arm system so both were divided in half
 Dorna Arm,Dorna Robotics,hobby,5,1.1,0.4971,5.4,0.025,1.5,dorna.ai
-ReBel,igus,industrial,6,2,0.665,8,1,5500,igus website had price (with controller) in euro but was removed
-ReBel,igus,industrial,4,3,0.495,7,1,4500,igus website had price for 6dof but this 4dof is estimate
+ReBel,igus,industrial,6,2,0.665,8,1,5.500,igus website had price (with controller) in euro but was removed
+ReBel,igus,industrial,4,3,0.495,7,1,4.500,igus website had price for 6dof but this 4dof is estimate
 Rizon 4,Flexiv,collaborative,7,4,0.955,20,0.1,,
 Rizon 4s,Flexiv,collaborative,7,3.5,0.99,20,0.1,,
 Rizon 10,Flexiv,collaborative,7,10,1.015,33,0.1,,
-CR3,DOBOT,collaborative,6,3,0.795,16.5,0.02,19990,trossen robotics webpage
-CR5,DOBOT,collaborative,6,5,1.096,23,0.02,22990,trossen robotics webpage
-CR10,DOBOT,collaborative,6,10,1.525,38,0.02,31990,trossen robotics webpage
-CR16,DOBOT,collaborative,6,16,1.223,37,0.02,34990,trossen robotics webpage
-MG400,DOBOT,hobby,4,0.5,0.44,8,0.05,2699,trossen robotics webpage
-ViperX 300 6DOF,Interbotix,hobby,6,0.75,0.75,4.1,1,5195.95,trossen robotics webpage
-ViperX 300,Interbotix,hobby,5,0.75,0.75,3.6,1,4695.95,trossen robotics webpage
-ViperX 250,Interbotix,hobby,5,0.45,0.65,3.6,1,3095.95,trossen robotics webpage (typo on price)
-ViperX 250 6DOF,Interbotix,hobby,6,0.25,0.65,3.6,1,3995.95,trossen robotics webpage (typo on price)
-WidowX 250 6DOF,Interbotix,hobby,6,0.25,0.65,4.1,1,3095.95,trossen robotics webpage
-WidowX 250 Mobile 6DOF,Interbotix,hobby,6,0.25,0.65,3.6,1,2995.95,trossen robotics webpage
-WidowX 250,Interbotix,hobby,5,0.25,0.65,2.6,1,2695.95,trossen robotics webpage
-WidowX 200,Interbotix,hobby,5,0.2,0.55,2.5,2.5,2395.95,trossen robotics webpage
-ReactorX 200,Interbotix,hobby,5,0.15,0.55,1.9,2.5,1795.95,trossen robotics webpage
-ReactorX 150,Interbotix,hobby,5,0.1,0.45,1.8,2.5,1395.95,trossen robotics webpage
-PincherX 150,Interbotix,hobby,5,0.05,0.45,1.8,5,949.95,trossen robotics webpage
-PincherX 100,Interbotix,hobby,4,0.05,0.3,0.8,5,549.95,trossen robotics webpage
+CR3,DOBOT,collaborative,6,3,0.795,16.5,0.02,19.990,trossen robotics webpage
+CR5,DOBOT,collaborative,6,5,1.096,23,0.02,22.990,trossen robotics webpage
+CR10,DOBOT,collaborative,6,10,1.525,38,0.02,31.990,trossen robotics webpage
+CR16,DOBOT,collaborative,6,16,1.223,37,0.02,34.990,trossen robotics webpage
+MG400,DOBOT,hobby,4,0.5,0.44,8,0.05,2.699,trossen robotics webpage
+ViperX 300 6DOF,Interbotix,hobby,6,0.75,0.75,4.1,1,5.19595,trossen robotics webpage
+ViperX 300,Interbotix,hobby,5,0.75,0.75,3.6,1,4.69595,trossen robotics webpage
+ViperX 250,Interbotix,hobby,5,0.45,0.65,3.6,1,3.09595,trossen robotics webpage (typo on price)
+ViperX 250 6DOF,Interbotix,hobby,6,0.25,0.65,3.6,1,3.99595,trossen robotics webpage (typo on price)
+WidowX 250 6DOF,Interbotix,hobby,6,0.25,0.65,4.1,1,3.09595,trossen robotics webpage
+WidowX 250 Mobile 6DOF,Interbotix,hobby,6,0.25,0.65,3.6,1,2.99595,trossen robotics webpage
+WidowX 250,Interbotix,hobby,5,0.25,0.65,2.6,1,2.69595,trossen robotics webpage
+WidowX 200,Interbotix,hobby,5,0.2,0.55,2.5,2.5,2.39595,trossen robotics webpage
+ReactorX 200,Interbotix,hobby,5,0.15,0.55,1.9,2.5,1.79595,trossen robotics webpage
+ReactorX 150,Interbotix,hobby,5,0.1,0.45,1.8,2.5,1.39595,trossen robotics webpage
+PincherX 150,Interbotix,hobby,5,0.05,0.45,1.8,5,0.94995,trossen robotics webpage
+PincherX 100,Interbotix,hobby,4,0.05,0.3,0.8,5,0.54995,trossen robotics webpage
 MAiRA Pro S,Neurobotics,collaborative,7,18,1.05,53.0,0.01,,
 MAiRA Pro M,Neurobotics,collaborative,7,15,1.4,51.5,0.01,,
 MAiRA Pro L,Neurobotics,collaborative,7,12,1.6,56.0,0.01,,
