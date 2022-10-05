@@ -419,3 +419,12 @@ ReactorX 200,Interbotix,hobby,5,0.15,0.55,1.9,2.5,1795.95,trossen robotics webpa
 ReactorX 150,Interbotix,hobby,5,0.1,0.45,1.8,2.5,1395.95,trossen robotics webpage
 PincherX 150,Interbotix,hobby,5,0.05,0.45,1.8,5,949.95,trossen robotics webpage
 PincherX 100,Interbotix,hobby,4,0.05,0.3,0.8,5,549.95,trossen robotics webpage
+MAiRA Pro S,Neurobotics,collaborative,7,18,1.05,53.0,0.01,,
+MAiRA Pro M,Neurobotics,collaborative,7,15,1.4,51.5,0.01,,
+MAiRA Pro L,Neurobotics,collaborative,7,12,1.6,56.0,0.01,,
+MAiRA Jr,Neurobotics,collaborative,7,8,0.9,32.0,0.02,,
+LARA 3,Neurobotics,industrial,6,3,0.59,17,0.02,,
+LARA 5,Neurobotics,industrial,6,5,0.8,23,0.02,,
+LARA 8,Neurobotics,industrial,6,8,1.3,47,0.02,,
+LARA 10,Neurobotics,industrial,6,10,1.0,40,0.02,,
+LARA 15,Neurobotics,industrial,6,15,1.3,55,0.02,,
