@@ -349,6 +349,7 @@ R17-6,RT Robotics,industrial,6,1,0.75,23,0.2,15.8,price from website
 R17HPL,RT Robotics,industrial,5,5,0.75,23.1,0.2,14.6,price from website
 R17HS,RT Robotics,industrial,5,1,0.75,22.5,0.2,16.6,price from website
 F5,Thermo Fisher,industrial,6,5,0.704,27,0.02,,
+F7,Thermo Fisher,industrial,6,7,0.717,25,0.02,,
 TV800,Toshiba,industrial,6,3,0.892,20,0.02,,
 HP20D,Yaskawa-Motoman,industrial,6,20,1.717,268,0.06,,
 MH50,Yaskawa-Motoman,industrial,6,50,2.061,550,0.07,,
