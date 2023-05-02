@@ -410,9 +410,9 @@ duAro2,Kawasaki,industrial,4,3,0.785,50,0.05,16.5,listed price and mass was for 
 Dorna Arm,Dorna Robotics,hobby,5,1.1,0.4971,5.4,0.025,1.5,dorna.ai
 ReBel,igus,industrial,6,2,0.665,8,1,5.500,igus website had price (with controller) in euro but was removed
 ReBel,igus,industrial,4,3,0.495,7,1,4.500,igus website had price for 6dof but this 4dof is estimate
-Rizon 4,Flexiv,collaborative,7,4,0.955,20,0.1,,
-Rizon 4s,Flexiv,collaborative,7,3.5,0.99,20,0.1,,
-Rizon 10,Flexiv,collaborative,7,10,1.015,33,0.1,,
+Rizon 4,Flexiv,collaborative,7,4,0.955,20,0.05,,
+Rizon 4s,Flexiv,collaborative,7,3.5,0.99,21,0.05,,
+Rizon 10,Flexiv,collaborative,7,10,0.991,38,0.05,,
 CR3,DOBOT,collaborative,6,3,0.795,16.5,0.02,19.990,trossen robotics webpage
 CR5,DOBOT,collaborative,6,5,1.096,23,0.02,22.990,trossen robotics webpage
 CR10,DOBOT,collaborative,6,10,1.525,38,0.02,31.990,trossen robotics webpage
