@@ -3,7 +3,7 @@ xArm 5,uFactory,collaborative,5,3,0.70,11.2,0.1,5.3,
 xArm 6,uFactory,collaborative,6,5,0.70,12.2,0.1,8.4,
 xArm 7,uFactory,collaborative,7,3.5,0.70,13.7,0.1,10,
 Lite 6,uFactory,collaborative,6,1,0.440,,,3,
-IRB14000 YUMI,ABB,collaborative,7,0.5,0.559,9.6,0.02,20,cost is an estimate 40k is for 2 arms
+IRB14000 YUMI,ABB,collaborative,7,0.5,0.559,9.6,0.02,18,updated price based on alibaba listing
 Gofa,ABB,collaborative,6,5,0.95,27,0.05,25,cost is estimate based on article saying 25-35k
 Swifti,ABB,collaborative,6,4,0.58,21,0.01,35,cost is estimate based on article saying 25-35k
 OUR-1,AUBO,collaborative,6,5,0.85,15,0.05,,
