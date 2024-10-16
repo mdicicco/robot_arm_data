@@ -412,7 +412,7 @@ ReBel,igus,industrial,6,2,0.665,8,1,5.500,igus website had price (with controlle
 ReBel,igus,industrial,4,3,0.495,7,1,4.500,igus website had price for 6dof but this 4dof is estimate
 Rizon 4,Flexiv,collaborative,7,4,0.955,20,0.05,,
 Rizon 4s,Flexiv,collaborative,7,3.5,0.99,21,0.05,,
-Rizon 10,Flexiv,collaborative,7,10,0.991,38,0.05,,
+Rizon 10,Flexiv,collaborative,7,10,0.991,38,0.05,37.996,ebay listing
 CR3,DOBOT,collaborative,6,3,0.795,16.5,0.02,19.990,trossen robotics webpage
 CR5,DOBOT,collaborative,6,5,1.096,23,0.02,22.990,trossen robotics webpage
 CR10,DOBOT,collaborative,6,10,1.525,38,0.02,31.990,trossen robotics webpage
