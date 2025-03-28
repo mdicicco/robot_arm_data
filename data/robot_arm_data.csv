@@ -418,7 +418,8 @@ CR5,DOBOT,collaborative,6,5,1.096,23,0.02,22.990,trossen robotics webpage
 CR10,DOBOT,collaborative,6,10,1.525,38,0.02,31.990,trossen robotics webpage
 CR16,DOBOT,collaborative,6,16,1.223,37,0.02,34.990,trossen robotics webpage
 MG400,DOBOT,hobby,4,0.5,0.44,8,0.05,2.699,trossen robotics webpage
-ViperX 300 6DOF,Interbotix,hobby,6,0.75,0.75,4.1,1,5.19595,trossen robotics webpage
+ViperX Aloha,trossen,hobby,6,0.75,0.75,4.75,1,6.5,new trossen AI website
+ViperX 300 6DOF,Interbotix,hobby,6,0.75,0.75,4.1 ,1,5.19595,trossen robotics webpage
 ViperX 300,Interbotix,hobby,5,0.75,0.75,3.6,1,4.69595,trossen robotics webpage
 ViperX 250,Interbotix,hobby,5,0.45,0.65,3.6,1,3.09595,trossen robotics webpage (typo on price)
 ViperX 250 6DOF,Interbotix,hobby,6,0.25,0.65,3.6,1,3.99595,trossen robotics webpage (typo on price)
