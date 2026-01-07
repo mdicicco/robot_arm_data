@@ -1,0 +1,17 @@
+[workspace]
+authors = ["Matt DiCicco <mdicicco@gmail.com>"]
+channels = ["conda-forge"]
+name = "robot_arm_analysis"
+platforms = ["osx-arm64"]
+version = "0.1.0"
+
+[tasks]
+app = "streamlit run robot_arm_app.py --server.headless true"
+
+[dependencies]
+python = "3.12.*"
+pandas = ">=2.3.3,<3"
+numpy = ">=2.4.0,<3"
+scikit-learn = ">=1.8.0,<2"
+streamlit = ">=1.52.2,<2"
+plotly = ">=6.5.0,<7"
