@@ -31,6 +31,7 @@ CR-14iA/L,FANUC,collaborative,6,14,0.911,55,0.01,,
 CR-15iA,FANUC,collaborative,6,15,1.441,255,0.02,,
 CRX-10iA,FANUC,collaborative,6,10,1.24,,,,
 CRX-10iA/L,FANUC,collaborative,6,10,1.42,40,0.04,44.64,standard bots website
+CRX-30iA,FANUC,collaborative,6,30,1.756,135,0.5,65,standard bots website
 P-Rob 2R-24,FP Robotics,collaborative,6,3,0.775,20,0.1,27.5,
 P-Rob 2R-48,FP Robotics,collaborative,6,3,0.775,20,0.1,,
 Emika,Franka,collaborative,7,3,0.859,18.5,0.1,12.1,10.5k eruos listed elsewhere
@@ -96,6 +97,7 @@ UR5e,UR,collaborative,6,5,0.85,20.6,0.05,,
 UR10e,UR,collaborative,6,10,1.3,33.5,0.05,47.2,standard bots website
 UR16e,UR,collaborative,6,16,0.9,33.1,0.05,,
 UR20,UR,collaborative,6,20,1.75,64,0.05,,
+UR30,UR,collaborative,6,30,1.3,63.5,0.1,65,standard bots website
 HC10,Yaskawa-Motoman,collaborative,6,10,1.2,47,0.1,48,
 HC10DT,Yaskawa-Motoman,collaborative,6,10,1.2,48,0.1,,
 HC20XP,Yaskawa-Motoman,collaborative,6,20,1.7,140,0.05,,
@@ -444,7 +446,6 @@ Z1 Air,Unitree,collaborative,6,2,0.74,4.1,0.1,12.999,
 Z1 Pro,Unitree,collaborative,6,3,0.74,4.3,0.1,,
 Crane X7,RT,collaborative,7,0.5,0.630,1.8,,7.5,
 ZA6,Tormach,industrial,6,6,0.975,65,0.5,5.0,
-RO1,Standard Bots,collaborative,6,18,1.3,32.5,0.025,,
 SCR3,Siasun,collaborative,7,3,0.6,18.6,0.02,20,alibaba listing
 SCR5,Siasun,collaborative,7,5,0.8,33.8,0.02,30,alibaba listing
 TCRp5,Siasun,collaborative,6,0.5,0.3,5,0.05,,
@@ -466,3 +467,6 @@ BRTIRPH1210A,Borunte,industrial,6,10,1.225,150,0.07,6.895,
 BRTIRUS0707A,Borunte,industrial,6,7,0.7,55,0.03,4.137,
 BRTIRUS0805A,Borunte,industrial,6,5,0.94,53,0.05,4.137,
 BRTIRUS0401A,Borunte,industrial,6,1,0.465,21,0.06,4.137,
+RO1,Standard Bots,collaborative,6,18,1.3,32.5,0.025,37,company website
+Thor,Standard Bots,collaborative,6,30,2.0,79,0.025,49.5,company website
+
