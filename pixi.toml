@@ -7,6 +7,7 @@ version = "0.1.0"
 
 [tasks]
 app = "streamlit run robot_arm_app.py --server.headless true"
+plot = "python generate_summary_plot.py"
 
 [dependencies]
 python = "3.12.*"
@@ -15,3 +16,5 @@ numpy = ">=2.4.0,<3"
 scikit-learn = ">=1.8.0,<2"
 streamlit = ">=1.52.2,<2"
 plotly = ">=6.5.0,<7"
+matplotlib = ">=3.10.0,<4"
+scipy = ">=1.15.0,<2"
