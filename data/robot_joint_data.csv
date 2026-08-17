@@ -1,0 +1,139 @@
+Name,MFG,Type,Rated_Torque_Nm,Peak_Torque_Nm,Weight_kg,OD_mm,Length_mm,Rated_Speed_rpm,Gear_Ratio,Voltage_V,Encoder,Brake,Integrated_Driver,Cost_USD,Notes
+DM-J4310-2EC V1.1,Damiao,qdd,3,7,0.30,57,46,120,10,24,dual magnetic,no,yes,116,Foxtech listing; 48V version available; CAN/CAN-FD MIT mode
+DM-J4340-2EC,Damiao,planetary,9,27,0.362,57,53.3,36,40,24,dual magnetic,no,yes,,Seeed/Damiao wiki; 40:1 so not really QDD; 48V version available
+DM-J4340P-2EC,Damiao,planetary,9,27,0.375,57,56.5,36,40,24,dual magnetic,no,yes,,Crossed-roller output bearing variant of J4340
+DM-J6006-2EC,Damiao,qdd,4,12,0.335,76,36.5,150,6,24,dual 14bit,no,yes,150,AIFITLAB listing; 24-48V
+DM-J8006-2EC V1.1,Damiao,qdd,8,20,0.559,96,40,120,6,24,dual 14bit,no,yes,214,Foxtech listing; 24-48V
+DM-J8009-2EC,Damiao,qdd,20,40,0.896,98,61.7,100,9,24,dual 14bit,no,yes,385,Foxtech listing; 200 rpm rated at 48V
+DM-J10010L-2EC,Damiao,qdd,40,120,1.372,120,53,100,10,48,dual 14bit,no,yes,230,AIFITLAB listing; 70 rpm rated at 24V
+DM-J10010-2EC,Damiao,qdd,40,150,1.485,120,,100,10,48,dual 14bit,no,yes,357,Alibaba/Foxtech sample price; peak 150 Nm from reseller listings
+RobStride 05,RobStride,qdd,1.6,5.5,0.191,46,44,,7.75,48,dual 14bit,no,yes,,OpenELAB comparison table; 46x46x44 mm
+RobStride 00,RobStride,qdd,5,14,0.31,57,51,,10,48,dual 14bit,no,yes,139,Seeed Studio; official site $125; 57x57x51 mm
+RobStride 01,RobStride,qdd,6,17,0.38,78.5,45.5,,7.75,36,single,no,yes,,OpenELAB comparison; same envelope as RS-02 without dual encoder
+RobStride 02,RobStride,qdd,6,17,0.405,78.5,45.5,360,7.75,48,dual 14bit,no,yes,145,OpenELAB; IP52 standard IP67 option; 78.5x78.5x45.5 mm
+RobStride 06,RobStride,qdd,11,36,0.621,88,49,,9,48,dual 14bit,no,yes,,OpenELAB comparison; 88x88x49 mm
+RobStride 03,RobStride,qdd,20,60,0.88,106,56,100,9,48,dual 14bit,no,yes,250,Seeed $249.99; 106x106x56 mm; 380 W class
+RobStride 04,RobStride,qdd,40,120,1.42,120,56,50,9,48,dual 14bit,no,yes,255,Seeed/AIFITLAB; 120x120x56 mm; 700 W class; IP52
+AK60-6 V3.0 KV80,CubeMars,qdd,3,9,0.38,79,43,233,6,24,single 21bit,no,yes,230,CubeMars catalog; 24/48V; rated speed 490 rpm at 48V; Robotopian ~$280
+AK70-10 KV100,CubeMars,qdd,8.3,24.8,0.521,89,50.25,148,10,24,single 14bit,no,yes,455,CubeMars catalog; 24/48V; some tables list 621 g; Robotopian listing
+AK70-9 V3.0 KV60,CubeMars,qdd,8.5,29.2,0.54,89,49,260,9,48,dual,no,yes,450,CubeMars list ~$399-499; dual encoder crossed-roller
+AK80-6 KV100,CubeMars,qdd,6,12,0.485,98,38.5,603,6,48,single,no,yes,,CubeMars comparison table
+AK80-8 KV60,CubeMars,qdd,10,25,0.57,98,43.9,243,8,48,dual 15bit out,no,yes,520,CubeMars list ~$470-570
+AK80-9 V3.0 KV100,CubeMars,qdd,9,22,0.49,98,38.5,390,9,48,single 16bit,no,yes,480,CubeMars list ~$480-580; Robotopian $370
+AK80-64 KV80,CubeMars,planetary,48,120,0.85,98,61.9,23,64,24,single,no,yes,940,CubeMars list ~$890-990; high-ratio so not QDD; 48 rpm rated at 48V
+AK10-9 V3.0 KV60,CubeMars,qdd,18,53,0.94,98,61.7,235,9,48,dual 21/15bit,no,yes,750,CubeMars list ~$699-799
+AKA60-6 KV80,CubeMars,qdd,3,9,0.46,80,51.2,200,6,24,single,no,yes,,CubeMars AKA series comparison table
+AKA10-9 KV60,CubeMars,qdd,18,53,1.06,100,70,109,9,48,single,no,yes,,CubeMars AKA series comparison table
+RMD-X4-3,MyActuator,qdd,1.5,3,0.30,,,200,6,24,single 16bit,optional,yes,,MyActuator RMD-X V2 catalog
+RMD-X6-7,MyActuator,qdd,3.5,7,0.35,,,400,6,48,single 16bit,optional,yes,,MyActuator RMD-X V2 catalog; V2 1:6
+RMD-X6-8,MyActuator,qdd,4.5,8,0.49,,,310,8,48,dual 16/14bit,optional,yes,,MyActuator RMD-X V3 catalog
+RMD-X6-40,MyActuator,planetary,18,40,0.59,,,90,36,48,single 16bit,optional,yes,,MyActuator RMD-X V2 catalog; 36:1
+RMD-X8-25,MyActuator,qdd,10,25,0.71,,,110,9,48,single 16bit,optional,yes,580,MyActuator RMD-X V2 catalog; street prices often $450-695
+RMD-X8-20,MyActuator,qdd,10,20,0.78,,,190,6,48,dual 16/14bit,optional,yes,,MyActuator RMD-X V3 Pro-H catalog
+RMD-X8-60,MyActuator,planetary,30,60,0.90,,,40,36,48,dual 16/14bit,optional,yes,,MyActuator RMD-X V3 catalog; 36:1
+RMD-X10-40,MyActuator,qdd,15,40,1.15,,,165,7,48,dual 16/14bit,optional,yes,,MyActuator RMD-X V3 catalog
+RMD-X10-100,MyActuator,planetary,50,100,1.70,,,50,35,48,dual 16/14bit,optional,yes,,MyActuator RMD-X V3 catalog; 35:1
+GO-M8010-6,Unitree,qdd,,23.7,0.53,96.5,42.3,287,6.33,24,single 15bit,no,yes,369,Unitree shop; max speed 30 rad/s at 24V; size 96.5x92.5x42.3 mm; RS-485
+M107,Unitree,qdd,,360,1.9,107,74,,,48,dual,no,yes,,H1/H1-2 knee module; 189 Nm/kg peak density from Unitree H1 brochure; not typically sold separately
+qdd100 beta 3,mjbots,qdd,3.3,16,0.507,100,44,,6,24,moteus abs,no,yes,879,mjbots.com; indefinite 3.3 Nm / 16 Nm peak <1s; CAN-FD; 10-44V
+T5-1,HEBI,series-elastic,1.3,2.5,0.45,110,,90,272,36,abs+torque,no,yes,3000,HEBI T-Series datasheet; shop lists T-Series at $3000; Ethernet; 24-48V
+T5-4,HEBI,series-elastic,4,7,0.45,110,,32,762,36,abs+torque,no,yes,3000,HEBI T-Series datasheet
+T5-9,HEBI,series-elastic,8,13,0.45,110,,14,1742,36,abs+torque,no,yes,3000,HEBI T-Series datasheet
+T8-3+,HEBI,series-elastic,4,8,0.575,110,,110,272,36,abs+torque,no,yes,3000,HEBI T-Series datasheet (T+); 24-48V
+T8-9+,HEBI,series-elastic,10,23,0.575,110,,39,762,36,abs+torque,no,yes,3000,HEBI T-Series datasheet (T+)
+T8-16+,HEBI,series-elastic,20,44,0.575,110,,20,1462,36,abs+torque,no,yes,3000,HEBI T-Series datasheet (T+)
+T25-8,HEBI,series-elastic,8,16,1.5,,,118,254,36,abs+torque,no,yes,3000,HEBI T-Series datasheet; 36-48V
+T25-20,HEBI,series-elastic,20,40,1.5,,,47,639,36,abs+torque,no,yes,3000,HEBI T-Series datasheet
+T25-40,HEBI,series-elastic,40,80,1.5,,,23,1301,36,abs+torque,no,yes,3000,HEBI T-Series datasheet
+X5-1,HEBI,series-elastic,1.3,2.5,0.33,110,31,90,272,36,abs+torque,no,yes,4300,Legacy X-Series datasheet; MYBOTSHOP from ~€3946; 110x73x31 mm 15 mm bore
+X5-4,HEBI,series-elastic,4,7,0.345,110,31,32,762,36,abs+torque,no,yes,4300,Legacy X-Series; cost converted from EUR listing
+X5-9,HEBI,series-elastic,8,13,0.36,110,31,14,1742,36,abs+torque,no,yes,4300,Legacy X-Series
+X8-3,HEBI,series-elastic,3,7,0.455,110,45,84,272,36,abs+torque,no,yes,5000,Legacy X-Series; MYBOTSHOP +€650 vs X5
+X8-9,HEBI,series-elastic,8,20,0.475,110,45,30,762,36,abs+torque,no,yes,5000,Legacy X-Series
+X8-16,HEBI,series-elastic,16,38,0.49,110,45,15,1462,36,abs+torque,no,yes,5000,Legacy X-Series
+R8-3+,HEBI,series-elastic,4,8,0.67,,,110,272,36,abs+torque,no,yes,,HEBI R-Series IP67 datasheet
+R8-9+,HEBI,series-elastic,10,23,0.685,,,39,762,36,abs+torque,no,yes,,HEBI R-Series IP67 datasheet
+R8-16+,HEBI,series-elastic,20,44,0.715,,,20,1462,36,abs+torque,no,yes,,HEBI R-Series IP67 datasheet
+R25-8,HEBI,series-elastic,8,16,1.9,,,118,254,36,abs+torque,no,yes,,HEBI R-Series IP67 datasheet
+R25-20,HEBI,series-elastic,20,40,1.9,,,47,639,36,abs+torque,no,yes,,HEBI R-Series IP67 datasheet
+R25-40,HEBI,series-elastic,40,80,1.9,,,23,1301,36,abs+torque,no,yes,,HEBI R-Series IP67 datasheet
+XL430-W250-T,ROBOTIS,hobby-servo,,1.5,0.0572,28.5,46.5,61,258.5,12,12bit abs,no,yes,50,Peak is stall at 12V; plastic gears; robotis.us historically ~$28-50
+XM430-W210-T,ROBOTIS,hobby-servo,,3.0,0.082,28.5,46.5,77,212.6,12,12bit abs,no,yes,,Peak is stall at 12V; metal gears
+XM430-W350-T,ROBOTIS,hobby-servo,,4.1,0.082,28.5,46.5,46,353.5,12,12bit abs,no,yes,310,Peak is stall at 12V; robotis.us $310.39
+XM540-W150-T,ROBOTIS,hobby-servo,,7.3,0.165,33.5,58.5,53,152.3,12,12bit abs,no,yes,,Peak is stall at 12V
+XM540-W270-T,ROBOTIS,hobby-servo,,10.6,0.165,33.5,58.5,30,272.5,12,12bit abs,no,yes,483,Peak is stall at 12V; robotis.us $482.89
+XH430-W350-T,ROBOTIS,hobby-servo,,3.4,0.082,28.5,46.5,30,353.5,12,12bit abs,no,yes,,Peak is stall at 12V; Maxon coreless
+XH540-W270-T,ROBOTIS,hobby-servo,,9.9,0.165,33.5,58.5,39,272.5,12,12bit abs,no,yes,621,Peak is stall at 12V; robotis.us $620.89; Maxon coreless
+XH540-V270-R,ROBOTIS,hobby-servo,,9.2,0.165,33.5,58.5,34,272.5,24,12bit abs,no,yes,,Peak is stall at 24V
+PH42-020-S300-R,ROBOTIS,cycloidal,5.1,,0.34,42,84,29.2,303.75,24,abs,no,yes,1897,robotis.us $1897.39; Maxon coreless; continuous torque listed
+PM42-010-S260-R,ROBOTIS,cycloidal,1.7,,0.27,42,72,26,257.019,24,abs,no,yes,1092,robotis.us $1092.39
+PM54-040-S250-R,ROBOTIS,cycloidal,3.9,,0.71,54,108,24.2,251.417,24,abs,no,yes,2058,robotis.us $2058.39
+PM54-060-S250-R,ROBOTIS,cycloidal,10.1,,0.855,54,126,28.3,251.417,24,abs,no,yes,,ROBOTIS eManual continuous 10.1 Nm
+PH54-100-S500-R,ROBOTIS,cycloidal,25.3,,0.74,54,108,29.2,501.923,24,abs,no,yes,3289,robotis.us $3288.89; Maxon BLDC
+PH54-200-S500-R,ROBOTIS,cycloidal,44.7,,0.855,54,126,29,501.923,24,abs,no,yes,,ROBOTIS eManual; Tribotix ~AUD 4739
+eRob 70F,ZeroErr,harmonic,,35,0.77,70,60.4,60,50,48,abs 19bit,optional,yes,,ZeroErr brochure; strain-wave module with integrated drive
+eRob 70I,ZeroErr,harmonic,10,70,0.82,70,71,30,100,48,dual abs 19bit,optional,yes,,ZeroErr site v5 without brake; 14-100 ratio; rated 10 Nm peak 70 Nm; CANopen/EtherCAT
+eRob 80I,ZeroErr,harmonic,,143,1.03,80,64.2,60,100,48,dual abs,optional,yes,1240,ZeroErr site; AIFITLAB ~$1240; upgraded compact I-series
+eRob 90I,ZeroErr,harmonic,52,191,1.506,90,75.9,30,100,48,dual abs 19bit,optional,yes,,ZeroErr site v6 without brake; 20-100 ratio
+eRob 110I,ZeroErr,harmonic,,408,2.57,110,80.2,60,100,48,dual abs,optional,yes,,ZeroErr site; brochure also lists 2.68 kg
+eRob 142I,ZeroErr,harmonic,,892,6.7,142,133.9,40,100,48,dual abs,optional,yes,1550,ZeroErr brochure; AIFITLAB ~$1550
+eRob 170I,ZeroErr,harmonic,,1180,9.5,170,144.9,40,,48,dual abs,optional,yes,,ZeroErr brochure; ratio not listed on the summary sheet
+FHA-8C-100,Harmonic Drive,harmonic,4.8,,0.40,66,50,60,100,48,inc or abs,no,no,,FHA-C Mini; incremental mass 0.40 kg absolute 0.50 kg; rated 4.8 Nm at 100:1
+FHA-11C-100,Harmonic Drive,harmonic,11,,0.62,80,60,60,100,48,inc or abs,no,no,,FHA-C Mini; incremental 0.62 kg absolute 0.75 kg
+FHA-14C-100,Harmonic Drive,harmonic,28,,1.2,100,75,60,100,48,inc or abs,no,no,,FHA-C Mini; incremental 1.2 kg absolute 1.3 kg
+FHA-17C-100,Harmonic Drive,harmonic,,57,2.5,128,78,48,100,200,inc 2500ppr,optional,no,,FHA-C AC actuator; max torque at 100:1; 200VAC class; quote-only pricing
+FHA-25C-100,Harmonic Drive,harmonic,,230,4.0,155,90,45,100,200,inc 2500ppr,optional,no,,FHA-C; max torque at 100:1
+FHA-32C-100,Harmonic Drive,harmonic,,398,6.5,175,112,40,100,200,inc 2500ppr,optional,no,,FHA-C; max torque at 100:1
+FHA-40C-100,Harmonic Drive,harmonic,,690,12.0,230,127,35,100,200,inc 2500ppr,optional,no,,FHA-C; max torque at 100:1
+SHA-20A-51,Harmonic Drive,harmonic,21,73,2.0,,,118,51,200,magnetic abs,optional,no,,SHA-SG 200VAC 51:1: cont 21 Nm max 73 Nm mass 2.0 kg (2.1 with brake); 48V integrated-drive SHA-IDT also offered
+SHA-25A-101,Harmonic Drive,harmonic,57,204,,,108.5,38,101,48,dual abs 17bit,optional,yes,,SHA-IDT 48V integrated drive; max 204 Nm / cont 57 Nm at 101:1; brochure length ~108.5 mm
+SHA-32A-101,Harmonic Drive,harmonic,77,298,,,,25,101,48,dual abs 17bit,optional,yes,,SHA-IDT 48V integrated drive; max 298 Nm / cont 77 Nm at 101:1
+SHA-25A-101-SG,Harmonic Drive,harmonic,81,204,2.95,114,109,55.4,101,200,magnetic abs 17bit,optional,no,,SHA-SG 200VAC; max 204 Nm cont 81 Nm at 101:1; mass 2.95 kg (3.1 with brake)
+SHA-32A-101-SG,Harmonic Drive,harmonic,178,433,5.9,146,125,47.5,101,200,magnetic abs 17bit,optional,no,,SHA-SG catalog; max 433 Nm cont 178 Nm at 101:1; mass 5.9 kg (6.2 with brake)
+SHA-40A-101-SG,Harmonic Drive,harmonic,198,738,9.9,175,148,39.6,101,200,magnetic abs 17bit,optional,no,,SHA-SG/SHA-Y catalog; max 738 Nm at 101:1; mass 9.9 kg (10.7 with brake)
+SHA-58A-101-SG,Harmonic Drive,harmonic,,2067,29.5,247,213,29.7,101,200,magnetic abs 17bit,optional,no,,SHA-SG catalog; max 2067 Nm at 101:1; mass 29.5 kg (32 with brake)
+SHA-65A-101-SG,Harmonic Drive,harmonic,,2990,37.5,284,222,27.7,101,200,magnetic abs 17bit,optional,no,,SHA-SG catalog; max 2990 Nm at 101:1; mass 37.5 kg (40 with brake)
+LPA-20-101,Harmonic Drive,harmonic,16.9,57,1.4,92,66.1,29.7,101,48,dual abs 15/14bit,optional,yes,,LPA integrated drive; 48V CANopen/EtherCAT; max 57 Nm at 101:1; mounting ~92 mm
+HEJ 50-48-30,maxon,planetary,11,30,0.57,71.5,65,201,,48,14bit abs,no,yes,7500,maxon HEJ 50-48-30 datasheet; 21 rad/s at 48V (201 rpm); 26 rad/s at 60V; first samples not IP67; user $7500 HEJ base
+HEJ 70-48-60,maxon,planetary,27,62,1.05,88,77,170,,48,14bit abs,no,yes,7500,maxon HEJ 70-48-60 datasheet; 17.8 rad/s at 48V (170 rpm); 22 rad/s at 60V; IP67 EtherCAT; user $7500 HEJ base
+HDT DT38S-WGA14,maxon,harmonic,,19,0.9,74,73,85,,48,dual abs,optional,no,5000,maxon HPJ-DT / HDT; peak 12-19 Nm; specs at high-ratio end; user $5k 400Nm HDT base
+HDT DT38M-WGU14,maxon,harmonic,,36,0.9,74,83,65,,48,dual abs,optional,no,5000,maxon HPJ-DT / HDT; peak 23-36 Nm; length preliminary; user $5k HDT base
+HDT DT50S-WGA20,maxon,harmonic,,64,1.5,94,78,32,,48,dual abs,optional,no,5000,maxon HPJ-DT / HDT; peak 39-64 Nm; user $5k HDT base
+HDT DT50M-WGU20,maxon,harmonic,,120,1.8,94,86,22,,48,dual abs,optional,no,5000,maxon HPJ-DT / HDT; peak 73-120 Nm; user $5k HDT base
+HDT DT65S-WGA25,maxon,harmonic,,123,2.6,114,90,23,,48,dual abs,optional,no,5000,maxon HPJ-DT / HDT; peak 69-123 Nm; user $5k HDT base
+HDT DT65M-WGU25,maxon,harmonic,,229,3.4,114,100,12,,48,dual abs,optional,no,5000,maxon HPJ-DT / HDT; peak 127-229 Nm; user $5k HDT base
+HDT DT85M-WGA32,maxon,harmonic,,261,5.0,146,107,16,,48,dual abs,optional,no,4500,maxon HPJ-DT / HDT; peak 151-261 Nm; lower-ratio 85-size vs DT85L; user ~10% under $5k 400Nm
+HDT DT85L-WGU32,maxon,harmonic,,484,5.3,146,120,8.6,,48,dual abs,optional,no,5000,maxon HPJ-DT / HDT ~400 Nm class; catalog peak 281-484 Nm; user $5k for 400 Nm high-ratio
+HDT DT85L-WGU32-low,maxon,harmonic,,281,5.3,146,120,29,,48,dual abs,optional,no,4500,same HDT 85L at low-ratio end of catalog (281 Nm / 3.0 rad/s); user ~10% cheaper than 400 Nm
+HPJ RJ45,maxon,harmonic,,13,1.3,70,104,24,,48,dual abs,optional,optional,,maxon HPJ RJ catalog Mar 2024; peak 5-13 Nm / 2.5-7.1 rad/s; optional controller torque sensor brake; 48V class typical; quote-only
+HPJ RJ60,maxon,harmonic,,65,1.8,80,115,29,,48,dual abs,optional,optional,,maxon HPJ RJ; peak 25-65 Nm / 3.0-7.2 rad/s; 48V class typical; quote-only
+HPJ RJ90,maxon,harmonic,,122,3.0,110,113,16,,48,dual abs,optional,optional,,maxon HPJ RJ; peak 39-122 Nm / 1.7-5.1 rad/s; 48V class typical; quote-only
+HPJ RJ90L,maxon,harmonic,,260,3.4,110,125,9.5,,48,dual abs,optional,optional,,maxon HPJ RJ 90 L; peak 83-260 Nm / 1.0-3.2 rad/s; 48V class typical; quote-only
+HPJ RJ110,maxon,harmonic,,350,3.7,110,70,32,,48,dual abs,optional,optional,,maxon HPJ RJ; peak 175-350 Nm / 3.4-6.9 rad/s; 70 mm package; 48V class typical; quote-only
+KAH-14C,Leaderdrive,harmonic,13.5,34,1.3,,,36,101,48,abs 19-24bit,optional,no,,Leaderdrive KAH; 48V winding rated 35.6 rpm; start/stop 34 Nm avg 13.5 Nm; also 110/220 VAC; pairs with KDE servo
+KAH-17C,Leaderdrive,harmonic,49,66,1.8,,,31,101,48,abs 19-24bit,optional,no,,Leaderdrive KAH; 48V winding rated 30.7 rpm; start/stop 66 Nm avg 49 Nm
+KAH-20C,Leaderdrive,harmonic,61,102,2.2,,,31,101,48,abs 19-24bit,optional,no,,Leaderdrive KAH; 48V winding rated 30.7 rpm; start/stop 102 Nm avg 61 Nm
+KAH-25C,Leaderdrive,harmonic,133,194,3.2,,,26,101,48,abs 19-24bit,optional,no,,Leaderdrive KAH; 48V winding rated 25.7 rpm; start/stop 194 Nm avg 133 Nm
+KAH-32C,Leaderdrive,harmonic,267,411,6.2,,,21,101,48,abs 19-24bit,optional,no,,Leaderdrive KAH; 48V winding rated 20.8 rpm; start/stop 411 Nm avg 267 Nm
+KAH-40C,Leaderdrive,harmonic,460,702,9.1,,,15,101,48,abs 19-24bit,optional,no,,Leaderdrive KAH; 48V winding rated 14.9 rpm; start/stop 702 Nm avg 460 Nm
+WPM-42,Nidec,harmonic,10,20,0.545,90,39,60,50,36,hall+inc,no,no,,Nidec FLEXWAVE ultra-flat actuator; 36 VDC BLDC; lost motion <=1 arcmin
+WPM-50,Nidec,harmonic,24,51,0.86,90,41.5,37,81,36,hall+inc,no,no,,Nidec FLEXWAVE ultra-flat actuator; 36 VDC
+WPM-63,Nidec,harmonic,47,110,1.6,110,44.5,36,101,36,hall+inc,no,no,,Nidec FLEXWAVE ultra-flat actuator; 36 VDC; peak 110 Nm
+DRA25-E-100,HIWIN,harmonic,,157,3.3,107,,30,100,48,23bit abs,optional,yes,,HIWIN DATORKER DRA complete rotary actuator; 400 W class; peak 157 Nm at 100:1; mass 3.3 kg (3.9 kg other config); repeatability +/-6 arc-sec
+DRA32-E-80,HIWIN,harmonic,,304,6.9,138,,37,80,48,23bit abs,optional,yes,,HIWIN DATORKER DRA; 750 W class; peak 304 Nm at 80:1; mass 6.9 kg (7.6 kg other config)
+ReBeL 80,igus,harmonic,2,3,0.33,80,60,10,50,24,output encoder,no,yes,,igus ReBeL gearbox kit; polymer strain wave; some pages list peak 2.5-3 Nm
+ReBeL 105,igus,harmonic,10,12.5,1.0,105,62,10,50,24,output encoder,no,yes,,igus ReBeL gearbox kit; some EU pages list 15/20 Nm and 70:1
+KA-58,Kinova,harmonic,3.6,6.8,0.357,58,,15,,24,abs+torque,no,yes,3300,Kinova KA-Series user guide; reichelt ~€3018; RS-485; 20.3 rpm no-load
+KA-75+,Kinova,harmonic,12.0,30.5,0.57,75,,9.4,,24,abs+torque,no,yes,6400,Kinova KA-Series user guide; reichelt ~€5844; 12.2 rpm no-load
+HEJ 90-48-140,maxon,planetary,75,140,1.99,108,90,99,,48,abs,no,yes,7500,maxon HEJ 90-48-140 datasheet; 10.4 rad/s at 48V; 13 rad/s at 60V; IP67 EtherCAT; user $7500 HEJ base
+HPJM-RE30-40-PRO-101,Honpine,harmonic,2.8,4.8,0.18,40,59.5,45,101,48,16bit abs,no,yes,1450,Oz Robotics sale $1450; Honpine HPJM-PRO; 101:1 CAN no-brake listing; dual encoder/brake/EtherCAT cost extra
+HPJM-RE40-52-PRO-101,Honpine,harmonic,6.5,8.9,0.3,52,60.9,40,101,48,16bit abs,no,yes,1430,Oz Robotics $1430; Honpine HPJM-PRO 101:1
+HPJM-RE50-60-PRO-101,Honpine,harmonic,9.6,13.5,0.42,60,61,37,101,48,16bit abs,no,yes,1530,Oz Robotics ~$1530; Honpine catalog 峰值 13.5 Nm at 101:1
+HPJM-RE60-70-PRO-101,Honpine,harmonic,30,49,,70,71.7,34,101,48,16bit abs,no,yes,1630,Oz Robotics $1630; Honpine HPJM-PRO; mass not trusted in catalog OCR
+HPJM-RE60-80-PRO-101,Honpine,harmonic,30,49,0.96,80,70.9,34,101,48,16bit abs,no,yes,1680,Oz Robotics $1680; Honpine HPJM-PRO 101:1
+HPJM-RE80-97-PRO-101,Honpine,harmonic,84,133,1.5,97,83.9,27,101,48,16bit abs,no,yes,1790,Oz Robotics $1790; Honpine HPJM-PRO 101:1
+HPJM-RE80-110-PRO-101,Honpine,harmonic,84,133,2.1,110,83.9,27,101,48,16bit abs,no,yes,1850,Oz Robotics $1850; Honpine HPJM-PRO 101:1
+HPJM-RE100-120-PRO-101,Honpine,harmonic,169,267,,120,99.5,22,101,48,16bit abs,no,yes,1900,Oz Robotics $1900 listing; Honpine HPJM-PRO 101:1; mass not listed
+HPJM-RE100-142-PRO-101,Honpine,harmonic,169,267,3.8,142,99.5,22,101,48,16bit abs,no,yes,1980,Oz Robotics $1980; Honpine HPJM-PRO 101:1
+HPJM-RE110-170-PRO-121,Honpine,harmonic,363,586,6.85,170,121.7,12,121,48,16bit abs,no,yes,2050,Oz Robotics ~$2050 listing; Honpine catalog 121:1; 161:1 same rated torque
+PRL,Schunk,harmonic,,239,,,,11.7,,24,abs,yes,yes,,Schunk PowerCube PRL family; max torque to 239 Nm; 70 deg/s; several sizes; quote-only
