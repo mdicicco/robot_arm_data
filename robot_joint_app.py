@@ -320,10 +320,12 @@ def main():
         )
 
     with st.expander("Priced joints used in the fit"):
-        show = priced[
-            ["Name", "MFG", "Type", "Torque_Nm", "Rated_Speed_rpm", "OD_mm", "Weight_kg", "Cost_USD"]
-        ].sort_values("Cost_USD")
+        cols = ["Name", "MFG", "Type", "Torque_Nm", "Rated_Speed_rpm", "OD_mm", "Weight_kg", "Cost_USD"]
+        if "Cost_Flag" in priced.columns:
+            cols.append("Cost_Flag")
+        show = priced[cols].sort_values("Cost_USD")
         st.dataframe(show, hide_index=True, width="stretch")
+        st.caption("Fit uses listed shop prices plus user quotes. Rows flagged estimate are not used in training.")
 
 
 if __name__ == "__main__":

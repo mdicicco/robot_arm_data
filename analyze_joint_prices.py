@@ -152,7 +152,7 @@ def print_report(fitted) -> None:
     print("=" * 72)
     print("JOINT PRICE MODEL")
     print("=" * 72)
-    print(f"Training rows with list price: {stats['n_train']}")
+    print(f"Training rows (listed + user quotes, no estimates): {stats['n_train']}")
     print(f"Torque elasticity (d log P / d log T): {stats['torque_elasticity']:.3f}")
     print(f"Precision elasticity (d log P / d log 1/acc): {stats['precision_elasticity']:.3f}")
     print(f"In-sample R² (log price):      {stats['r2_in_sample']:.3f}")

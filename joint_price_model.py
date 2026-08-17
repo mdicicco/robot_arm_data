@@ -108,8 +108,13 @@ def prepare_features(df: pd.DataFrame) -> pd.DataFrame:
     return out
 
 
-def priced_rows(df: pd.DataFrame) -> pd.DataFrame:
+TRAIN_FLAGS = ("listed", "user")
+
+
+def priced_rows(df: pd.DataFrame, include_estimates: bool = False) -> pd.DataFrame:
     ready = prepare_features(df)
+    if "Cost_Flag" in ready.columns and not include_estimates:
+        ready = ready[ready["Cost_Flag"].fillna("listed").isin(TRAIN_FLAGS)]
     return ready.dropna(subset=["Cost_USD", "Torque_Nm"]).reset_index(drop=True)
 
 
