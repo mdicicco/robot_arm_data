@@ -136,4 +136,8 @@ HPJM-RE80-110-PRO-101,Honpine,harmonic,84,133,2.1,110,83.9,27,101,48,16bit abs,n
 HPJM-RE100-120-PRO-101,Honpine,harmonic,169,267,,120,99.5,22,101,48,16bit abs,no,yes,1900,listed,Oz Robotics $1900 listing; Honpine HPJM-PRO 101:1; mass not listed
 HPJM-RE100-142-PRO-101,Honpine,harmonic,169,267,3.8,142,99.5,22,101,48,16bit abs,no,yes,1980,listed,Oz Robotics $1980; Honpine HPJM-PRO 101:1
 HPJM-RE110-170-PRO-121,Honpine,harmonic,363,586,6.85,170,121.7,12,121,48,16bit abs,no,yes,2050,listed,Oz Robotics ~$2050 listing; Honpine catalog 121:1; 161:1 same rated torque
+TD-30-40-PRO-101,Avatar,harmonic,2.8,4.8,0.18,40,60.5,45,101,48,dual 24bit,no,yes,790,listed,Alibaba Avatar sample $790 (MOQ 2); 51:1 also listed; same envelope as Honpine RE30-40
+TD-70-80-PRO-101,Avatar,harmonic,50,102,0.95,80,71.4,30,101,48,17bit abs,no,yes,968,listed,Alibaba Avatar sample $968 (MOQ 2); start-stop peak 102 Nm at 101:1; 500 W; 51/81/121 also listed
+TD-80-110-PRO-101,Avatar,harmonic,84,194,2.1,110,83.9,27,101,48,17bit abs,no,yes,1147,listed,Alibaba Avatar sample $1147 (MOQ 2); start-stop peak 194 Nm at 101:1; 750 W; same envelope as Honpine RE80-110
+RH-20-100,MyActuator,harmonic,50,,,110,,30,100,48,abs,optional,yes,1160,listed,Alibaba MyActuator RH-20 $1090-1160 MOQ 2; 48 V EtherCAT+CAN; 130 W; 30 rpm; peak not listed
 PRL,Schunk,harmonic,,239,,,,11.7,,24,abs,yes,yes,8000,estimate,Schunk PowerCube PRL family; max torque to 239 Nm; 70 deg/s; several sizes; quote-only; Cost_USD estimate: Schunk PowerCube family; DE modular HD+electronics

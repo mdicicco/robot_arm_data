@@ -6,7 +6,7 @@ Research data about robot manipulators, scraped from public online sources.
 
 ## Dataset Overview
 
-This dataset contains specifications for **127+ robot arms** across 4 categories with complete data (payload, reach, mass, repeatability, and price). The visualization above shows:
+This dataset contains specifications for **131 robot arms** across 4 categories with complete data (payload, reach, mass, repeatability, and price). The visualization above shows:
 
 - **Reach vs Payload Factor** — Payload factor is the ratio of payload capacity to robot mass. Higher values indicate more efficient designs that can lift more relative to their own weight.
 - **Color by Type** — Collaborative robots (green) cluster at shorter reaches with higher payload efficiency. Industrial robots (red) span wider reach ranges but with lower efficiency. Hobby (blue) and Research (purple) robots occupy smaller niches.
@@ -65,26 +65,26 @@ The same repo also tracks **complete robot joints** (motor + gear + encoder, usu
 
 ### Dataset
 
-**138 modules** from 18 manufacturers, in six classes: harmonic (63), QDD (31), series-elastic (21), planetary (9), hobby-servo (8), cycloidal (6).
+**142 modules** from 19 manufacturers, in six classes: harmonic (67), QDD (31), series-elastic (21), planetary (9), hobby-servo (8), cycloidal (6).
 
 `Cost_USD` is a one-off street or quote price. `Cost_Flag` says how it was filled:
 
-- **listed** (81) — shop or official list price
-- **user** (12) — Maxon HDT ~$5k and HEJ $7.5k quotes
-- **estimate** (45) — analog / brand-ladder fill for quote-only catalog parts (Harmonic Drive FHA/SHA, Leaderdrive, Nidec, HIWIN, leftover eRob, etc.)
+- **listed** — shop, Alibaba sample, or official list price
+- **user** — Maxon HDT ~$5k and HEJ $7.5k quotes
+- **estimate** — analog / brand-ladder fill for quote-only catalog parts (Harmonic Drive FHA/SHA, Leaderdrive, Nidec, HIWIN, leftover eRob, etc.)
 
 Empty spec cells stay empty when a datasheet does not publish them. Notes cite the source.
 
 ### Price estimator
 
-The joint app fits a two-stage log-price model on **listed + user rows only** (93 training points). Estimates are shown in the CSV but are not used to train.
+The joint app fits a two-stage log-price model on **listed + user rows only** (97 training points). Estimates are shown in the CSV but are not used to train.
 
 - Stage 1: `log(price) = a[type] + b·log(torque) + c·log(1/accuracy)`
 - Stage 2: weakly regularized residual on speed, size, mass, encoder, brake, driver
 - Accuracy is a class default (harmonic 0.25 arcmin, QDD 12, etc.) unless you override it
-- Current fit: in-sample R²(log) **0.78**, leave-one-out R² **0.70**, LOO MAE **~$940**
+- Current fit: in-sample R²(log) **0.77**, leave-one-out R² **0.69**, LOO MAE **~$950**
 - Torque elasticity is shallow (~0.19): class (QDD vs harmonic vs SEA) moves price more than Nm
-- Example: 20 Nm QDD, 90 mm, 0.6 kg → **~$315**. A 50 Nm harmonic in a similar envelope → **~$2.2k**
+- Example: 20 Nm QDD, 90 mm, 0.6 kg → **~$316**. A 50 Nm harmonic in a similar envelope → **~$2.1k**
 
 ```bash
 pixi run joint-app
