@@ -48,12 +48,12 @@ Jaco 6,Kinova,collaborative,6,2.2,0.9,4.4,,30,
 Jaco 4,Kinova,collaborative,4,4.4,0.75,3.6,,,
 Mico 6,Kinova,collaborative,6,2.1,0.7,4.6,,20.9,
 Mico 4,Kinova,collaborative,4,5.2,0.55,3.8,,,
-Gen3 7,Kinova,collaborative,7,3,0.902,8.2,1.0,,
+Gen3 7,Kinova,collaborative,7,3,0.902,8.2,1.0,37.2,"Reichelt €40246 incl 19% VAT (~€33820 excl, ~$37.2k at 1.10 USD/EUR); SKU KR L53 0007"
 Gen3 6,Kinova,collaborative,6,3,0.891,7.2,0.1,43.359,alibaba listing
-Gen3 Lite,Kinova,collaborative,6,0.5,0.76,5.4,,37.578,alibaba listing
+Gen3 Lite,Kinova,collaborative,6,0.5,0.76,5.4,,13.5,"RobotShop $13500; Generation Robots €15600 excl VAT; Reichelt ~€17169 incl VAT. Replaced mixed Alibaba $37578 that matched Gen2 7"
 Gen2 7,Kinova,collaborative,7,2.4,0.984,5.5,1.0,37.578,alibaba listing
 Gen2 6,Kinova,collaborative,6,2.4,0.984,5.5,0.1,26.5,alibaba listing
-Link 6,Kinova,collaborative,6,6,1,23.45,0.1,,
+Link 6,Kinova,collaborative,6,6,1,23.45,0.1,38.6,"Unchained Robotics €35107.56 excl VAT (~$38.6k at 1.10 USD/EUR); Top3DShop $39500"
 LBR iiwa 7 R800,KUKA,collaborative,7,7,0.8,23.9,0.1,80,
 LBR iiwa 14 R820,KUKA,collaborative,7,14,0.82,29.9,0.15,96,
 LBR iisy,KUKA,collaborative,6,3,0.6,18.8,,,
@@ -467,7 +467,7 @@ TCRp5,Siasun,collaborative,6,0.5,0.3,5,0.05,,
 TCR1,Siasun,collaborative,6,1,0.5,6.8,0.05,,
 Astorino,Kawasaki,hobby,6,1,0.578,12,0.2,8.2,botland.store webpage
 Piper,Agile X,collaborative,6,1.5,0.62675,4.2,0.1,2.5,
-DynaArm,Duatic,collaborative,6,8,1.1,8,1,,
+DynaArm,Duatic,collaborative,6,6,0.99,9.2,1,,"duatic.com 6 kg continuous / 12 kg for 10s; 9.2 kg; 0.990 m; IP66 QDD; flyer repeatability <1 mm; quote-only no public list (16 units sold by Feb 2026)"
 BRTIRXZ0805A,Borunte,collaborative,6,5,0.93,28,0.05,6.895,
 BRTIRXZ1515A,Borunte,collaborative,6,15,1.5,63,0.08,8.274,
 BRTIRUS2030A,Borunte,industrial,6,30,2.058,310,0.08,11.032,

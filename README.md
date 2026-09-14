@@ -6,7 +6,7 @@ Research data about robot manipulators, scraped from public online sources.
 
 ## Dataset Overview
 
-This dataset contains specifications for **154 robot arms** across 4 categories with complete data (payload, reach, mass, repeatability, and price). The visualization above shows:
+This dataset contains specifications for **156 robot arms** across 4 categories with complete data (payload, reach, mass, repeatability, and price). The visualization above shows:
 
 - **Reach vs Payload Factor** — Payload factor is the ratio of payload capacity to robot mass. Higher values indicate more efficient designs that can lift more relative to their own weight.
 - **Color by Type** — Collaborative robots (green) cluster at shorter reaches with higher payload efficiency. Industrial robots (red) span wider reach ranges but with lower efficiency. Hobby (blue) and Research (purple) robots occupy smaller niches.
