@@ -394,6 +394,21 @@ LWA 4P,Schunk,research,6,6,0.61,15,0.15,,
 LWA 4P-2,Schunk,research,6,6,0.61,12.5,0.06,,
 LWA 4D,Schunk,research,7,10,1.1134,18,0.15,72,estimate is power cube derived (2 large 2 medium 1 small 1 ball wrist)
 PR2,Willow Garage,research,7,1.8,0.881,,,115,cost is delta between full robot and 1 arm version - full robot mass is 220kg
+Research 3,Franka,research,7,3,0.855,18.3,0.1,30.4,"Generation Robots €27650 excl VAT (~$30.4k at 1.10 USD/EUR); official datasheet 3 kg / 855 mm / ~18.3 kg / ±0.1 mm; torque sensors; successor to Panda. Distinct from Fairino FR3"
+LBR Med 7 R800,KUKA,research,7,7,0.8,25.5,0.1,,"kuka.com medical LBR; quote-only"
+LBR Med 14 R820,KUKA,research,7,14,0.82,32.3,0.15,,"kuka.com medical LBR; quote-only"
+SO-101,Hugging Face,research,6,0.5,0.5,0.8,,0.24,"LeRobot flagship (TheRobotStudio); 5 arm + gripper; Seeed kit ~$240; DIY follower ~$100-200; ~500 g / 500 mm / 800 g PLA; Feetech STS3215"
+PA-10-7C,Mitsubishi,research,7,10,1.0,40,0.1,,"DFKI / MHI; 7-axis open-architecture lab arm; ~1 m reach; 40 kg arm; ±0.1 mm"
+Katana 450,Neuronics,research,6,0.4,0.517,5.2,,,"FAPS FAU; 400 g flange payload; 517 mm; 5.2 kg without controller/gripper; Harmonic Drive"
+OpenMANIPULATOR-X,ROBOTIS,research,5,0.5,0.38,0.7,0.2,1.417,"robotis.com shop $1416.60; 4 DoF + gripper; XM430; <0.2 mm; 500 g / 380 mm / 0.70 kg"
+OpenMANIPULATOR-P,ROBOTIS,research,6,3,0.645,5.76,0.05,16.176,"robotis.us $16176.02; emanual 3 kg / 645 mm / 5.76 kg / ±0.05 mm (US page also lists 5.5 kg)"
+OMY-F3M,ROBOTIS,research,6,3,0.58,13.5,0.05,14.374,"robotis.us $14373.85; DYNAMIXEL-Y imitation-learning follower; 3 kg / 580 mm / 13.5 kg / ±0.05 mm"
+youBot Arm,KUKA,research,5,0.5,0.513,5.8,0.1,,"KUKA youBot datasheet; 5-axis magnesium arm; 0.5 kg / 0.513 m / 5.8 kg / 0.1 mm; discontinued research platform"
+QArm,Quanser,research,4,0.75,0.75,8.25,0.05,,"quanser.com; 4 DoF education/research; payload 350-750 g (using max); 750 mm / 8.25 kg / ±0.05 mm; quote-only"
+T-Series 6-DoF,HEBI,research,6,0.6,0.75,5.6,,22.5,"shophebi.com A-2580-06 $22500; payload 0.60 kg at max reach (3.5 kg at half reach)"
+T-Series 7-DoF,HEBI,research,7,1.0,0.9,9.0,,29.605,"shophebi.com A-2582-07 $29605; payload 1.0 kg at max reach (3.0 kg at half reach)"
+R-Series 6-DoF,HEBI,research,6,0.4,0.75,6.75,,30.34,"shophebi.com A-2240-06 $30340; payload 0.40 kg at max reach (3.5 kg at half reach); IP67 actuators"
+MIRO,DLR,research,7,3,1.1,10,,,"dlr.de; surgical research arm; torque-controlled; 3 kg / 1.1 m / ~10 kg"
 VP-5243,Denso,industrial,5,3,0.5,13,0.02,,
 VP-6242,Denso,industrial,6,3,0.502,15,0.02,,
 VS-050,Denso,industrial,5,4,0.505,34,0.02,,
@@ -410,8 +425,8 @@ TV1000,TM Robotics,industrial,6,5,1,48,0.03,,
 TV1000H,TM Robotics,industrial,6,10,1,47,0.04,,
 duAro2,Kawasaki,industrial,4,3,0.785,50,0.05,16.5,listed price and mass was for dual arm system so both were divided in half
 Dorna Arm,Dorna Robotics,hobby,5,1.1,0.4971,5.4,0.025,1.5,dorna.ai
-ReBel,igus,industrial,6,2,0.665,8,1,5.500,igus website had price (with controller) in euro but was removed
-ReBel,igus,industrial,4,3,0.495,7,1,4.500,igus website had price for 6dof but this 4dof is estimate
+ReBel,igus,collaborative,6,2,0.665,8,1,5.500,igus website had price (with controller) in euro but was removed
+ReBel,igus,collaborative,4,3,0.495,7,1,4.500,igus website had price for 6dof but this 4dof is estimate
 Rizon 4,Flexiv,collaborative,7,4,0.955,20,0.05,,
 Rizon 4s,Flexiv,collaborative,7,3.5,0.99,21,0.05,,
 Rizon 10,Flexiv,collaborative,7,10,0.991,38,0.05,37.996,ebay listing

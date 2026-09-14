@@ -236,3 +236,76 @@ plt.tight_layout()
 output_path = os.path.join(script_dir, 'robot_arm_summary.png')
 plt.savefig(output_path, dpi=150, facecolor='#0a1628', edgecolor='none', bbox_inches='tight')
 print(f"Saved plot to: {output_path}")
+plt.close(fig)
+
+# Zoom: payload factor > 0.4 and reach < 2 m
+zoom = df[(df['Payload_Factor'] > 0.4) & (df['Reach_m'] < 2.0)].copy()
+zoom = zoom.sort_values('Payload_Factor', ascending=False)
+print(f"High-efficiency box (PF>0.4, reach<2m): {len(zoom)} robots")
+print(zoom[['Name', 'MFG', 'Type', 'Payload_kg', 'Weight_kg', 'Payload_Factor', 'Reach_m']].to_string(index=False))
+
+fig2, ax2 = plt.subplots(figsize=(12, 8))
+fig2.patch.set_facecolor('#0a1628')
+ax2.set_facecolor('#0a1628')
+
+for robot_type in unique_types:
+    type_df = zoom[zoom['Type'] == robot_type]
+    if type_df.empty:
+        continue
+    color = type_colors[robot_type]
+    ax2.scatter(
+        type_df['Reach_m'],
+        type_df['Payload_Factor'],
+        s=type_df['marker_size'],
+        c=color,
+        alpha=0.85,
+        edgecolors='white',
+        linewidths=0.6,
+        label=f"{robot_type.capitalize()} ({len(type_df)})",
+        zorder=3,
+    )
+
+offsets = [
+    (6, 8), (6, -10), (-6, 8), (-6, -10),
+    (10, 2), (-12, 2), (8, -14), (-14, 10),
+    (14, -6), (-8, 14), (4, 12), (-16, -6),
+    (12, 10), (-10, -12), (16, 0),
+]
+for i, (_, row) in enumerate(zoom.iterrows()):
+    dx, dy = offsets[i % len(offsets)]
+    ax2.annotate(
+        f"{row['Name']}",
+        (row['Reach_m'], row['Payload_Factor']),
+        xytext=(dx, dy),
+        textcoords='offset points',
+        fontsize=8,
+        color='#e8f4fc',
+        ha='left' if dx >= 0 else 'right',
+        arrowprops=dict(arrowstyle='-', color='#6b8ba4', lw=0.6),
+        zorder=4,
+    )
+
+ax2.set_xlim(0.35, 1.45)
+ax2.set_ylim(0.395, 0.58)
+ax2.set_xlabel('Reach (m)', fontsize=14, color='#e8f4fc', fontweight='bold')
+ax2.set_ylabel('Payload Factor (Payload / Robot Mass)', fontsize=14, color='#e8f4fc', fontweight='bold')
+ax2.set_title('High payload-efficiency box  |  PF > 0.4, reach < 2 m',
+              fontsize=16, color='#00d4ff', fontweight='bold')
+ax2.grid(True, alpha=0.2, color='#2a4060')
+ax2.tick_params(colors='#6b8ba4')
+for spine in ax2.spines.values():
+    spine.set_color('#2a4060')
+leg2 = ax2.legend(
+    loc='upper right',
+    fontsize=10,
+    framealpha=0.9,
+    facecolor='#121f36',
+    edgecolor='#2a4060',
+    labelcolor='#e8f4fc',
+)
+leg2.get_frame().set_alpha(0.9)
+plt.tight_layout()
+zoom_path = os.path.join(script_dir, 'robot_arm_high_pf.png')
+fig2.savefig(zoom_path, dpi=150, facecolor='#0a1628', edgecolor='none', bbox_inches='tight')
+plt.close(fig2)
+print(f"Saved plot to: {zoom_path}")
