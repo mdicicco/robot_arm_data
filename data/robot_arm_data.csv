@@ -469,8 +469,31 @@ BRTIRUS0805A,Borunte,industrial,6,5,0.94,53,0.05,4.137,
 BRTIRUS0401A,Borunte,industrial,6,1,0.465,21,0.06,4.137,
 RO1,Standard Bots,collaborative,6,18,1.3,32.5,0.025,37,company website
 Thor,Standard Bots,collaborative,6,30,2.0,79,0.025,49.5,company website
+Spark,Standard Bots,collaborative,6,7,0.9,21,0.025,29.5,company website
 FR3,Fairino,collaborative,6,3,0.622,15,0.02,3.488,Alibaba Fairino store $3488 MOQ 1; ±0.02 mm; IP54
 FR5,Fairino,collaborative,6,5,0.922,22,0.02,3.588,Alibaba Fairino store $3588 MOQ 1; ±0.02 mm; IP54
 FR10,Fairino,collaborative,6,10,1.4,40,0.05,8.888,Alibaba Fairino store $8888 MOQ 1; ±0.05 mm; IP54
 FR16,Fairino,collaborative,6,16,1.034,40,0.03,8.888,Alibaba Fairino store $8888 MOQ 1; ±0.03 mm; IP54
-Spark,Standard Bots,collaborative,6,7,0.9,21,0.025,29.5,company website
+FR20,Fairino,collaborative,6,20,1.854,85,0.1,15.499,Fairino.us $15499; catalog ±0.1 mm ~85 kg
+FR30,Fairino,collaborative,6,30,1.403,85,0.1,18.199,Fairino.us $18199; catalog 30 kg / 1403 mm / ~85 kg / ±0.1 mm
+I3,AUBO,collaborative,6,3,0.625,16,0.02,14.467,zhongpingtech $14467; official 3 kg / 625 mm / 16 kg / ±0.02 mm
+I10,AUBO,collaborative,6,10,1.35,39.2,0.03,23.1,Unchained Robotics €21000 excl VAT (~$23.1k at 1.10 USD/EUR); Alibaba FOB listings also ~$8k
+I16,AUBO,collaborative,6,16,0.9675,38.9,0.03,23.1,Unchained Robotics €21000 excl VAT (~$23.1k at 1.10 USD/EUR)
+I20,AUBO,collaborative,6,20,1.65,63,0.1,34.1,Unchained Robotics €31000 excl VAT (~$34.1k at 1.10 USD/EUR)
+Zu3,JAKA,collaborative,6,3,0.626,12,0.02,,official jaka.com; mixed Alibaba Zu listings skipped
+Zu5,JAKA,collaborative,6,5,0.954,23,0.02,,official jaka.com; mixed Alibaba Zu listings skipped
+Zu7,JAKA,collaborative,6,7,0.819,22,0.02,16.0,automationar $16000; official ±0.02 mm; Alibaba Zu7 2.0 also ~€14130
+Zu12,JAKA,collaborative,6,12,1.327,41,0.03,,official jaka.com
+Zu18,JAKA,collaborative,6,18,1.073,35,0.03,10.54,Alibaba.uk CHF 9164 (1-2 sets) ~$10.5k; official 18 kg / 1073 mm / 35 kg / ±0.03 mm
+CS63,Elite Robots,collaborative,6,3,0.624,15,0.02,21.1,MachineToolProducts $21100; official IP65
+CS66,Elite Robots,collaborative,6,6,0.914,20,0.03,24.1,MachineToolProducts / Useabot $24100; official IP65
+EC66,Elite Robots,collaborative,6,6,0.914,,0.03,19.8,MachineToolProducts $19800; mass not on listing
+CS612,Elite Robots,collaborative,6,12,1.304,34,0.05,31.4,MachineToolProducts $31400; official IP65
+CS620,Elite Robots,collaborative,6,20,1.8,60,0.1,41.4,MachineToolProducts $41400; official IP65
+Nova 2,DOBOT,collaborative,6,2,0.625,11,0.05,4.619,dobot.nu from €4199 excl VAT (~$4.62k at 1.10 USD/EUR)
+Nova 5,DOBOT,collaborative,6,5,0.85,14,0.05,4.894,dobot.nu from €4449 excl VAT (~$4.89k at 1.10 USD/EUR)
+CR20A,DOBOT,collaborative,6,20,1.7,73,0.05,28.489,dobot.nu / Unchained from €25899 excl VAT (~$28.5k at 1.10 USD/EUR)
+myCobot 280,Elephant Robotics,hobby,6,0.25,0.28,0.85,0.5,0.599,Elephant shop Arduino $599; Pi $799; Jetson $849; ±0.5 mm
+ECR5,Estun,collaborative,6,5,0.8,17,0.02,18.0,MegaRobotics $18000 listing
+UR15,UR,collaborative,6,17.5,1.3,40.7,0.05,33.0,China reseller $33000-39500; 1300 mm / 40.7 kg / ±0.05 mm
+

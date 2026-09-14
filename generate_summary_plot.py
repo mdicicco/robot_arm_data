@@ -10,7 +10,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
-from matplotlib.patches import Polygon
+from matplotlib.patches import FancyBboxPatch, Polygon
 from scipy.spatial import ConvexHull
 
 # Load data
@@ -94,6 +94,28 @@ for robot_type in unique_types:
         label=f"{robot_type.capitalize()} ({len(type_df)})"
     )
 
+# Best-value robot in each type (same metric as circle size)
+best_rows = (
+    df.sort_values('value_metric', ascending=False)
+    .groupby('Type', sort=False)
+    .head(1)
+    .set_index('Type')
+    .reindex(unique_types)
+    .dropna(how='all')
+)
+
+# Ring the winners so they stay visible under the overlay
+for robot_type, row in best_rows.iterrows():
+    ax.scatter(
+        row['Reach_m'],
+        row['Payload_Factor'],
+        s=max(row['marker_size'] * 1.15, 80),
+        facecolors='none',
+        edgecolors=type_colors[robot_type],
+        linewidths=2.4,
+        zorder=5,
+    )
+
 # Labels and title
 ax.set_xlabel('Reach (m)', fontsize=14, color='#e8f4fc', fontweight='bold')
 ax.set_ylabel('Payload Factor (Payload / Robot Mass)', fontsize=14, color='#e8f4fc', fontweight='bold')
@@ -153,6 +175,60 @@ stats_text = f"Total: {total_robots} robots | {types_count} types (complete data
 ax.text(0.02, 0.98, stats_text, transform=ax.transAxes, 
         fontsize=10, color='#6b8ba4', va='top',
         bbox=dict(boxstyle='round', facecolor='#121f36', edgecolor='#2a4060', alpha=0.9))
+
+# Compact best-value overlay, tucked into the empty upper-right
+card = FancyBboxPatch(
+    (0.705, 0.575),
+    0.275,
+    0.195,
+    transform=ax.transAxes,
+    boxstyle='round,pad=0.008,rounding_size=0.01',
+    facecolor='#121f36',
+    edgecolor='#2a4060',
+    linewidth=1.0,
+    alpha=0.94,
+    zorder=6,
+)
+ax.add_patch(card)
+ax.text(
+    0.718,
+    0.748,
+    "Best value by type",
+    transform=ax.transAxes,
+    ha='left',
+    va='center',
+    fontsize=9,
+    fontweight='bold',
+    color='#00d4ff',
+    zorder=7,
+)
+
+line_y = 0.718
+for robot_type, row in best_rows.iterrows():
+    color = type_colors[robot_type]
+    ax.scatter(
+        [0.722],
+        [line_y],
+        s=22,
+        c=color,
+        edgecolors='white',
+        linewidths=0.4,
+        transform=ax.transAxes,
+        zorder=7,
+        clip_on=False,
+    )
+    ax.text(
+        0.738,
+        line_y,
+        f"{row['Name']}  ${row['Cost_KUSD']:.2g}k  ±{row['Repeatability_mm']:g}mm",
+        transform=ax.transAxes,
+        ha='left',
+        va='center',
+        fontsize=8,
+        color=color,
+        zorder=7,
+    )
+    line_y -= 0.032
 
 plt.tight_layout()
 
