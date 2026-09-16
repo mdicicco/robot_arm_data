@@ -1,8 +1,10 @@
 """
-Generate a summary visualization of robot arm data.
-Creates a scatter plot of Reach vs Payload Factor, colored by robot type,
-with circle size based on value metric: 1 / (repeatability * price).
-Includes convex hull shaded regions for each robot type.
+Generate summary visualizations of robot arm data.
+
+Outputs:
+  robot_arm_summary.png       — complete-data robots only (README figure)
+  robot_arm_high_pf.png       — PF > 0.4, reach < 2 m zoom
+  robot_arm_human_comparison.png — robots + human / humanoid arm references
 """
 
 import os
@@ -13,88 +15,271 @@ from matplotlib.lines import Line2D
 from matplotlib.patches import FancyBboxPatch, Polygon
 from scipy.spatial import ConvexHull
 
-# Load data
 script_dir = os.path.dirname(os.path.abspath(__file__))
 data_path = os.path.join(script_dir, 'data', 'robot_arm_data.csv')
-df = pd.read_csv(data_path)
+ref_path = os.path.join(script_dir, 'data', 'human_humanoid_arm_data.csv')
 
-# Only keep robots with ALL required fields: price, repeatability, reach, mass, payload
-required_cols = ['Cost_KUSD', 'Repeatability_mm', 'Reach_m', 'Weight_kg', 'Payload_kg']
-df = df.dropna(subset=required_cols)
+df_raw = pd.read_csv(data_path)
+phys_cols = ['Reach_m', 'Weight_kg', 'Payload_kg']
+value_cols = ['Cost_KUSD', 'Repeatability_mm', 'Reach_m', 'Weight_kg', 'Payload_kg']
 
-print(f"Robots with complete data: {len(df)}")
-print(f"Types represented: {df['Type'].unique().tolist()}")
-
-# Calculate payload factor (payload / arm mass)
+# Main plots stay value-complete (price + repeatability) so circle sizing stays meaningful
+df = df_raw.dropna(subset=value_cols).copy()
 df['Payload_Factor'] = df['Payload_kg'] / df['Weight_kg']
-
-# Calculate value metric: 1 / (repeatability * price)
-# Higher value = better accuracy (lower repeatability) AND lower price
 df['value_metric'] = 1 / (df['Repeatability_mm'] * df['Cost_KUSD'])
-
-# Scale to reasonable marker sizes (30 to 500)
 value_min = df['value_metric'].min()
 value_max = df['value_metric'].max()
 df['marker_size'] = 30 + (df['value_metric'] - value_min) / (value_max - value_min) * 470
 
-# Distinct color for each robot type
+# Research arms with mass/payload/reach but no list price (e.g. DLR LWR III) — comparison only
+df_research_extra = df_raw.dropna(subset=phys_cols).copy()
+df_research_extra = df_research_extra[df_research_extra['Type'] == 'research']
+df_research_extra = df_research_extra[~df_research_extra['Name'].isin(df['Name'])].copy()
+df_research_extra['Payload_Factor'] = (
+    df_research_extra['Payload_kg'] / df_research_extra['Weight_kg']
+)
+df_research_extra['marker_size'] = 90.0
+
+print(f"Robots with complete data: {len(df)}")
+print(f"Extra research (mass/payload/reach only): {len(df_research_extra)}")
+print(f"Types represented: {df['Type'].unique().tolist()}")
+
 unique_types = sorted(df['Type'].unique())
 color_palette = [
-    '#2ecc71',  # Green
-    '#3498db',  # Blue
-    '#e74c3c',  # Red
-    '#9b59b6',  # Purple
-    '#f39c12',  # Orange
-    '#1abc9c',  # Teal
-    '#e91e63',  # Pink
-    '#00bcd4',  # Cyan
-    '#ff5722',  # Deep Orange
-    '#8bc34a',  # Light Green
+    '#2ecc71', '#3498db', '#e74c3c', '#9b59b6', '#f39c12',
+    '#1abc9c', '#e91e63', '#00bcd4', '#ff5722', '#8bc34a',
 ]
-
 type_colors = {t: color_palette[i % len(color_palette)] for i, t in enumerate(unique_types)}
-
 print(f"Color mapping: {type_colors}")
 
-# Create figure with dark background
+HUMAN_COLOR = '#f1c40f'
+HUMANOID_COLOR = '#ff7ab6'
+LEADING_HUMANOID_COLOR = '#ff9f43'  # orange — distinct from pink / purple research
+
+# Pixel-estimated leading humanoids (orange); all humanoid arm masses use ≈8% body
+LEADING_HUMANOID_NAMES = {
+    'Optimus Gen2', 'Figure 02', 'Apollo', 'Digit', 'Atlas',
+}
+# PF = 1/(a·reach) iso-lines spanning robot cloud up through ~8% humanoid band
+FRONTIER_A_VALUES = (0.6, 0.9, 1.4, 2.0, 3.0, 4.5, 6.0, 12.0)
+
+# Annotation offsets for reference labels (name → (dx, dy) points)
+REF_OFFSETS = {
+    'Child': (10, -16),
+    'Woman': (14, -28),
+    'Man': (22, -14),
+    'Strong': (10, 10),
+    'G1': (10, -14),
+    'G1 EDU': (10, 12),
+    'R1': (-8, 12),
+    'GR-1': (10, 8),
+    'Optimus Gen2': (10, 10),
+    'Figure 02': (10, -12),
+    'Apollo': (10, 8),
+    'Digit': (-10, -12),
+    'Atlas': (10, 10),
+}
+
+
+def plot_robot_layers(ax, frame, alpha=0.7, with_hulls=True, with_labels=True):
+    """Draw type hulls and scatter for a robot dataframe."""
+    types = sorted(frame['Type'].unique())
+    if with_hulls:
+        for robot_type in types:
+            type_df = frame[frame['Type'] == robot_type]
+            color = type_colors[robot_type]
+            if len(type_df) >= 3:
+                points = type_df[['Reach_m', 'Payload_Factor']].values
+                try:
+                    hull = ConvexHull(points)
+                    ax.add_patch(Polygon(
+                        points[hull.vertices],
+                        alpha=0.15,
+                        facecolor=color,
+                        edgecolor=color,
+                        linewidth=2,
+                    ))
+                except Exception as e:
+                    print(f"Could not create hull for {robot_type}: {e}")
+
+    for robot_type in types:
+        type_df = frame[frame['Type'] == robot_type]
+        ax.scatter(
+            type_df['Reach_m'],
+            type_df['Payload_Factor'],
+            s=type_df['marker_size'],
+            c=type_colors[robot_type],
+            alpha=alpha,
+            edgecolors='white',
+            linewidths=0.5,
+            label=(f"{robot_type.capitalize()} ({len(type_df)})" if with_labels else None),
+            zorder=3,
+        )
+
+
+def plot_frontier_curves(ax, a_values, color='#2a4060', x_min=0.12, x_max=4.2, y_max=None):
+    """Overlay PF = 1/(a·reach) iso-efficiency frontiers (dashed, grid-colored)."""
+    if y_max is None:
+        y_max = ax.get_ylim()[1]
+    x = np.linspace(x_min, x_max, 400)
+    for i, a in enumerate(a_values):
+        y = 1.0 / (a * x)
+        mask = (y > 0.01) & (y < y_max * 0.98)
+        ax.plot(
+            x[mask], y[mask],
+            linestyle='--', color=color, linewidth=1.0, alpha=0.85, zorder=2,
+        )
+        # Stagger label x so nearby curves stay readable
+        x_lab = 0.18 + 0.07 * (i % 4)
+        y_lab = 1.0 / (a * x_lab)
+        if 0.04 < y_lab < y_max * 0.92:
+            ax.text(
+                x_lab, y_lab, f'a={a:g}',
+                color=color, fontsize=7.5, ha='left', va='bottom',
+                alpha=0.9, zorder=2,
+            )
+
+
+def style_axes(ax, title, subtitle=None):
+    ax.set_xlabel('Reach (m)', fontsize=14, color='#e8f4fc', fontweight='bold')
+    ax.set_ylabel('Payload Factor (Payload / Robot Mass)', fontsize=14, color='#e8f4fc', fontweight='bold')
+    ax.set_title(title, fontsize=18, color='#00d4ff', fontweight='bold')
+    if subtitle:
+        ax.text(
+            0.5, 1.02, subtitle,
+            transform=ax.transAxes, ha='center', fontsize=11,
+            color='#6b8ba4', style='italic',
+        )
+    ax.grid(True, alpha=0.2, color='#2a4060')
+    ax.tick_params(colors='#6b8ba4')
+    for spine in ax.spines.values():
+        spine.set_color('#2a4060')
+
+
+def add_type_and_size_legends(ax):
+    legend = ax.legend(
+        loc='upper right',
+        fontsize=11,
+        framealpha=0.9,
+        facecolor='#121f36',
+        edgecolor='#2a4060',
+        labelcolor='#e8f4fc',
+        title='Robot Type',
+        title_fontsize=12,
+    )
+    legend.get_title().set_color('#00d4ff')
+    size_legend = ax.legend(
+        handles=[
+            Line2D([0], [0], marker='o', color='w', markerfacecolor='#6b8ba4',
+                   markersize=6, label='Lower value', linestyle='None'),
+            Line2D([0], [0], marker='o', color='w', markerfacecolor='#6b8ba4',
+                   markersize=18, label='Higher value', linestyle='None'),
+        ],
+        loc='lower right',
+        fontsize=10,
+        framealpha=0.9,
+        facecolor='#121f36',
+        edgecolor='#2a4060',
+        labelcolor='#e8f4fc',
+        title='Circle Size',
+        title_fontsize=11,
+    )
+    size_legend.get_title().set_color('#00d4ff')
+    ax.add_artist(legend)
+
+
+def add_best_value_overlay(ax, best_rows):
+    card = FancyBboxPatch(
+        (0.705, 0.575), 0.275, 0.195,
+        transform=ax.transAxes,
+        boxstyle='round,pad=0.008,rounding_size=0.01',
+        facecolor='#121f36',
+        edgecolor='#2a4060',
+        linewidth=1.0,
+        alpha=0.94,
+        zorder=6,
+    )
+    ax.add_patch(card)
+    ax.text(
+        0.718, 0.748, "Best value by type",
+        transform=ax.transAxes, ha='left', va='center',
+        fontsize=9, fontweight='bold', color='#00d4ff', zorder=7,
+    )
+    line_y = 0.718
+    for robot_type, row in best_rows.iterrows():
+        color = type_colors[robot_type]
+        ax.scatter(
+            [0.722], [line_y], s=22, c=color,
+            edgecolors='white', linewidths=0.4,
+            transform=ax.transAxes, zorder=7, clip_on=False,
+        )
+        ax.text(
+            0.738, line_y,
+            f"{row['Name']}  ${row['Cost_KUSD']:.2g}k  ±{row['Repeatability_mm']:g}mm",
+            transform=ax.transAxes, ha='left', va='center',
+            fontsize=8, color=color, zorder=7,
+        )
+        line_y -= 0.032
+
+
+def plot_reference_group(ax, group_df, color, marker, label, size=160):
+    """Draw hull + markers + name labels for human/humanoid refs."""
+    if group_df.empty:
+        return
+    pts = group_df[['Reach_m', 'Payload_Factor']].values
+    if len(group_df) >= 3:
+        try:
+            hull = ConvexHull(pts)
+            ax.add_patch(Polygon(
+                pts[hull.vertices],
+                alpha=0.15,
+                facecolor=color,
+                edgecolor=color,
+                linewidth=2,
+                zorder=7,
+            ))
+        except Exception as e:
+            print(f"Could not create hull for {label}: {e}")
+
+    ax.scatter(
+        group_df['Reach_m'],
+        group_df['Payload_Factor'],
+        s=size,
+        marker=marker,
+        c=color,
+        edgecolors='white',
+        linewidths=0.7,
+        zorder=9,
+        label=label,
+    )
+    for _, row in group_df.iterrows():
+        offset = REF_OFFSETS.get(row['Name'], (10, 8))
+        ax.annotate(
+            row['Name'],
+            (row['Reach_m'], row['Payload_Factor']),
+            xytext=offset,
+            textcoords='offset points',
+            fontsize=9,
+            color=color,
+            fontweight='bold',
+            ha='left' if offset[0] >= 0 else 'right',
+            va='top' if offset[1] < 0 else 'bottom' if offset[1] > 0 else 'center',
+            arrowprops=dict(arrowstyle='-', color=color, lw=0.8),
+            zorder=11,
+            annotation_clip=False,
+        )
+
+
+# ---------------------------------------------------------------------------
+# 1) README summary plot (robots only)
+# ---------------------------------------------------------------------------
 plt.style.use('dark_background')
 fig, ax = plt.subplots(figsize=(14, 10))
 fig.patch.set_facecolor('#0a1628')
 ax.set_facecolor('#0a1628')
 
-# Plot convex hulls first (so they appear behind points)
-for robot_type in unique_types:
-    type_df = df[df['Type'] == robot_type]
-    color = type_colors[robot_type]
-    
-    # Need at least 3 points for a convex hull
-    if len(type_df) >= 3:
-        points = type_df[['Reach_m', 'Payload_Factor']].values
-        try:
-            hull = ConvexHull(points)
-            hull_points = points[hull.vertices]
-            polygon = Polygon(hull_points, alpha=0.15, facecolor=color, edgecolor=color, linewidth=2)
-            ax.add_patch(polygon)
-        except Exception as e:
-            print(f"Could not create hull for {robot_type}: {e}")
+plot_robot_layers(ax, df)
 
-# Plot each type separately for legend
-for robot_type in unique_types:
-    type_df = df[df['Type'] == robot_type]
-    color = type_colors[robot_type]
-    
-    ax.scatter(
-        type_df['Reach_m'],
-        type_df['Payload_Factor'],
-        s=type_df['marker_size'],
-        c=color,
-        alpha=0.7,
-        edgecolors='white',
-        linewidths=0.5,
-        label=f"{robot_type.capitalize()} ({len(type_df)})"
-    )
-
-# Best-value robot in each type (same metric as circle size)
 best_rows = (
     df.sort_values('value_metric', ascending=False)
     .groupby('Type', sort=False)
@@ -103,8 +288,6 @@ best_rows = (
     .reindex(unique_types)
     .dropna(how='all')
 )
-
-# Ring the winners so they stay visible under the overlay
 for robot_type, row in best_rows.iterrows():
     ax.scatter(
         row['Reach_m'],
@@ -116,129 +299,30 @@ for robot_type, row in best_rows.iterrows():
         zorder=5,
     )
 
-# Labels and title
-ax.set_xlabel('Reach (m)', fontsize=14, color='#e8f4fc', fontweight='bold')
-ax.set_ylabel('Payload Factor (Payload / Robot Mass)', fontsize=14, color='#e8f4fc', fontweight='bold')
-ax.set_title('Robot Arm Comparison: Reach vs Payload Efficiency\n', 
-             fontsize=18, color='#00d4ff', fontweight='bold')
-
-# Subtitle
-ax.text(0.5, 1.02, 'Circle size: value metric = 1 / (repeatability × price)  |  Larger = better value',
-        transform=ax.transAxes, ha='center', fontsize=11, color='#6b8ba4', style='italic')
-
-# Grid styling
-ax.grid(True, alpha=0.2, color='#2a4060')
-ax.tick_params(colors='#6b8ba4')
-
-# Spines styling
-for spine in ax.spines.values():
-    spine.set_color('#2a4060')
-
-# Legend for types
-legend = ax.legend(
-    loc='upper right',
-    fontsize=11,
-    framealpha=0.9,
-    facecolor='#121f36',
-    edgecolor='#2a4060',
-    labelcolor='#e8f4fc',
-    title='Robot Type',
-    title_fontsize=12
+style_axes(
+    ax,
+    'Robot Arm Comparison: Reach vs Payload Efficiency\n',
+    'Circle size: value metric = 1 / (repeatability × price)  |  Larger = better value',
 )
-legend.get_title().set_color('#00d4ff')
+add_type_and_size_legends(ax)
 
-# Add size legend
-size_legend_elements = [
-    Line2D([0], [0], marker='o', color='w', markerfacecolor='#6b8ba4', 
-           markersize=6, label='Lower value', linestyle='None'),
-    Line2D([0], [0], marker='o', color='w', markerfacecolor='#6b8ba4', 
-           markersize=18, label='Higher value', linestyle='None'),
-]
-size_legend = ax.legend(
-    handles=size_legend_elements,
-    loc='lower right',
-    fontsize=10,
-    framealpha=0.9,
-    facecolor='#121f36',
-    edgecolor='#2a4060',
-    labelcolor='#e8f4fc',
-    title='Circle Size',
-    title_fontsize=11
-)
-size_legend.get_title().set_color('#00d4ff')
-ax.add_artist(legend)  # Re-add the first legend
-
-# Stats annotation
-total_robots = len(df)
-types_count = len(unique_types)
-stats_text = f"Total: {total_robots} robots | {types_count} types (complete data only)"
-ax.text(0.02, 0.98, stats_text, transform=ax.transAxes, 
-        fontsize=10, color='#6b8ba4', va='top',
-        bbox=dict(boxstyle='round', facecolor='#121f36', edgecolor='#2a4060', alpha=0.9))
-
-# Compact best-value overlay, tucked into the empty upper-right
-card = FancyBboxPatch(
-    (0.705, 0.575),
-    0.275,
-    0.195,
-    transform=ax.transAxes,
-    boxstyle='round,pad=0.008,rounding_size=0.01',
-    facecolor='#121f36',
-    edgecolor='#2a4060',
-    linewidth=1.0,
-    alpha=0.94,
-    zorder=6,
-)
-ax.add_patch(card)
 ax.text(
-    0.718,
-    0.748,
-    "Best value by type",
-    transform=ax.transAxes,
-    ha='left',
-    va='center',
-    fontsize=9,
-    fontweight='bold',
-    color='#00d4ff',
-    zorder=7,
+    0.02, 0.98,
+    f"Total: {len(df)} robots | {len(unique_types)} types (complete data only)",
+    transform=ax.transAxes, fontsize=10, color='#6b8ba4', va='top',
+    bbox=dict(boxstyle='round', facecolor='#121f36', edgecolor='#2a4060', alpha=0.9),
 )
-
-line_y = 0.718
-for robot_type, row in best_rows.iterrows():
-    color = type_colors[robot_type]
-    ax.scatter(
-        [0.722],
-        [line_y],
-        s=22,
-        c=color,
-        edgecolors='white',
-        linewidths=0.4,
-        transform=ax.transAxes,
-        zorder=7,
-        clip_on=False,
-    )
-    ax.text(
-        0.738,
-        line_y,
-        f"{row['Name']}  ${row['Cost_KUSD']:.2g}k  ±{row['Repeatability_mm']:g}mm",
-        transform=ax.transAxes,
-        ha='left',
-        va='center',
-        fontsize=8,
-        color=color,
-        zorder=7,
-    )
-    line_y -= 0.032
+add_best_value_overlay(ax, best_rows)
 
 plt.tight_layout()
-
-# Save the figure
-output_path = os.path.join(script_dir, 'robot_arm_summary.png')
-plt.savefig(output_path, dpi=150, facecolor='#0a1628', edgecolor='none', bbox_inches='tight')
-print(f"Saved plot to: {output_path}")
+summary_path = os.path.join(script_dir, 'robot_arm_summary.png')
+plt.savefig(summary_path, dpi=150, facecolor='#0a1628', edgecolor='none', bbox_inches='tight')
+print(f"Saved plot to: {summary_path}")
 plt.close(fig)
 
-# Zoom: payload factor > 0.4 and reach < 2 m
+# ---------------------------------------------------------------------------
+# 2) High-PF zoom (robots only)
+# ---------------------------------------------------------------------------
 zoom = df[(df['Payload_Factor'] > 0.4) & (df['Reach_m'] < 2.0)].copy()
 zoom = zoom.sort_values('Payload_Factor', ascending=False)
 print(f"High-efficiency box (PF>0.4, reach<2m): {len(zoom)} robots")
@@ -247,23 +331,7 @@ print(zoom[['Name', 'MFG', 'Type', 'Payload_kg', 'Weight_kg', 'Payload_Factor', 
 fig2, ax2 = plt.subplots(figsize=(12, 8))
 fig2.patch.set_facecolor('#0a1628')
 ax2.set_facecolor('#0a1628')
-
-for robot_type in unique_types:
-    type_df = zoom[zoom['Type'] == robot_type]
-    if type_df.empty:
-        continue
-    color = type_colors[robot_type]
-    ax2.scatter(
-        type_df['Reach_m'],
-        type_df['Payload_Factor'],
-        s=type_df['marker_size'],
-        c=color,
-        alpha=0.85,
-        edgecolors='white',
-        linewidths=0.6,
-        label=f"{robot_type.capitalize()} ({len(type_df)})",
-        zorder=3,
-    )
+plot_robot_layers(ax2, zoom, alpha=0.85, with_hulls=False)
 
 offsets = [
     (6, 8), (6, -10), (-6, 8), (-6, -10),
@@ -287,21 +355,10 @@ for i, (_, row) in enumerate(zoom.iterrows()):
 
 ax2.set_xlim(0.35, 1.45)
 ax2.set_ylim(0.395, 0.58)
-ax2.set_xlabel('Reach (m)', fontsize=14, color='#e8f4fc', fontweight='bold')
-ax2.set_ylabel('Payload Factor (Payload / Robot Mass)', fontsize=14, color='#e8f4fc', fontweight='bold')
-ax2.set_title('High payload-efficiency box  |  PF > 0.4, reach < 2 m',
-              fontsize=16, color='#00d4ff', fontweight='bold')
-ax2.grid(True, alpha=0.2, color='#2a4060')
-ax2.tick_params(colors='#6b8ba4')
-for spine in ax2.spines.values():
-    spine.set_color('#2a4060')
+style_axes(ax2, 'High payload-efficiency box  |  PF > 0.4, reach < 2 m')
 leg2 = ax2.legend(
-    loc='upper right',
-    fontsize=10,
-    framealpha=0.9,
-    facecolor='#121f36',
-    edgecolor='#2a4060',
-    labelcolor='#e8f4fc',
+    loc='upper right', fontsize=10, framealpha=0.9,
+    facecolor='#121f36', edgecolor='#2a4060', labelcolor='#e8f4fc',
 )
 leg2.get_frame().set_alpha(0.9)
 plt.tight_layout()
@@ -309,3 +366,205 @@ zoom_path = os.path.join(script_dir, 'robot_arm_high_pf.png')
 fig2.savefig(zoom_path, dpi=150, facecolor='#0a1628', edgecolor='none', bbox_inches='tight')
 plt.close(fig2)
 print(f"Saved plot to: {zoom_path}")
+
+# ---------------------------------------------------------------------------
+# 3) Human / humanoid comparison plot
+# ---------------------------------------------------------------------------
+refs = pd.read_csv(ref_path)
+refs['Payload_Factor'] = refs['Payload_kg'] / refs['Weight_kg']
+humans = refs[refs['Type'] == 'human'].copy()
+humanoids = refs[refs['Type'] == 'humanoid'].copy()
+known_humanoids = humanoids[~humanoids['Name'].isin(LEADING_HUMANOID_NAMES)].copy()
+leading_humanoids = humanoids[humanoids['Name'].isin(LEADING_HUMANOID_NAMES)].copy()
+
+fig3, ax3 = plt.subplots(figsize=(14, 10))
+fig3.patch.set_facecolor('#0a1628')
+ax3.set_facecolor('#0a1628')
+
+plot_robot_layers(ax3, df)
+# Overlay research arms that lack price (LWR III 1:1, etc.)
+if not df_research_extra.empty:
+    plot_robot_layers(ax3, df_research_extra, alpha=0.85, with_hulls=False, with_labels=False)
+plot_reference_group(ax3, humans, HUMAN_COLOR, '*', 'Human (full-reach ref.)', size=200)
+plot_reference_group(ax3, known_humanoids, HUMANOID_COLOR, '^', 'Humanoid arm (prior mass est.)', size=120)
+plot_reference_group(
+    ax3, leading_humanoids, LEADING_HUMANOID_COLOR, '^',
+    'Leading humanoid (mass ≈ 8% body, pixel-est. reach)', size=130,
+)
+
+# Call out landmark 1:1 research arm
+lwr = df_research_extra[(df_research_extra['Name'] == 'LWR III')]
+if lwr.empty:
+    lwr = df[(df['Name'] == 'LWR III')]
+if not lwr.empty:
+    row = lwr.iloc[0]
+    ax3.annotate(
+        'LWR III (1:1)',
+        (row['Reach_m'], row['Payload_Factor']),
+        xytext=(12, 10),
+        textcoords='offset points',
+        fontsize=9,
+        color=type_colors.get('research', '#9b59b6'),
+        fontweight='bold',
+        arrowprops=dict(arrowstyle='-', color=type_colors.get('research', '#9b59b6'), lw=0.8),
+        zorder=9,
+    )
+
+style_axes(
+    ax3,
+    'Robot Arms vs Human / Humanoid Arms\n',
+    'Circle size: value metric = 1 / (repeatability × price)  |  Dashed: PF = 1/(a·reach)  |  Pink ▲ prior mass est.  |  Orange ▲ 8% body mass',
+)
+plot_frontier_curves(ax3, a_values=FRONTIER_A_VALUES, color='#2a4060')
+add_type_and_size_legends(ax3)
+
+plt.tight_layout()
+compare_path = os.path.join(script_dir, 'robot_arm_human_comparison.png')
+fig3.savefig(compare_path, dpi=150, facecolor='#0a1628', edgecolor='none', bbox_inches='tight')
+plt.close(fig3)
+print(f"Saved plot to: {compare_path}")
+
+# ---------------------------------------------------------------------------
+# 4) Hull-only comparison (no price filter; humanoids unified @ 5% / carry÷4)
+# ---------------------------------------------------------------------------
+# All arms with mass + payload + reach (price not required)
+df_hull = df_raw.dropna(subset=phys_cols).copy()
+df_hull['Payload_Factor'] = df_hull['Payload_kg'] / df_hull['Weight_kg']
+print(f"Hull-set robots (no price filter): {len(df_hull)}")
+
+# Humanoids: one orange family — arm mass = 5% body;
+# published whole-robot carry → per-arm full-reach ≈ carry/4 (÷2 arms, ÷2 close-body→reach)
+CARRY_KG = {
+    'Optimus Gen2': 20.0,
+    'Figure 02': 20.0,
+    'Apollo': 25.0,
+    'Digit': 16.0,
+    'Atlas': 30.0,
+}
+# Official one-arm ratings (already per-arm): apply only the full-reach ÷2 derate
+PER_ARM_KG = {
+    'G1': 2.0,
+    'G1 EDU': 3.0,
+    'R1': 2.0,
+    'GR-1': 3.0,
+}
+HUMANOID_MASS_FRAC = 0.05
+
+refs4 = pd.read_csv(ref_path)
+humans4 = refs4[refs4['Type'] == 'human'].copy()
+humans4['Payload_Factor'] = humans4['Payload_kg'] / humans4['Weight_kg']
+
+h_rows = []
+for _, row in refs4[refs4['Type'] == 'humanoid'].iterrows():
+    body = row['Body_Mass_kg']
+    if pd.isna(body) or body <= 0:
+        continue
+    name = row['Name']
+    if name in CARRY_KG:
+        payload = CARRY_KG[name] / 4.0
+    elif name in PER_ARM_KG:
+        payload = PER_ARM_KG[name] / 2.0  # full-reach derate only
+    else:
+        payload = float(row['Payload_kg']) / 2.0
+    arm_mass = body * HUMANOID_MASS_FRAC
+    h_rows.append({
+        'Name': name,
+        'Reach_m': row['Reach_m'],
+        'Payload_kg': payload,
+        'Weight_kg': arm_mass,
+        'Payload_Factor': payload / arm_mass,
+        'Body_Mass_kg': body,
+    })
+humanoids4 = pd.DataFrame(h_rows)
+
+fig4, ax4 = plt.subplots(figsize=(14, 10))
+fig4.patch.set_facecolor('#0a1628')
+ax4.set_facecolor('#0a1628')
+
+# Type bounding regions only (no robot scatter dots)
+hull_types = sorted(df_hull['Type'].unique())
+for robot_type in hull_types:
+    type_df = df_hull[df_hull['Type'] == robot_type]
+    color = type_colors.get(robot_type, '#6b8ba4')
+    if len(type_df) < 3:
+        continue
+    pts = type_df[['Reach_m', 'Payload_Factor']].values
+    try:
+        hull = ConvexHull(pts)
+        ax4.add_patch(Polygon(
+            pts[hull.vertices],
+            alpha=0.22,
+            facecolor=color,
+            edgecolor=color,
+            linewidth=2.2,
+            zorder=3,
+            label=f"{robot_type.capitalize()} hull (n={len(type_df)})",
+        ))
+    except Exception as e:
+        print(f"Could not create hull for {robot_type} (hull plot): {e}")
+
+plot_reference_group(ax4, humans4, HUMAN_COLOR, '*', 'Human (full-reach ref.)', size=200)
+plot_reference_group(
+    ax4, humanoids4, LEADING_HUMANOID_COLOR, '^',
+    'Humanoid arm (5% body; carry÷4 or per-arm÷2)', size=130,
+)
+
+# Call out landmark peaks (Kinova now in research — keep LWR III + Mico 4)
+for typ, name, offset, label, va in (
+    ('research', 'LWR III', (14, -12), 'LWR III (1:1)', 'center'),
+    ('research', 'Mico 4', (-12, 8), 'Mico 4', 'center'),
+    ('collaborative', None, (-14, 6), None, 'center'),  # Z1 Pro — left of point
+    ('hobby', 'myCobot 280', (-10, 10), 'myCobot 280', 'bottom'),  # above-left
+):
+    if name is None:
+        sub = df_hull[df_hull['Type'] == typ]
+        if sub.empty:
+            continue
+        row = sub.loc[sub['Payload_Factor'].idxmax()]
+        label = row['Name']
+    else:
+        hit = df_hull[(df_hull['Name'] == name) & (df_hull['Type'] == typ)]
+        if hit.empty:
+            continue
+        row = hit.iloc[0]
+    color = type_colors.get(typ, '#6b8ba4')
+    ax4.annotate(
+        label,
+        (row['Reach_m'], row['Payload_Factor']),
+        xytext=offset,
+        textcoords='offset points',
+        fontsize=9,
+        color=color,
+        fontweight='bold',
+        ha='right' if offset[0] < 0 else 'left',
+        va=va,
+        arrowprops=dict(arrowstyle='-', color=color, lw=0.8),
+        zorder=9,
+    )
+
+style_axes(
+    ax4,
+    'Robot Arm Bounding Regions vs Human / Humanoid Arms\n',
+    'Polygons: all arms with mass/payload/reach (no price filter, dots omitted)  |  Orange ▲ humanoids @ 5% body mass',
+)
+plot_frontier_curves(ax4, a_values=FRONTIER_A_VALUES, color='#2a4060')
+
+legend4 = ax4.legend(
+    loc='upper right',
+    fontsize=10,
+    framealpha=0.9,
+    facecolor='#121f36',
+    edgecolor='#2a4060',
+    labelcolor='#e8f4fc',
+    title='Regions / refs',
+    title_fontsize=11,
+)
+legend4.get_title().set_color('#00d4ff')
+
+plt.tight_layout()
+hull_path = os.path.join(script_dir, 'robot_arm_human_comparison_hulls.png')
+fig4.savefig(hull_path, dpi=150, facecolor='#0a1628', edgecolor='none', bbox_inches='tight')
+plt.close(fig4)
+print(f"Saved plot to: {hull_path}")
+print('Humanoid PF @ 5% / derated payload:')
+print(humanoids4[['Name', 'Reach_m', 'Payload_kg', 'Weight_kg', 'Payload_Factor']].to_string(index=False))

@@ -43,17 +43,17 @@ HCR-3,Hanwha,collaborative,6,3,0.63,13,0.1,,
 HCR-5,Hanwha,collaborative,6,5,0.915,20,0.1,33.5,
 HCR-12,Hanwha,collaborative,6,12,1.3,52,0.1,,
 Nextage,Kawada,collaborative,15,1.5,0.577,29,0.03,60,29kg might be whole robot 60k for whole robot
-Jaco 7,Kinova,collaborative,7,2.1,0.985,5.7,,34.9,
-Jaco 6,Kinova,collaborative,6,2.2,0.9,4.4,,30,
-Jaco 4,Kinova,collaborative,4,4.4,0.75,3.6,,,
-Mico 6,Kinova,collaborative,6,2.1,0.7,4.6,,20.9,
-Mico 4,Kinova,collaborative,4,5.2,0.55,3.8,,,
-Gen3 7,Kinova,collaborative,7,3,0.902,8.2,1.0,37.2,"Reichelt €40246 incl 19% VAT (~€33820 excl, ~$37.2k at 1.10 USD/EUR); SKU KR L53 0007"
-Gen3 6,Kinova,collaborative,6,3,0.891,7.2,0.1,43.359,alibaba listing
-Gen3 Lite,Kinova,collaborative,6,0.5,0.76,5.4,,13.5,"RobotShop $13500; Generation Robots €15600 excl VAT; Reichelt ~€17169 incl VAT. Replaced mixed Alibaba $37578 that matched Gen2 7"
-Gen2 7,Kinova,collaborative,7,2.4,0.984,5.5,1.0,37.578,alibaba listing
-Gen2 6,Kinova,collaborative,6,2.4,0.984,5.5,0.1,26.5,alibaba listing
-Link 6,Kinova,collaborative,6,6,1,23.45,0.1,38.6,"Unchained Robotics €35107.56 excl VAT (~$38.6k at 1.10 USD/EUR); Top3DShop $39500"
+Jaco 7,Kinova,research,7,2.1,0.985,5.7,,34.9,
+Jaco 6,Kinova,research,6,2.2,0.9,4.4,,30,
+Jaco 4,Kinova,research,4,4.4,0.75,3.6,,,"carbon-fiber links; mid-range continuous payload 4.4 kg (full-reach temporary 3.5 kg) — PF>1 is mid-range rating"
+Mico 6,Kinova,research,6,2.1,0.7,4.6,,20.9,
+Mico 4,Kinova,research,4,5.2,0.55,3.8,,,"reinforced-plastic links (not CF); mid-range continuous 5.2 kg (full-reach temporary 2.7 kg) — PF>1 is mid-range rating"
+Gen3 7,Kinova,research,7,3,0.902,8.2,1.0,37.2,"Reichelt €40246 incl 19% VAT (~€33820 excl, ~$37.2k at 1.10 USD/EUR); SKU KR L53 0007"
+Gen3 6,Kinova,research,6,3,0.891,7.2,0.1,43.359,alibaba listing
+Gen3 Lite,Kinova,research,6,0.5,0.76,5.4,,13.5,"RobotShop $13500; Generation Robots €15600 excl VAT; Reichelt ~€17169 incl VAT. Replaced mixed Alibaba $37578 that matched Gen2 7"
+Gen2 7,Kinova,research,7,2.4,0.984,5.5,1.0,37.578,alibaba listing
+Gen2 6,Kinova,research,6,2.4,0.984,5.5,0.1,26.5,alibaba listing
+Link 6,Kinova,research,6,6,1,23.45,0.1,38.6,"Unchained Robotics €35107.56 excl VAT (~$38.6k at 1.10 USD/EUR); Top3DShop $39500"
 LBR iiwa 7 R800,KUKA,collaborative,7,7,0.8,23.9,0.1,80,
 LBR iiwa 14 R820,KUKA,collaborative,7,14,0.82,29.9,0.15,96,
 LBR iisy,KUKA,collaborative,6,3,0.6,18.8,,,
@@ -383,9 +383,9 @@ PUMA 560,Puma,research,6,2.5,0.864,55,0.1,,
 WAM 4,Barrett,research,4,4,1,25,0.1,90,"listed with ""high precision"" package"
 WAM 7,Barrett,research,7,3,1,27,0.2,120,"listed with ""high precision"" package"
 SARA,DLR,research,7,12,1.024,22.6,,,
-LWR III,DLR,research,7,14,0.936,14,,,ca 2003
-LWR II,DLR,research,7,7,1.024,18,,,ca 2000
-LWR I,DLR,research,7,7,1.338,14.5,,,ca 1995
+LWR III,DLR,research,7,14,0.936,14,,,"DLR official (2003): 14 kg mass / 14 kg payload / 936 mm reach — landmark 1:1 load-to-weight; CF link structures + integrated joint electronics; licensed to KUKA → LBR 4 → iiwa"
+LWR II,DLR,research,7,7,1.024,18,,,"DLR ca 2000: 18 kg mass / 7 kg payload at full speed; predecessor to LWR III"
+LWR I,DLR,research,7,7,1.338,14.5,,,"DLR ca 1995: 14.5 kg mass / 7 kg payload / 1338 mm; first DLR lightweight arm"
 KIT Arm,Kit.edu,research,8,11,1.077,25,,,
 MER,NASA,research,5,5,0.5,10,,,
 MSL,NASA,research,5,15,2.1,50,,,

@@ -13,6 +13,65 @@ This dataset contains specifications for **156 robot arms** across 4 categories 
 - **Circle Size = Value Metric** — Calculated as `1 / (repeatability × price)`. Larger circles represent better value: higher precision at lower cost.
 - **Convex Hulls** — Shaded regions show the design space each robot type occupies, highlighting where categories overlap and compete.
 
+## Human & humanoid comparison (bounding regions)
+
+![Robot arms vs humans / humanoids (hulls)](robot_arm_human_comparison_hulls.png)
+
+This figure compares **serial robot-arm design space** to **human** and **humanoid** arm references on the same axes: reach (m) vs payload factor (payload / arm mass).
+
+Unlike the summary plot above, this view:
+
+- Includes **every arm with mass, payload, and reach** (~500 rows) — **price and repeatability are not required**
+- Draws **type convex hulls only** (collaborative / industrial / research / hobby) — individual robot dots are omitted so the bounding regions stay readable
+- Overlays **human** references (yellow ★) and **humanoid** arm estimates (orange ▲)
+- Adds dashed **iso-efficiency curves** of the form `PF = 1/(a · reach)` (smaller `a` = higher payload×reach / mass)
+- Labels landmark peaks: **LWR III (1:1)**, **Mico 4** (research), collaborative max, **myCobot 280**
+
+Human/humanoid reference numbers live in `data/human_humanoid_arm_data.csv`. The hull figure applies the humanoid assumptions below at plot time (it does not rewrite that CSV).
+
+### Assumptions (humanoids)
+
+All humanoids are treated as one family (orange) with a shared mass rule:
+
+1. **Arm mass ≈ 5% of whole-robot body mass**  
+   Used for G1 / G1 EDU / R1 / GR-1 / Optimus Gen2 / Figure 02 / Apollo / Digit / Atlas.
+
+2. **Published “carry” ratings are whole-robot, close-to-body**  
+   For Optimus, Figure, Apollo, Digit, and Atlas we convert to a **single-arm, full-reach** estimate as:
+   - ÷2 for two arms sharing the load  
+   - ÷2 again because carry is near the torso, not at full reach  
+   - → **per-arm full-reach payload ≈ carry / 4**
+
+   | Robot | Published carry | Per-arm full-reach (÷4) |
+   |---|---|---|
+   | Optimus Gen2 | 20 kg | 5.0 kg |
+   | Figure 02 | 20 kg | 5.0 kg |
+   | Apollo | 25 kg | 6.25 kg |
+   | Digit | 16 kg | 4.0 kg |
+   | Atlas | 30 kg sustained | 7.5 kg |
+
+3. **Official one-arm ratings** (Unitree G1 / G1 EDU / R1, Fourier GR-1) are already per-arm; we only apply a **÷2 full-reach derate** (not the bimanual ÷2).
+
+4. **Reach** for the five “leading” platforms is a **pixel estimate** from full-body photos (shoulder → hand / fingertip scaled by published height). Atlas uses a human-proportioned estimate (~0.44 × stature) when a clean arms-down photo was unavailable. BD’s published **2.3 m** figure is treated as whole-body workspace reach, not shoulder→hand arm length.
+
+5. **Humans** use separate anthropometric estimates (not the 5% humanoid rule): continuous full-reach hold payloads and shoulder→fingertip reaches for Child / Woman / Man / Strong.
+
+6. These humanoid points are **illustrative**, not datasheet arm specs. Payload factor above ~1 is rare for production serial arms (DLR **LWR III** is the classic research 1:1; Kinova arms are classified here as **research** for separation from cobot fleets — **Mico 4** / **Jaco 4** exceed PF 1 mainly on mid-range continuous ratings with light structures).
+
+### Assumptions (robot hulls)
+
+- Payload factor = `Payload_kg / Weight_kg` using the CSV values as published (no carry÷4 derate on industrial/cobot rows).
+- Hull vertices are the convex hull of each `Type` in reach–PF space after dropping rows missing reach, mass, or payload.
+- Dashed curves are a simple geometric-scaling sketch (`PF ∝ 1/reach`), not a fitted model.
+
+Regenerate all summary figures (including this one) with:
+
+```bash
+pixi run plot
+```
+
+Outputs: `robot_arm_summary.png`, `robot_arm_high_pf.png`, `robot_arm_human_comparison.png`, `robot_arm_human_comparison_hulls.png`.
+
 ## Data Sources
 
 All data is collected from corporate websites, company catalogs, resellers, or random blog posts. I tried to make notes of strange sources in the additional notes column when necessary. Occasionally some of the estimates were in euros, so the conversion to dollars may be out of date.
@@ -49,13 +108,13 @@ This will start a local Streamlit server and open the app in your browser at `ht
 - **Payload factor visualization** comparing your configuration against real robots
 - **Cost analysis** with price-per-DOF calculations
 
-### Regenerating the Summary Plot
-
-To regenerate the `robot_arm_summary.png` image:
+### Regenerating plots
 
 ```bash
 pixi run plot
 ```
+
+This runs `generate_summary_plot.py` and writes the README summary figure, the high-PF zoom, the dotted human/humanoid comparison, and the hull-only comparison described above.
 
 ## Joint modules
 
