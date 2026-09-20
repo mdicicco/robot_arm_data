@@ -10,6 +10,7 @@ app = "streamlit run robot_arm_app.py --server.headless true"
 plot = "python generate_summary_plot.py"
 joint-analyze = "python analyze_joint_prices.py"
 joint-app = "streamlit run robot_joint_app.py --server.headless true"
+motor-analyze = "python analyze_motor_mass.py"
 
 [dependencies]
 python = "3.12.*"

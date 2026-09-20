@@ -1,0 +1,53 @@
+Name,MFG,Form,Max_Torque_Nm,Cont_Torque_Nm,Max_Speed_rpm,Rated_Speed_rpm,Weight_kg,Weight_Flag,OD_mm,Length_mm,Kv,Pole_Pairs,Voltage_V,Cost_USD,Cost_Flag,Notes
+RI50 KV100,CubeMars,frameless,1.67,0.58,4008,2600,0.1808,listed,54,27,100,7,48,,,cubemars.com RI comparison; Φ54×27; weight 180.8 g
+RI60 KV120,CubeMars,frameless,1.63,0.57,5064,3190,0.1559,listed,60,23,120,14,48,98.9,listed,cubemars.com RI60; no-load @48V; store ~$98.90
+RI70 KV95,CubeMars,frameless,2.68,0.94,3912,2710,0.2704,listed,76,24,95,14,48,,,cubemars.com RI70; no-load @48V
+RI80 V2.0 KV75,CubeMars,frameless,4.1,1.45,2960,2430,0.411,listed,85,27,75,8,48,140,listed,cubemars.com RI80 V2.0; store ~$133–148
+RI100 KV105,CubeMars,frameless,4.95,1.76,4368,2825,0.5,listed,104,26,105,14,48,,,cubemars.com RI100; no-load @48V
+RO80 KV105 Standard,CubeMars,frameless,4.0,1.3,5040,3600,0.352,listed,92.6,26.4,105,21,48,,,cubemars.com RO80 Standard with hall
+RO80 KV105 Lite,CubeMars,frameless,4.0,1.3,5040,3600,0.265,listed,88.6,17.7,105,21,48,,,cubemars.com RO80 Lite without hall
+GL80 KV30,CubeMars,outrunner,2.9,1.0,650,450,0.312,listed,87,22.3,27,21,24,181.99,listed,cubemars.com GL80 gimbal; peak 2.9 Nm; mass 312 g; store $181.99
+EC 45 flat 70W,Maxon,flat,0.903,0.134,10000,2530,0.143,listed,43.4,28.7,,,48,,,Maxon EC frameless/flat 45 70W class (574037); stall 903 mNm; mass 143 g
+EC 90 flat 360W,Maxon,flat,4.92,0.941,5000,2270,0.638,listed,90,,88.1,11,36,279.5,listed,maxongroup 607955 ventilated; stall 4920 mNm; €254.10 (~$279)
+EC 90 flat 600W,Maxon,flat,9.95,1.56,5000,1620,0.988,listed,90,,70.2,11,30,,,maxongroup 597974 ventilated; stall 9950 mNm; mass 988 g
+1660S036BHS,Faulhaber,inrunner,0.442,0.0103,97000,59530,0.078,listed,16,60,1527,1,36,,,Faulhaber 1660 BHS datasheet; stall 442 mNm; n_max 97000; mass 78 g
+2250S024BX4,Faulhaber,inrunner,0.151,0.0262,20000,4870,0.105,listed,22,51.8,255,2,24,238.2,listed,Faulhaber 2250 BX4; stall 151 mNm; shop $238.20
+3274G024BP4,Faulhaber,inrunner,2.65,0.158,16000,8420,0.325,listed,32,74,294,2,24,,,Faulhaber 3274 BP4; stall ~2.65 Nm
+AKM2G-21,Kollmorgen,industrial,1.79,0.642,8000,8000,1.1,listed,58,,,4,48,,,AKM2G LV catalog; weight without brake
+AKM2G-22,Kollmorgen,industrial,3.35,1.12,8000,8000,1.4,listed,58,,,4,48,,,AKM2G LV catalog; weight without brake
+AKM2G-23,Kollmorgen,industrial,4.73,1.5,8000,8000,1.7,listed,58,,,4,48,,,AKM2G LV catalog; weight without brake
+AKM2G-24,Kollmorgen,industrial,5.97,1.82,8000,8000,2.0,listed,58,,,4,48,,,AKM2G LV catalog; weight without brake
+AKM2G-31,Kollmorgen,industrial,6.14,1.73,7800,7800,1.8,listed,,,,4,48,,,AKM2G LV catalog; weight without brake
+AKM2G-32,Kollmorgen,industrial,10.7,2.89,6400,6400,2.5,listed,,,,4,48,,,AKM2G LV catalog; weight without brake
+AKM2G-33,Kollmorgen,industrial,14.6,3.83,4700,4700,3.3,listed,,,,4,48,,,AKM2G LV catalog; weight without brake
+AKM2G-41,Kollmorgen,industrial,7.28,2.91,5000,5000,2.9,listed,,,,4,48,,,AKM2G LV catalog; weight without brake
+AKM2G-42,Kollmorgen,industrial,14.5,5.17,2800,2800,3.86,listed,,,,4,48,,,AKM2G LV catalog; weight without brake
+AKM2G-43,Kollmorgen,industrial,21.2,7.07,1900,1900,4.81,listed,,,,4,48,,,AKM2G LV catalog; weight without brake
+AKM2G-44,Kollmorgen,industrial,27.1,8.6,1600,1600,5.76,listed,,,,4,48,,,AKM2G LV catalog; weight without brake
+CPM-MCVC-2310D-RLN,Teknic,integrated,0.45,0.09,4000,,0.6,listed,59.2,84.8,,,75,260,listed,ClearPath NEMA23; peak 64 / cont 13 oz-in @75V; weight 1.4 lb; MCVC from $260
+CPM-MCVC-2311S-RLN,Teknic,integrated,2.05,0.41,4000,,0.6,listed,59.2,84.8,,,75,260,listed,ClearPath NEMA23; peak 290 / cont 58 oz-in @75V; weight 1.4 lb
+CPM-MCVC-3432P-RLN,Teknic,integrated,4.93,,2380,,2.6,listed,86.9,117.6,,,75,301,listed,ClearPath NEMA34; peak 698 oz-in @75V from model title; weight 5.8 lb; NEMA34 from $301
+CPM-MCVC-3441S-RLN,Teknic,integrated,13.02,,860,,3.3,listed,86.9,136.7,,,75,301,listed,ClearPath NEMA34; peak 1844 oz-in @75V; weight 7.3 lb
+D5065 270KV,ODrive,outrunner,2.64,1.4,12960,,0.425,listed,50,65,270,7,48,89,listed,ODrive docs Kt 0.031; Ipeak 85A / Icont 45A free-air; mass 425 g reseller listing; shop $89
+D6374 150KV,ODrive,outrunner,4.96,2.76,5616,,0.86,estimate,63,74,150,7,48,119,listed,ODrive docs torque-speed @48V ~4.96 peak / 2.76 cont; free speed ~5616; mass ~860 g from similar 6374 class (ODrive omits mass); shop $119
+M8325s 100KV,ODrive,outrunner,6.64,3.32,4800,,0.84,listed,92,46.5,100,20,48,149,listed,ODrive shop: weight 840 g; Kt 0.083; Ipeak 80A / Icont 40A; no-load ~Kv×V; shop $149
+BotWheel,ODrive,hub,14.3,4.76,418,110,2.2,listed,171,,8.7,15,48,134.5,listed,ODrive shop mass 2.2 kg/wheel; rated 5 Nm @24V; Kt×Icont=4.76 / Kt×Ipeak=14.3; 2-pack $269 → ~$134.5 ea
+MN5008 KV340,T-Motor,outrunner,0.69,0.35,6482,,0.135,listed,55.6,32,340,14,22.2,90,listed,T-Motor Antigravity test table peak ~0.69 Nm; cont mid-throttle ~0.35 Nm; mass 135 g
+U8 Pro KV100,T-Motor,outrunner,0.99,0.4,6170,,0.24,listed,86.8,26.5,100,21,44.4,159,listed,T-Motor U8 Pro test table peak ~0.99 Nm; cont ~0.4 Nm; mass 240 g w/o cable
+U6017,MOSRAC/TSL,frameless,1.35,0.45,4500,3000,0.155,listed,60,17.9,,10,48,,,"Alibaba/China OEM U60 series (also on Alibaba as OD60 frameless); peak 1.35 Nm; fills τ~1–2 @ mid speed"
+U6022,MOSRAC/TSL,frameless,1.8,0.6,4500,3000,0.204,listed,60,22.5,,10,48,,,"Alibaba listing U6022 OD60×22; rated 0.6 / peak 1.8 Nm; mass 204 g"
+U6035,MOSRAC/TSL,frameless,3.0,1.0,4500,3000,0.355,listed,60,35.5,,10,48,,,"U60 series tall stack; peak 3 Nm; mass 355 g"
+TBSM129-13A20,HXC,frameless,9.95,3.7,1970,1872,1.2,listed,129,,, ,48,,,"Alibaba/China HXC TBSM129; peak standstill 9.95 Nm; mass 1.2 kg; fills τ~10 @ ~2k rpm gap"
+TBSM129-20A20,HXC,frameless,10.0,5.4,1950,1800,1.6,listed,129,,,,48,,,"HXC TBSM129-20A20; peak 10 Nm cont 5.4; mass 1.6 kg"
+TBSM129-20D15,HXC,frameless,32.76,5.4,1550,1471,1.6,listed,129,,,,100,,,"HXC TBSM129-20D15; peak 32.8 Nm @100V; fills high-τ mid-low speed"
+TBSM129-40A13,HXC,frameless,19.0,9.0,1300,1253,2.8,listed,129,,,,48,,,"HXC TBSM129-40; peak 19 Nm cont 9; mass 2.8 kg"
+TBSM129-55A06,HXC,frameless,39.23,11.7,630,589,4.0,listed,129,,,,48,,,"HXC TBSM129-55; peak 39 Nm @630 rpm; mass 4 kg; high-τ low-speed"
+MF180AS100,Generic CN,frameless,18.0,6.0,400,300,2.5,listed,180,,,,48,,,"Alibaba/Cautop MF180AS100 direct-drive torque motor; peak 18 / cont 6 Nm @300 rpm; 2.5 kg"
+MF180AS200,Generic CN,frameless,30.0,10.0,400,300,5.0,listed,180,,,,48,,,"MF180AS200; peak 30 / cont 10 Nm; 5 kg"
+MF180AS300,Generic CN,frameless,60.0,20.0,400,300,10.0,listed,180,,,,48,,,"MF180AS300; peak 60 / cont 20 Nm; 10 kg; large low-speed"
+MP6374 170KV,Generic CN,outrunner,8.0,,8160,,0.9,listed,63.4,74,170,7,48,59,listed,"AliExpress 6374 class (FEICHAO/XQ ~$45–70); max torque 8 Nm; mass ~900 g; no-load≈Kv×48V"
+Flipsky 6384 140KV,Flipsky,outrunner,9.0,,6720,,1.1,listed,63,84,140,7,58.8,113,listed,"AliExpress/Flipsky 6384; max torque 9 Nm; mass 1100 g; no-load≈Kv×48V; shop ~$113"
+Flipsky 80100 130KV,Flipsky,outrunner,17.0,,8500,,1.82,listed,80,107,130,7,58.8,229,listed,"AliExpress/Alibaba/Flipsky 80100; max torque 17 Nm; max RPM 8500; mass 1.82 kg; ~$229"
+Flipsky 5065 270KV,Flipsky,outrunner,4.0,,11205,,0.45,listed,50,65,270,7,41.5,64,listed,"AliExpress Flipsky 5065; max torque 4 Nm; mass 450 g; max volts 41.5V → ~11.2k rpm; ~$64"
+10in Scooter Hub 500W,Generic CN,hub,21.0,,1100,,3.5,listed,254,, ,,48,,,"Alibaba 10in gearless scooter hub; peak ~21 Nm; ~1100 rpm class; mass 3.5 kg"
+QS205 1000W 40H,QS Motor,hub,98.0,,650,,11.0,listed,,,,23,48,,,"QS Motor / Alibaba channel QS205 spoke hub; max torque 98 Nm; no-load 650 rpm; mass 11 kg"

@@ -152,3 +152,37 @@ pixi run python analyze_joint_prices.py --torque 20 --speed 120 --od 90 --mass 0
 ```
 
 `joint-app` is a Streamlit estimator with the same dark theme as the arm app. `joint-analyze` reprints the fit and regenerates `robot_joint_price_fit.png`. Do not insert a bare `--` between the pixi task and argparse flags.
+
+## BLDC motors
+
+Bare brushless motors (not geared joint modules) live in `data/bldc_motor_data.csv`.
+
+![Motor mass fit](robot_motor_mass_fit.png)
+
+### Dataset
+
+Rows span **small → medium → large** BLDC motors from CubeMars (frameless RI/RO), Maxon (EC flat), Faulhaber, Kollmorgen (AKM2G LV), Teknic ClearPath (integrated servo), ODrive (outrunner / hub), T-Motor, plus **AliExpress/Alibaba OEM** coverage (Flipsky esk8 outrunners, HXC/MOSRAC frameless torque motors, scooter/QS hubs). Core fields:
+
+- **Max_Torque_Nm** — peak / stall / short-term max (primary torque for the mass model)
+- **Max_Speed_rpm** — no-load or catalog max speed
+- **Weight_kg** — published motor mass (`Weight_Flag=listed`, or `estimate` when only a class analog exists)
+- Optional: continuous torque, OD/length, Kv, pole pairs, voltage, street price
+
+Notes cite the catalog / shop page. Empty cells mean the source did not publish that number.
+
+### Mass model
+
+`analyze_motor_mass.py` fits mass from peak torque and max speed on **listed-mass** rows:
+
+```
+log(mass) = a + b · log(τ_max) + c · log(ω_max)
+```
+
+Physically this is a power-law `mass ∝ τ^b · ω^c`. On the current set, **torque dominates** (`b ≈ 0.82`); the speed exponent is near zero. Current fit (listed-mass rows, n≈51): in-sample R²(log) **~0.78**, leave-one-out R² **~0.75**, LOO MAE **~0.66 kg**. Example: 2 Nm peak @ 4000 rpm → **~0.5 kg**.
+
+```bash
+pixi run motor-analyze
+pixi run python analyze_motor_mass.py --torque 2.0 --speed 4000
+```
+
+Regenerates `robot_motor_mass_fit.png` (predicted vs actual) and `robot_motor_mass_contour.png` (torque–speed map with mass as color contours + measured motors as dots), and prints a one-shot mass estimate when `--torque` / `--speed` are given.
