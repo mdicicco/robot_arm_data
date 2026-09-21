@@ -193,3 +193,40 @@ pixi run python analyze_motor_mass.py --torque 2.0 --speed 4000
 ```
 
 Regenerates `robot_motor_mass_fit.png` (predicted vs actual) and `robot_motor_mass_contour.png` (torque–speed map with mass as color contours + measured motors as dots), and prints a one-shot mass estimate when `--torque` / `--speed` are given.
+
+## Gearboxes / reducers
+
+Bare reducers (not full joint modules) live in `data/gearbox_data.csv`.
+
+![Gearbox mass fit](robot_gearbox_mass_fit.png)
+
+### Dataset
+
+**~146 reducers** spanning ratios **~4:1–100:1** (a few up to 111:1), sized so **rated input torque** overlaps the motor set (~0.01–40 Nm input; ~94 rows in the 0.5–30 Nm motor-matched band).
+
+| Type | Sources | Notes |
+|---|---|---|
+| **harmonic** | Harmonic Drive CSF-2UH / LW; AliExpress HBK/SHF | Mass fixed per frame across 30/50/80/100 |
+| **cycloidal** | Nabtesco RV-E | Heavy, high torque; mass per frame |
+| **planetary** | Neugart PLE; Maxon GPX; AliExpress FLE42/GP42 | 1-stage ≈ QDD (5–10); 2–3 stage for 25–100 |
+| **worm** | NMRV 030–075 | Mass fixed per size; ratios 7.5–100 |
+| **spur** | Small industrial / Boston-class analogs | Thin coverage |
+
+Core fields: `Ratio`, `Stages`, `Rated_Output_Torque_Nm`, `Weight_kg`, `OD_mm`, `Length_mm`, derived `Rated_Input_Torque_Nm ≈ T_out / ratio`. Price filled where street listings were clear.
+
+### Mass / size model
+
+Important empirical result: **within a frame, mass barely changes with ratio**. Ratio alone is a weak predictor; **output torque capacity (frame size) and type** dominate:
+
+```
+log(mass) = a[type] + b · log(T_out) + c · log(ratio)
+```
+
+Typical fit on this set: **b ≈ 0.70**, **c ≈ −0.02**, R²(log) **~0.92**. Per-type mass∝T^b: harmonic ~0.61, planetary ~0.76, worm ~0.57, cycloidal ~0.65. Mass∝ratio alone has R² ≈ 0 for harmonic/worm.
+
+```bash
+pixi run gearbox-analyze
+pixi run python analyze_gearbox_mass.py --ratio 50 --torque-out 40 --type harmonic
+```
+
+Writes `robot_gearbox_mass_fit.png` (mass vs ratio + mass vs torque by type) and `robot_gearbox_od_fit.png` (housing OD vs torque).

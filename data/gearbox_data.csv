@@ -1,0 +1,146 @@
+Name,MFG,Type,Ratio,Stages,Rated_Output_Torque_Nm,Peak_Output_Torque_Nm,Weight_kg,OD_mm,Length_mm,Cost_USD,Cost_Flag,Notes,Rated_Input_Torque_Nm
+CSF-2UH-14-30,Harmonic Drive,harmonic,30.0,1,4.0,17.0,0.52,73,41.0,,,HD CSF-2UH gearhead catalog; mass fixed per size across ratios; OD=øA,0.1333
+CSF-2UH-14-50,Harmonic Drive,harmonic,50.0,1,5.4,35.0,0.52,73,41.0,,,HD CSF-2UH gearhead catalog; mass fixed per size across ratios; OD=øA,0.108
+CSF-2UH-14-80,Harmonic Drive,harmonic,80.0,1,7.8,35.0,0.52,73,41.0,,,HD CSF-2UH gearhead catalog; mass fixed per size across ratios; OD=øA,0.0975
+CSF-2UH-14-100,Harmonic Drive,harmonic,100.0,1,7.8,35.0,0.52,73,41.0,,,HD CSF-2UH gearhead catalog; mass fixed per size across ratios; OD=øA,0.078
+CSF-2UH-17-30,Harmonic Drive,harmonic,30.0,1,8.8,30.0,0.68,79,45.0,,,HD CSF-2UH gearhead catalog; mass fixed per size across ratios; OD=øA,0.2933
+CSF-2UH-17-50,Harmonic Drive,harmonic,50.0,1,16.0,70.0,0.68,79,45.0,,,HD CSF-2UH gearhead catalog; mass fixed per size across ratios; OD=øA,0.32
+CSF-2UH-17-80,Harmonic Drive,harmonic,80.0,1,22.0,87.0,0.68,79,45.0,,,HD CSF-2UH gearhead catalog; mass fixed per size across ratios; OD=øA,0.275
+CSF-2UH-17-100,Harmonic Drive,harmonic,100.0,1,24.0,108.0,0.68,79,45.0,,,HD CSF-2UH gearhead catalog; mass fixed per size across ratios; OD=øA,0.24
+CSF-2UH-20-30,Harmonic Drive,harmonic,30.0,1,15.0,50.0,0.98,93,45.5,,,HD CSF-2UH gearhead catalog; mass fixed per size across ratios; OD=øA,0.5
+CSF-2UH-20-50,Harmonic Drive,harmonic,50.0,1,25.0,98.0,0.98,93,45.5,,,HD CSF-2UH gearhead catalog; mass fixed per size across ratios; OD=øA,0.5
+CSF-2UH-20-80,Harmonic Drive,harmonic,80.0,1,34.0,127.0,0.98,93,45.5,,,HD CSF-2UH gearhead catalog; mass fixed per size across ratios; OD=øA,0.425
+CSF-2UH-20-100,Harmonic Drive,harmonic,100.0,1,40.0,147.0,0.98,93,45.5,,,HD CSF-2UH gearhead catalog; mass fixed per size across ratios; OD=øA,0.4
+CSF-2UH-25-30,Harmonic Drive,harmonic,30.0,1,27.0,95.0,1.5,107,52.0,,,HD CSF-2UH gearhead catalog; mass fixed per size across ratios; OD=øA,0.9
+CSF-2UH-25-50,Harmonic Drive,harmonic,50.0,1,39.0,186.0,1.5,107,52.0,,,HD CSF-2UH gearhead catalog; mass fixed per size across ratios; OD=øA,0.78
+CSF-2UH-25-80,Harmonic Drive,harmonic,80.0,1,63.0,255.0,1.5,107,52.0,,,HD CSF-2UH gearhead catalog; mass fixed per size across ratios; OD=øA,0.7875
+CSF-2UH-25-100,Harmonic Drive,harmonic,100.0,1,67.0,284.0,1.5,107,52.0,,,HD CSF-2UH gearhead catalog; mass fixed per size across ratios; OD=øA,0.67
+CSF-2UH-32-30,Harmonic Drive,harmonic,30.0,1,54.0,200.0,3.2,138,62.0,,,HD CSF-2UH gearhead catalog; mass fixed per size across ratios; OD=øA,1.8
+CSF-2UH-32-50,Harmonic Drive,harmonic,50.0,1,76.0,382.0,3.2,138,62.0,,,HD CSF-2UH gearhead catalog; mass fixed per size across ratios; OD=øA,1.52
+CSF-2UH-32-80,Harmonic Drive,harmonic,80.0,1,118.0,568.0,3.2,138,62.0,,,HD CSF-2UH gearhead catalog; mass fixed per size across ratios; OD=øA,1.475
+CSF-2UH-32-100,Harmonic Drive,harmonic,100.0,1,137.0,647.0,3.2,138,62.0,,,HD CSF-2UH gearhead catalog; mass fixed per size across ratios; OD=øA,1.37
+CSF-2UH-40-50,Harmonic Drive,harmonic,50.0,1,100.0,500.0,5.0,160,72.5,,,HD CSF-2UH gearhead catalog; mass fixed per size across ratios; OD=øA,2.0
+CSF-2UH-40-80,Harmonic Drive,harmonic,80.0,1,150.0,700.0,5.0,160,72.5,,,HD CSF-2UH gearhead catalog; mass fixed per size across ratios; OD=øA,1.875
+CSF-2UH-40-100,Harmonic Drive,harmonic,100.0,1,180.0,800.0,5.0,160,72.5,,,HD CSF-2UH gearhead catalog; mass fixed per size across ratios; OD=øA,1.8
+CSF-2UH-LW-14-50,Harmonic Drive,harmonic,50.0,1,5.4,35.0,0.32,73,41.0,,,HD CSF-2UH-LW lightweight gearhead; ~30% lighter than standard,0.108
+CSF-2UH-LW-14-100,Harmonic Drive,harmonic,100.0,1,7.8,35.0,0.32,73,41.0,,,HD CSF-2UH-LW lightweight gearhead; ~30% lighter than standard,0.078
+CSF-2UH-LW-17-50,Harmonic Drive,harmonic,50.0,1,16.0,70.0,0.46,79,45.0,,,HD CSF-2UH-LW lightweight gearhead; ~30% lighter than standard,0.32
+CSF-2UH-LW-17-100,Harmonic Drive,harmonic,100.0,1,24.0,108.0,0.46,79,45.0,,,HD CSF-2UH-LW lightweight gearhead; ~30% lighter than standard,0.24
+CSF-2UH-LW-20-50,Harmonic Drive,harmonic,50.0,1,25.0,98.0,0.64,93,45.5,,,HD CSF-2UH-LW lightweight gearhead; ~30% lighter than standard,0.5
+CSF-2UH-LW-20-100,Harmonic Drive,harmonic,100.0,1,40.0,147.0,0.64,93,45.5,,,HD CSF-2UH-LW lightweight gearhead; ~30% lighter than standard,0.4
+CSF-2UH-LW-25-50,Harmonic Drive,harmonic,50.0,1,39.0,186.0,1.1,107,52.0,,,HD CSF-2UH-LW lightweight gearhead; ~30% lighter than standard,0.78
+CSF-2UH-LW-25-100,Harmonic Drive,harmonic,100.0,1,67.0,284.0,1.1,107,52.0,,,HD CSF-2UH-LW lightweight gearhead; ~30% lighter than standard,0.67
+CSF-2UH-LW-32-50,Harmonic Drive,harmonic,50.0,1,76.0,382.0,2.2,138,62.0,,,HD CSF-2UH-LW lightweight gearhead; ~30% lighter than standard,1.52
+CSF-2UH-LW-32-100,Harmonic Drive,harmonic,100.0,1,137.0,647.0,2.2,138,62.0,,,HD CSF-2UH-LW lightweight gearhead; ~30% lighter than standard,1.37
+HBK-14-30,PY/Generic CN,harmonic,30.0,1,4.0,9.0,0.68,70,,,,AliExpress HBK/SHF-style harmonic; AIFITLAB datasheet masses; street ~$90–200,0.1333
+HBK-14-50,PY/Generic CN,harmonic,50.0,1,7.0,23.0,0.68,70,,95.0,listed,AliExpress HBK/SHF-style harmonic; AIFITLAB datasheet masses; street ~$90–200,0.14
+HBK-14-80,PY/Generic CN,harmonic,80.0,1,10.0,30.0,0.68,70,,,,AliExpress HBK/SHF-style harmonic; AIFITLAB datasheet masses; street ~$90–200,0.125
+HBK-14-100,PY/Generic CN,harmonic,100.0,1,10.0,36.0,0.68,70,,,,AliExpress HBK/SHF-style harmonic; AIFITLAB datasheet masses; street ~$90–200,0.1
+HBK-17-30,PY/Generic CN,harmonic,30.0,1,8.8,16.0,0.75,80,,,,AliExpress HBK/SHF-style harmonic; AIFITLAB datasheet masses; street ~$90–200,0.2933
+HBK-17-50,PY/Generic CN,harmonic,50.0,1,21.0,44.0,0.75,80,,95.0,listed,AliExpress HBK/SHF-style harmonic; AIFITLAB datasheet masses; street ~$90–200,0.42
+HBK-17-80,PY/Generic CN,harmonic,80.0,1,29.0,56.0,0.75,80,,,,AliExpress HBK/SHF-style harmonic; AIFITLAB datasheet masses; street ~$90–200,0.3625
+HBK-17-100,PY/Generic CN,harmonic,100.0,1,31.0,70.0,0.75,80,,,,AliExpress HBK/SHF-style harmonic; AIFITLAB datasheet masses; street ~$90–200,0.31
+HBK-20-30,PY/Generic CN,harmonic,30.0,1,15.0,33.0,1.32,90,,,,AliExpress HBK/SHF-style harmonic; AIFITLAB datasheet masses; street ~$90–200,0.5
+HBK-20-50,PY/Generic CN,harmonic,50.0,1,33.0,96.0,1.32,90,,133.0,listed,AliExpress HBK/SHF-style harmonic; AIFITLAB datasheet masses; street ~$90–200,0.66
+HBK-20-80,PY/Generic CN,harmonic,80.0,1,44.0,107.0,1.32,90,,,,AliExpress HBK/SHF-style harmonic; AIFITLAB datasheet masses; street ~$90–200,0.55
+HBK-20-100,PY/Generic CN,harmonic,100.0,1,52.0,117.0,1.32,90,,,,AliExpress HBK/SHF-style harmonic; AIFITLAB datasheet masses; street ~$90–200,0.52
+HBK-25-30,PY/Generic CN,harmonic,30.0,1,27.0,51.0,2.0,110,,,,AliExpress HBK/SHF-style harmonic; AIFITLAB datasheet masses; street ~$90–200,0.9
+HBK-25-50,PY/Generic CN,harmonic,50.0,1,51.0,127.0,2.0,110,,162.0,listed,AliExpress HBK/SHF-style harmonic; AIFITLAB datasheet masses; street ~$90–200,1.02
+HBK-25-80,PY/Generic CN,harmonic,80.0,1,82.0,178.0,2.0,110,,,,AliExpress HBK/SHF-style harmonic; AIFITLAB datasheet masses; street ~$90–200,1.025
+HBK-25-100,PY/Generic CN,harmonic,100.0,1,87.0,204.0,2.0,110,,,,AliExpress HBK/SHF-style harmonic; AIFITLAB datasheet masses; street ~$90–200,0.87
+HBK-32-50,PY/Generic CN,harmonic,50.0,1,99.0,250.0,4.0,142,,200.0,listed,AliExpress HBK/SHF-style harmonic; AIFITLAB datasheet masses; street ~$90–200,1.98
+HBK-32-80,PY/Generic CN,harmonic,80.0,1,153.0,350.0,4.0,142,,,,AliExpress HBK/SHF-style harmonic; AIFITLAB datasheet masses; street ~$90–200,1.9125
+HBK-32-100,PY/Generic CN,harmonic,100.0,1,178.0,400.0,4.0,142,,,,AliExpress HBK/SHF-style harmonic; AIFITLAB datasheet masses; street ~$90–200,1.78
+RV-6E-31,Nabtesco,cycloidal,31.0,2,58.0,145.0,2.5,85,105.0,,,Nabtesco RV-E catalog; mass per frame; peak≈accel allowance ~2.5× rated; 2-stage cycloid,1.871
+RV-6E-43,Nabtesco,cycloidal,43.0,2,58.0,145.0,2.5,85,105.0,,,Nabtesco RV-E catalog; mass per frame; peak≈accel allowance ~2.5× rated; 2-stage cycloid,1.3488
+RV-6E-53.5,Nabtesco,cycloidal,53.5,2,58.0,145.0,2.5,85,105.0,,,Nabtesco RV-E catalog; mass per frame; peak≈accel allowance ~2.5× rated; 2-stage cycloid,1.0841
+RV-6E-79,Nabtesco,cycloidal,79.0,2,58.0,145.0,2.5,85,105.0,,,Nabtesco RV-E catalog; mass per frame; peak≈accel allowance ~2.5× rated; 2-stage cycloid,0.7342
+RV-6E-103,Nabtesco,cycloidal,103.0,2,58.0,145.0,2.5,85,105.0,,,Nabtesco RV-E catalog; mass per frame; peak≈accel allowance ~2.5× rated; 2-stage cycloid,0.5631
+RV-20E-57,Nabtesco,cycloidal,57.0,2,167.0,417.5,4.7,145,138.0,,,Nabtesco RV-E catalog; mass per frame; peak≈accel allowance ~2.5× rated; 2-stage cycloid,2.9298
+RV-20E-81,Nabtesco,cycloidal,81.0,2,167.0,417.5,4.7,145,138.0,,,Nabtesco RV-E catalog; mass per frame; peak≈accel allowance ~2.5× rated; 2-stage cycloid,2.0617
+RV-20E-105,Nabtesco,cycloidal,105.0,2,167.0,417.5,4.7,145,138.0,,,Nabtesco RV-E catalog; mass per frame; peak≈accel allowance ~2.5× rated; 2-stage cycloid,1.5905
+RV-40E-57,Nabtesco,cycloidal,57.0,2,412.0,1030.0,9.3,190,160.0,,,Nabtesco RV-E catalog; mass per frame; peak≈accel allowance ~2.5× rated; 2-stage cycloid,7.2281
+RV-40E-81,Nabtesco,cycloidal,81.0,2,412.0,1030.0,9.3,190,160.0,,,Nabtesco RV-E catalog; mass per frame; peak≈accel allowance ~2.5× rated; 2-stage cycloid,5.0864
+RV-40E-105,Nabtesco,cycloidal,105.0,2,412.0,1030.0,9.3,190,160.0,,,Nabtesco RV-E catalog; mass per frame; peak≈accel allowance ~2.5× rated; 2-stage cycloid,3.9238
+RV-80E-57,Nabtesco,cycloidal,57.0,2,784.0,1960.0,13.1,222,180.0,,,Nabtesco RV-E catalog; mass per frame; peak≈accel allowance ~2.5× rated; 2-stage cycloid,13.7544
+RV-80E-81,Nabtesco,cycloidal,81.0,2,784.0,1960.0,13.1,222,180.0,,,Nabtesco RV-E catalog; mass per frame; peak≈accel allowance ~2.5× rated; 2-stage cycloid,9.679
+RV-80E-101,Nabtesco,cycloidal,101.0,2,784.0,1960.0,13.1,222,180.0,,,Nabtesco RV-E catalog; mass per frame; peak≈accel allowance ~2.5× rated; 2-stage cycloid,7.7624
+PLE040-5,Neugart,planetary,5.0,1,14.0,22.4,0.35,40,,,,Neugart PLE economy planetary catalog; mass by stage count; 1-stage≈QDD ratios,2.8
+PLE040-10,Neugart,planetary,10.0,1,5.0,8.0,0.35,40,,,,Neugart PLE economy planetary catalog; mass by stage count; 1-stage≈QDD ratios,0.5
+PLE040-25,Neugart,planetary,25.0,2,18.0,28.8,0.45,40,,,,Neugart PLE economy planetary catalog; mass by stage count; 1-stage≈QDD ratios,0.72
+PLE040-50,Neugart,planetary,50.0,2,20.0,32.0,0.45,40,,,,Neugart PLE economy planetary catalog; mass by stage count; 1-stage≈QDD ratios,0.4
+PLE040-100,Neugart,planetary,100.0,3,20.0,32.0,0.5,40,,,,Neugart PLE economy planetary catalog; mass by stage count; 1-stage≈QDD ratios,0.2
+PLE060-5,Neugart,planetary,5.0,1,40.0,64.0,0.9,60,,,,Neugart PLE economy planetary catalog; mass by stage count; 1-stage≈QDD ratios,8.0
+PLE060-10,Neugart,planetary,10.0,1,15.0,24.0,0.9,60,,,,Neugart PLE economy planetary catalog; mass by stage count; 1-stage≈QDD ratios,1.5
+PLE060-25,Neugart,planetary,25.0,2,40.0,64.0,1.1,60,,,,Neugart PLE economy planetary catalog; mass by stage count; 1-stage≈QDD ratios,1.6
+PLE060-50,Neugart,planetary,50.0,2,44.0,70.4,1.1,60,,,,Neugart PLE economy planetary catalog; mass by stage count; 1-stage≈QDD ratios,0.88
+PLE060-100,Neugart,planetary,100.0,3,44.0,70.4,1.3,60,,,,Neugart PLE economy planetary catalog; mass by stage count; 1-stage≈QDD ratios,0.44
+PLE080-5,Neugart,planetary,5.0,1,110.0,176.0,2.1,80,,,,Neugart PLE economy planetary catalog; mass by stage count; 1-stage≈QDD ratios,22.0
+PLE080-10,Neugart,planetary,10.0,1,38.0,60.8,2.1,80,,,,Neugart PLE economy planetary catalog; mass by stage count; 1-stage≈QDD ratios,3.8
+PLE080-25,Neugart,planetary,25.0,2,110.0,176.0,2.6,80,,,,Neugart PLE economy planetary catalog; mass by stage count; 1-stage≈QDD ratios,4.4
+PLE080-50,Neugart,planetary,50.0,2,120.0,192.0,2.6,80,,,,Neugart PLE economy planetary catalog; mass by stage count; 1-stage≈QDD ratios,2.4
+PLE080-100,Neugart,planetary,100.0,3,120.0,192.0,3.1,80,,,,Neugart PLE economy planetary catalog; mass by stage count; 1-stage≈QDD ratios,1.2
+PLE120-5,Neugart,planetary,5.0,1,195.0,312.0,5.7,115,,,,Neugart PLE economy planetary catalog; mass by stage count; 1-stage≈QDD ratios,39.0
+PLE120-8,Neugart,planetary,8.0,1,120.0,192.0,5.7,115,,,,Neugart PLE economy planetary catalog; mass by stage count; 1-stage≈QDD ratios,15.0
+PLE120-25,Neugart,planetary,25.0,2,230.0,368.0,7.4,115,,,,Neugart PLE economy planetary catalog; mass by stage count; 1-stage≈QDD ratios,9.2
+PLE120-50,Neugart,planetary,50.0,2,260.0,416.0,7.4,115,,,,Neugart PLE economy planetary catalog; mass by stage count; 1-stage≈QDD ratios,5.2
+PLE120-100,Neugart,planetary,100.0,3,260.0,416.0,9.3,115,,,,Neugart PLE economy planetary catalog; mass by stage count; 1-stage≈QDD ratios,2.6
+GPX22-5,Maxon,planetary,5.0,1,0.4,0.5,0.045,22,28.0,,,Maxon GPX planetary; shop/catalog masses; small-motor matched,0.08
+GPX22-21,Maxon,planetary,21.0,2,0.8,1.0,0.055,22,30.0,,,Maxon GPX planetary; shop/catalog masses; small-motor matched,0.0381
+GPX22-111,Maxon,planetary,111.0,3,1.2,1.5,0.067,22,32.2,,,Maxon GPX planetary; shop/catalog masses; small-motor matched,0.0108
+GPX26-5,Maxon,planetary,5.0,1,0.75,1.0,0.122,26,38.0,,,Maxon GPX planetary; shop/catalog masses; small-motor matched,0.15
+GPX26-28,Maxon,planetary,28.0,2,1.5,2.0,0.144,26,47.0,,,Maxon GPX planetary; shop/catalog masses; small-motor matched,0.0536
+GPX32-5,Maxon,planetary,5.0,1,1.5,2.0,0.2,32,46.0,,,Maxon GPX planetary; shop/catalog masses; small-motor matched,0.3
+GPX32-26,Maxon,planetary,26.0,2,3.0,4.0,0.22,32,56.0,,,Maxon GPX planetary; shop/catalog masses; small-motor matched,0.1154
+GPX32-66,Maxon,planetary,66.0,3,4.5,6.0,0.25,32,64.0,,,Maxon GPX planetary; shop/catalog masses; small-motor matched,0.0682
+GPX42-5,Maxon,planetary,5.0,1,4.0,6.0,0.35,42,50.0,,,Maxon GPX planetary; shop/catalog masses; small-motor matched,0.8
+GPX42-26,Maxon,planetary,26.0,2,10.0,15.0,0.4,42,58.0,,,Maxon GPX planetary; shop/catalog masses; small-motor matched,0.3846
+GPX42-66,Maxon,planetary,66.0,3,12.0,18.0,0.45,42,66.0,,,Maxon GPX planetary; shop/catalog masses; small-motor matched,0.1818
+FLE42-5,JKong/AliExpress,planetary,5.0,1,5.0,10.0,0.25,42,61.5,,,AliExpress/JKong FLE42 NEMA17 planetary; L1 0.25 kg / L2 0.35 kg,1.0
+FLE42-10,JKong/AliExpress,planetary,10.0,1,10.0,20.0,0.25,42,61.5,35.0,listed,AliExpress/JKong FLE42 NEMA17 planetary; L1 0.25 kg / L2 0.35 kg,1.0
+FLE42-20,JKong/AliExpress,planetary,20.0,2,10.0,20.0,0.35,42,72.5,,,AliExpress/JKong FLE42 NEMA17 planetary; L1 0.25 kg / L2 0.35 kg,0.5
+FLE42-50,JKong/AliExpress,planetary,50.0,2,10.0,20.0,0.35,42,72.5,,,AliExpress/JKong FLE42 NEMA17 planetary; L1 0.25 kg / L2 0.35 kg,0.2
+FLE42-100,JKong/AliExpress,planetary,100.0,2,5.0,10.0,0.35,42,72.5,,,AliExpress/JKong FLE42 NEMA17 planetary; L1 0.25 kg / L2 0.35 kg,0.05
+PLG42S-4,Haydon Kerk,planetary,4.0,1,3.5,5.25,0.27,42,47.6,,,HaydonKerk PLG42S planetary; mass jumps with stage count,0.875
+PLG42S-8,Haydon Kerk,planetary,8.0,1,3.5,5.25,0.27,42,47.6,,,HaydonKerk PLG42S planetary; mass jumps with stage count,0.4375
+PLG42S-16,Haydon Kerk,planetary,16.0,2,6.0,9.0,0.37,42,59.4,,,HaydonKerk PLG42S planetary; mass jumps with stage count,0.375
+PLG42S-50,Haydon Kerk,planetary,50.0,2,6.0,9.0,0.37,42,59.4,,,HaydonKerk PLG42S planetary; mass jumps with stage count,0.12
+PLG42S-100,Haydon Kerk,planetary,100.0,3,14.0,21.0,0.88,42,71.2,,,HaydonKerk PLG42S planetary; mass jumps with stage count,0.14
+GP42-4,SMD/AliExpress,planetary,4.0,1,6.5,13.0,0.3,42,42.7,,,GP42 high-torque planetary (Alibaba/SMD); NEMA17 class,1.625
+GP42-5,SMD/AliExpress,planetary,5.0,1,6.9,13.8,0.3,42,42.7,40.0,listed,GP42 high-torque planetary (Alibaba/SMD); NEMA17 class,1.38
+GP42-15,SMD/AliExpress,planetary,15.0,2,9.1,18.2,0.4,42,56.6,,,GP42 high-torque planetary (Alibaba/SMD); NEMA17 class,0.6067
+GP42-25,SMD/AliExpress,planetary,25.0,2,8.6,17.2,0.4,42,56.6,,,GP42 high-torque planetary (Alibaba/SMD); NEMA17 class,0.344
+NMRV30-7.5,Motovario/Generic,worm,7.5,1,22.0,33.0,1.5,80,54.0,,,NMRV worm reducer catalog; mass without oil/motor; ratio 7.5–100; AliExpress common,2.9333
+NMRV30-10,Motovario/Generic,worm,10.0,1,22.0,33.0,1.5,80,54.0,,,NMRV worm reducer catalog; mass without oil/motor; ratio 7.5–100; AliExpress common,2.2
+NMRV30-15,Motovario/Generic,worm,15.0,1,22.0,33.0,1.5,80,54.0,,,NMRV worm reducer catalog; mass without oil/motor; ratio 7.5–100; AliExpress common,1.4667
+NMRV30-20,Motovario/Generic,worm,20.0,1,22.0,33.0,1.5,80,54.0,,,NMRV worm reducer catalog; mass without oil/motor; ratio 7.5–100; AliExpress common,1.1
+NMRV30-30,Motovario/Generic,worm,30.0,1,22.0,33.0,1.5,80,54.0,,,NMRV worm reducer catalog; mass without oil/motor; ratio 7.5–100; AliExpress common,0.7333
+NMRV30-50,Motovario/Generic,worm,50.0,1,13.2,19.8,1.5,80,54.0,45.0,listed,NMRV worm reducer catalog; mass without oil/motor; ratio 7.5–100; AliExpress common,0.264
+NMRV30-100,Motovario/Generic,worm,100.0,1,6.6,9.9,1.5,80,54.0,,,NMRV worm reducer catalog; mass without oil/motor; ratio 7.5–100; AliExpress common,0.066
+NMRV40-7.5,Motovario/Generic,worm,7.5,1,55.0,82.5,2.5,110,70.0,,,NMRV worm reducer catalog; mass without oil/motor; ratio 7.5–100; AliExpress common,7.3333
+NMRV40-10,Motovario/Generic,worm,10.0,1,55.0,82.5,2.5,110,70.0,,,NMRV worm reducer catalog; mass without oil/motor; ratio 7.5–100; AliExpress common,5.5
+NMRV40-20,Motovario/Generic,worm,20.0,1,55.0,82.5,2.5,110,70.0,,,NMRV worm reducer catalog; mass without oil/motor; ratio 7.5–100; AliExpress common,2.75
+NMRV40-30,Motovario/Generic,worm,30.0,1,55.0,82.5,2.5,110,70.0,,,NMRV worm reducer catalog; mass without oil/motor; ratio 7.5–100; AliExpress common,1.8333
+NMRV40-50,Motovario/Generic,worm,50.0,1,33.0,49.5,2.5,110,70.0,,,NMRV worm reducer catalog; mass without oil/motor; ratio 7.5–100; AliExpress common,0.66
+NMRV40-100,Motovario/Generic,worm,100.0,1,16.5,24.8,2.5,110,70.0,,,NMRV worm reducer catalog; mass without oil/motor; ratio 7.5–100; AliExpress common,0.165
+NMRV50-10,Motovario/Generic,worm,10.0,1,120.0,180.0,4.0,125,80.0,,,NMRV worm reducer catalog; mass without oil/motor; ratio 7.5–100; AliExpress common,12.0
+NMRV50-20,Motovario/Generic,worm,20.0,1,120.0,180.0,4.0,125,80.0,,,NMRV worm reducer catalog; mass without oil/motor; ratio 7.5–100; AliExpress common,6.0
+NMRV50-30,Motovario/Generic,worm,30.0,1,120.0,180.0,4.0,125,80.0,,,NMRV worm reducer catalog; mass without oil/motor; ratio 7.5–100; AliExpress common,4.0
+NMRV50-50,Motovario/Generic,worm,50.0,1,72.0,108.0,4.0,125,80.0,,,NMRV worm reducer catalog; mass without oil/motor; ratio 7.5–100; AliExpress common,1.44
+NMRV50-100,Motovario/Generic,worm,100.0,1,36.0,54.0,4.0,125,80.0,,,NMRV worm reducer catalog; mass without oil/motor; ratio 7.5–100; AliExpress common,0.36
+NMRV63-10,Motovario/Generic,worm,10.0,1,175.0,262.5,6.0,180,100.0,,,NMRV worm reducer catalog; mass without oil/motor; ratio 7.5–100; AliExpress common,17.5
+NMRV63-20,Motovario/Generic,worm,20.0,1,175.0,262.5,6.0,180,100.0,,,NMRV worm reducer catalog; mass without oil/motor; ratio 7.5–100; AliExpress common,8.75
+NMRV63-40,Motovario/Generic,worm,40.0,1,131.2,196.9,6.0,180,100.0,,,NMRV worm reducer catalog; mass without oil/motor; ratio 7.5–100; AliExpress common,3.28
+NMRV63-50,Motovario/Generic,worm,50.0,1,105.0,157.5,6.0,180,100.0,,,NMRV worm reducer catalog; mass without oil/motor; ratio 7.5–100; AliExpress common,2.1
+NMRV63-100,Motovario/Generic,worm,100.0,1,52.5,78.8,6.0,180,100.0,,,NMRV worm reducer catalog; mass without oil/motor; ratio 7.5–100; AliExpress common,0.525
+NMRV75-10,Motovario/Generic,worm,10.0,1,280.0,420.0,9.0,200,120.0,,,NMRV worm reducer catalog; mass without oil/motor; ratio 7.5–100; AliExpress common,28.0
+NMRV75-25,Motovario/Generic,worm,25.0,1,280.0,420.0,9.0,200,120.0,,,NMRV worm reducer catalog; mass without oil/motor; ratio 7.5–100; AliExpress common,11.2
+NMRV75-50,Motovario/Generic,worm,50.0,1,168.0,252.0,9.0,200,120.0,,,NMRV worm reducer catalog; mass without oil/motor; ratio 7.5–100; AliExpress common,3.36
+NMRV75-100,Motovario/Generic,worm,100.0,1,84.0,126.0,9.0,200,120.0,,,NMRV worm reducer catalog; mass without oil/motor; ratio 7.5–100; AliExpress common,0.84
+BG-R10-5,Generic/Boston-class,spur,5.0,1,2.0,3.0,0.35,50,40.0,,,Representative spur/helical inline reducers; mass approx from small industrial catalogs,0.4
+BG-R10-10,Generic/Boston-class,spur,10.0,1,2.5,3.75,0.35,50,40.0,,,Representative spur/helical inline reducers; mass approx from small industrial catalogs,0.25
+BG-R10-20,Generic/Boston-class,spur,20.0,1,3.0,4.5,0.45,50,50.0,,,Representative spur/helical inline reducers; mass approx from small industrial catalogs,0.15
+Spur60-5,Generic/Boston-class,spur,5.0,1,8.0,12.0,0.8,60,45.0,,,Representative spur/helical inline reducers; mass approx from small industrial catalogs,1.6
+Spur60-20,Generic/Boston-class,spur,20.0,1,10.0,15.0,1.0,60,55.0,,,Representative spur/helical inline reducers; mass approx from small industrial catalogs,0.5
+Spur90-10,Generic/Boston-class,spur,10.0,1,25.0,37.5,2.2,90,70.0,,,Representative spur/helical inline reducers; mass approx from small industrial catalogs,2.5
+Spur90-50,Generic/Boston-class,spur,50.0,2,30.0,45.0,2.5,90,85.0,,,Representative spur/helical inline reducers; mass approx from small industrial catalogs,0.6
