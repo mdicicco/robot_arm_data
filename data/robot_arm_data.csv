@@ -511,4 +511,5 @@ CR20A,DOBOT,collaborative,6,20,1.7,73,0.05,28.489,dobot.nu / Unchained from €2
 myCobot 280,Elephant Robotics,hobby,6,0.25,0.28,0.85,0.5,0.599,Elephant shop Arduino $599; Pi $799; Jetson $849; ±0.5 mm
 ECR5,Estun,collaborative,6,5,0.8,17,0.02,18.0,MegaRobotics $18000 listing
 UR15,UR,collaborative,6,17.5,1.3,40.7,0.05,33.0,China reseller $33000-39500; 1300 mm / 40.7 kg / ±0.05 mm
-
+OpenArm V1.1,Enactic,research,7,4.1,0.633,5.5,1.0,2.7,"docs.openarm.dev; WowRobo dual-arm kit $5400 so cost halved per arm; 7DOF; nominal payload 4.1kg (peak 6.0kg); ±1.0 mm repeatability estimated"
+OpenArm 2.0,Enactic,research,7,4.1,0.606,5.5,1.0,3.25,"docs.openarm.dev / purchase; WowRobo dual-arm kit $6500 so cost halved per arm; 7DOF; nominal payload 4.1kg (peak 6.0kg); reach 606 mm; ±1.0 mm repeatability estimated"

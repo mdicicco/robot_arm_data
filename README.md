@@ -6,26 +6,34 @@ Research data about robot manipulators, scraped from public online sources.
 
 ## Dataset Overview
 
-This dataset contains specifications for **156 robot arms** across 4 categories with complete data (payload, reach, mass, repeatability, and price). The visualization above shows:
+This dataset contains specifications for hundreds of robot arms across 4 categories (`collaborative`, `industrial`, `research`, `hobby`). Regenerate the three summary figures with `pixi run plot`.
 
-- **Reach vs Payload Factor** — Payload factor is the ratio of payload capacity to robot mass. Higher values indicate more efficient designs that can lift more relative to their own weight.
-- **Color by Type** — Collaborative robots (green) cluster at shorter reaches with higher payload efficiency. Industrial robots (red) span wider reach ranges but with lower efficiency. Hobby (blue) and Research (purple) robots occupy smaller niches.
-- **Circle Size = Value Metric** — Calculated as `1 / (repeatability × price)`. Larger circles represent better value: higher precision at lower cost.
-- **Convex Hulls** — Shaded regions show the design space each robot type occupies, highlighting where categories overlap and compete.
+### Summary plot (`robot_arm_summary.png`)
 
-## Human & humanoid comparison (bounding regions)
+- **Reach vs Payload Factor** — Payload factor is `payload / robot mass`. Higher values indicate more efficient designs that can lift more relative to their own weight.
+- **Color by Type** — Collaborative (green), industrial (red), hobby (blue), research (purple).
+- **Convex Hulls** — Shaded regions use **every** arm in that type with mass, payload, and reach (~500 rows). Price is **not** required for hull membership.
+- **Dots** — Placed only when **price and repeatability** are both known (~160 rows). Circle size is the value metric `1 / (repeatability × price)` (larger = better value). Legend counts are `priced-dots / hull-members`.
+
+### High payload-efficiency box (`robot_arm_high_pf.png`)
+
+Zoom on arms with **PF > 0.4** and **reach < 2 m**:
+
+- Includes **every** arm with mass/payload/reach in that box — **price and repeatability are not required** (so unpriced research peaks like **Mico 4** / **Jaco 4** / **LWR III** appear).
+- Hulls and dots use that same high-PF set; the purple research region extends up to the highest-PF vertex in the box.
+- Yellow dashed vertical marks **adult male arm reach (0.75 m)** from the human reference used in the humanoid comparison figure.
+
+### Human & humanoid comparison (`robot_arm_human_comparison_hulls.png`)
 
 ![Robot arms vs humans / humanoids (hulls)](robot_arm_human_comparison_hulls.png)
 
-This figure compares **serial robot-arm design space** to **human** and **humanoid** arm references on the same axes: reach (m) vs payload factor (payload / arm mass).
+Compares **serial robot-arm design space** to **human** and **humanoid** arm references on the same axes (reach vs payload factor):
 
-Unlike the summary plot above, this view:
-
-- Includes **every arm with mass, payload, and reach** (~500 rows) — **price and repeatability are not required**
-- Draws **type convex hulls only** (collaborative / industrial / research / hobby) — individual robot dots are omitted so the bounding regions stay readable
-- Overlays **human** references (yellow ★) and **humanoid** arm estimates (orange ▲)
-- Adds dashed **iso-efficiency curves** of the form `PF = 1/(a · reach)` (smaller `a` = higher payload×reach / mass)
-- Labels landmark peaks: **LWR III (1:1)**, **Mico 4** (research), collaborative max, **myCobot 280**
+- **Type convex hulls** from every arm with mass, payload, and reach (~500 rows)
+- **Dots** only when price + repeatability are available (circle size = value metric)
+- **Human** references (yellow ★) and **humanoid** arm estimates (orange ▲)
+- Dashed **iso-efficiency curves** `PF = 1/(a · reach)` (smaller `a` = higher payload×reach / mass)
+- Landmark labels: **LWR III (1:1)**, **Mico 4** (research), collaborative max, **myCobot 280**
 
 Human/humanoid reference numbers live in `data/human_humanoid_arm_data.csv`. The hull figure applies the humanoid assumptions below at plot time (it does not rewrite that CSV).
 
@@ -54,7 +62,7 @@ All humanoids are treated as one family (orange) with a shared mass rule:
 
 4. **Reach** for the five “leading” platforms is a **pixel estimate** from full-body photos (shoulder → hand / fingertip scaled by published height). Atlas uses a human-proportioned estimate (~0.44 × stature) when a clean arms-down photo was unavailable. BD’s published **2.3 m** figure is treated as whole-body workspace reach, not shoulder→hand arm length.
 
-5. **Humans** use separate anthropometric estimates (not the 5% humanoid rule): continuous full-reach hold payloads and shoulder→fingertip reaches for Child / Woman / Man / Strong.
+5. **Humans** use separate anthropometric estimates (not the 5% humanoid rule): continuous full-reach hold payloads and shoulder→fingertip reaches for Child / Woman / Man (**0.75 m**) / Strong.
 
 6. These humanoid points are **illustrative**, not datasheet arm specs. Payload factor above ~1 is rare for production serial arms (DLR **LWR III** is the classic research 1:1; Kinova arms are classified here as **research** for separation from cobot fleets — **Mico 4** / **Jaco 4** exceed PF 1 mainly on mid-range continuous ratings with light structures).
 
@@ -62,15 +70,14 @@ All humanoids are treated as one family (orange) with a shared mass rule:
 
 - Payload factor = `Payload_kg / Weight_kg` using the CSV values as published (no carry÷4 derate on industrial/cobot rows).
 - Hull vertices are the convex hull of each `Type` in reach–PF space after dropping rows missing reach, mass, or payload.
-- Dashed curves are a simple geometric-scaling sketch (`PF ∝ 1/reach`), not a fitted model.
-
-Regenerate all summary figures (including this one) with:
+- On the summary and humanoid-comparison figures, dots still require price + repeatability; the high-PF zoom does **not**.
+- Dashed curves on the humanoid figure are a simple geometric-scaling sketch (`PF ∝ 1/reach`), not a fitted model.
 
 ```bash
 pixi run plot
 ```
 
-Outputs: `robot_arm_summary.png`, `robot_arm_high_pf.png`, `robot_arm_human_comparison.png`, `robot_arm_human_comparison_hulls.png`.
+Outputs: `robot_arm_summary.png`, `robot_arm_high_pf.png`, `robot_arm_human_comparison_hulls.png`.
 
 ## Data Sources
 
@@ -114,7 +121,7 @@ This will start a local Streamlit server and open the app in your browser at `ht
 pixi run plot
 ```
 
-This runs `generate_summary_plot.py` and writes the README summary figure, the high-PF zoom, the dotted human/humanoid comparison, and the hull-only comparison described above.
+This runs `generate_summary_plot.py` and writes the three arm figures described above (summary, high-PF zoom with Man-reach line, human/humanoid hull comparison).
 
 ## Joint modules
 

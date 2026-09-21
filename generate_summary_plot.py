@@ -2,9 +2,13 @@
 Generate summary visualizations of robot arm data.
 
 Outputs:
-  robot_arm_summary.png       — complete-data robots only (README figure)
-  robot_arm_high_pf.png       — PF > 0.4, reach < 2 m zoom
-  robot_arm_human_comparison.png — robots + human / humanoid arm references
+  robot_arm_summary.png                    — README figure
+  robot_arm_high_pf.png                    — PF > 0.4, reach < 2 m zoom
+  robot_arm_human_comparison_hulls.png     — hulls + priced dots vs humans/humanoids
+
+Convention across all figures:
+  - Convex hulls use every robot in a Type with mass/payload/reach
+  - Scatter dots only for robots that also have price + repeatability
 """
 
 import os
@@ -23,7 +27,11 @@ df_raw = pd.read_csv(data_path)
 phys_cols = ['Reach_m', 'Weight_kg', 'Payload_kg']
 value_cols = ['Cost_KUSD', 'Repeatability_mm', 'Reach_m', 'Weight_kg', 'Payload_kg']
 
-# Main plots stay value-complete (price + repeatability) so circle sizing stays meaningful
+# Hull set: every arm with physical axes (price not required)
+df_hull = df_raw.dropna(subset=phys_cols).copy()
+df_hull['Payload_Factor'] = df_hull['Payload_kg'] / df_hull['Weight_kg']
+
+# Dot set: also needs price + repeatability (circle size = value metric)
 df = df_raw.dropna(subset=value_cols).copy()
 df['Payload_Factor'] = df['Payload_kg'] / df['Weight_kg']
 df['value_metric'] = 1 / (df['Repeatability_mm'] * df['Cost_KUSD'])
@@ -31,20 +39,11 @@ value_min = df['value_metric'].min()
 value_max = df['value_metric'].max()
 df['marker_size'] = 30 + (df['value_metric'] - value_min) / (value_max - value_min) * 470
 
-# Research arms with mass/payload/reach but no list price (e.g. DLR LWR III) — comparison only
-df_research_extra = df_raw.dropna(subset=phys_cols).copy()
-df_research_extra = df_research_extra[df_research_extra['Type'] == 'research']
-df_research_extra = df_research_extra[~df_research_extra['Name'].isin(df['Name'])].copy()
-df_research_extra['Payload_Factor'] = (
-    df_research_extra['Payload_kg'] / df_research_extra['Weight_kg']
-)
-df_research_extra['marker_size'] = 90.0
+print(f"Robots in hulls (mass/payload/reach): {len(df_hull)}")
+print(f"Robots with dots (price + repeatability): {len(df)}")
+print(f"Types represented: {sorted(df_hull['Type'].unique().tolist())}")
 
-print(f"Robots with complete data: {len(df)}")
-print(f"Extra research (mass/payload/reach only): {len(df_research_extra)}")
-print(f"Types represented: {df['Type'].unique().tolist()}")
-
-unique_types = sorted(df['Type'].unique())
+unique_types = sorted(df_hull['Type'].unique())
 color_palette = [
     '#2ecc71', '#3498db', '#e74c3c', '#9b59b6', '#f39c12',
     '#1abc9c', '#e91e63', '#00bcd4', '#ff5722', '#8bc34a',
@@ -53,14 +52,9 @@ type_colors = {t: color_palette[i % len(color_palette)] for i, t in enumerate(un
 print(f"Color mapping: {type_colors}")
 
 HUMAN_COLOR = '#f1c40f'
-HUMANOID_COLOR = '#ff7ab6'
-LEADING_HUMANOID_COLOR = '#ff9f43'  # orange — distinct from pink / purple research
+HUMANOID_COLOR = '#ff9f43'  # orange — unified humanoid family @ 5% body mass
 
-# Pixel-estimated leading humanoids (orange); all humanoid arm masses use ≈8% body
-LEADING_HUMANOID_NAMES = {
-    'Optimus Gen2', 'Figure 02', 'Apollo', 'Digit', 'Atlas',
-}
-# PF = 1/(a·reach) iso-lines spanning robot cloud up through ~8% humanoid band
+# PF = 1/(a·reach) iso-lines spanning robot cloud up through humanoid band
 FRONTIER_A_VALUES = (0.6, 0.9, 1.4, 2.0, 3.0, 4.5, 6.0, 12.0)
 
 # Annotation offsets for reference labels (name → (dx, dy) points)
@@ -81,38 +75,63 @@ REF_OFFSETS = {
 }
 
 
-def plot_robot_layers(ax, frame, alpha=0.7, with_hulls=True, with_labels=True):
-    """Draw type hulls and scatter for a robot dataframe."""
-    types = sorted(frame['Type'].unique())
+def plot_robot_layers(
+    ax,
+    scatter_frame,
+    hull_frame=None,
+    alpha=0.7,
+    with_hulls=True,
+    with_labels=True,
+    hull_alpha=0.15,
+):
+    """Draw type hulls from hull_frame; scatter dots from scatter_frame only.
+
+    Hulls use every robot in a category with mass/payload/reach.
+    Dots require price + repeatability (and a marker_size column).
+    """
+    if hull_frame is None:
+        hull_frame = scatter_frame
+
+    hull_types = sorted(hull_frame['Type'].unique())
+    scatter_types = sorted(scatter_frame['Type'].unique())
+    types = sorted(set(hull_types) | set(scatter_types))
+
     if with_hulls:
         for robot_type in types:
-            type_df = frame[frame['Type'] == robot_type]
-            color = type_colors[robot_type]
+            type_df = hull_frame[hull_frame['Type'] == robot_type]
+            color = type_colors.get(robot_type, '#6b8ba4')
             if len(type_df) >= 3:
                 points = type_df[['Reach_m', 'Payload_Factor']].values
                 try:
                     hull = ConvexHull(points)
                     ax.add_patch(Polygon(
                         points[hull.vertices],
-                        alpha=0.15,
+                        alpha=hull_alpha,
                         facecolor=color,
                         edgecolor=color,
                         linewidth=2,
+                        zorder=2,
                     ))
                 except Exception as e:
                     print(f"Could not create hull for {robot_type}: {e}")
 
     for robot_type in types:
-        type_df = frame[frame['Type'] == robot_type]
+        type_df = scatter_frame[scatter_frame['Type'] == robot_type]
+        if type_df.empty:
+            continue
+        n_hull = len(hull_frame[hull_frame['Type'] == robot_type])
+        label = None
+        if with_labels:
+            label = f"{robot_type.capitalize()} ({len(type_df)}/{n_hull})"
         ax.scatter(
             type_df['Reach_m'],
             type_df['Payload_Factor'],
             s=type_df['marker_size'],
-            c=type_colors[robot_type],
+            c=type_colors.get(robot_type, '#6b8ba4'),
             alpha=alpha,
             edgecolors='white',
             linewidths=0.5,
-            label=(f"{robot_type.capitalize()} ({len(type_df)})" if with_labels else None),
+            label=label,
             zorder=3,
         )
 
@@ -278,7 +297,7 @@ fig, ax = plt.subplots(figsize=(14, 10))
 fig.patch.set_facecolor('#0a1628')
 ax.set_facecolor('#0a1628')
 
-plot_robot_layers(ax, df)
+plot_robot_layers(ax, df, hull_frame=df_hull)
 
 best_rows = (
     df.sort_values('value_metric', ascending=False)
@@ -302,13 +321,13 @@ for robot_type, row in best_rows.iterrows():
 style_axes(
     ax,
     'Robot Arm Comparison: Reach vs Payload Efficiency\n',
-    'Circle size: value metric = 1 / (repeatability × price)  |  Larger = better value',
+    'Hulls: all arms with mass/payload/reach  |  Dots: price + repeatability  |  Circle size = 1/(rep × price)',
 )
 add_type_and_size_legends(ax)
 
 ax.text(
     0.02, 0.98,
-    f"Total: {len(df)} robots | {len(unique_types)} types (complete data only)",
+    f"Dots: {len(df)}  |  Hulls: {len(df_hull)}  |  {len(unique_types)} types",
     transform=ax.transAxes, fontsize=10, color='#6b8ba4', va='top',
     bbox=dict(boxstyle='round', facecolor='#121f36', edgecolor='#2a4060', alpha=0.9),
 )
@@ -321,17 +340,26 @@ print(f"Saved plot to: {summary_path}")
 plt.close(fig)
 
 # ---------------------------------------------------------------------------
-# 2) High-PF zoom (robots only)
+# 2) High-PF zoom — all phys-complete robots (no price/rep filter)
 # ---------------------------------------------------------------------------
-zoom = df[(df['Payload_Factor'] > 0.4) & (df['Reach_m'] < 2.0)].copy()
+zoom = df_hull[(df_hull['Payload_Factor'] > 0.4) & (df_hull['Reach_m'] < 2.0)].copy()
 zoom = zoom.sort_values('Payload_Factor', ascending=False)
-print(f"High-efficiency box (PF>0.4, reach<2m): {len(zoom)} robots")
+# Prefer value-metric sizing when price+rep exist; otherwise a fixed size
+zoom = zoom.merge(df[['Name', 'marker_size']], on='Name', how='left')
+zoom['marker_size'] = zoom['marker_size'].fillna(80.0)
+
+print(f"High-efficiency box (PF>0.4, reach<2m): {len(zoom)} robots (no price filter)")
 print(zoom[['Name', 'MFG', 'Type', 'Payload_kg', 'Weight_kg', 'Payload_Factor', 'Reach_m']].to_string(index=False))
+
+man_reach = float(
+    pd.read_csv(ref_path).loc[lambda d: d['Name'] == 'Man', 'Reach_m'].iloc[0]
+)
 
 fig2, ax2 = plt.subplots(figsize=(12, 8))
 fig2.patch.set_facecolor('#0a1628')
 ax2.set_facecolor('#0a1628')
-plot_robot_layers(ax2, zoom, alpha=0.85, with_hulls=False)
+# Hulls + dots from the same high-PF set (price not required)
+plot_robot_layers(ax2, zoom, hull_frame=zoom, alpha=0.85, with_hulls=True)
 
 offsets = [
     (6, 8), (6, -10), (-6, 8), (-6, -10),
@@ -353,9 +381,26 @@ for i, (_, row) in enumerate(zoom.iterrows()):
         zorder=4,
     )
 
-ax2.set_xlim(0.35, 1.45)
-ax2.set_ylim(0.395, 0.58)
-style_axes(ax2, 'High payload-efficiency box  |  PF > 0.4, reach < 2 m')
+ax2.axvline(
+    man_reach, color=HUMAN_COLOR, linestyle='--', linewidth=1.8,
+    alpha=0.95, zorder=5, label=f'Man reach ({man_reach:g} m)',
+)
+y_hi = float(zoom['Payload_Factor'].max()) + 0.06
+ax2.text(
+    man_reach + 0.015, y_hi - 0.03, 'Man reach',
+    color=HUMAN_COLOR, fontsize=10, fontweight='bold',
+    ha='left', va='top', zorder=6,
+)
+
+x_lo = min(0.35, float(zoom['Reach_m'].min()) - 0.05)
+x_hi = max(1.45, float(zoom['Reach_m'].max()) + 0.08)
+ax2.set_xlim(x_lo, x_hi)
+ax2.set_ylim(0.395, y_hi)
+style_axes(
+    ax2,
+    'High payload-efficiency box  |  PF > 0.4, reach < 2 m',
+    'All arms with mass/payload/reach (price not required)  |  Yellow dashed: adult male arm reach',
+)
 leg2 = ax2.legend(
     loc='upper right', fontsize=10, framealpha=0.9,
     facecolor='#121f36', edgecolor='#2a4060', labelcolor='#e8f4fc',
@@ -368,68 +413,8 @@ plt.close(fig2)
 print(f"Saved plot to: {zoom_path}")
 
 # ---------------------------------------------------------------------------
-# 3) Human / humanoid comparison plot
+# 3) Full-hull comparison + priced dots (humanoids unified @ 5% / carry÷4)
 # ---------------------------------------------------------------------------
-refs = pd.read_csv(ref_path)
-refs['Payload_Factor'] = refs['Payload_kg'] / refs['Weight_kg']
-humans = refs[refs['Type'] == 'human'].copy()
-humanoids = refs[refs['Type'] == 'humanoid'].copy()
-known_humanoids = humanoids[~humanoids['Name'].isin(LEADING_HUMANOID_NAMES)].copy()
-leading_humanoids = humanoids[humanoids['Name'].isin(LEADING_HUMANOID_NAMES)].copy()
-
-fig3, ax3 = plt.subplots(figsize=(14, 10))
-fig3.patch.set_facecolor('#0a1628')
-ax3.set_facecolor('#0a1628')
-
-plot_robot_layers(ax3, df)
-# Overlay research arms that lack price (LWR III 1:1, etc.)
-if not df_research_extra.empty:
-    plot_robot_layers(ax3, df_research_extra, alpha=0.85, with_hulls=False, with_labels=False)
-plot_reference_group(ax3, humans, HUMAN_COLOR, '*', 'Human (full-reach ref.)', size=200)
-plot_reference_group(ax3, known_humanoids, HUMANOID_COLOR, '^', 'Humanoid arm (prior mass est.)', size=120)
-plot_reference_group(
-    ax3, leading_humanoids, LEADING_HUMANOID_COLOR, '^',
-    'Leading humanoid (mass ≈ 8% body, pixel-est. reach)', size=130,
-)
-
-# Call out landmark 1:1 research arm
-lwr = df_research_extra[(df_research_extra['Name'] == 'LWR III')]
-if lwr.empty:
-    lwr = df[(df['Name'] == 'LWR III')]
-if not lwr.empty:
-    row = lwr.iloc[0]
-    ax3.annotate(
-        'LWR III (1:1)',
-        (row['Reach_m'], row['Payload_Factor']),
-        xytext=(12, 10),
-        textcoords='offset points',
-        fontsize=9,
-        color=type_colors.get('research', '#9b59b6'),
-        fontweight='bold',
-        arrowprops=dict(arrowstyle='-', color=type_colors.get('research', '#9b59b6'), lw=0.8),
-        zorder=9,
-    )
-
-style_axes(
-    ax3,
-    'Robot Arms vs Human / Humanoid Arms\n',
-    'Circle size: value metric = 1 / (repeatability × price)  |  Dashed: PF = 1/(a·reach)  |  Pink ▲ prior mass est.  |  Orange ▲ 8% body mass',
-)
-plot_frontier_curves(ax3, a_values=FRONTIER_A_VALUES, color='#2a4060')
-add_type_and_size_legends(ax3)
-
-plt.tight_layout()
-compare_path = os.path.join(script_dir, 'robot_arm_human_comparison.png')
-fig3.savefig(compare_path, dpi=150, facecolor='#0a1628', edgecolor='none', bbox_inches='tight')
-plt.close(fig3)
-print(f"Saved plot to: {compare_path}")
-
-# ---------------------------------------------------------------------------
-# 4) Hull-only comparison (no price filter; humanoids unified @ 5% / carry÷4)
-# ---------------------------------------------------------------------------
-# All arms with mass + payload + reach (price not required)
-df_hull = df_raw.dropna(subset=phys_cols).copy()
-df_hull['Payload_Factor'] = df_hull['Payload_kg'] / df_hull['Weight_kg']
 print(f"Hull-set robots (no price filter): {len(df_hull)}")
 
 # Humanoids: one orange family — arm mass = 5% body;
@@ -481,31 +466,15 @@ fig4, ax4 = plt.subplots(figsize=(14, 10))
 fig4.patch.set_facecolor('#0a1628')
 ax4.set_facecolor('#0a1628')
 
-# Type bounding regions only (no robot scatter dots)
-hull_types = sorted(df_hull['Type'].unique())
-for robot_type in hull_types:
-    type_df = df_hull[df_hull['Type'] == robot_type]
-    color = type_colors.get(robot_type, '#6b8ba4')
-    if len(type_df) < 3:
-        continue
-    pts = type_df[['Reach_m', 'Payload_Factor']].values
-    try:
-        hull = ConvexHull(pts)
-        ax4.add_patch(Polygon(
-            pts[hull.vertices],
-            alpha=0.22,
-            facecolor=color,
-            edgecolor=color,
-            linewidth=2.2,
-            zorder=3,
-            label=f"{robot_type.capitalize()} hull (n={len(type_df)})",
-        ))
-    except Exception as e:
-        print(f"Could not create hull for {robot_type} (hull plot): {e}")
+# Full-category hulls + dots only where price + repeatability exist
+plot_robot_layers(
+    ax4, df, hull_frame=df_hull, alpha=0.7, with_hulls=True,
+    with_labels=True, hull_alpha=0.22,
+)
 
 plot_reference_group(ax4, humans4, HUMAN_COLOR, '*', 'Human (full-reach ref.)', size=200)
 plot_reference_group(
-    ax4, humanoids4, LEADING_HUMANOID_COLOR, '^',
+    ax4, humanoids4, HUMANOID_COLOR, '^',
     'Humanoid arm (5% body; carry÷4 or per-arm÷2)', size=130,
 )
 
@@ -545,21 +514,10 @@ for typ, name, offset, label, va in (
 style_axes(
     ax4,
     'Robot Arm Bounding Regions vs Human / Humanoid Arms\n',
-    'Polygons: all arms with mass/payload/reach (no price filter, dots omitted)  |  Orange ▲ humanoids @ 5% body mass',
+    'Hulls: all mass/payload/reach  |  Dots: price + repeatability (legend n = dots/hull)  |  Orange ▲ humanoids @ 5% body mass',
 )
 plot_frontier_curves(ax4, a_values=FRONTIER_A_VALUES, color='#2a4060')
-
-legend4 = ax4.legend(
-    loc='upper right',
-    fontsize=10,
-    framealpha=0.9,
-    facecolor='#121f36',
-    edgecolor='#2a4060',
-    labelcolor='#e8f4fc',
-    title='Regions / refs',
-    title_fontsize=11,
-)
-legend4.get_title().set_color('#00d4ff')
+add_type_and_size_legends(ax4)
 
 plt.tight_layout()
 hull_path = os.path.join(script_dir, 'robot_arm_human_comparison_hulls.png')
