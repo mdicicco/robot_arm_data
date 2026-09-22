@@ -168,7 +168,7 @@ Bare brushless motors (not geared joint modules) live in `data/bldc_motor_data.c
 
 ### Dataset
 
-Rows span **small → medium → large** BLDC motors from CubeMars (frameless RI/RO), Maxon (EC flat), Faulhaber, Kollmorgen (AKM2G LV), Teknic ClearPath (integrated servo), ODrive (outrunner / hub), T-Motor, plus **AliExpress/Alibaba OEM** coverage (Flipsky esk8 outrunners, HXC/MOSRAC frameless torque motors, scooter/QS hubs). Core fields:
+Rows span **small → medium → large** BLDC motors from CubeMars (frameless RI/RO + GL gimbal), Maxon (EC / ECX SPEED / ECX FLAT), Faulhaber (micro through 32 mm), Kollmorgen (AKM2G LV), Teknic ClearPath (integrated servo), ODrive (outrunner / hub), T-Motor (Antigravity), plus **AliExpress/Alibaba OEM** coverage (Flipsky esk8 outrunners, HXC/MOSRAC frameless torque motors, scooter/QS hubs). Dense coverage below **1 Nm** (Faulhaber/Maxon micros + CubeMars GL30–40 + MN4006/5006). Core fields:
 
 - **Max_Torque_Nm** — peak / stall / short-term max (primary torque for the mass model)
 - **Max_Speed_rpm** — no-load or catalog max speed
@@ -185,7 +185,7 @@ Notes cite the catalog / shop page. Empty cells mean the source did not publish 
 log(mass) = a + b · log(τ_max) + c · log(ω_max)
 ```
 
-Physically this is a power-law `mass ∝ τ^b · ω^c`. On the current set, **torque dominates** (`b ≈ 0.82`); the speed exponent is near zero. Current fit (listed-mass rows, n≈51): in-sample R²(log) **~0.78**, leave-one-out R² **~0.75**, LOO MAE **~0.66 kg**. Example: 2 Nm peak @ 4000 rpm → **~0.5 kg**.
+Physically this is a power-law `mass ∝ τ^b · ω^c`. On the current set, **torque dominates** (`b ≈ 0.72`); the speed exponent is near zero. Current fit (listed-mass rows, n≈76): in-sample R²(log) **~0.88**, leave-one-out R² **~0.87**, LOO MAE **~0.57 kg**. Example: 2 Nm peak @ 4000 rpm → **~0.5 kg**.
 
 ```bash
 pixi run motor-analyze
