@@ -166,33 +166,117 @@ Bare brushless motors (not geared joint modules) live in `data/bldc_motor_data.c
 
 ![Motor mass fit](robot_motor_mass_fit.png)
 
+![Motor mass contour](robot_motor_mass_contour.png)
+
 ### Dataset
 
-Rows span **small → medium → large** BLDC motors from CubeMars (frameless RI/RO + GL gimbal), Maxon (EC / ECX SPEED / ECX FLAT), Faulhaber (micro through 32 mm), Kollmorgen (AKM2G LV), Teknic ClearPath (integrated servo), ODrive (outrunner / hub), T-Motor (Antigravity), plus **AliExpress/Alibaba OEM** coverage (Flipsky esk8 outrunners, HXC/MOSRAC frameless torque motors, scooter/QS hubs). Dense coverage below **1 Nm** (Faulhaber/Maxon micros + CubeMars GL30–40 + MN4006/5006). Core fields:
+**120 motors** (119 used in the fit: listed mass + peak torque + max speed). Sources span CubeMars (frameless RI/RO + GL gimbal), Maxon (EC / ECX SPEED / ECX FLAT), Faulhaber (micro through 32 mm), Kollmorgen (AKM2G LV), Teknic ClearPath, ODrive, T-Motor, plus **AliExpress/Alibaba OEM** (MOSRAC/TSL U-series, SteadyWin WK/GB, Maintex LW, Honpine FM1, XRobotek XMD031, Flipsky, HXC, scooter/QS hubs). Dense below **5 Nm** (~94 rows), especially **&lt;1 Nm** (~54 rows).
+
+| Peak torque | Count |
+|---|---|
+| &lt;0.05 Nm | 6 |
+| 0.05–0.2 | 18 |
+| 0.2–0.5 | 15 |
+| 0.5–1 | 15 |
+| 1–2 | 12 |
+| 2–5 | 28 |
+| 5–10 | 9 |
+| 10+ | 17 |
+
+| Form | Count | Role in catalog |
+|---|---|---|
+| **frameless** | 59 | Robot joint kits (CubeMars, MOSRAC, Honpine, …) |
+| **outrunner** | 19 | Prop / gimbal / hub-adjacent BLDC |
+| **inrunner** | 16 | Precision micros (Maxon ECX SPEED, Faulhaber) |
+| **industrial** | 11 | Packaged servos (Kollmorgen AKM2G) |
+| **flat** | 7 | Maxon EC / ECX FLAT pancakes |
+| **integrated** | 4 | ClearPath-style drive-in-motor |
+| **hub** | 3 | Wheel / hub motors |
+
+Core fields:
 
 - **Max_Torque_Nm** — peak / stall / short-term max (primary torque for the mass model)
 - **Max_Speed_rpm** — no-load or catalog max speed
 - **Weight_kg** — published motor mass (`Weight_Flag=listed`, or `estimate` when only a class analog exists)
+- **Form** — categorical form used as the type dummy (like gearbox `Type`)
 - Optional: continuous torque, OD/length, Kv, pole pairs, voltage, street price
 
 Notes cite the catalog / shop page. Empty cells mean the source did not publish that number.
 
-### Mass model
+### Mass models
 
-`analyze_motor_mass.py` fits mass from peak torque and max speed on **listed-mass** rows:
+Same pattern as the gearbox type model: a shared torque/speed slope with a **form-specific intercept**, plus optional per-form `mass∝τ^b` lines on the plot.
+
+#### 1. Form-aware global (primary estimator)
+
+```
+log(mass) = a[form] + b · log(τ_max) + c · log(ω_max)
+```
+
+Current fit (n=119 listed-mass rows):
+
+| | Value |
+|---|---|
+| **b** (torque) | **+0.677** |
+| **c** (speed) | **−0.186** |
+| R²(log) | **0.956** |
+| LOO R² | **0.947** |
+| MAE | **0.241 kg** |
+| LOO MAE | **0.275 kg** |
+
+Effective intercepts `a[form]` (log-mass units; lower = lighter for the same τ, ω):
+
+| Form | a[form] | n |
+|---|---|---|
+| frameless | −0.348 | 59 |
+| outrunner | −0.182 | 19 |
+| flat | +0.181 | 7 |
+| hub | +0.365 | 3 |
+| inrunner | +0.744 | 16 |
+| integrated | +1.036 | 4 |
+| industrial | +1.079 | 11 |
+
+So for a given torque/speed, **frameless / outrunner are lightest**; **industrial / integrated are heaviest** (~4× heavier than frameless at the same point). Example at **τ = 2 Nm, ω = 4000 rpm**:
+
+| Form | Estimated mass |
+|---|---|
+| frameless | **0.24 kg** |
+| outrunner | 0.29 kg |
+| flat | 0.41 kg |
+| inrunner | 0.72 kg |
+| industrial | **1.01 kg** |
+
+#### 2. Pooled (no form) — contour backdrop
 
 ```
 log(mass) = a + b · log(τ_max) + c · log(ω_max)
 ```
 
-Physically this is a power-law `mass ∝ τ^b · ω^c`. On the current set, **torque dominates** (`b ≈ 0.72`); the speed exponent is near zero. Current fit (listed-mass rows, n≈76): in-sample R²(log) **~0.88**, leave-one-out R² **~0.87**, LOO MAE **~0.57 kg**. Example: 2 Nm peak @ 4000 rpm → **~0.5 kg**.
+Used only for the torque–speed **contour map** (one surface for all forms). Weaker than the form-aware model: R²(log) **0.868**, LOO R² **0.861**, MAE **0.429 kg**. Contours are nearly vertical → mass is mostly a torque story once form is ignored.
+
+#### 3. Per-form torque lines (plot overlays)
+
+For each form with **≥5** rows, a simple `log(m) = a + b·log(τ)` is fit and drawn on the left panel of `robot_motor_mass_fit.png` (colored line matching the dots). Speed-only slopes are printed for diagnostics but are weak for most forms.
+
+| Form | mass ∝ τ^b | R² | MAE | n |
+|---|---|---|---|---|
+| outrunner | **τ^0.79** | 0.95 | 0.04 kg | 19 |
+| frameless | **τ^0.76** | 0.93 | 0.29 kg | 59 |
+| flat | **τ^0.63** | 0.93 | 0.04 kg | 7 |
+| industrial | **τ^0.62** | 0.95 | 0.27 kg | 11 |
+| inrunner | **τ^0.50** | 0.88 | 0.02 kg | 16 |
+
+`integrated` and `hub` are too sparse (&lt;5 rows) for a per-form line; they still get a global `a[form]` intercept in the primary estimator.
+
+### Plots
+
+- **`robot_motor_mass_fit.png`** — left: mass vs peak torque by form (marker size ∝ 1/speed), with per-form `mass∝τ^b` lines; right: form-aware predicted vs actual (identity line, R²≈0.96).
+- **`robot_motor_mass_contour.png`** — pooled mass contours on the τ–ω plane; dots are measured motors colored by mass, shaped by form.
 
 ```bash
 pixi run motor-analyze
-pixi run python analyze_motor_mass.py --torque 2.0 --speed 4000
+pixi run python analyze_motor_mass.py --torque 2.0 --speed 4000 --form frameless
 ```
-
-Regenerates `robot_motor_mass_fit.png` (predicted vs actual) and `robot_motor_mass_contour.png` (torque–speed map with mass as color contours + measured motors as dots), and prints a one-shot mass estimate when `--torque` / `--speed` are given.
 
 ## Gearboxes / reducers
 
