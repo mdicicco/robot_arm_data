@@ -1,0 +1,39 @@
+Name,MFG,Type,DOF,Reach_m,Payload_kg,Weight_kg,Base_Height_m,Shoulder_Offset_m,Upper_Arm_m,Forearm_m,Wrist_m,Shoulder_Torque_Nm,Elbow_Torque_Nm,Wrist_Torque_Nm,Confidence,Notes
+UR3,UR,collaborative,6,0.50,3,11,0.1519,0,0.2437,0.2133,0.1182,56,28,12,high,UR DH: d1=.1519 a2=.24365 a3=.21325 d5=.08535 d6=.0819; wrist=hypot(d5;d6); joint sizes 3/2/1
+UR5,UR,collaborative,6,0.85,5,18.4,0.0892,0,0.4250,0.3923,0.1253,150,150,28,high,UR DH: d1=.08916 a2=.425 a3=.39225 d5=.09465 d6=.0823; joint sizes 4/4/2
+UR10,UR,collaborative,6,1.30,10,28.9,0.1273,0,0.6120,0.5723,0.1487,330,150,56,high,UR DH: d1=.1273 a2=.612 a3=.5723 d5=.1157 d6=.0922; joint sizes 5/4/3
+UR3e,UR,collaborative,6,0.50,3,11.2,0.1519,0,0.2436,0.2132,0.1262,56,28,12,high,UR DH: d1=.15185 a2=.24355 a3=.2132 d5=.08535 d6=.0921
+UR5e,UR,collaborative,6,0.85,5,20.6,0.1625,0,0.4250,0.3922,0.1409,150,150,28,high,UR DH: d1=.1625 a2=.425 a3=.3922 d5=.0997 d6=.0996
+UR10e,UR,collaborative,6,1.30,12.5,33.5,0.1807,0,0.6127,0.5716,0.1662,330,150,56,high,UR DH: d1=.1807 a2=.6127 a3=.57155 d5=.11985 d6=.11655
+UR16e,UR,collaborative,6,0.90,16,33.1,0.1807,0,0.4784,0.3600,0.1662,330,150,56,high,UR DH: d1=.1807 a2=.4784 a3=.36 d5=.11985 d6=.11655
+UR20,UR,collaborative,6,1.75,20,64,0.2363,0,0.8620,0.7287,0.2206,738,433,56,medium,UR DH: d1=.2363 a2=.862 a3=.7287 d5=.1593 d6=.1543; joint torque from UR20 spec (approx)
+UR30,UR,collaborative,6,1.30,30,63.5,0.2363,0,0.6370,0.5037,0.2206,738,433,56,medium,UR DH: d1=.2363 a2=.637 a3=.5037 d5=.1593 d6=.1543
+Franka Panda,Franka,collaborative,7,0.855,3,18.5,0.3330,0,0.3266,0.3927,0.1385,87,87,12,high,Franka DH: d1=.333 d3=.316 a4=.0825 d5=.384 a7=.088 d_flange=.107; upper=hypot(.316;.0825)
+LBR iiwa 7 R800,KUKA,collaborative,7,0.80,7,23.9,0.3400,0,0.4000,0.4000,0.1260,176,110,40,high,KUKA DH: d1=.34 d3=.40 d5=.40 d7=.126; J4 110 Nm J6 40 Nm
+LBR iiwa 14 R820,KUKA,collaborative,7,0.82,14,29.9,0.3600,0,0.4200,0.4000,0.1260,320,176,40,high,KUKA DH: d1=.36 d3=.42 d5=.40 d7=.126
+Gen3 7,Kinova,research,7,0.902,3,8.2,0.2848,0,0.4208,0.3143,0.1674,39,39,9,high,Kinova Gen3 DH (user guide): .1564+.1284 / .2104+.2104 / .2084+.1059 / .1059+.0615
+Gen3 6,Kinova,research,6,0.891,3,7.2,0.2848,0,0.4100,0.3143,0.1674,39,39,9,medium,Kinova Gen3 6DOF user guide; forearm/wrist approx equal to 7DOF
+Jaco 6,Kinova,research,6,0.90,2.2,4.4,0.2755,0,0.4100,0.2814,0.1600,40,40,7,medium,Jaco2 DH: D1=.2755 D2=.41 D3=.2073 D4=.0741 D6=.16; forearm=D3+D4
+xArm 6,uFactory,collaborative,6,0.70,5,12.2,0.2670,0,0.2895,0.3512,0.1230,,,,high,xArm6 DH: d1=.267 a2=hypot(.0535;.2845) a3=.0775 d4=.3425 a5=.076 d6=.097
+xArm 7,uFactory,collaborative,7,0.70,3.5,13.7,0.2670,0,0.2977,0.3512,0.1230,,,,high,xArm7 DH: d1=.267 d3=.293 a4=.0525 d5=.3425 a6=.0775 d7=.097
+Lite 6,uFactory,collaborative,6,0.44,1,7.2,0.2435,0,0.2000,0.2436,0.0615,,,,medium,Lite6 DH: d1=.2435 a2=.2 a3=.087 d4=.2276 d6=.0615
+M0609,Doosan Robotics,collaborative,6,0.90,6,27,0.1555,0,0.4110,0.3680,0.1210,,,,medium,Doosan DH: d1=.1555 a2=.411 d4=.368 d6=.121
+M1013,Doosan Robotics,collaborative,6,1.30,10,33,0.1555,0,0.6200,0.5590,0.1210,,,,medium,Doosan DH: d1=.1555 a2=.62 d4=.559 d6=.121
+TM5-700,Techman,collaborative,6,0.70,6,22.1,0.1452,0,0.3290,0.3115,0.1561,,,,medium,TM DH: d1=.1452 a2=.329 a3=.3115 d5=.106 d6=.1144
+TM12,Techman,collaborative,6,1.30,12,32.8,0.1652,0,0.6360,0.5575,0.1561,,,,medium,TM12 DH: a2=.636 a3=.5575; wrist as TM5
+AUBO i5,AUBO,collaborative,6,0.886,5,24,0.0985,0,0.4080,0.3760,0.1385,,,,medium,AUBO DH: d1=.0985 a2=.408 a3=.376 d5=.1025 d6=.094
+CRX-10iA,FANUC,collaborative,6,1.249,10,40,0.2450,0,0.5400,0.5400,0.1600,,,,low,FANUC CRX-10iA dimension drawing (approx)
+Piper,AgileX,research,6,0.626,1.5,4.2,0.1230,0,0.2850,0.2508,0.0910,,,,medium,AgileX Piper URDF (approx)
+ViperX 300,Trossen,hobby,6,0.75,0.75,3.6,0.1270,0,0.3059,0.3000,0.1435,,,,medium,Trossen URDF: upper=hypot(.3;.06) forearm=.3 wrist=.07+.0735
+WidowX 250,Trossen,hobby,6,0.65,0.25,2.3,0.1107,0,0.2550,0.2500,0.1400,,,,medium,Trossen URDF: upper=hypot(.25;.05) forearm=.25 wrist approx
+myCobot 280,Elephant Robotics,hobby,6,0.28,0.25,0.85,0.1316,0,0.1104,0.0960,0.0850,,,,medium,Elephant DH: d1=.13156 a2=.1104 a3=.096 d5=.07318 d6=.0436; wrist=hypot(d5;d6)
+IRB120,ABB,industrial,6,0.58,3,25,0.2900,0,0.2700,0.3100,0.0720,,,,high,ABB DH: d1=.29 a2=.27 a3=.07 d4=.302 d6=.072; forearm=hypot(a3;d4)
+IRB140,ABB,industrial,6,0.81,6,98,0.3520,0.070,0.3600,0.3800,0.0650,,,,medium,ABB DH: d1=.352 a1=.07 a2=.36 d4=.38 d6=.065
+IRB2600-12/1.85,ABB,industrial,6,1.85,12,272,0.4450,0.150,0.7000,0.8033,0.0850,,,,medium,ABB DH: a1=.15 a2=.70 a3=.115 d4=.795 d6=.085
+KR 6 R900 (Agilus),KUKA,industrial,6,0.901,6,52,0.4000,0.025,0.4550,0.4215,0.0800,,,,medium,KUKA KR Agilus DH: a1=.025 a2=.455 a3=.035 d4=.42 d6=.08
+KR 16 R1610,KUKA,industrial,6,1.611,16,235,0.6750,0.260,0.6800,0.6709,0.1150,,,,medium,KUKA KR16 DH: d1=.675 a1=.26 a2=.68 a3=.035 d4=.67 d6=.115
+KR 210 R2700,KUKA,industrial,6,2.70,210,1068,0.6750,0.350,1.1500,1.0008,0.2150,,,,medium,KUKA KR210 DH: a1=.35 a2=1.15 a3=.041 d4=1.0 d6=.215
+LR Mate 200iD,FANUC,industrial,6,0.717,7,25,0.3300,0.050,0.3300,0.3368,0.0800,,,,medium,FANUC DH: d1=.33 a1=.05 a2=.33 a3=.035 d4=.335 d6=.08
+M-10iA,FANUC,industrial,6,1.42,10,130,0.4500,0.150,0.6000,0.6708,0.1000,,,,low,FANUC M-10iA DH (approx): a1=.15 a2=.6 a3=.2 d4=.64 d6=.1
+GP7,Yaskawa,industrial,6,0.927,7,34,0.3300,0.040,0.4450,0.4418,0.0800,,,,medium,Yaskawa GP7 DH: a1=.04 a2=.445 a3=.04 d4=.44 d6=.08
+TX2-60,Staubli,industrial,6,0.67,4.5,51.4,0.3750,0,0.2900,0.3100,0.0700,,,,medium,Staubli TX2-60 dims: a2=.29 d4=.31 d6=.07
