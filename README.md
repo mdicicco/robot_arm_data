@@ -344,7 +344,7 @@ The fractions are roughly scale-free across 0.3–2.7 m reach (`robot_arm_geomet
 | elbow | elbow pitch | upper-arm roll | elbow pitch |
 | shoulder | shoulder yaw, shoulder pitch | — | shoulder pitch |
 
-All joints in a cluster share one actuator. Each cluster's sizing joint carries the payload plus every actuator distal to it in the chain, with the arm horizontal:
+Each cluster's sizing (pitch) joint carries the payload plus every actuator distal to it in the chain, with the arm horizontal. The other joints in the cluster don't carry that gravity moment: shoulder yaw, upper-arm roll, forearm roll and wrist roll. Each gets its own, smaller actuator, sized to a fraction of the sizing joint's torque. The default is **50 %**, set per joint with the GUI sliders or with `--secondary`. Because mass ∝ torque^~0.7, a 50 % joint weighs about 60 % of its pitch joint's actuator. The lighter roll actuators also reduce the load on every pitch joint closer to the base.
 
 ```
 T = SF · g · [ m_payload · x_payload + Σ_distal m_i · x_i ]      (SF defaults to 1.0 = pure static)
@@ -354,7 +354,7 @@ m_actuator = k[gearbox] · ( m_gearbox(type, T, ratio) + m_motor(form, τ_motor,
 
 The wrist pitch carries its own cluster's wrist roll, so the sizing is a fixed-point iteration. The loop re-runs wrist → elbow → shoulder until no mass changes by more than 10 µg (typically 4–5 passes). `k` is an **integration factor** calibrated on `robot_joint_data.csv`: complete module mass ÷ predicted bare gearbox + motor. It comes out to 0.98 for harmonic, 0.96 for cycloidal, 0.65 for planetary/QDD, and 1.0 where there is no module data (worm/spur).
 
-**Validation:** with each arm's real geometry, the actuator-only torques fall below the published joint ratings. That gap is the link structure and dynamics this model doesn't include yet. Model actuator mass is a median **~38 %** of whole-cobot mass (34 % across all arms). Industrial arms sit much lower because their castings are heavy.
+**Validation:** with each arm's real geometry, the actuator-only torques fall below the published joint ratings. That gap is the link structure and dynamics this model doesn't include yet. Model actuator mass is a median **~31 %** of whole-cobot mass (27 % across all arms). Industrial arms sit much lower because their castings are heavy.
 
 ### Payload-ratio upper bound
 
@@ -368,22 +368,22 @@ The curves use the **`all`** gearbox and motor option, which is a pooled fit ove
 - **Motor:** `log m = −1.94 + 0.75·log τ + 0.05·log ω`
 - **Integration factor:** 0.69, calibrated across all joint modules
 
-6-DOF, SF 1.0 (pure static):
+6-DOF, SF 1.0 (pure static), off-chain joints at 50 %:
 
 | Reach | 1 kg | 2 kg | 5 kg | 10 kg | 20 kg |
 |---|---|---|---|---|---|
-| 0.25 m | 1.81 | 2.18 | 2.77 | 3.31 | 3.96 |
-| 0.5 m | 1.03 | 1.24 | 1.59 | 1.92 | 2.30 |
-| 1.0 m | 0.57 | 0.69 | 0.90 | 1.09 | 1.32 |
-| 1.5 m | 0.39 | 0.48 | 0.63 | 0.77 | 0.94 |
-| 2.0 m | 0.30 | 0.37 | 0.49 | 0.60 | 0.74 |
-| 2.5 m | 0.24 | 0.30 | 0.40 | 0.49 | 0.61 |
-| 3.0 m | 0.20 | 0.25 | 0.34 | 0.42 | 0.52 |
-| 3.5 m | 0.17 | 0.22 | 0.29 | 0.36 | 0.45 |
+| 0.25 m | 2.23 | 2.67 | 3.39 | 4.06 | 4.85 |
+| 0.5 m | 1.28 | 1.54 | 1.97 | 2.36 | 2.83 |
+| 1 m | 0.71 | 0.87 | 1.12 | 1.35 | 1.63 |
+| 1.5 m | 0.50 | 0.61 | 0.80 | 0.97 | 1.17 |
+| 2 m | 0.38 | 0.47 | 0.62 | 0.76 | 0.92 |
+| 2.5 m | 0.31 | 0.39 | 0.51 | 0.62 | 0.76 |
+| 3 m | 0.26 | 0.33 | 0.43 | 0.53 | 0.65 |
+| 3.5 m | 0.22 | 0.28 | 0.38 | 0.46 | 0.57 |
 
 Each curve has its own colour. Published arms are coloured by the curve whose payload is nearest theirs, using log-midpoint bands (0.71–1.4, 1.4–3.2, 3.2–7.1, 7.1–14 and 14–28 kg), so each dot can be compared against its own line. Arms outside 0.71–28 kg are gray, and marker shape shows arm type. In the GUI, the **Highlight payload band** buttons (all / 1 / 2 / 5 / 10 / 20 kg) bring one curve and its arms to the front, fade the rest, and count how many arms in that group fall below or above the line.
 
-The ratio rises with payload because actuator mass grows like torque^0.7–0.75, which is sub-linear. For a single design, pick a specific gearbox and motor (`--gearbox harmonic --motor frameless`, or the GUI buttons). The bound curves stay on `all`. For comparison, at 0.85 m / 5 kg, `all` + `all` gives 4.9 kg of actuators, harmonic + frameless 6.1 kg, and planetary + frameless 3.5 kg.
+The ratio rises with payload because actuator mass grows like torque^0.7–0.75, which is sub-linear. For a single design, pick a specific gearbox and motor (`--gearbox harmonic --motor frameless`, or the GUI buttons). The bound curves stay on `all`. For comparison, at 0.85 m / 5 kg, `all` + `all` gives 3.9 kg of actuators, harmonic + frameless 5.0 kg, and planetary + frameless 2.9 kg.
 
 ```bash
 pixi run arm-mass                                    # 0.85 m / 5 kg example, validation + payload-ratio plots

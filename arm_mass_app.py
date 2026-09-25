@@ -187,9 +187,9 @@ def draw_arm(res: dict) -> go.Figure:
         )
         dx, dy = CALLOUT_OFFSETS.get(j.name, (0, -120))
         head = f"<b>{j.name}</b>" + (" ★" if j.sizing else "")
-        body = f"{row['actuator_kg']:.2f} kg"
-        if j.sizing:
-            body += f"<br>{row['torque_nm']:.1f} Nm"
+        body = f"{row['actuator_kg']:.2f} kg<br>{row['torque_nm']:.1f} Nm"
+        if not j.sizing:
+            body += f" ({row['torque_frac']:.0%})"
         fig.add_annotation(
             x=cx, y=cy, ax=dx, ay=dy, text=f"{head}<br>{body}",
             showarrow=True, arrowhead=0, arrowwidth=1.2, arrowcolor=color,
@@ -428,6 +428,27 @@ def main():
                 + ", ".join(f"{t} {f:.2f}" for t, f in mdl.integration.items())
             )
 
+        with st.expander("Off-chain joint torque (% of sizing joint)", expanded=True):
+            st.caption(
+                "Yaw / roll joints don't carry the gravity moment. Each is sized to this share of its "
+                "cluster's pitch-joint torque; 100% = same actuator as the pitch joint."
+            )
+            owners = {
+                "Shoulder yaw": "shoulder pitch",
+                "Upper-arm roll": "elbow pitch",
+                "Forearm roll": "wrist pitch",
+                "Wrist roll": "wrist pitch",
+            }
+            secondary = {}
+            for name in amodel.SECONDARY_JOINTS:
+                if name == "Upper-arm roll" and int(dof) < 7:
+                    continue
+                pct = st.slider(
+                    f"{name} (vs {owners[name]})", 10, 100, int(amodel.DEFAULT_SECONDARY_FRAC * 100), 5,
+                    format="%d%%", key=f"sec_{name}",
+                )
+                secondary[name] = pct / 100.0
+
         default_ratio = amodel.DEFAULT_RATIO[gearbox]
         with st.expander("Gear ratio & joint speed per cluster"):
             ratio, speed = {}, {}
@@ -443,7 +464,7 @@ def main():
     cfg = amodel.ArmConfig(
         reach_m=reach, payload_kg=payload, dof=int(dof), gearbox_type=gearbox, motor_form=motor,
         geometry=geometry, ratio=ratio, joint_speed_dps=speed, safety_factor=sf, tool_offset_m=tool,
-        integrated=integrated, link_mass_per_m=link_mpm,
+        integrated=integrated, link_mass_per_m=link_mpm, secondary_torque_frac=secondary,
     )
     res = amodel.size_arm(cfg, mdl)
     grp = res["groups"]
@@ -459,14 +480,15 @@ def main():
     c[0].metric("Total actuators", f"{res['actuator_total_kg']:.2f} kg",
                 help=f"{len(t)} actuators" + (f" + {res['structure_kg']:.2f} kg structure placeholder" if res["structure_kg"] else ""))
     for col, g in zip(c[1:4], ("shoulder", "elbow", "wrist")):
-        n = int((t["group"] == g).sum())
-        col.metric(f"{g.capitalize()} ×{n} · {grp[g]['torque_nm']:.1f} Nm", f"{grp[g]['actuator_kg']:.2f} kg",
-                   help=f"Each {g} actuator; sized by {grp[g]['sizing_joint'].lower()} torque")
+        gt = t[t["group"] == g]
+        parts = " + ".join(f"{r.joint.lower()} {r.actuator_kg:.2f}" for r in gt.itertuples())
+        col.metric(f"{g.capitalize()} ×{len(gt)} · {grp[g]['torque_nm']:.1f} Nm", f"{gt['actuator_kg'].sum():.2f} kg",
+                   help=f"Cluster total: {parts} kg. Sized by {grp[g]['sizing_joint'].lower()} torque.")
     c[4].metric("Payload / actuator mass", f"{payload / res['actuator_total_kg']:.2f}")
 
     st.plotly_chart(draw_arm(res), use_container_width=True, config={"displayModeBar": False})
     st.caption(
-        "★ = sizing joint for its cluster; all joints in a cluster share its actuator. "
+        "★ = sizing joint for its cluster (full torque); other joints in the cluster are sized to the % shown. "
         "Circles = pitch axes (into page), bands = roll/yaw axes. Glyph size ∝ mass^⅓. Hover for motor/gearbox detail."
     )
 

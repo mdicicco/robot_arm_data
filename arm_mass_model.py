@@ -124,6 +124,11 @@ def _pooled_gearbox_defaults() -> tuple[float, float]:
 
 GEAR_EFFICIENCY[ALL], DEFAULT_RATIO[ALL] = _pooled_gearbox_defaults()
 
+# Non-sizing joints (yaw / roll axes that don't carry the gravity moment) get this
+# fraction of their cluster's sizing torque unless overridden per joint.
+DEFAULT_SECONDARY_FRAC = 0.5
+SECONDARY_JOINTS = ("Shoulder yaw", "Upper-arm roll", "Forearm roll", "Wrist roll")
+
 # Joint-module Type → gearbox Type for calibrating the integration factor.
 JOINT_TO_GEARBOX = {
     "harmonic": "harmonic",
@@ -157,6 +162,9 @@ class ArmConfig:
         default_factory=lambda: {"shoulder": 180.0, "elbow": 180.0, "wrist": 240.0}
     )
     safety_factor: float = 1.0
+    # Joints off the torque chain (shoulder yaw, rolls) are sized to this fraction
+    # of their cluster's sizing torque; keyed by joint name, missing → default.
+    secondary_torque_frac: dict[str, float] = field(default_factory=dict)
     tool_offset_m: float = 0.0  # payload CoG beyond the flange
     integrated: bool = True  # apply joint-module calibration factor
     link_mass_per_m: float = 0.0  # structure placeholder (kg per m of link)
@@ -167,6 +175,11 @@ class ArmConfig:
 
     def ratio_for(self, group: str) -> float:
         return float(self.ratio.get(group, DEFAULT_RATIO[self.gearbox_type]))
+
+    def torque_frac(self, joint: "JointSlot") -> float:
+        if joint.sizing:
+            return 1.0
+        return float(self.secondary_torque_frac.get(joint.name, DEFAULT_SECONDARY_FRAC))
 
 
 @dataclass
@@ -345,30 +358,31 @@ def size_actuator(
     }
 
 
-def _range_warnings(cfg: ArmConfig, sized: dict[str, dict], models: ActuatorModels) -> list[str]:
+def _range_warnings(cfg: ArmConfig, table: pd.DataFrame, models: ActuatorModels) -> list[str]:
+    """Flag any actuator whose torque / ratio / motor point falls outside the fitted data."""
     warnings = []
     g = models.gear_ranges.loc[cfg.gearbox_type]
     m = models.motor_ranges.loc[cfg.motor_form]
-    for group in GROUPS:
-        s = sized[group]
+    for _, s in table.iterrows():
+        who = s["joint"].lower()
         if not g["t_min"] <= s["torque_nm"] <= g["t_max"]:
             warnings.append(
-                f"{group}: {s['torque_nm']:.1f} Nm is outside the {cfg.gearbox_type} gearbox data "
+                f"{who}: {s['torque_nm']:.1f} Nm is outside the {cfg.gearbox_type} gearbox data "
                 f"({g['t_min']:.3g}–{g['t_max']:.3g} Nm) — extrapolated"
             )
         if not g["r_min"] <= s["ratio"] <= g["r_max"]:
             warnings.append(
-                f"{group}: ratio {s['ratio']:.0f} is outside {cfg.gearbox_type} data "
+                f"{who}: ratio {s['ratio']:.0f} is outside {cfg.gearbox_type} data "
                 f"({g['r_min']:.0f}–{g['r_max']:.0f})"
             )
         if not m["t_min"] <= s["motor_torque_nm"] <= m["t_max"]:
             warnings.append(
-                f"{group}: motor {s['motor_torque_nm']:.3g} Nm is outside {cfg.motor_form} data "
+                f"{who}: motor {s['motor_torque_nm']:.3g} Nm is outside {cfg.motor_form} data "
                 f"({m['t_min']:.3g}–{m['t_max']:.3g} Nm) — extrapolated"
             )
         if not m["w_min"] <= s["motor_speed_rpm"] <= m["w_max"]:
             warnings.append(
-                f"{group}: motor {s['motor_speed_rpm']:.0f} rpm is outside {cfg.motor_form} data "
+                f"{who}: motor {s['motor_speed_rpm']:.0f} rpm is outside {cfg.motor_form} data "
                 f"({m['w_min']:.0f}–{m['w_max']:.0f} rpm)"
             )
     return warnings
@@ -380,7 +394,11 @@ def size_arm(
     tol_kg: float = 1e-5,
     max_iter: int = 100,
 ) -> dict:
-    """Size wrist → elbow → shoulder; iterate until actuator masses stop changing."""
+    """Size wrist → elbow → shoulder; iterate until actuator masses stop changing.
+
+    The cluster's pitch joint takes the full gravity torque; the other joints in
+    the cluster (yaw / rolls) take `cfg.torque_frac(joint)` of it.
+    """
     models = models or load_actuator_models()
     joints, L = layout_joints(cfg)
     structure = _structure_masses(cfg, L)
@@ -388,6 +406,7 @@ def size_arm(
 
     mass = {j.name: 0.0 for j in joints}
     sized: dict[str, dict] = {}
+    per_joint: dict[str, dict] = {}
     history = []
     for it in range(max_iter):
         prev = dict(mass)
@@ -413,21 +432,30 @@ def size_arm(
                 **act,
             }
             for j in joints:
-                if j.group == group:
-                    mass[j.name] = act["actuator_kg"]
-        history.append({"iteration": it + 1, **{g: sized[g]["actuator_kg"] for g in GROUPS}})
+                if j.group != group:
+                    continue
+                frac = cfg.torque_frac(j)
+                j_act = act if frac == 1.0 else size_actuator(cfg, group, torque * frac, models)
+                per_joint[j.name] = {"torque_frac": frac, "torque_nm": torque * frac, **j_act}
+                mass[j.name] = j_act["actuator_kg"]
+        history.append({
+            "iteration": it + 1,
+            **{g: sized[g]["actuator_kg"] for g in GROUPS},
+            "total": sum(mass.values()),
+        })
         if max(abs(mass[k] - prev[k]) for k in mass) < tol_kg:
             break
 
     rows = []
     for j in joints:
-        s = sized[j.group]
+        s = per_joint[j.name]
         rows.append(
             {
                 "joint": j.name,
                 "group": j.group,
                 "sizing": j.sizing,
                 "x_m": j.x,
+                "torque_frac": s["torque_frac"],
                 "torque_nm": s["torque_nm"],
                 "ratio": s["ratio"],
                 "motor_torque_nm": s["motor_torque_nm"],
@@ -451,7 +479,7 @@ def size_arm(
         "structure_kg": structure_kg,
         "structure": structure,
         "integration_factor": models.integration[cfg.gearbox_type] if cfg.integrated else 1.0,
-        "warnings": _range_warnings(cfg, sized, models),
+        "warnings": _range_warnings(cfg, table, models),
     }
 
 
@@ -628,7 +656,7 @@ def plot_validation(val: pd.DataFrame, out: str) -> None:
 
     ax = axes[1]
     geo._style(ax)
-    for typ, color in geo.TYPE_COLORS.items():
+    for typ, color in ARM_TYPE_COLORS.items():
         d = val[val["Type"] == typ].dropna(subset=["Weight_kg"])
         if d.empty:
             continue
@@ -643,7 +671,7 @@ def plot_validation(val: pd.DataFrame, out: str) -> None:
     ax.set_yscale("log")
     ax.set_xlabel("Published robot mass (kg)")
     ax.set_ylabel("Model actuator mass (kg)")
-    ax.set_title("Actuator-only mass vs whole-robot mass")
+    ax.set_title(f"Actuator-only mass vs whole-robot mass (off-chain joints at {DEFAULT_SECONDARY_FRAC:.0%})")
     ax.legend(fontsize=8, facecolor="#121f36", edgecolor="#2a4060", labelcolor="#e8f4fc")
 
     fig.tight_layout()
@@ -670,6 +698,7 @@ def print_result(res: dict) -> None:
             index=False,
             formatters={
                 "x_m": "{:.3f}".format,
+                "torque_frac": "{:.0%}".format,
                 "torque_nm": "{:.1f}".format,
                 "ratio": "{:.0f}".format,
                 "motor_torque_nm": "{:.3f}".format,
@@ -695,6 +724,10 @@ def main():
     parser.add_argument("--geometry", default="all", choices=list(geo.GEOMETRY_BASES))
     parser.add_argument("--sf", type=float, default=1.0, help="Safety factor on static torque")
     parser.add_argument(
+        "--secondary", type=float, default=DEFAULT_SECONDARY_FRAC,
+        help="Torque fraction for joints off the torque chain (yaw / rolls), 0–1",
+    )
+    parser.add_argument(
         "--out",
         default=os.path.join(os.path.dirname(os.path.abspath(__file__)), "robot_arm_actuator_validation.png"),
     )
@@ -717,6 +750,7 @@ def main():
         motor_form=args.motor,
         geometry=default_geometry(args.geometry),
         safety_factor=args.sf,
+        secondary_torque_frac={j: args.secondary for j in SECONDARY_JOINTS},
     )
     print_result(size_arm(cfg, models))
 
@@ -726,11 +760,12 @@ def main():
     print(pivot.loc[[0.25, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5]].to_string(float_format=lambda v: f"{v:.2f}"))
     plot_payload_ratio_bounds(
         sweep, load_arm_catalog(), args.out_bounds,
-        f"\n{args.dof}-DOF, pooled gearbox + motor fits (all types), SF {args.sf}",
+        f"\n{args.dof}-DOF, pooled gearbox + motor fits (all types), SF {args.sf}, "
+        f"off-chain joints (yaw / rolls) at {args.secondary:.0%} of pitch torque",
     )
 
     val = validate_against_arms()
-    print("\nValidation (harmonic + frameless, SF 1.0, each arm's own geometry):")
+    print(f"\nValidation (harmonic + frameless, SF 1.0, off-chain joints {DEFAULT_SECONDARY_FRAC:.0%}, each arm's own geometry):")
     cols = ["Name", "Payload_kg", "Weight_kg", "actuator_kg"] + [
         f"{g}_{k}" for g in ["shoulder", "elbow", "wrist"] for k in ["pred_nm", "actual_nm"]
     ]
