@@ -30,10 +30,14 @@ Zoom on arms with **PF > 0.4** and **reach < 2 m**:
 Compares **serial robot-arm design space** to **human** and **humanoid** arm references on the same axes (reach vs payload factor):
 
 - **Type convex hulls** from every arm with mass, payload, and reach (~500 rows)
-- **Dots** only when price + repeatability are available (circle size = value metric)
+- **Dots** for every arm with payload in the humanoid range (**1–7.5 kg**), priced or not. They're coloured by robot type, all the same size, with no price or repeatability weighting (201 of ~500 arms).
 - **Human** references (yellow ★) and **humanoid** arm estimates (orange ▲)
-- Dashed **iso-efficiency curves** `PF = 1/(a · reach)` (smaller `a` = higher payload×reach / mass)
 - Landmark labels: **LWR III (1:1)**, **Mico 4** (research), collaborative max, **myCobot 280**
+- **Cyan band**: the actuator-only payload-ratio bound from `arm_mass_model.py` (no structure). It uses the pooled `all` gearbox + motor fits, SF 1.0, and yaw/roll joints at 50 %, for a 7-DOF arm. The band spans the humanoid payload range (**1–7.5 kg** per arm at full reach, after the derates below).
+  - **Solid** = the full arm, including both shoulder actuators.
+  - **Dashed** = shoulder yaw + pitch actuators removed. On a humanoid those sit in the torso and aren't part of the ~5 % arm mass, so this is the fairer comparison.
+
+  Optimus, Figure 02, Apollo and Atlas (5–7.5 kg) sit *above* the solid band but well inside the dashed band. Their arm-mass estimate only works if the shoulder actuators are counted as torso mass.
 
 Human/humanoid reference numbers live in `data/human_humanoid_arm_data.csv`. The hull figure applies the humanoid assumptions below at plot time (it does not rewrite that CSV).
 
@@ -71,7 +75,6 @@ All humanoids are treated as one family (orange) with a shared mass rule:
 - Payload factor = `Payload_kg / Weight_kg` using the CSV values as published (no carry÷4 derate on industrial/cobot rows).
 - Hull vertices are the convex hull of each `Type` in reach–PF space after dropping rows missing reach, mass, or payload.
 - On the summary and humanoid-comparison figures, dots still require price + repeatability; the high-PF zoom does **not**.
-- Dashed curves on the humanoid figure are a simple geometric-scaling sketch (`PF ∝ 1/reach`), not a fitted model.
 
 ```bash
 pixi run plot

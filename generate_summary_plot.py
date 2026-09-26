@@ -4,7 +4,9 @@ Generate summary visualizations of robot arm data.
 Outputs:
   robot_arm_summary.png                    — README figure
   robot_arm_high_pf.png                    — PF > 0.4, reach < 2 m zoom
-  robot_arm_human_comparison_hulls.png     — hulls + priced dots vs humans/humanoids
+  robot_arm_human_comparison_hulls.png     — hulls + priced dots vs humans/humanoids,
+                                             plus the actuator-only payload-ratio bound
+                                             (arm_mass_model) across the humanoid payload range
 
 Convention across all figures:
   - Convex hulls use every robot in a Type with mass/payload/reach
@@ -17,6 +19,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 from matplotlib.patches import FancyBboxPatch, Polygon
+
+import arm_mass_model as amodel
 from scipy.spatial import ConvexHull
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -54,9 +58,6 @@ print(f"Color mapping: {type_colors}")
 HUMAN_COLOR = '#f1c40f'
 HUMANOID_COLOR = '#ff9f43'  # orange — unified humanoid family @ 5% body mass
 
-# PF = 1/(a·reach) iso-lines spanning robot cloud up through humanoid band
-FRONTIER_A_VALUES = (0.6, 0.9, 1.4, 2.0, 3.0, 4.5, 6.0, 12.0)
-
 # Annotation offsets for reference labels (name → (dx, dy) points)
 REF_OFFSETS = {
     'Child': (10, -16),
@@ -87,7 +88,8 @@ def plot_robot_layers(
     """Draw type hulls from hull_frame; scatter dots from scatter_frame only.
 
     Hulls use every robot in a category with mass/payload/reach.
-    Dots require price + repeatability (and a marker_size column).
+    Dots are sized by the frame's marker_size column (value metric on the
+    priced figures; a constant on the humanoid figure).
     """
     if hull_frame is None:
         hull_frame = scatter_frame
@@ -136,29 +138,6 @@ def plot_robot_layers(
         )
 
 
-def plot_frontier_curves(ax, a_values, color='#2a4060', x_min=0.12, x_max=4.2, y_max=None):
-    """Overlay PF = 1/(a·reach) iso-efficiency frontiers (dashed, grid-colored)."""
-    if y_max is None:
-        y_max = ax.get_ylim()[1]
-    x = np.linspace(x_min, x_max, 400)
-    for i, a in enumerate(a_values):
-        y = 1.0 / (a * x)
-        mask = (y > 0.01) & (y < y_max * 0.98)
-        ax.plot(
-            x[mask], y[mask],
-            linestyle='--', color=color, linewidth=1.0, alpha=0.85, zorder=2,
-        )
-        # Stagger label x so nearby curves stay readable
-        x_lab = 0.18 + 0.07 * (i % 4)
-        y_lab = 1.0 / (a * x_lab)
-        if 0.04 < y_lab < y_max * 0.92:
-            ax.text(
-                x_lab, y_lab, f'a={a:g}',
-                color=color, fontsize=7.5, ha='left', va='bottom',
-                alpha=0.9, zorder=2,
-            )
-
-
 def style_axes(ax, title, subtitle=None):
     ax.set_xlabel('Reach (m)', fontsize=14, color='#e8f4fc', fontweight='bold')
     ax.set_ylabel('Payload Factor (Payload / Robot Mass)', fontsize=14, color='#e8f4fc', fontweight='bold')
@@ -175,18 +154,21 @@ def style_axes(ax, title, subtitle=None):
         spine.set_color('#2a4060')
 
 
-def add_type_and_size_legends(ax):
+def add_type_and_size_legends(ax, with_size=True, title='Robot Type', outside=False):
     legend = ax.legend(
-        loc='upper right',
+        loc='upper left' if outside else 'upper right',
+        bbox_to_anchor=(1.01, 1.0) if outside else None,
         fontsize=11,
         framealpha=0.9,
         facecolor='#121f36',
         edgecolor='#2a4060',
         labelcolor='#e8f4fc',
-        title='Robot Type',
+        title=title,
         title_fontsize=12,
     )
     legend.get_title().set_color('#00d4ff')
+    if not with_size:
+        return
     size_legend = ax.legend(
         handles=[
             Line2D([0], [0], marker='o', color='w', markerfacecolor='#6b8ba4',
@@ -287,6 +269,58 @@ def plot_reference_group(ax, group_df, color, marker, label, size=160):
             zorder=11,
             annotation_clip=False,
         )
+
+
+BOUND_COLOR = '#00d4ff'
+BOUND_REACHES = np.linspace(0.25, 3.5, 66)
+
+
+def humanoid_bound_curves(payloads, dof=7):
+    """Actuator-only payload-ratio bound vs reach for each payload.
+
+    Returns {payload: (full_arm_ratio, no_shoulder_ratio)} over BOUND_REACHES.
+    'no_shoulder' drops the shoulder yaw + pitch actuators from the arm mass —
+    on a humanoid they sit in the torso, so published arm mass excludes them.
+    Uses the pooled "all" gearbox + motor fits and the model defaults
+    (SF 1.0, off-chain joints at 50 %).
+    """
+    models = amodel.load_actuator_models()
+    out = {}
+    for payload in payloads:
+        full, no_sh = [], []
+        for reach in BOUND_REACHES:
+            t = amodel.size_arm(amodel.ArmConfig(float(reach), float(payload), dof=dof), models)['table']
+            full.append(payload / t['actuator_kg'].sum())
+            no_sh.append(payload / t.loc[t['group'] != 'shoulder', 'actuator_kg'].sum())
+        out[payload] = (np.array(full), np.array(no_sh))
+    return out
+
+
+def plot_humanoid_bound_band(ax, p_lo, p_hi, dof=7, y_max=None):
+    """Shade the bound between the lightest and heaviest humanoid payloads."""
+    curves = humanoid_bound_curves((p_lo, p_hi), dof=dof)
+    y_max = y_max or ax.get_ylim()[1]
+    x = BOUND_REACHES
+    (lo_full, lo_ns), (hi_full, hi_ns) = curves[p_lo], curves[p_hi]
+    ax.fill_between(x, lo_full, hi_full, color=BOUND_COLOR, alpha=0.10, zorder=3, linewidth=0)
+    ax.fill_between(x, lo_ns, hi_ns, color=BOUND_COLOR, alpha=0.05, zorder=3, linewidth=0)
+    labels = (
+        f'Bound {p_lo:g}–{p_hi:g} kg, full {dof}-DOF arm',
+        None,
+        f'Bound {p_lo:g}–{p_hi:g} kg, shoulder actuators in torso',
+        None,
+    )
+    for (y, ls, lw), label in zip(
+        ((lo_full, '-', 1.8), (hi_full, '-', 1.8), (lo_ns, '--', 1.4), (hi_ns, '--', 1.4)), labels
+    ):
+        ax.plot(x, y, color=BOUND_COLOR, linestyle=ls, linewidth=lw, alpha=0.9, zorder=4, label=label)
+    # Label each curve at the right edge of the visible x-range
+    i_end = int(np.searchsorted(x, ax.get_xlim()[1], side='right')) - 1
+    for y, text in ((lo_full, f'{p_lo:g} kg'), (hi_full, f'{p_hi:g} kg'),
+                    (lo_ns, f'{p_lo:g} kg'), (hi_ns, f'{p_hi:g} kg')):
+        ax.annotate(text, (x[i_end], y[i_end]), xytext=(-4, 6), textcoords='offset points',
+                    ha='right', va='bottom', fontsize=8.5, color=BOUND_COLOR, zorder=4)
+    return curves
 
 
 # ---------------------------------------------------------------------------
@@ -462,13 +496,22 @@ for _, row in refs4[refs4['Type'] == 'humanoid'].iterrows():
     })
 humanoids4 = pd.DataFrame(h_rows)
 
-fig4, ax4 = plt.subplots(figsize=(14, 10))
+fig4, ax4 = plt.subplots(figsize=(18, 10))
 fig4.patch.set_facecolor('#0a1628')
 ax4.set_facecolor('#0a1628')
 
 # Full-category hulls + dots only where price + repeatability exist
+# Humanoid payload range drives both the dot filter and the bound band
+H_PAYLOAD_LO = float(humanoids4['Payload_kg'].min())
+H_PAYLOAD_HI = float(humanoids4['Payload_kg'].max())
+
+# Hulls keep every arm; dots = every arm (priced or not) inside the humanoid
+# payload range, one size, colored by type — no price / repeatability here
+df_dots4 = df_hull[df_hull['Payload_kg'].between(H_PAYLOAD_LO, H_PAYLOAD_HI)].copy()
+df_dots4['marker_size'] = 45
+print(f"Humanoid-figure dots (payload {H_PAYLOAD_LO:g}–{H_PAYLOAD_HI:g} kg): {len(df_dots4)} of {len(df_hull)}")
 plot_robot_layers(
-    ax4, df, hull_frame=df_hull, alpha=0.7, with_hulls=True,
+    ax4, df_dots4, hull_frame=df_hull, alpha=0.7, with_hulls=True,
     with_labels=True, hull_alpha=0.22,
 )
 
@@ -477,6 +520,11 @@ plot_reference_group(
     ax4, humanoids4, HUMANOID_COLOR, '^',
     'Humanoid arm (5% body; carry÷4 or per-arm÷2)', size=130,
 )
+
+# Theoretical actuator-only bound across the humanoid payload range (7-DOF)
+ax4.set_xlim(0, 3.0)
+ax4.set_ylim(-0.05, 2.0)
+plot_humanoid_bound_band(ax4, H_PAYLOAD_LO, H_PAYLOAD_HI, dof=7)
 
 # Call out landmark peaks (Kinova now in research — keep LWR III + Mico 4)
 for typ, name, offset, label, va in (
@@ -514,10 +562,14 @@ for typ, name, offset, label, va in (
 style_axes(
     ax4,
     'Robot Arm Bounding Regions vs Human / Humanoid Arms\n',
-    'Hulls: all mass/payload/reach  |  Dots: price + repeatability (legend n = dots/hull)  |  Orange ▲ humanoids @ 5% body mass',
+    f'Hulls: all arms  |  Dots: all arms with payload {H_PAYLOAD_LO:g}–{H_PAYLOAD_HI:g} kg '
+    '(legend n = dots/hull)  |  '
+    'Orange ▲ humanoids @ 5% body mass  |  Cyan = actuator-only bound (no structure)',
 )
-plot_frontier_curves(ax4, a_values=FRONTIER_A_VALUES, color='#2a4060')
-add_type_and_size_legends(ax4)
+add_type_and_size_legends(
+    ax4, with_size=False, outside=True,
+    title='Robot type  ·  references  ·\nactuator-only bound (SF 1.0, yaw/rolls 50 %)',
+)
 
 plt.tight_layout()
 hull_path = os.path.join(script_dir, 'robot_arm_human_comparison_hulls.png')
