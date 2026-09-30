@@ -45,15 +45,15 @@ HCR-12,Hanwha,collaborative,6,12,1.3,52,0.1,,
 Nextage,Kawada,collaborative,15,1.5,0.577,29,0.03,60,29kg might be whole robot 60k for whole robot
 Jaco 7,Kinova,research,7,2.1,0.985,5.7,,34.9,
 Jaco 6,Kinova,research,6,2.2,0.9,4.4,,30,
-Jaco 4,Kinova,research,4,4.4,0.75,3.6,,,"carbon-fiber links; mid-range continuous payload 4.4 kg (full-reach temporary 3.5 kg) — PF>1 is mid-range rating"
+Jaco 4,Kinova,research,4,4.4,0.75,3.6,,,carbon-fiber links; mid-range continuous payload 4.4 kg (full-reach temporary 3.5 kg) — PF>1 is mid-range rating
 Mico 6,Kinova,research,6,2.1,0.7,4.6,,20.9,
-Mico 4,Kinova,research,4,5.2,0.55,3.8,,,"reinforced-plastic links (not CF); mid-range continuous 5.2 kg (full-reach temporary 2.7 kg) — PF>1 is mid-range rating"
+Mico 4,Kinova,research,4,5.2,0.55,3.8,,,reinforced-plastic links (not CF); mid-range continuous 5.2 kg (full-reach temporary 2.7 kg) — PF>1 is mid-range rating
 Gen3 7,Kinova,research,7,3,0.902,8.2,1.0,37.2,"Reichelt €40246 incl 19% VAT (~€33820 excl, ~$37.2k at 1.10 USD/EUR); SKU KR L53 0007"
 Gen3 6,Kinova,research,6,3,0.891,7.2,0.1,43.359,alibaba listing
-Gen3 Lite,Kinova,research,6,0.5,0.76,5.4,,13.5,"RobotShop $13500; Generation Robots €15600 excl VAT; Reichelt ~€17169 incl VAT. Replaced mixed Alibaba $37578 that matched Gen2 7"
+Gen3 Lite,Kinova,research,6,0.5,0.76,5.4,,13.5,RobotShop $13500; Generation Robots €15600 excl VAT; Reichelt ~€17169 incl VAT. Replaced mixed Alibaba $37578 that matched Gen2 7
 Gen2 7,Kinova,research,7,2.4,0.984,5.5,1.0,37.578,alibaba listing
 Gen2 6,Kinova,research,6,2.4,0.984,5.5,0.1,26.5,alibaba listing
-Link 6,Kinova,research,6,6,1,23.45,0.1,38.6,"Unchained Robotics €35107.56 excl VAT (~$38.6k at 1.10 USD/EUR); Top3DShop $39500"
+Link 6,Kinova,research,6,6,1,23.45,0.1,38.6,Unchained Robotics €35107.56 excl VAT (~$38.6k at 1.10 USD/EUR); Top3DShop $39500
 LBR iiwa 7 R800,KUKA,collaborative,7,7,0.8,23.9,0.1,80,
 LBR iiwa 14 R820,KUKA,collaborative,7,14,0.82,29.9,0.15,96,
 LBR iisy,KUKA,collaborative,6,3,0.6,18.8,,,
@@ -383,9 +383,9 @@ PUMA 560,Puma,research,6,2.5,0.864,55,0.1,,
 WAM 4,Barrett,research,4,4,1,25,0.1,90,"listed with ""high precision"" package"
 WAM 7,Barrett,research,7,3,1,27,0.2,120,"listed with ""high precision"" package"
 SARA,DLR,research,7,12,1.024,22.6,,,
-LWR III,DLR,research,7,14,0.936,14,,,"DLR official (2003): 14 kg mass / 14 kg payload / 936 mm reach — landmark 1:1 load-to-weight; CF link structures + integrated joint electronics; licensed to KUKA → LBR 4 → iiwa"
-LWR II,DLR,research,7,7,1.024,18,,,"DLR ca 2000: 18 kg mass / 7 kg payload at full speed; predecessor to LWR III"
-LWR I,DLR,research,7,7,1.338,14.5,,,"DLR ca 1995: 14.5 kg mass / 7 kg payload / 1338 mm; first DLR lightweight arm"
+LWR III,DLR,research,7,14,0.936,14,,,DLR official (2003): 14 kg mass / 14 kg payload / 936 mm reach — landmark 1:1 load-to-weight; CF link structures + integrated joint electronics; licensed to KUKA → LBR 4 → iiwa
+LWR II,DLR,research,7,7,1.024,18,,,DLR ca 2000: 18 kg mass / 7 kg payload at full speed; predecessor to LWR III
+LWR I,DLR,research,7,7,1.338,14.5,,,DLR ca 1995: 14.5 kg mass / 7 kg payload / 1338 mm; first DLR lightweight arm
 KIT Arm,Kit.edu,research,8,11,1.077,25,,,
 MER,NASA,research,5,5,0.5,10,,,
 MSL,NASA,research,5,15,2.1,50,,,
@@ -394,21 +394,21 @@ LWA 4P,Schunk,research,6,6,0.61,15,0.15,,
 LWA 4P-2,Schunk,research,6,6,0.61,12.5,0.06,,
 LWA 4D,Schunk,research,7,10,1.1134,18,0.15,72,estimate is power cube derived (2 large 2 medium 1 small 1 ball wrist)
 PR2,Willow Garage,research,7,1.8,0.881,,,115,cost is delta between full robot and 1 arm version - full robot mass is 220kg
-Research 3,Franka,research,7,3,0.855,18.3,0.1,30.4,"Generation Robots €27650 excl VAT (~$30.4k at 1.10 USD/EUR); official datasheet 3 kg / 855 mm / ~18.3 kg / ±0.1 mm; torque sensors; successor to Panda. Distinct from Fairino FR3"
-LBR Med 7 R800,KUKA,research,7,7,0.8,25.5,0.1,,"kuka.com medical LBR; quote-only"
-LBR Med 14 R820,KUKA,research,7,14,0.82,32.3,0.15,,"kuka.com medical LBR; quote-only"
-SO-101,Hugging Face,research,6,0.5,0.5,0.8,,0.24,"LeRobot flagship (TheRobotStudio); 5 arm + gripper; Seeed kit ~$240; DIY follower ~$100-200; ~500 g / 500 mm / 800 g PLA; Feetech STS3215"
-PA-10-7C,Mitsubishi,research,7,10,1.0,40,0.1,,"DFKI / MHI; 7-axis open-architecture lab arm; ~1 m reach; 40 kg arm; ±0.1 mm"
-Katana 450,Neuronics,research,6,0.4,0.517,5.2,,,"FAPS FAU; 400 g flange payload; 517 mm; 5.2 kg without controller/gripper; Harmonic Drive"
-OpenMANIPULATOR-X,ROBOTIS,research,5,0.5,0.38,0.7,0.2,1.417,"robotis.com shop $1416.60; 4 DoF + gripper; XM430; <0.2 mm; 500 g / 380 mm / 0.70 kg"
-OpenMANIPULATOR-P,ROBOTIS,research,6,3,0.645,5.76,0.05,16.176,"robotis.us $16176.02; emanual 3 kg / 645 mm / 5.76 kg / ±0.05 mm (US page also lists 5.5 kg)"
-OMY-F3M,ROBOTIS,research,6,3,0.58,13.5,0.05,14.374,"robotis.us $14373.85; DYNAMIXEL-Y imitation-learning follower; 3 kg / 580 mm / 13.5 kg / ±0.05 mm"
-youBot Arm,KUKA,research,5,0.5,0.513,5.8,0.1,,"KUKA youBot datasheet; 5-axis magnesium arm; 0.5 kg / 0.513 m / 5.8 kg / 0.1 mm; discontinued research platform"
-QArm,Quanser,research,4,0.75,0.75,8.25,0.05,,"quanser.com; 4 DoF education/research; payload 350-750 g (using max); 750 mm / 8.25 kg / ±0.05 mm; quote-only"
-T-Series 6-DoF,HEBI,research,6,0.6,0.75,5.6,,22.5,"shophebi.com A-2580-06 $22500; payload 0.60 kg at max reach (3.5 kg at half reach)"
-T-Series 7-DoF,HEBI,research,7,1.0,0.9,9.0,,29.605,"shophebi.com A-2582-07 $29605; payload 1.0 kg at max reach (3.0 kg at half reach)"
-R-Series 6-DoF,HEBI,research,6,0.4,0.75,6.75,,30.34,"shophebi.com A-2240-06 $30340; payload 0.40 kg at max reach (3.5 kg at half reach); IP67 actuators"
-MIRO,DLR,research,7,3,1.1,10,,,"dlr.de; surgical research arm; torque-controlled; 3 kg / 1.1 m / ~10 kg"
+Research 3,Franka,research,7,3,0.855,18.3,0.1,30.4,Generation Robots €27650 excl VAT (~$30.4k at 1.10 USD/EUR); official datasheet 3 kg / 855 mm / ~18.3 kg / ±0.1 mm; torque sensors; successor to Panda. Distinct from Fairino FR3
+LBR Med 7 R800,KUKA,research,7,7,0.8,25.5,0.1,,kuka.com medical LBR; quote-only
+LBR Med 14 R820,KUKA,research,7,14,0.82,32.3,0.15,,kuka.com medical LBR; quote-only
+SO-101,Hugging Face,research,6,0.5,0.5,0.8,,0.24,LeRobot flagship (TheRobotStudio); 5 arm + gripper; Seeed kit ~$240; DIY follower ~$100-200; ~500 g / 500 mm / 800 g PLA; Feetech STS3215
+PA-10-7C,Mitsubishi,research,7,10,1.0,40,0.1,,DFKI / MHI; 7-axis open-architecture lab arm; ~1 m reach; 40 kg arm; ±0.1 mm
+Katana 450,Neuronics,research,6,0.4,0.517,5.2,,,FAPS FAU; 400 g flange payload; 517 mm; 5.2 kg without controller/gripper; Harmonic Drive
+OpenMANIPULATOR-X,ROBOTIS,research,5,0.5,0.38,0.7,0.2,1.417,robotis.com shop $1416.60; 4 DoF + gripper; XM430; <0.2 mm; 500 g / 380 mm / 0.70 kg
+OpenMANIPULATOR-P,ROBOTIS,research,6,3,0.645,5.76,0.05,16.176,robotis.us $16176.02; emanual 3 kg / 645 mm / 5.76 kg / ±0.05 mm (US page also lists 5.5 kg)
+OMY-F3M,ROBOTIS,research,6,3,0.58,13.5,0.05,14.374,robotis.us $14373.85; DYNAMIXEL-Y imitation-learning follower; 3 kg / 580 mm / 13.5 kg / ±0.05 mm
+youBot Arm,KUKA,research,5,0.5,0.513,5.8,0.1,,KUKA youBot datasheet; 5-axis magnesium arm; 0.5 kg / 0.513 m / 5.8 kg / 0.1 mm; discontinued research platform
+QArm,Quanser,research,4,0.75,0.75,8.25,0.05,,quanser.com; 4 DoF education/research; payload 350-750 g (using max); 750 mm / 8.25 kg / ±0.05 mm; quote-only
+T-Series 6-DoF,HEBI,research,6,0.6,0.75,5.6,,22.5,shophebi.com A-2580-06 $22500; payload 0.60 kg at max reach (3.5 kg at half reach)
+T-Series 7-DoF,HEBI,research,7,1.0,0.9,9.0,,29.605,shophebi.com A-2582-07 $29605; payload 1.0 kg at max reach (3.0 kg at half reach)
+R-Series 6-DoF,HEBI,research,6,0.4,0.75,6.75,,30.34,shophebi.com A-2240-06 $30340; payload 0.40 kg at max reach (3.5 kg at half reach); IP67 actuators
+MIRO,DLR,research,7,3,1.1,10,,,dlr.de; surgical research arm; torque-controlled; 3 kg / 1.1 m / ~10 kg
 VP-5243,Denso,industrial,5,3,0.5,13,0.02,,
 VP-6242,Denso,industrial,6,3,0.502,15,0.02,,
 VS-050,Denso,industrial,5,4,0.505,34,0.02,,
@@ -448,15 +448,15 @@ ReactorX 200,Interbotix,hobby,5,0.15,0.55,1.9,2.5,1.79595,trossen robotics webpa
 ReactorX 150,Interbotix,hobby,5,0.1,0.45,1.8,2.5,1.39595,trossen robotics webpage
 PincherX 150,Interbotix,hobby,5,0.05,0.45,1.8,5,0.94995,trossen robotics webpage
 PincherX 100,Interbotix,hobby,4,0.05,0.3,0.8,5,0.54995,trossen robotics webpage
-MAiRA Pro S,Neurobotics,collaborative,7,18,1.05,53.0,0.01,,
-MAiRA Pro M,Neurobotics,collaborative,7,15,1.4,51.5,0.01,,
-MAiRA Pro L,Neurobotics,collaborative,7,12,1.6,56.0,0.01,,
-MAiRA Jr,Neurobotics,collaborative,7,8,0.9,32.0,0.02,,
-LARA 3,Neurobotics,industrial,6,3,0.59,17,0.02,,
-LARA 5,Neurobotics,industrial,6,5,0.8,23,0.02,,
-LARA 8,Neurobotics,industrial,6,8,1.3,47,0.02,,
-LARA 10,Neurobotics,industrial,6,10,1.0,40,0.02,,
-LARA 15,Neurobotics,industrial,6,15,1.3,55,0.02,,
+MAiRA Pro S,Neura Robotics,collaborative,7,18,1.05,53.0,0.01,,; MFG corrected Neurobotics→Neura Robotics
+MAiRA Pro M,Neura Robotics,collaborative,7,15,1.4,51.5,0.01,,; MFG corrected Neurobotics→Neura Robotics
+MAiRA Pro L,Neura Robotics,collaborative,7,12,1.6,56.0,0.01,,; MFG corrected Neurobotics→Neura Robotics
+MAiRA Jr,Neura Robotics,collaborative,7,8,0.9,32.0,0.02,,; MFG corrected Neurobotics→Neura Robotics
+LARA 3,Neura Robotics,industrial,6,3,0.590,18,0.02,,NEURA LARA 3; 3 kg; 590 mm; 18 kg; neura-robotics.com
+LARA 5,Neura Robotics,industrial,6,5,0.800,26,0.02,,NEURA LARA 5; 5 kg; 800 mm; 26 kg; neura-robotics.com
+LARA 8,Neura Robotics,industrial,6,8,1.300,48,0.02,,NEURA LARA 8; 8 kg; 1300 mm; 48 kg; neura-robotics.com
+LARA 10,Neura Robotics,industrial,6,10,1.000,45,0.02,,NEURA LARA 10; 10 kg; 1000 mm; 45 kg; neura-robotics.com
+LARA 15,Neura Robotics,industrial,6,15,1.600,67,0.02,,NEURA LARA 15; 15 kg; 1600 mm; 67 kg; neura-robotics.com
 Z1 Air,Unitree,collaborative,6,2,0.74,4.1,0.1,12.999,
 Z1 Pro,Unitree,collaborative,6,3,0.74,4.3,0.1,,
 Crane X7,RT,collaborative,7,0.5,0.630,1.8,,7.5,
@@ -467,7 +467,7 @@ TCRp5,Siasun,collaborative,6,0.5,0.3,5,0.05,,
 TCR1,Siasun,collaborative,6,1,0.5,6.8,0.05,,
 Astorino,Kawasaki,hobby,6,1,0.578,12,0.2,8.2,botland.store webpage
 Piper,Agile X,collaborative,6,1.5,0.62675,4.2,0.1,2.5,
-DynaArm,Duatic,collaborative,6,6,0.99,9.2,1,,"duatic.com 6 kg continuous / 12 kg for 10s; 9.2 kg; 0.990 m; IP66 QDD; flyer repeatability <1 mm; quote-only no public list (16 units sold by Feb 2026)"
+DynaArm,Duatic,collaborative,6,6,0.99,9.2,1,,duatic.com 6 kg continuous / 12 kg for 10s; 9.2 kg; 0.990 m; IP66 QDD; flyer repeatability <1 mm; quote-only no public list (16 units sold by Feb 2026)
 BRTIRXZ0805A,Borunte,collaborative,6,5,0.93,28,0.05,6.895,
 BRTIRXZ1515A,Borunte,collaborative,6,15,1.5,63,0.08,8.274,
 BRTIRUS2030A,Borunte,industrial,6,30,2.058,310,0.08,11.032,
@@ -511,9 +511,65 @@ CR20A,DOBOT,collaborative,6,20,1.7,73,0.05,28.489,dobot.nu / Unchained from €2
 myCobot 280,Elephant Robotics,hobby,6,0.25,0.28,0.85,0.5,0.599,Elephant shop Arduino $599; Pi $799; Jetson $849; ±0.5 mm
 ECR5,Estun,collaborative,6,5,0.8,17,0.02,18.0,MegaRobotics $18000 listing
 UR15,UR,collaborative,6,17.5,1.3,40.7,0.05,33.0,China reseller $33000-39500; 1300 mm / 40.7 kg / ±0.05 mm
-OpenArm V1.1,Enactic,research,7,4.1,0.633,5.5,1.0,2.7,"docs.openarm.dev; WowRobo dual-arm kit $5400 so cost halved per arm; 7DOF; nominal payload 4.1kg (peak 6.0kg); ±1.0 mm repeatability estimated"
-OpenArm 2.0,Enactic,research,7,4.1,0.606,5.5,1.0,3.25,"docs.openarm.dev / purchase; WowRobo dual-arm kit $6500 so cost halved per arm; 7DOF; nominal payload 4.1kg (peak 6.0kg); reach 606 mm; ±1.0 mm repeatability estimated"
-HORST600 G2,fruitcore,industrial,6,7,0.610,38,0.05,,"fruitcore robotics; max payload 7 kg (nominal 5 kg VDI 2861-2); reach 610 mm; IP54/IP65 hand axes; ISO 6 cleanroom; Made in Germany; fruitcore-robotics.com"
-HORST800 G2,fruitcore,industrial,6,6,0.840,40,0.05,,"fruitcore robotics; max payload 6 kg (nominal 5 kg); reach 840 mm; IP54/IP65 axes 5–6; ISO 6; floor/overhead/angled mount; fruitcore-robotics.com"
-HORST1000 G2,fruitcore,industrial,6,16,1.141,105,0.05,,"fruitcore robotics; max payload 16 kg (nominal 12 kg); reach 1141 mm; IP65 hand axes 4–6 / IP54 structure; mass 105 kg; fruitcore datasheet V260220"
-HORST1500 G2,fruitcore,industrial,6,15,1.485,110,0.05,,"fruitcore robotics; max payload 15 kg (nominal 12 kg); reach 1485 mm; IP65 hand axes / IP54 rest; mass 110 kg; fruitcore datasheet V260220"
+OpenArm V1.1,Enactic,research,7,4.1,0.633,5.5,1.0,2.7,docs.openarm.dev; WowRobo dual-arm kit $5400 so cost halved per arm; 7DOF; nominal payload 4.1kg (peak 6.0kg); ±1.0 mm repeatability estimated
+OpenArm 2.0,Enactic,research,7,4.1,0.606,5.5,1.0,3.25,docs.openarm.dev / purchase; WowRobo dual-arm kit $6500 so cost halved per arm; 7DOF; nominal payload 4.1kg (peak 6.0kg); reach 606 mm; ±1.0 mm repeatability estimated
+HORST600 G2,fruitcore,industrial,6,7,0.610,38,0.05,,fruitcore robotics; max payload 7 kg (nominal 5 kg VDI 2861-2); reach 610 mm; IP54/IP65 hand axes; ISO 6 cleanroom; Made in Germany; fruitcore-robotics.com
+HORST800 G2,fruitcore,industrial,6,6,0.840,40,0.05,,fruitcore robotics; max payload 6 kg (nominal 5 kg); reach 840 mm; IP54/IP65 axes 5–6; ISO 6; floor/overhead/angled mount; fruitcore-robotics.com
+HORST1000 G2,fruitcore,industrial,6,16,1.141,105,0.05,,fruitcore robotics; max payload 16 kg (nominal 12 kg); reach 1141 mm; IP65 hand axes 4–6 / IP54 structure; mass 105 kg; fruitcore datasheet V260220
+HORST1500 G2,fruitcore,industrial,6,15,1.485,110,0.05,,fruitcore robotics; max payload 15 kg (nominal 12 kg); reach 1485 mm; IP65 hand axes / IP54 rest; mass 110 kg; fruitcore datasheet V260220
+MZ04,Nachi,industrial,6,4,0.541,26,0.02,,Nachi-Fujikoshi MZ series; payload 4 kg; reach 541 mm; mass 26 kg; ±0.02 mm; IP40 (IP67 opt); nachi MZ catalog
+MZ07,Nachi,industrial,6,7,0.723,30,0.02,,Nachi MZ07; 7 kg; 723 mm; 30 kg; ±0.02 mm; IP67; hollow wrist; nachirobotics.com datasheet
+MZ07L,Nachi,industrial,6,7,0.912,32,0.03,,Nachi MZ07L long-arm; 7 kg; 912 mm; 32 kg; ±0.03 mm; IP67
+MZ10,Nachi,industrial,6,10,0.723,36,0.03,,Nachi MZ10; 10 kg; 723 mm; 36 kg; ±0.03 mm; IP67; same envelope as MZ07
+MZ10LF,Nachi,industrial,6,10,1.202,55,0.025,,Nachi MZ10LF; 10 kg; 1202 mm; 55 kg; ±0.025 mm; IP67; nachirobotics.com PDF
+MZ12,Nachi,industrial,6,12,1.454,150,0.04,,Nachi MZ12; 12 kg; 1454 mm; 150 kg; ±0.04 mm; IP67; nachi-robotics.de
+MZ03EL,Nachi,industrial,6,3.5,1.102,39,0.03,,Nachi MZ03EL; 3.5 kg; 1102 mm; 39 kg; ±0.03 mm; MZ catalog
+SRA100,Nachi,industrial,6,100,2.654,960,0.1,,Nachi SRA100 spot/handling; 100 kg; 2654 mm; 960 kg; ±0.1 mm; nachirobotics.com
+SRA166,Nachi,industrial,6,166,2.658,990,0.15,,Nachi SRA166; 166 kg; ~2658 mm class; 990 kg; ±0.15 mm; SRA brochure
+SRA166L,Nachi,industrial,6,166,2.951,980,0.15,,Nachi SRA166L long reach; 166 kg; 2951 mm; 980 kg; ±0.15 mm
+SRA210,Nachi,industrial,6,210,2.674,1090,0.15,,Nachi SRA210; 210 kg; 2674 mm; 1090 kg; ±0.15 mm; nachirobotics.com
+xMate SR3,ROKAE,collaborative,6,3,0.705,13.8,0.02,,ROKAE xMate SR3; 3 kg; 705 mm; ~13.8 kg; cobot; rokae.com / selection catalog
+xMate SR4,ROKAE,collaborative,6,4,0.919,16.5,0.02,,ROKAE xMate SR4; 4 kg; 919 mm; ~16.5 kg
+xMate SR5,ROKAE,collaborative,6,5,0.919,16.5,0.02,,ROKAE xMate SR5; 5 kg; 919 mm; ~16.5 kg
+xMate CR7,ROKAE,collaborative,6,7,0.988,25,0.02,,ROKAE xMate CR7-7/0.98C; 7 kg; 988 mm; ~25 kg; ±0.02 mm; IP67; force control
+xMate CR12,ROKAE,collaborative,6,12,1.434,41,0.03,,ROKAE xMate CR12; 12 kg; 1434 mm; ~41 kg; ±0.03 mm; IP67
+xMate CR18,ROKAE,collaborative,6,18,1.062,38,0.03,,ROKAE xMate CR18; 18 kg; 1062 mm; ~38 kg; IP67
+xMate CR20,ROKAE,collaborative,6,20,1.798,71,0.05,,ROKAE xMate CR20-20/1.8C; 20 kg; 1798 mm; ~71 kg; ±0.05 mm
+xMate CR20-25,ROKAE,collaborative,5,25,1.798,69,0.05,,ROKAE xMate CR20-25/1.8C-5; 25 kg; 1798 mm; ~69 kg; 5-axis variant
+xMate CR35,ROKAE,collaborative,6,35,2.246,165,0.05,,ROKAE xMate CR35-35/2.2C; 35 kg; 2246 mm; ~165 kg; ±0.05 mm
+xMate CR45,ROKAE,collaborative,6,45,1.947,161,0.05,,ROKAE xMate CR35-45/1.9C; 45 kg; 1947 mm; ~161 kg
+HA006B,Hyundai Robotics,industrial,6,6,1.425,145,0.04,,Hyundai HA006B; 6 kg; 1425 mm; 145 kg; ±0.04 mm; floor/wall/ceiling; Hyundai Robot Series catalog
+HA006L,Hyundai Robotics,industrial,6,6,1.994,224,0.06,,Hyundai HA006L long; 6 kg; 1994 mm; 224 kg; ±0.06 mm
+HH020,Hyundai Robotics,industrial,6,20,1.742,225,0.06,,Hyundai HH020; 20 kg; 1742 mm; 225 kg; ±0.06 mm
+HH020L,Hyundai Robotics,industrial,6,20,3.281,535,0.15,,Hyundai HH020L long; 20 kg; 3281 mm; 535 kg
+HH050,Hyundai Robotics,industrial,6,50,2.239,645,0.08,,Hyundai HH050; 50 kg; 2239 mm; 645 kg
+YS080,Hyundai Robotics,industrial,6,80,2.239,645,0.15,,Hyundai YS080; 80 kg; 2239 mm; 645 kg; ±0.15 mm; YS080 catalog
+HS220,Hyundai Robotics,industrial,6,220,2.666,955,0.11,,Hyundai HS220; 220 kg; 2666 mm; 955 kg; ±0.11 mm; HS220 catalog
+HX400,Hyundai Robotics,industrial,6,400,2.573,2620,0.3,,Hyundai HX400; 400 kg; 2573 mm; 2620 kg; heavy payload; Robot Series catalog
+TS-800,Panasonic,industrial,6,8,0.841,55,0.05,,Panasonic TS-800 welding/short; 8 kg; 841 mm; ~55 kg; ±0.05 mm; G3 series PDF
+TS-950,Panasonic,industrial,6,8,0.971,56,0.05,,Panasonic TS-950; 8 kg; 971 mm; ~56 kg; ±0.05 mm
+TM-1100,Panasonic,industrial,6,6,1.163,156,0.08,,Panasonic TM-1100; 6 kg; 1163 mm; 156 kg; ±0.08 mm; eu.connect.panasonic.com TM series
+TM-1400,Panasonic,industrial,6,6,1.437,170,0.08,,Panasonic TM-1400; 6 kg; 1437 mm; 170 kg; ±0.08 mm
+TM-1600,Panasonic,industrial,6,4,1.639,180,0.08,,Panasonic TM-1600; 4 kg; 1639 mm; 180 kg; ±0.08 mm
+TM-1800,Panasonic,industrial,6,6,1.809,215,0.08,,Panasonic TM-1800; 6 kg; 1809 mm; 215 kg; ±0.08 mm
+TM-2000,Panasonic,industrial,6,6,2.011,217,0.10,,Panasonic TM-2000; 6 kg; 2011 mm; 217 kg; ±0.10 mm
+TL-1800,Panasonic,industrial,6,8,1.801,215,0.08,,Panasonic TL-1800 long; 8 kg; 1801 mm; 215 kg
+TL-2000,Panasonic,industrial,6,6,1.999,216,0.08,,Panasonic TL-2000; 6 kg; 1999 mm; 216 kg
+YS-080G3,Panasonic,industrial,6,80,2.240,620,0.1,,Panasonic YS-080G3 handling; 80 kg; 2240 mm; 620 kg; panasonic TM/handling table
+HS-220G3,Panasonic,industrial,6,200,2.666,955,0.1,,Panasonic HS-220G3 handling; 200 kg; 2666 mm; 955 kg
+FD-H5,OTC Daihen,industrial,6,5,0.866,58,0.05,,OTC Daihen FD-H5 compact; 5 kg; 866 mm; 58 kg; ±0.05 mm; FD Series catalogue
+FD-B4,OTC Daihen,industrial,6,4,1.411,154,0.08,,OTC Daihen FD-B4 arc welding; 4 kg; 1411 mm; 154 kg; ±0.08 mm; through-arm cable
+FD-B4L,OTC Daihen,industrial,6,4,2.008,277,0.08,,OTC Daihen FD-B4L long; 4 kg; 2008 mm; 277 kg; ±0.08 mm
+FD-V6,OTC Daihen,industrial,6,6,1.402,144,0.08,,OTC Daihen FD-V6; 6 kg; 1402 mm; 144 kg; ±0.08 mm
+FD-V6L,OTC Daihen,industrial,6,6,2.006,273,0.08,,OTC Daihen FD-V6L long; 6 kg; 2006 mm; 273 kg
+FD-V8,OTC Daihen,industrial,6,8,1.437,140,0.08,,OTC Daihen FD-V8; 8 kg; 1437 mm; 140 kg; otc-daihen.com
+FD-V20,OTC Daihen,industrial,6,20,1.710,278,0.07,,OTC Daihen FD-V20; 20 kg; 1710 mm; 278 kg; ±0.07 mm
+MAiRA S,Neura Robotics,collaborative,7,18,1.100,51,0.01,,NEURA MAiRA S cognitive cobot; max payload 18 kg (15 kg full WS); 1100 mm; 51 kg; 7-DOF; ±0.01 mm; IP65; neura-robotics.com
+MAiRA M,Neura Robotics,collaborative,7,14,1.400,53,0.01,,NEURA MAiRA M; max 14 kg (12 kg full WS); 1400 mm; 53 kg; 7-DOF
+MAiRA L,Neura Robotics,collaborative,7,11,1.600,56,0.01,,NEURA MAiRA L; max 11 kg (9 kg full WS); 1600 mm; 56 kg; 7-DOF
+LARA 20,Neura Robotics,collaborative,6,20,1.800,98,0.02,,NEURA LARA 20; 20 kg; 1800 mm; 98 kg; neura-robotics.com
+LARA 25,Neura Robotics,collaborative,6,25,1.800,101,0.02,,NEURA LARA 25; 25 kg; 1800 mm; 101 kg; neura-robotics.com
+LARA 30,Neura Robotics,collaborative,6,30,1.300,98,0.02,,NEURA LARA 30; 30 kg; 1300 mm; 98 kg; neura-robotics.com
+LARA 30L,Neura Robotics,collaborative,6,30,1.800,126,0.02,,NEURA LARA 30L long; 30 kg; 1800 mm; 126 kg; neura-robotics.com
+xMate CR5,ROKAE,collaborative,6,5,1.406,36,0.03,,ROKAE xMate CR5-5/1.4C; 5 kg; 1406 mm; ~36 kg; ROKAE CR brochure
+xMate CR20-17,ROKAE,collaborative,5,17,2.047,71,0.05,,ROKAE xMate CR20-17/2.0C-5; 17 kg; 2047 mm; ~71 kg; 5-axis

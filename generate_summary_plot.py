@@ -141,13 +141,21 @@ def plot_robot_layers(
 def style_axes(ax, title, subtitle=None):
     ax.set_xlabel('Reach (m)', fontsize=14, color='#e8f4fc', fontweight='bold')
     ax.set_ylabel('Payload Factor (Payload / Robot Mass)', fontsize=14, color='#e8f4fc', fontweight='bold')
-    ax.set_title(title, fontsize=18, color='#00d4ff', fontweight='bold')
+    # Stack title + subtitle in axes coords with an explicit gap so title
+    # descenders (e.g. "payload", "efficiency") do not hit the subtitle.
     if subtitle:
-        ax.text(
-            0.5, 1.02, subtitle,
-            transform=ax.transAxes, ha='center', fontsize=11,
-            color='#6b8ba4', style='italic',
+        # Title pad just clears the italic subtitle drawn at axes y≈1.0.
+        ax.set_title(
+            title, fontsize=18, color='#00d4ff', fontweight='bold', pad=18,
         )
+        ax.text(
+            0.5, 1.002, subtitle,
+            transform=ax.transAxes, ha='center', va='bottom',
+            fontsize=11, color='#6b8ba4', style='italic',
+            clip_on=False,
+        )
+    else:
+        ax.set_title(title, fontsize=18, color='#00d4ff', fontweight='bold')
     ax.grid(True, alpha=0.2, color='#2a4060')
     ax.tick_params(colors='#6b8ba4')
     for spine in ax.spines.values():
@@ -354,7 +362,7 @@ for robot_type, row in best_rows.iterrows():
 
 style_axes(
     ax,
-    'Robot Arm Comparison: Reach vs Payload Efficiency\n',
+    'Robot Arm Comparison: Reach vs Payload Efficiency',
     'Hulls: all arms with mass/payload/reach  |  Dots: price + repeatability  |  Circle size = 1/(rep × price)',
 )
 add_type_and_size_legends(ax)
@@ -385,9 +393,10 @@ zoom['marker_size'] = zoom['marker_size'].fillna(80.0)
 print(f"High-efficiency box (PF>0.4, reach<2m): {len(zoom)} robots (no price filter)")
 print(zoom[['Name', 'MFG', 'Type', 'Payload_kg', 'Weight_kg', 'Payload_Factor', 'Reach_m']].to_string(index=False))
 
-man_reach = float(
-    pd.read_csv(ref_path).loc[lambda d: d['Name'] == 'Man', 'Reach_m'].iloc[0]
-)
+man_row = pd.read_csv(ref_path).loc[lambda d: d['Name'] == 'Man'].iloc[0]
+man_reach = float(man_row['Reach_m'])
+man_payload = float(man_row['Payload_kg'])
+man_pf = float(man_row['Payload_kg']) / float(man_row['Weight_kg'])
 
 fig2, ax2 = plt.subplots(figsize=(12, 8))
 fig2.patch.set_facecolor('#0a1628')
@@ -401,8 +410,13 @@ offsets = [
     (14, -6), (-8, 14), (4, 12), (-16, -6),
     (12, 10), (-10, -12), (16, 0),
 ]
+# Hand-tuned placements where the cycling offsets collide with the bound / hull edge
+label_overrides = {
+    'Mico 4': (-14, -16),            # bottom-left — clears title/bound at top
+    'OpenMANIPULATOR-X': (14, 4),    # right — was cramped on the left edge
+}
 for i, (_, row) in enumerate(zoom.iterrows()):
-    dx, dy = offsets[i % len(offsets)]
+    dx, dy = label_overrides.get(row['Name'], offsets[i % len(offsets)])
     ax2.annotate(
         f"{row['Name']}",
         (row['Reach_m'], row['Payload_Factor']),
@@ -411,15 +425,57 @@ for i, (_, row) in enumerate(zoom.iterrows()):
         fontsize=8,
         color='#e8f4fc',
         ha='left' if dx >= 0 else 'right',
+        va='top' if dy < 0 else 'bottom' if dy > 0 else 'center',
         arrowprops=dict(arrowstyle='-', color='#6b8ba4', lw=0.6),
         zorder=4,
     )
+
+# Theoretical actuator-only PF ceiling for an arm sized to Man's payload (2 kg).
+# 6-DOF + pooled fits matches the cobot/research arms that dominate this zoom.
+man_bound = humanoid_bound_curves((man_payload,), dof=6)[man_payload][0]
+ax2.plot(
+    BOUND_REACHES, man_bound,
+    color=BOUND_COLOR, linestyle='-', linewidth=2.0, alpha=0.95, zorder=5,
+    label=f'Actuator-only bound @ {man_payload:g} kg (6-DOF)',
+)
+# Sit above the curve in open space; opaque halo kills any grid strikethrough
+ax2.text(
+    1.28, 1.08,
+    f'{man_payload:g} kg bound',
+    ha='center', va='center', fontsize=9, color=BOUND_COLOR,
+    fontweight='bold', zorder=12,
+    bbox=dict(boxstyle='round,pad=0.3', facecolor='#0a1628', edgecolor='none', alpha=1.0),
+)
 
 ax2.axvline(
     man_reach, color=HUMAN_COLOR, linestyle='--', linewidth=1.8,
     alpha=0.95, zorder=5, label=f'Man reach ({man_reach:g} m)',
 )
-y_hi = float(zoom['Payload_Factor'].max()) + 0.06
+
+# Adult male human reference (same payload used for the bound curve)
+ax2.scatter(
+    [man_reach], [man_pf],
+    s=220, marker='*', c=HUMAN_COLOR,
+    edgecolors='white', linewidths=0.8, zorder=10,
+    label=f'Man (PF={man_pf:.2f}, {man_payload:g} kg / {float(man_row["Weight_kg"]):g} kg)',
+)
+# Label above-left so it clears the dense cobot cluster near PF≈0.45
+ax2.annotate(
+    'Man',
+    (man_reach, man_pf),
+    xytext=(-18, 16), textcoords='offset points',
+    fontsize=10, color=HUMAN_COLOR, fontweight='bold',
+    ha='right', va='bottom',
+    arrowprops=dict(arrowstyle='-', color=HUMAN_COLOR, lw=0.8),
+    zorder=11,
+)
+
+# Cap y on the robot/Man region — short-reach end of the bound rises above ~2
+# and would squash the interesting PF>0.4 cluster if we autoscaled to it.
+y_hi = max(float(zoom['Payload_Factor'].max()), man_pf) + 0.06
+# Keep the bound visible at Man reach (≈1.1) without opening the full left end
+bound_at_man = float(np.interp(man_reach, BOUND_REACHES, man_bound))
+y_hi = max(y_hi, bound_at_man + 0.08)
 ax2.text(
     man_reach + 0.015, y_hi - 0.03, 'Man reach',
     color=HUMAN_COLOR, fontsize=10, fontweight='bold',
@@ -430,13 +486,14 @@ x_lo = min(0.35, float(zoom['Reach_m'].min()) - 0.05)
 x_hi = max(1.45, float(zoom['Reach_m'].max()) + 0.08)
 ax2.set_xlim(x_lo, x_hi)
 ax2.set_ylim(0.395, y_hi)
+ax2.set_clip_on(True)
 style_axes(
     ax2,
     'High payload-efficiency box  |  PF > 0.4, reach < 2 m',
-    'All arms with mass/payload/reach (price not required)  |  Yellow dashed: adult male arm reach',
+    f'Yellow ★ = adult male  |  Cyan = actuator-only ceiling @ Man payload ({man_payload:g} kg)',
 )
 leg2 = ax2.legend(
-    loc='upper right', fontsize=10, framealpha=0.9,
+    loc='upper right', fontsize=9, framealpha=0.9,
     facecolor='#121f36', edgecolor='#2a4060', labelcolor='#e8f4fc',
 )
 leg2.get_frame().set_alpha(0.9)
@@ -445,6 +502,8 @@ zoom_path = os.path.join(script_dir, 'robot_arm_high_pf.png')
 fig2.savefig(zoom_path, dpi=150, facecolor='#0a1628', edgecolor='none', bbox_inches='tight')
 plt.close(fig2)
 print(f"Saved plot to: {zoom_path}")
+print(f"Man reference: reach={man_reach:g} m  payload={man_payload:g} kg  PF={man_pf:.3f}")
+print(f"Bound @ Man payload / Man reach: PF≤{float(np.interp(man_reach, BOUND_REACHES, man_bound)):.3f}")
 
 # ---------------------------------------------------------------------------
 # 3) Full-hull comparison + priced dots (humanoids unified @ 5% / carry÷4)
@@ -561,7 +620,7 @@ for typ, name, offset, label, va in (
 
 style_axes(
     ax4,
-    'Robot Arm Bounding Regions vs Human / Humanoid Arms\n',
+    'Robot Arm Bounding Regions vs Human / Humanoid Arms',
     f'Hulls: all arms  |  Dots: all arms with payload {H_PAYLOAD_LO:g}–{H_PAYLOAD_HI:g} kg '
     '(legend n = dots/hull)  |  '
     'Orange ▲ humanoids @ 5% body mass  |  Cyan = actuator-only bound (no structure)',
