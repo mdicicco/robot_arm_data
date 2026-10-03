@@ -20,7 +20,7 @@ Optimus Gen2,Tesla,US,internal,1.73,57,28,,,,20,9,,,,25,target,Tesla AI Day / pr
 Optimus Gen3,Tesla,US,internal,,,,,,,,,,,,,,Tesla factory production start 2026 reported; no official public datasheet or price as of mid-2026
 Fourier GR-1,Fourier Intelligence,CN,shipping,1.65,55,44,7,,,40,3.0,0.83,,2,55,estimate,fourierintelligence.com; one-hand ~3 kg; arm span ~1.66 m -> ~0.83 m/arm; dual-arm ~40 kg sometimes claimed; street/estimate ~$55k (also $150-170k quotes for GR line)
 Fourier GR-2,Fourier Intelligence,CN,shipping,1.75,63,53,7,,12,,3.0,,,2,125,estimate,Fourier GR-2; 53 DOF with 12-DOF tactile hands; ~3 kg/arm typical; ~2 h swappable battery; estimate $100-150k (midpoint 125)
-Fourier GR-3,Fourier Intelligence,CN,shipping,1.65,71,,,,,,,,,,27.5,estimate,care/healthcare positioning; above JPY/CNY 200k (~$27.5k+) B2B reported; full DOF/payload sheet sparse in English sources
+Fourier GR-3,Fourier Intelligence,CN,shipping,1.65,71,55,,,12,,3.0,,,3,27.5,estimate,care/healthcare positioning; above JPY/CNY 200k (~$27.5k+) B2B reported; 55 DOF w/ 12-DOF hands; 3 kg per hand; 3 h dual hot-swap battery (humanoidindex.org / robotsasia GR-3 pages 2026)
 1X NEO,1X Technologies,NO,preorder,1.68,30,44,,,22,,5,,,,20,listed,1x.tech; $20000 purchase or $499/mo; ~168 cm / ~30 kg; ~5 kg/arm often listed; hand DOF 22 (25-DOF revision announced); home-focused; US deliveries promised 2026
 AgiBot A2 Ultra,AgiBot,CN,shipping,1.69,69,40,7,6,6,,2.0,,1.2,1.5,,quote,agibot.com/products/A2_Ultra official table; 40 DOF; max arm load ~2 kg; walking 1.5 h+ / standing 3 h; Jetson Orin 64G; LiDAR+RGB-D; contact sales
 AgiBot A2 Lite,AgiBot,CN,shipping,1.69,64,23,5,6,,,2.0,,0.8,1.5,44.56,listed,agibot.com A2 Lite column; 23 DOF; arm load ~2 kg; walking 1.5 h+ / standing 4.5 h; global store ~$44560 USD reported
@@ -31,7 +31,7 @@ Booster T1,Booster Robotics,CN,shipping,1.18,30,23,4,6,,,,0.45,,2,42,estimate,bo
 Booster K1,Booster Robotics,CN,shipping,0.95,19.5,22,4,6,,,,,,0.5,5.999,listed,booster.tech/booster-k1; ~95 cm / 19.5 kg / 22 DOF; peak joint 60 Nm; walking ~30 min @ 0.4 m/s; starting $5999
 EngineAI SE01,EngineAI,CN,shipping,1.7,55,32,,,,,,,,,12,estimate,launch ~CNY 88000 (~$12k); full-size research/commercial; anthropomorphic gait
 EngineAI PM01,EngineAI,CN,shipping,1.4,42,23,,,,,,,,2,,quote,~140 cm / 42 kg / 23 DOF / ~145 Nm joint / ~2 h; Business vs Education configs; quote
-Kepler K2 Bumblebee,Kepler,CN,production,1.75,75,,,,,,,,,,34,listed,RMB 248000 (~$34k Jul 2026 rates); industrial mass production claimed
+Kepler K2 Bumblebee,Kepler,CN,production,1.75,75,52,,,11,30,15.0,,1.1,8,34,listed,RMB 248000 (~$34k Jul 2026 rates); industrial mass production claimed; 52 DOF; 15 kg/arm and 30 kg dual-arm; >1.1 m/s; 2.33 kWh ~8 h; 11-DOF hands (interestingengineering.com K2 debut / rbtx.com K2 listing)
 LimX Oli,LimX Dynamics,CN,shipping,1.65,55,,,,,,,,,,21.8,listed,from $21800 research platform; <=55 kg
 Dobot Atom,Dobot,CN,shipping,1.55,66,,,,,,,,,,27.5,listed,~$27.5k China / ~$79k US reported; precision assembly; China list stored
 NEURA 4NE1,NEURA Robotics,DE,preorder,1.8,80,,,,,,,,,,108,estimate,EU industrial; reservations; est. EUR98k (~$108k) each / EUR60k at 20+ ex tax; late 2026 deliveries targeted; payload claims up to 100 kg are maker figures
@@ -44,7 +44,7 @@ DEEP Robotics DR02,DEEP Robotics,CN,pilot,1.75,65,,,,,,,,,,,quote,outdoor indust
 RobotEra L7,RobotEra,CN,shipping,,,,,,,,,,4,,,,fleet deliveries; speed claims up to ~4 m/s (unofficial record often cited); sparse public datasheet
 Astribot S1,Astribot,CN,shipping,1.7,80,,,,,,,,,,,quote,dexterous manipulation focus; partner deliveries reported
 Galbot G1,Galbot,CN,shipping,1.73,92.5,,,,,,,,,,88,estimate,retail automation; ~CNY 630k reported; 30+ cities claimed
-XPENG IRON,XPENG,CN,prototype,,,,,,,,,,,,,,industrial inspection; production targeted end-2026; no public price
+XPENG IRON,XPENG,CN,prototype,1.78,70,62,,,22,10,,,2.0,,,,industrial inspection; production targeted end-2026; no public price; 178 cm / 70 kg / 62 DOF / 22-DOF hands / 10 kg payload / 2 m/s per third-party trackers (humanoidindex.org; roboselect360) — not an XPENG datasheet
 Xiaomi CyberOne,Xiaomi,CN,prototype,1.77,52,21,,,,,,,,,,,2022 unveil CyberOne ~177 cm / 52 kg / 21 DOF; CyberOne V2 factory R&D — specs not published
 Tiangong 3.0,Beijing Humanoid Robot Innovation Center,CN,shipping,1.69,62,,,,,,,,,,,,open-source research humanoid; mass delivery H2 2026 claimed
 HMND 01,Humanoid,UK,pilot,2.2,,,,,,,,,,,,raas,warehouse UK/EU; tall form factor; RaaS; Beta 2026
@@ -52,3 +52,17 @@ PAL ARI,PAL Robotics,ES,shipping,1.65,,,,,,,,,,,35,estimate,healthcare / HRI whe
 Promobot V4,Promobot,RU,shipping,1.6,,,,,,,,,,,25,listed,service/concierge from $25000; wheeled service humanoid
 ASIMO (2011),Honda,JP,research,1.3,48,57,7,6,13,10,,,2.5,0.67,,,Honda global ASIMO about page (Nov 2011 all-new); 130 cm / 48 kg / 57 DOF; max run 9 km/h; operating time 40 min while running; cart push max load 10 kg (used as Payload_kg); hands 13 DOF each
 Robonaut 2,NASA / GM,US,research,,150,42,7,,12,,9,,,,,,NASA Robonaut 2 fact sheet; torso humanoid (first in space 2011); 330 lb / 150 kg; height 3 ft 4 in waist-to-head (not standing stature — Height_m left blank); 42 DOF; each arm 7 DOF holds 20 lb / 9 kg in Earth gravity; legs added 2014 for ISS mobility
+Foundation Phantom MK-1,Foundation Future Industries,US,pilot,1.75,80,,,,,20,,,1.7,,,quote,cycloidal actuators; 20 kg continuous / 36 kg max (some listings show 40 kg); 19 upper-body DOF; 1.7 m/s; industrial + defense pilots (humanoid.guide / robozaps Phantom MK1)
+MenteeBot V3,Mentee Robotics (Mobileye),IL,pilot,1.75,70,40,,,,25,,,1.5,4,,quote,Mentee V3.0; 175 cm / 70 kg / 25 kg payload / 40 DOF / 1.5 m/s / 4 h hot-swap; warehouse logistics (humanoid.guide MenteeBot V3; ynetnews)
+MagicLab MagicBot G1,MagicLab,CN,shipping,1.74,67.5,42,,,,20,,,1.1,4,,quote,full-size; 174 cm / 67.5 kg / 42 DOF / 20 kg total payload / >=350 Nm joints / 4 km/h / 4-5 h (MagicBot G1 reseller spec pages)
+MagicLab MagicBot Z1,MagicLab,CN,shipping,1.4,40,24,,,11,,,,,,,quote,compact; 140 cm / 40 kg / 24 DOF base (up to 49) / 130+ Nm joints; optional 11-DOF MagicHand lifts 5 kg (hand rating — not stored as arm payload) (humanoid.guide MagicBot Z1)
+AgiBot A3 Ultra,AgiBot,CN,preorder,1.74,60,51,,,,,5.0,,,8,,quote,WAIC Jul 2026 launch; 1.74 m / 60 kg / 51 DOF / 5 kg per arm / up to 8 h combined (battery swap + auto-charge); NVIDIA Thor; service/commercial (agibot.com WAIC 2026 release; eweek)
+PUDU D9,Pudu Robotics,CN,prototype,1.7,65,42,7,,11,20,10.0,,2.0,,,quote,first full-size biped; 170 cm / 65 kg / 42 DOF / dual 7-DOF arms >20 kg total (10 kg/arm) / 352 Nm peak joint / 2 m/s / 0.72 kWh; DH11 hand (pudurobotics.com/products/d9; therobotreport)
+PAL TALOS,PAL Robotics,ES,research,1.75,95,32,7,6,,,6.0,,,,,quote,research biped; 175 cm / 95 kg / 32 DOF; 6 kg per arm fully extended; torque sensing in all major joints (pal-robotics.com/robot/talos)
+PNDbotics Adam SP,PNDbotics,CN,shipping,1.67,62,41,,,,5,,,1.5,,100,listed,PSA torque-sensing actuators; 167 cm / 62 kg / 41 DOF / 5 kg payload / 1.5 m/s; Adam SP $100k (Adam Pro $115-170k) (humanoid.guide Adam SP)
+Leju Kuavo 5,Leju Robotics,CN,shipping,1.73,63.5,,,,,20,5.0,,,,,quote,modular biped (Kuavo 5-W wheeled variant); 173 cm / 63.5 kg; 20 kg payload / 10 kg dual-arm upper body (5 kg per arm); walk ~1 h (humanoid.guide Kuavo-5; mikekalil.com)
+AiMOGA Mornine M1,AiMOGA (Chery),CN,shipping,1.67,70,40,,,,,1.5,,1.0,2,41.4,listed,showroom/retail reception; 167 cm / 70 kg / 40 DOF ex-hands / 1.5 kg per arm / 1 m/s / 2 h; CNY 285800 on JD.com (~$41.4k) (autonews.autoua.net; intelligentliving.co)
+Qinglong (OpenLoong V3),Shanghai Humanoid Robotics Innovation Center,CN,research,1.85,85,60,,,,20,,,,3,,,open-source full-size; V3.0 185 cm / 85 kg / 60 DOF / >=20 kg carry / 400 Nm peak joint / ~3 h (robohorizon.uk Qinglong V3.0; technode)
+Tiangong Ultra,X-Humanoid (Beijing Humanoid Robot Innovation Center),CN,research,1.8,52,31,,,,,,,2.8,,,,sprint/athletics platform; 180 cm / 52 kg (some sources 75 kg) / 31 DOF; avg 10 km/h top 12 km/h; 2026 World Humanoid Robot Games records (baike Tiangong Ultra; humanoid.press)
+HRP-5P,AIST,JP,research,1.82,101,,,,,13,,,,,,,construction-labor research humanoid (2018); 182 cm / 101 kg; ~13 kg payload (drywall handling) (AIST via phys.org / robotsguide)
+Valkyrie (R5),NASA JSC,US,research,1.87,129,,,,,,,,,,,,DARPA DRC-era space humanoid (2013); 1.87 m / 129 kg (sources range 125-136 kg); payload not published (U. Edinburgh Valkyrie page; NASA R5)

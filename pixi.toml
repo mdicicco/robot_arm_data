@@ -16,6 +16,8 @@ geometry-analyze = "python analyze_arm_geometry.py"
 arm-mass = "python arm_mass_model.py"
 arm-mass-app = "streamlit run arm_mass_app.py --server.headless true"
 payload-bound-app = "streamlit run payload_bound_app.py --server.headless true"
+humanoid-plot = "python generate_humanoid_plot.py"
+humanoid-analysis = "python analyze_humanoid_scaling.py"
 
 [dependencies]
 python = "3.12.*"

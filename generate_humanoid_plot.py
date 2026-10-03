@@ -84,6 +84,24 @@ LABEL_OFFSETS = {
 }
 
 
+# Full-size cluster: labels go in two columns beside it (sorted by PF, evenly
+# spaced, leader lines to each point) instead of per-point offsets, so new
+# robots in the 1.7–1.85 m band don't need hand-tuned positions.
+CLUSTER_H = (1.66, 1.87)
+CLUSTER_PF = (0.10, 0.45)
+CLUSTER_SPLIT_H = 1.745          # left column for shorter robots, right for taller
+CLUSTER_COL_X = (1.56, 1.95)     # data-x of the left / right label columns
+CLUSTER_GAP = 0.030              # PF spacing between stacked labels
+
+
+def column_positions(pfs, gap=CLUSTER_GAP):
+    """Evenly spaced y slots (top→bottom in PF order), centred on the points' median."""
+    n = len(pfs)
+    centre = float(np.median(pfs))
+    top = centre + gap * (n - 1) / 2
+    return [top - i * gap for i in range(n)]
+
+
 def draw_progress_lines(ax, frame):
     """Connect successive generations; skip missing / coincident points."""
     by_name = frame.set_index('Name')
@@ -153,31 +171,43 @@ ax.scatter(
 ax.annotate(
     f'Adult human\n(~{HUMAN_CARRY_KG:.0f} kg / {HUMAN_MASS_KG:.0f} kg)',
     (HUMAN_HEIGHT_M, HUMAN_PF),
-    xytext=(28, 22), textcoords='offset points',
+    xytext=(1.40, 0.40), textcoords='data',
     fontsize=9, color=HUMAN_COLOR, fontweight='bold',
-    ha='left', va='bottom',
+    ha='center', va='bottom',
     arrowprops=dict(arrowstyle='-', color=HUMAN_COLOR, lw=0.75,
                     shrinkA=0, shrinkB=4),
     zorder=5, annotation_clip=False,
 )
 
-# Prefer labeling later gens when two gens share the same plotted point
-label_names = set(plot['Name'])
-# If Figure 01 and 02 coincide, keep both labels offset differently
-for _, row in plot.iterrows():
+label_style = dict(
+    fontsize=9, color='#e8f4fc', fontweight='bold', va='center', zorder=5,
+    annotation_clip=False,
+    arrowprops=dict(arrowstyle='-', color='#6b8ba4', lw=0.75, shrinkA=0, shrinkB=4),
+)
+in_cluster = (
+    plot['Height_m'].between(*CLUSTER_H) & plot['Payload_Factor'].between(*CLUSTER_PF)
+)
+
+# Outliers: per-point offsets
+for _, row in plot[~in_cluster].iterrows():
     dx, dy = LABEL_OFFSETS.get(row['Name'], (14, 12))
     ax.annotate(
-        row['Name'],
-        (row['Height_m'], row['Payload_Factor']),
+        row['Name'], (row['Height_m'], row['Payload_Factor']),
         xytext=(dx, dy), textcoords='offset points',
-        fontsize=9, color='#e8f4fc', fontweight='bold',
-        ha='left' if dx >= 0 else 'right',
-        va='center',
-        arrowprops=dict(arrowstyle='-', color='#6b8ba4', lw=0.75,
-                        shrinkA=0, shrinkB=4),
-        zorder=5,
-        annotation_clip=False,
+        ha='left' if dx >= 0 else 'right', **label_style,
     )
+
+# Cluster: two stacked columns, ordered by PF so leader lines don't cross much
+cluster = plot[in_cluster]
+for side, col_x in zip(('left', 'right'), CLUSTER_COL_X):
+    mask = cluster['Height_m'] < CLUSTER_SPLIT_H if side == 'left' else cluster['Height_m'] >= CLUSTER_SPLIT_H
+    group = cluster[mask].sort_values(['Payload_Factor', 'Height_m'], ascending=[False, True])
+    for (_, row), y in zip(group.iterrows(), column_positions(group['Payload_Factor'].to_numpy())):
+        ax.annotate(
+            row['Name'], (row['Height_m'], row['Payload_Factor']),
+            xytext=(col_x, y), textcoords='data',
+            ha='right' if side == 'left' else 'left', **label_style,
+        )
 
 ax.set_xlabel('Height (m)', fontsize=13, color='#e8f4fc', fontweight='bold')
 ax.set_ylabel(
@@ -196,7 +226,7 @@ for spine in ax.spines.values():
 
 y_max = max(float(plot['Payload_Factor'].max()), HUMAN_PF_HI)
 ax.set_ylim(-0.06, y_max * 1.12)
-ax.set_xlim(float(plot['Height_m'].min()) - 0.16, float(plot['Height_m'].max()) + 0.18)
+ax.set_xlim(float(plot['Height_m'].min()) - 0.16, max(float(plot['Height_m'].max()) + 0.18, CLUSTER_COL_X[1] + 0.22))
 
 legend = ax.legend(
     handles=[

@@ -116,6 +116,31 @@ pixi run humanoid-plot
 
 Output: `humanoid_payload_efficiency.png`. Hardware only — no status coloring.
 
+### Humanoid arm specs vs the arm model
+
+```bash
+pixi run humanoid-analysis
+```
+
+`analyze_humanoid_scaling.py` uses the arm data and `arm_mass_model.py` to sanity-check humanoid specs.
+
+![Humanoid arm actuator share](humanoid_arm_actuator_share.png)
+
+**`humanoid_arm_actuator_share.png`** checks whether each humanoid's per-arm payload rating is plausible. For each one, it sizes a single arm at the rated payload and reach (actuators only: pooled gearbox + motor fits, SF 1.0, yaw/rolls at 50 %). It then plots the minimum actuator mass as a % of body mass, with and without the shoulder actuators (on a humanoid those sit in the torso).
+
+A human arm is ~5 % of body mass. **1X NEO (5 kg/arm on a 30 kg body), Kepler K2 (15 kg/arm), Optimus (9 kg/arm) and PUDU D9 (10 kg/arm) need ~5–6 % of body mass per arm in elbow + wrist actuators alone.** That leaves essentially nothing for links, cabling or hands under the "arm ≈ 5 % body" rule. Light-arm robots (AgiBot A2, AiMOGA M1, Unitree G1) need only 1–2 %. Reach falls back to 0.44 × height when it isn't published.
+
+![Humanoid vs arm payload scaling](humanoid_vs_arm_payload_scaling.png)
+
+**`humanoid_vs_arm_payload_scaling.png`** plots payload factor against own mass (log-log) for 566 arms and 27 humanoids:
+
+- **Arms:** payload factor falls slowly with size (PF ∝ mass^−0.14, weak).
+- **Comparable humanoids:** flat at **median 0.30 (IQR 0.22–0.34)** across 48–101 kg, right at the adult-human ~0.32.
+- **Excluded from the fit (hollow):** Unitree G1 / G1 EDU / R1, whose "payload" is a single-arm rating, and Fourier GR-1, whose 40 kg is 6.7× its two-arm rating. With them in, the humanoid fit shows a spurious PF ∝ mass^+1.2.
+- **Not like-for-like:** humanoid carry is whole-body and close to the body, while arm payload is at full reach.
+
+Most whole-body carry ratings equal 2 × the per-arm rating (K2, D9, H2, Optimus). So humanoid carry is arm-limited, not leg-limited.
+
 ## Running the Analysis App
 
 This repo includes an interactive Streamlit app for exploring robot arm data, comparing payload factors, and estimating costs.
