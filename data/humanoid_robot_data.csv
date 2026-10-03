@@ -1,0 +1,54 @@
+Name,MFG,Country,Status,Height_m,Weight_kg,Total_DOF,Arm_DOF,Leg_DOF,Hand_DOF,Payload_kg,Arm_Payload_kg,Arm_Reach_m,Speed_mps,Battery_h,Cost_KUSD,Cost_Flag,Notes
+Unitree G1,Unitree,CN,shipping,1.32,35,23,5,6,,2,2.0,0.45,,2,13.5,listed,unitree.com/g1; shop.unitree.com $13500; Total_DOF base 23 (EDU up to 43 w/ optional waist/wrist/hands); arm load ~2 kg; arm span ~0.45 m; battery ~2 h; 9000 mAh
+Unitree G1 EDU,Unitree,CN,shipping,1.32,35,43,5,6,7,3,3.0,0.45,,2,,quote,unitree.com/g1 EDU column; Total_DOF up to 43; arm load ~3 kg; Dex3-1 7-DOF hand optional; secondary development; price contact/quote (higher than base G1)
+Unitree R1,Unitree,CN,shipping,1.23,29,26,5,6,,2,2.0,0.42,,2,4.9,listed,shop.unitree.com R1 Air White $4900; EDU variants higher (~$5.9k reported); arm load ~2 kg; forearm+upper ~0.42 m
+Unitree H1,Unitree,CN,shipping,1.8,47,19,4,5,,,,0.338,3.3,2,90,listed,unitree H1 page; shop.unitree.com lists $90000 (contact for real price); DOF 19 body (5/leg 4/arm expandable); arm length 338 mm; speed 3.3 m/s; battery 15 Ah / 0.864 kWh; arm payload not rated on base H1
+Unitree H1-2,Unitree,CN,shipping,1.78,70,27,7,6,,21,7.0,0.685,2.0,2,148,estimate,unitree H1-2 docs; 27 DOF (6/leg 7/arm + waist); arm rated ~7 kg peak ~21 kg; arm length 685 mm; speed <2 m/s; US distributor quotes ~$148k (Robotics Center)
+Unitree H2,Unitree,CN,shipping,1.82,70,31,7,6,,15,7.0,0.69,,3,29.9,listed,shop.unitree.com $29900; unitree H2 page 1820x456x218 mm ~70 kg; arm payload peak ~15 kg rated ~7 kg; forearm+upper 690 mm; battery 15 Ah / 0.972 kWh ~3 h; Jetson AGX Thor option
+Unitree H2 Plus,Unitree,CN,shipping,1.82,70,,,,,,,0.69,,,100,listed,shop.unitree.com Unitree H2 Plus $100000; hardware details sparse vs H2 base; treat as premium/config SKU
+Atlas (Hydraulic),Boston Dynamics,US,research,1.5,80,28,,,,,,,1.5,,,,BD next-gen hydraulic Atlas (2016 parkour era); ~1.5 m / ~80 kg / 28 DOF (Wikipedia robotsguide); electrically powered hydraulically actuated; retired 2024; published whole-robot carry rating not available (demos handled ~10 lb / 4.5 kg boxes — not stored as Payload_kg)
+Atlas (Electric),Boston Dynamics,US,production,1.9,90,56,,,,50,,2.3,,4,,,bostondynamics.com/products/atlas; 50 kg instant / 30 kg sustained; Reach 2.3 m workspace; battery 4 h swappable; IP67; -20 to 40 C; no public price / no open ordering (2026 booked Hyundai + DeepMind)
+Digit,Agility Robotics,US,shipping,1.75,65,28,,,,16,,,,4,,raas,agilityrobotics.com; payload 16 kg (35 lb); battery ~4 h official; RaaS / enterprise (no list; ~$250k purchase-equivalent often cited); warehouse tote handling
+Digit v5,Agility Robotics,US,pilot,1.75,65,30,,,,22.6,,,,4,,raas,Agility Digit v5 commercial model; cooperative safety; swappable hands; ~50 lb lift; RaaS / contracted orders; specs press-reported
+Apollo,Apptronik,US,pilot,1.73,72.6,,,,,25,,,,4,,target,apptronik.com 2023 unveil; 5 ft 8 in / 160 lb / 55 lb lift / 4 h swappable battery; DOF not officially published (third-party 28-71 conflict); scale target often <$50k; enterprise pilots
+Apollo 2,Apptronik,US,pilot,,,,,,,,,,,,,,apptronik.com/apollo/apollo-2; bipedal or wheeled base; swappable batteries 7x22 claim; no published height/weight/payload/DOF/price for Apollo 2 as of mid-2026
+Figure 01,Figure AI,US,pilot,1.68,60,,,,,20,,,1.2,5,,,Figure AI first humanoid (2023); manufacturer-confirmed ~1676 mm / 60 kg / 20 kg payload / 5 h runtime / 1.2 m/s (archived figure.ai via RoboZaps); Total_DOF unpublished (secondary sources conflict 16 vs 25 vs 40+)
+Figure 02,Figure AI,US,pilot,1.68,60,,,,,20,,,,5,,,BMW Spartanburg pilots; commonly cited ~1.68 m / ~60 kg / ~20 kg carry / ~5 h; DOF ~35 body often reported; Figure did not publish a full datasheet; superseded by Figure 03
+Figure 03,Figure AI,US,production,1.73,61,,,,,20,,,,5,,target,figure.ai F.03 battery: 2.3 kWh / 5 h peak / 2 kW wireless foot charge / 9% less mass than F.02; height/weight/payload/DOF NOT published by Figure (aggregator ~173 cm / ~61 kg / 20 kg / 30-44 DOF); consumer ~$20k and enterprise ~$150k are unconfirmed third-party reports
+Optimus Gen1,Tesla,US,internal,1.73,73,28,,,11,20,9,,2.24,,,,Tesla AI Day 2022 walking prototype (Bumble C era); mass 161 lb / 73 kg (Forbes); 28 body actuators; 11-DOF hands (6 actuators); design carry 45 lb / 20 kg and 20 lb/hand; 2.3 kWh / 52 V battery; 5 mph; height 5 ft 8 in from 2021 concept target
+Optimus Gen2,Tesla,US,internal,1.73,57,28,,,,20,9,,,,25,target,Tesla AI Day / press; ~1.73 m / ~57 kg / ~28 body DOF / ~20 kg carry / ~9 kg per hand often cited; not commercially sold; Musk scale target ~$20-30k (stored midpoint 25)
+Optimus Gen3,Tesla,US,internal,,,,,,,,,,,,,,Tesla factory production start 2026 reported; no official public datasheet or price as of mid-2026
+Fourier GR-1,Fourier Intelligence,CN,shipping,1.65,55,44,7,,,40,3.0,0.83,,2,55,estimate,fourierintelligence.com; one-hand ~3 kg; arm span ~1.66 m -> ~0.83 m/arm; dual-arm ~40 kg sometimes claimed; street/estimate ~$55k (also $150-170k quotes for GR line)
+Fourier GR-2,Fourier Intelligence,CN,shipping,1.75,63,53,7,,12,,3.0,,,2,125,estimate,Fourier GR-2; 53 DOF with 12-DOF tactile hands; ~3 kg/arm typical; ~2 h swappable battery; estimate $100-150k (midpoint 125)
+Fourier GR-3,Fourier Intelligence,CN,shipping,1.65,71,,,,,,,,,,27.5,estimate,care/healthcare positioning; above JPY/CNY 200k (~$27.5k+) B2B reported; full DOF/payload sheet sparse in English sources
+1X NEO,1X Technologies,NO,preorder,1.68,30,44,,,22,,5,,,,20,listed,1x.tech; $20000 purchase or $499/mo; ~168 cm / ~30 kg; ~5 kg/arm often listed; hand DOF 22 (25-DOF revision announced); home-focused; US deliveries promised 2026
+AgiBot A2 Ultra,AgiBot,CN,shipping,1.69,69,40,7,6,6,,2.0,,1.2,1.5,,quote,agibot.com/products/A2_Ultra official table; 40 DOF; max arm load ~2 kg; walking 1.5 h+ / standing 3 h; Jetson Orin 64G; LiDAR+RGB-D; contact sales
+AgiBot A2 Lite,AgiBot,CN,shipping,1.69,64,23,5,6,,,2.0,,0.8,1.5,44.56,listed,agibot.com A2 Lite column; 23 DOF; arm load ~2 kg; walking 1.5 h+ / standing 4.5 h; global store ~$44560 USD reported
+AgiBot X1,AgiBot,CN,shipping,1.3,33,,,,,,,,,,,quote,open-source / academic research platform; quote pricing; ~130 cm / ~33 kg reported
+UBTECH Walker S2,UBTECH,CN,production,1.76,73,52,,,,15,,,,,,quote,UBTECH press; 176 cm / ~73 kg / 52 DOF / 15 kg lift; dual-battery autonomous hot-swap (~3 min); industrial EV/factory; enterprise pricing
+UBTECH Walker S1,UBTECH,CN,shipping,1.72,76,,,,,,,,,,,quote,predecessor deployed at Audi FAW / Foxconn / Zeekr; press specs; enterprise
+Booster T1,Booster Robotics,CN,shipping,1.18,30,23,4,6,,,,0.45,,2,42,estimate,booster.tech/robots official; 118x47x23 cm ~30 kg; 23 DOF base (31 gripper / 41 dex hand); arm length 45 cm; walking 2 h / standing 4 h; Orin AGX 200 TOPS; distributor ~EUR39k (~$42k)
+Booster K1,Booster Robotics,CN,shipping,0.95,19.5,22,4,6,,,,,,0.5,5.999,listed,booster.tech/booster-k1; ~95 cm / 19.5 kg / 22 DOF; peak joint 60 Nm; walking ~30 min @ 0.4 m/s; starting $5999
+EngineAI SE01,EngineAI,CN,shipping,1.7,55,32,,,,,,,,,12,estimate,launch ~CNY 88000 (~$12k); full-size research/commercial; anthropomorphic gait
+EngineAI PM01,EngineAI,CN,shipping,1.4,42,23,,,,,,,,2,,quote,~140 cm / 42 kg / 23 DOF / ~145 Nm joint / ~2 h; Business vs Education configs; quote
+Kepler K2 Bumblebee,Kepler,CN,production,1.75,75,,,,,,,,,,34,listed,RMB 248000 (~$34k Jul 2026 rates); industrial mass production claimed
+LimX Oli,LimX Dynamics,CN,shipping,1.65,55,,,,,,,,,,21.8,listed,from $21800 research platform; <=55 kg
+Dobot Atom,Dobot,CN,shipping,1.55,66,,,,,,,,,,27.5,listed,~$27.5k China / ~$79k US reported; precision assembly; China list stored
+NEURA 4NE1,NEURA Robotics,DE,preorder,1.8,80,,,,,,,,,,108,estimate,EU industrial; reservations; est. EUR98k (~$108k) each / EUR60k at 20+ ex tax; late 2026 deliveries targeted; payload claims up to 100 kg are maker figures
+Hexagon AEON,Hexagon,SE,pilot,1.65,60,,,,,,,,,,,quote,auto manufacturing pilots (Schaeffler BMW); enterprise; specs press-estimated
+Sanctuary Phoenix,Sanctuary AI,CA,pilot,1.7,70,,,,,,,,,,,quote,retail/inventory pilots historically; Sanctuary pivoted toward hardware-agnostic software mid-2026; hardware status fluid
+Ameca,Engineered Arts,UK,shipping,1.87,62,,,,,,,,,,,quote,HRI / exhibition humanoid; quote-based; expressive face focus more than industrial payload
+Noetix Bumi,Noetix Robotics,CN,preorder,0.94,12,,,,,,,,,,1.4,listed,CNY 9998 (~$1400) STEM education presale; delivery confirmation weak
+Rainbow RB-Y1,Rainbow Robotics,KR,shipping,,131,,,,,,,,,,100,estimate,mobile manipulator / humanoid-adjacent research; 2024 pre-order $80-120k (midpoint 100)
+DEEP Robotics DR02,DEEP Robotics,CN,pilot,1.75,65,,,,,,,,,,,quote,outdoor industrial IP66 claimed; contact sales
+RobotEra L7,RobotEra,CN,shipping,,,,,,,,,,4,,,,fleet deliveries; speed claims up to ~4 m/s (unofficial record often cited); sparse public datasheet
+Astribot S1,Astribot,CN,shipping,1.7,80,,,,,,,,,,,quote,dexterous manipulation focus; partner deliveries reported
+Galbot G1,Galbot,CN,shipping,1.73,92.5,,,,,,,,,,88,estimate,retail automation; ~CNY 630k reported; 30+ cities claimed
+XPENG IRON,XPENG,CN,prototype,,,,,,,,,,,,,,industrial inspection; production targeted end-2026; no public price
+Xiaomi CyberOne,Xiaomi,CN,prototype,1.77,52,21,,,,,,,,,,,2022 unveil CyberOne ~177 cm / 52 kg / 21 DOF; CyberOne V2 factory R&D — specs not published
+Tiangong 3.0,Beijing Humanoid Robot Innovation Center,CN,shipping,1.69,62,,,,,,,,,,,,open-source research humanoid; mass delivery H2 2026 claimed
+HMND 01,Humanoid,UK,pilot,2.2,,,,,,,,,,,,raas,warehouse UK/EU; tall form factor; RaaS; Beta 2026
+PAL ARI,PAL Robotics,ES,shipping,1.65,,,,,,,,,,,35,estimate,healthcare / HRI wheeled social humanoid (~$34-36k); not bipedal industrial
+Promobot V4,Promobot,RU,shipping,1.6,,,,,,,,,,,25,listed,service/concierge from $25000; wheeled service humanoid
+ASIMO (2011),Honda,JP,research,1.3,48,57,7,6,13,10,,,2.5,0.67,,,Honda global ASIMO about page (Nov 2011 all-new); 130 cm / 48 kg / 57 DOF; max run 9 km/h; operating time 40 min while running; cart push max load 10 kg (used as Payload_kg); hands 13 DOF each
+Robonaut 2,NASA / GM,US,research,,150,42,7,,12,,9,,,,,,NASA Robonaut 2 fact sheet; torso humanoid (first in space 2011); 330 lb / 150 kg; height 3 ft 4 in waist-to-head (not standing stature — Height_m left blank); 42 DOF; each arm 7 DOF holds 20 lb / 9 kg in Earth gravity; legs added 2014 for ISS mobility

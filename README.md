@@ -88,6 +88,34 @@ All data is collected from corporate websites, company catalogs, resellers, or r
 
 Updated info is welcome via pull request.
 
+## Humanoid robots (whole-body catalog)
+
+Whole-robot humanoid hardware lives in **`data/humanoid_robot_data.csv`** (~48 platforms). This is separate from `data/human_humanoid_arm_data.csv`, which only stores the **per-arm** points used in the reach–PF humanoid comparison plot.
+
+| Field | Meaning |
+|---|---|
+| `Height_m` / `Weight_kg` | Standing height and body mass (with battery when published) |
+| `Total_DOF` / `Arm_DOF` / `Leg_DOF` / `Hand_DOF` | Joint counts; leave blank when unpublished |
+| `Payload_kg` | Published whole-robot / bimanual carry (or Atlas instant capacity) |
+| `Arm_Payload_kg` / `Arm_Reach_m` | Per-arm rated load and arm length/span when known |
+| `Speed_mps` / `Battery_h` | Walk speed and runtime (walking when both given) |
+| `Cost_KUSD` | USD ÷ 1000 |
+| `Cost_Flag` | `listed` (shop/OEM price) · `target` (maker scale goal) · `estimate` (press/FX midpoint) · `quote` · `raas` |
+| `Status` | `shipping` · `production` · `pilot` · `preorder` · `internal` · `prototype` |
+| `Notes` | Source URL / caveats |
+
+Empty cells mean unpublished — do not invent numbers. Many enterprise platforms (Atlas, Digit, Figure, Apollo) have solid hardware specs but **no public list price**.
+
+### Humanoid plots
+
+One hardware figure (arm reach–vs–PF analog): **height vs carry/mass**, circle size = body mass. Cyan arrows connect successive generations of the same platform when both gens have height + mass + carry (e.g. Optimus Gen1→Gen2, Digit→Digit v5, Figure 02→03).
+
+```bash
+pixi run humanoid-plot
+```
+
+Output: `humanoid_payload_efficiency.png`. Hardware only — no status coloring.
+
 ## Running the Analysis App
 
 This repo includes an interactive Streamlit app for exploring robot arm data, comparing payload factors, and estimating costs.
