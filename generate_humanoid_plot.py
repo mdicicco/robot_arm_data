@@ -33,6 +33,20 @@ plot['marker_size'] = 36 + (plot['Weight_kg'] - m_min) / (m_max - m_min) * 180
 
 COLOR = '#ff9f43'
 PROGRESS_COLOR = '#7ec8e3'
+HUMAN_COLOR = '#f1c40f'
+
+# Adult-human whole-body carry estimate (not a datasheet — order-of-magnitude).
+# Height/mass ≈ mid adult; carry ≈ sustained two-hand / short-walk load that
+# matches how humanoid "rated carry" is usually quoted. Central ~30% BW is the
+# classic military march-load rule of thumb; band spans light continuous (~20% BW)
+# to a heavy but still workable ruck (~45% BW). Peak lifts / casualty carries
+# can approach ~1× BW and are intentionally excluded.
+HUMAN_HEIGHT_M = 1.75
+HUMAN_MASS_KG = 78.0
+HUMAN_CARRY_KG = 25.0                      # → PF ≈ 0.32
+HUMAN_PF = HUMAN_CARRY_KG / HUMAN_MASS_KG
+HUMAN_PF_LO = 0.20                         # ~15 kg @ 78 kg
+HUMAN_PF_HI = 0.45                         # ~35 kg @ 78 kg
 
 # Ordered generation chains (oldest → newest). Only names present on the
 # height+mass+carry plot get connected.
@@ -120,11 +134,31 @@ ax.scatter(
     alpha=0.55, edgecolors='white', linewidths=0.7, zorder=3,
 )
 
-ax.axvspan(1.60, 1.85, color='#f1c40f', alpha=0.06, zorder=0)
-ax.axvline(1.75, color='#f1c40f', linestyle=':', linewidth=1.2, alpha=0.75, zorder=2)
+ax.axvspan(1.60, 1.85, color=HUMAN_COLOR, alpha=0.06, zorder=0)
+ax.axvline(HUMAN_HEIGHT_M, color=HUMAN_COLOR, linestyle=':', linewidth=1.2, alpha=0.75, zorder=2)
 ax.text(
-    1.755, -0.015, '≈ adult height',
-    color='#f1c40f', fontsize=9, va='top', ha='left', zorder=4,
+    HUMAN_HEIGHT_M + 0.005, -0.015, '≈ adult height',
+    color=HUMAN_COLOR, fontsize=9, va='top', ha='left', zorder=4,
+)
+
+# Human payload-factor band + central estimate
+ax.axhspan(HUMAN_PF_LO, HUMAN_PF_HI, color=HUMAN_COLOR, alpha=0.07, zorder=0)
+ax.axhline(HUMAN_PF, color=HUMAN_COLOR, linestyle='--', linewidth=1.1, alpha=0.65, zorder=2)
+human_size = 36 + (HUMAN_MASS_KG - m_min) / (m_max - m_min) * 180
+ax.scatter(
+    [HUMAN_HEIGHT_M], [HUMAN_PF],
+    s=[human_size], c=HUMAN_COLOR, marker='*',
+    alpha=0.95, edgecolors='white', linewidths=0.6, zorder=4,
+)
+ax.annotate(
+    f'Adult human\n(~{HUMAN_CARRY_KG:.0f} kg / {HUMAN_MASS_KG:.0f} kg)',
+    (HUMAN_HEIGHT_M, HUMAN_PF),
+    xytext=(28, 22), textcoords='offset points',
+    fontsize=9, color=HUMAN_COLOR, fontweight='bold',
+    ha='left', va='bottom',
+    arrowprops=dict(arrowstyle='-', color=HUMAN_COLOR, lw=0.75,
+                    shrinkA=0, shrinkB=4),
+    zorder=5, annotation_clip=False,
 )
 
 # Prefer labeling later gens when two gens share the same plotted point
@@ -160,8 +194,8 @@ ax.tick_params(colors='#6b8ba4')
 for spine in ax.spines.values():
     spine.set_color('#2a4060')
 
-y_max = float(plot['Payload_Factor'].max())
-ax.set_ylim(-0.06, y_max * 1.20)
+y_max = max(float(plot['Payload_Factor'].max()), HUMAN_PF_HI)
+ax.set_ylim(-0.06, y_max * 1.12)
 ax.set_xlim(float(plot['Height_m'].min()) - 0.16, float(plot['Height_m'].max()) + 0.18)
 
 legend = ax.legend(
@@ -171,6 +205,9 @@ legend = ax.legend(
         Line2D([0], [0], marker='o', color='w', markerfacecolor=COLOR,
                markersize=11, label=f'~{m_max:.0f} kg', linestyle='None'),
         Line2D([0], [0], color=PROGRESS_COLOR, linewidth=2, label='Generation progress'),
+        Line2D([0], [0], marker='*', color='w', markerfacecolor=HUMAN_COLOR,
+               markersize=14, label=f'Adult human (~{HUMAN_PF:.2f}; band {HUMAN_PF_LO:.2f}–{HUMAN_PF_HI:.2f})',
+               linestyle='None'),
     ],
     loc='lower right', fontsize=10, framealpha=0.9,
     facecolor='#121f36', edgecolor='#2a4060', labelcolor='#e8f4fc',
@@ -180,7 +217,9 @@ legend.get_title().set_color('#00d4ff')
 
 ax.text(
     0.02, 0.98,
-    f'n={len(plot)}  ·  carry = published whole-robot / bimanual payload  ·  arrows = gen-to-gen',
+    f'n={len(plot)}  ·  carry = published whole-robot / bimanual payload  ·  arrows = gen-to-gen\n'
+    f'human ≈ {HUMAN_CARRY_KG:.0f} kg sustained two-hand @ {HUMAN_MASS_KG:.0f} kg / {HUMAN_HEIGHT_M} m '
+    f'(~30% BW; band ~20–45% BW)',
     transform=ax.transAxes, fontsize=9, color='#6b8ba4',
     va='top', ha='left',
 )
