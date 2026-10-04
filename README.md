@@ -90,7 +90,7 @@ Updated info is welcome via pull request.
 
 ## Humanoid robots (whole-body catalog)
 
-Whole-robot humanoid hardware lives in **`data/humanoid_robot_data.csv`** (~48 platforms). This is separate from `data/human_humanoid_arm_data.csv`, which only stores the **per-arm** points used in the reach–PF humanoid comparison plot.
+Whole-robot humanoid hardware lives in **`data/humanoid_robot_data.csv`** (67 platforms). This is separate from `data/human_humanoid_arm_data.csv`, which only stores the **per-arm** points used in the reach–PF humanoid comparison plot.
 
 | Field | Meaning |
 |---|---|
@@ -132,10 +132,10 @@ A human arm is ~5 % of body mass. **1X NEO (5 kg/arm on a 30 kg body), Kepler K2
 
 ![Humanoid vs arm payload scaling](humanoid_vs_arm_payload_scaling.png)
 
-**`humanoid_vs_arm_payload_scaling.png`** plots payload factor against own mass (log-log) for 566 arms and 27 humanoids:
+**`humanoid_vs_arm_payload_scaling.png`** plots payload factor against own mass (log-log) for 566 arms and 28 humanoids:
 
 - **Arms:** payload factor falls slowly with size (PF ∝ mass^−0.14, weak).
-- **Comparable humanoids:** flat at **median 0.30 (IQR 0.22–0.34)** across 48–101 kg, right at the adult-human ~0.32.
+- **Comparable humanoids:** **median 0.30 (IQR 0.21–0.34)** across 23–101 kg, right at the adult-human ~0.32. Between 48 and 101 kg the trend is flat (PF ∝ mass^−0.09, R² 0.00). **Fauna Sprout** (22.7 kg, 2 kg carry, PF 0.09) is the only small whole-body point and alone tips the fit to PF ∝ mass^+0.65 (R² 0.15). Its 2 kg comes from aggregator sites, not the company page, and isn't labelled whole-robot vs per-arm. If it is per-arm, it belongs with the excluded single-arm ratings below.
 - **Excluded from the fit (hollow):** Unitree G1 / G1 EDU / R1, whose "payload" is a single-arm rating, and Fourier GR-1, whose 40 kg is 6.7× its two-arm rating. With them in, the humanoid fit shows a spurious PF ∝ mass^+1.2.
 - **Not like-for-like:** humanoid carry is whole-body and close to the body, while arm payload is at full reach.
 

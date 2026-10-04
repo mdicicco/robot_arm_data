@@ -224,11 +224,13 @@ def plot_scaling(arms: pd.DataFrame, hum: pd.DataFrame, out: str) -> dict:
         ax.annotate(f"{r['Name']} ({HUMANOID_NOT_CARRY[r['Name']]})", (r['Weight_kg'], r['PF']),
                     xytext=(10, -4), textcoords='offset points', fontsize=8.5, color=HUMANOID_COLOR, zorder=6)
     for name, (dx, dy) in {'Atlas (Electric)': (10, 4), 'PNDbotics Adam SP': (10, -10),
-                           'HRP-5P': (10, -2), 'Kepler K2 Bumblebee': (10, 6)}.items():
+                           'HRP-5P': (10, -2), 'Kepler K2 Bumblebee': (10, 6),
+                           'Fauna Sprout': (-8, 10)}.items():
         hit = clean[clean['Name'] == name]
         if not hit.empty:
             r = hit.iloc[0]
             ax.annotate(name, (r['Weight_kg'], r['PF']), xytext=(dx, dy), textcoords='offset points',
+                        ha='right' if dx < 0 else 'left',
                         fontsize=8.5, color=HUMANOID_COLOR, fontweight='bold', zorder=6)
     med = float(clean['PF'].median())
     ax.text(0.99, 0.985,
@@ -241,7 +243,7 @@ def plot_scaling(arms: pd.DataFrame, hum: pd.DataFrame, out: str) -> dict:
     ax.set_yscale('log')
     ax.set_xlabel('Own mass (kg) — robot arm mass, or humanoid body mass')
     ax.set_ylabel('Payload factor (payload / own mass)')
-    ax.set_title('Arms lose payload factor slowly as they grow; humanoids sit flat near the human ~0.3',
+    ax.set_title('Arms lose payload factor slowly as they grow; humanoids cluster near the human ~0.3',
                  fontsize=15, fontweight='bold', pad=10)
     leg = ax.legend(loc='lower left', fontsize=9.5, facecolor=PANEL, edgecolor=GRID,
                     labelcolor=INK, framealpha=0.92)
