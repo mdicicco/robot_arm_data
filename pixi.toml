@@ -18,6 +18,7 @@ arm-mass-app = "streamlit run arm_mass_app.py --server.headless true"
 payload-bound-app = "streamlit run payload_bound_app.py --server.headless true"
 humanoid-plot = "python generate_humanoid_plot.py"
 humanoid-analysis = "python analyze_humanoid_scaling.py"
+joint-overhead = "python analyze_joint_module_overhead.py"
 
 [dependencies]
 python = "3.12.*"

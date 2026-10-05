@@ -216,6 +216,37 @@ pixi run python analyze_joint_prices.py --torque 20 --speed 120 --od 90 --mass 0
 
 `joint-app` is a Streamlit estimator with the same dark theme as the arm app. `joint-analyze` reprints the fit and regenerates `robot_joint_price_fit.png`. Do not insert a bare `--` between the pixi task and argparse flags.
 
+### Module mass vs. bare gearbox + motor
+
+![Joint module overhead](robot_joint_module_overhead.png)
+
+Each module is a single-DOF joint. `analyze_joint_module_overhead.py` takes each module's own spec (rated torque, peak torque, ratio, rated speed), sizes a bare gearbox + motor with the fits from `arm_mass_model.py`, and divides the module's published mass by that prediction. No integration factor is applied. It is the same per-module ratio whose median the arm model uses as its integration factor, and the script prints a check that the medians match (they do, to three decimals).
+
+- **Gearbox** is sized on rated torque and ratio. **Motor** is sized on peak torque ÷ (ratio · η) and rated rpm × ratio. Missing rated or peak torque is filled with the 2.5× rule, a missing ratio with the type default, and a missing speed with 60 rpm. These are the same fills the integration-factor calibration uses, and they're flagged in the CSV.
+- **harmonic / cycloidal / planetary / qdd** use the type-matched gearbox fit and the frameless motor fit (qdd uses the planetary gearbox fit). **series-elastic / hobby-servo** use the pooled `all` fits. The pooled result is also in the CSV for every module.
+- 136 of 142 modules have a published mass. Per-module numbers are in `robot_joint_module_overhead.csv`.
+
+| Type | n | Median module ÷ theory | Lighter than theory |
+|---|---|---|---|
+| hobby-servo | 8 | 0.64× | 100 % |
+| qdd | 31 | 0.65× | 94 % |
+| planetary | 9 | 0.69× | 100 % |
+| cycloidal | 6 | 0.96× | 50 % |
+| harmonic | 61 | 1.07× | 41 % |
+| series-elastic | 21 | 1.37× | 19 % |
+
+**The module is not reliably heavier than its components.** 57 % of modules come in *lighter* than the bare gearbox + motor the fits predict (77 % among the 53 modules whose inputs are all published and inside the fitted ranges). The spread is large (0.4×–3.3×) and depends mostly on type:
+
+- **qdd and planetary** modules are about 0.65× theory with little scatter, and all of them sit inside the fitted ranges. The fits were trained on standalone catalog parts, which likely carry their own housing, bearings and flanges that an integrated module shares.
+- **harmonic** is bimodal. Compact integrated servos (eRob I, TD, HPJM-PRO) are only 0.5–0.6× theory. Harmonic Drive's SHA / FHA actuators with their large housings are about 2.2×, which is where the "structure" overhead is most visible.
+- **series-elastic, hobby-servo and cycloidal** are all more than 25 % outside the fitted torque / ratio / speed ranges (series-elastic ratios are 254–1742:1 against fitted gearboxes of at most ~110:1), so treat those medians as indicative only.
+
+So `Module_kg − Theory_kg` understates the real structure + electronics mass wherever the fits over-predict.
+
+```bash
+pixi run joint-overhead
+```
+
 ## BLDC motors
 
 Bare brushless motors (not geared joint modules) live in `data/bldc_motor_data.csv`.

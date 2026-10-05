@@ -1,0 +1,137 @@
+Name,MFG,Type,Module_kg,Model,Rated_Torque_Used_Nm,Peak_Torque_Used_Nm,Ratio_Used,Speed_Used_rpm,Torque_Imputed,Ratio_Imputed,Speed_Imputed,Gearbox_kg,Motor_kg,Theory_kg,Extra_kg,Mass_Ratio,Extrapolated,Theory_Pooled_kg,Mass_Ratio_Pooled,Any_Imputed
+DM-J4310-2EC V1.1,Damiao,qdd,0.3,planetary+frameless,3.0,7.0,10.0,120.0,False,False,False,0.2102,0.1597,0.3699,-0.0699,0.811,False,0.442,0.6788,False
+DM-J4340-2EC,Damiao,planetary,0.362,planetary+frameless,9.0,27.0,40.0,36.0,False,False,False,0.4449,0.1506,0.5955,-0.2335,0.6079,False,0.7211,0.502,False
+DM-J4340P-2EC,Damiao,planetary,0.375,planetary+frameless,9.0,27.0,40.0,36.0,False,False,False,0.4449,0.1506,0.5955,-0.2205,0.6297,False,0.7211,0.52,False
+DM-J6006-2EC,Damiao,qdd,0.335,planetary+frameless,4.0,12.0,6.0,150.0,False,False,False,0.2573,0.343,0.6003,-0.2653,0.5581,False,0.7297,0.4591,False
+DM-J8006-2EC V1.1,Damiao,qdd,0.559,planetary+frameless,8.0,20.0,6.0,120.0,False,False,False,0.4154,0.5052,0.9207,-0.3617,0.6072,False,1.1327,0.4935,False
+DM-J8009-2EC,Damiao,qdd,0.896,planetary+frameless,20.0,40.0,9.0,100.0,False,False,False,0.7803,0.589,1.3693,-0.4733,0.6543,False,1.7975,0.4985,False
+DM-J10010L-2EC,Damiao,qdd,1.372,planetary+frameless,40.0,120.0,10.0,100.0,False,False,False,1.2589,1.1317,2.3906,-1.0186,0.5739,False,3.3259,0.4125,False
+DM-J10010-2EC,Damiao,qdd,1.485,planetary+frameless,40.0,150.0,10.0,100.0,False,False,False,1.2589,1.3163,2.5752,-1.0902,0.5767,False,3.6056,0.4119,False
+RobStride 05,RobStride,qdd,0.191,planetary+frameless,1.6,5.5,7.75,60.0,False,False,True,0.1364,0.1922,0.3286,-0.1376,0.5813,False,0.3421,0.5583,True
+RobStride 00,RobStride,qdd,0.31,planetary+frameless,5.0,14.0,10.0,60.0,False,False,True,0.2992,0.2905,0.5896,-0.2796,0.5258,False,0.6775,0.4575,True
+RobStride 01,RobStride,qdd,0.38,planetary+frameless,6.0,17.0,7.75,60.0,False,False,True,0.3399,0.4128,0.7527,-0.3727,0.5049,False,0.8543,0.4448,True
+RobStride 02,RobStride,qdd,0.405,planetary+frameless,6.0,17.0,7.75,360.0,False,False,False,0.3399,0.2959,0.6359,-0.2309,0.6369,False,0.8921,0.454,False
+RobStride 06,RobStride,qdd,0.621,planetary+frameless,11.0,36.0,9.0,60.0,False,False,True,0.5163,0.603,1.1193,-0.4983,0.5548,False,1.3409,0.4631,True
+RobStride 03,RobStride,qdd,0.88,planetary+frameless,20.0,60.0,9.0,100.0,False,False,False,0.7803,0.7751,1.5554,-0.6754,0.5658,False,2.0564,0.4279,False
+RobStride 04,RobStride,qdd,1.42,planetary+frameless,40.0,120.0,9.0,50.0,False,False,False,1.2598,1.4097,2.6695,-1.2495,0.5319,False,3.3996,0.4177,False
+AK60-6 V3.0 KV80,CubeMars,qdd,0.38,planetary+frameless,3.0,9.0,6.0,233.0,False,False,False,0.2109,0.2601,0.471,-0.091,0.8067,False,0.5955,0.6382,False
+AK70-10 KV100,CubeMars,qdd,0.521,planetary+frameless,8.3,24.8,10.0,148.0,False,False,False,0.4246,0.3618,0.7864,-0.2654,0.6625,False,1.0329,0.5044,False
+AK70-9 V3.0 KV60,CubeMars,qdd,0.54,planetary+frameless,8.5,29.2,9.0,260.0,False,False,False,0.432,0.3986,0.8306,-0.2906,0.6502,False,1.1672,0.4626,False
+AK80-6 KV100,CubeMars,qdd,0.485,planetary+frameless,6.0,12.0,6.0,603.0,False,False,False,0.3405,0.2649,0.6054,-0.1204,0.8011,False,0.8733,0.5554,False
+AK80-8 KV60,CubeMars,qdd,0.57,planetary+frameless,10.0,25.0,8.0,243.0,False,False,False,0.4837,0.4022,0.8859,-0.3159,0.6434,False,1.2219,0.4665,False
+AK80-9 V3.0 KV100,CubeMars,qdd,0.49,planetary+frameless,9.0,22.0,9.0,390.0,False,False,False,0.4494,0.3052,0.7546,-0.2646,0.6494,False,1.0858,0.4513,False
+AK80-64 KV80,CubeMars,planetary,0.85,planetary+frameless,48.0,120.0,64.0,23.0,False,False,False,1.4101,0.2997,1.7097,-0.8597,0.4972,False,2.234,0.3805,False
+AK10-9 V3.0 KV60,CubeMars,qdd,0.94,planetary+frameless,18.0,53.0,9.0,235.0,False,False,False,0.7255,0.6081,1.3336,-0.3936,0.7048,False,1.9259,0.4881,False
+AKA60-6 KV80,CubeMars,qdd,0.46,planetary+frameless,3.0,9.0,6.0,200.0,False,False,False,0.2109,0.2676,0.4785,-0.0185,0.9613,False,0.593,0.7757,False
+AKA10-9 KV60,CubeMars,qdd,1.06,planetary+frameless,18.0,53.0,9.0,109.0,False,False,False,0.7255,0.7013,1.4269,-0.3669,0.7429,False,1.8916,0.5604,False
+RMD-X4-3,MyActuator,qdd,0.3,planetary+frameless,1.5,3.0,6.0,200.0,False,False,False,0.1306,0.1272,0.2578,0.0422,1.1636,False,0.3016,0.9948,False
+RMD-X6-7,MyActuator,qdd,0.35,planetary+frameless,3.5,7.0,6.0,400.0,False,False,False,0.2346,0.1985,0.4331,-0.0831,0.8082,False,0.5778,0.6057,False
+RMD-X6-8,MyActuator,qdd,0.49,planetary+frameless,4.5,8.0,8.0,310.0,False,False,False,0.2786,0.1777,0.4563,0.0337,1.0739,False,0.6027,0.813,False
+RMD-X6-40,MyActuator,planetary,0.59,planetary+frameless,18.0,40.0,36.0,90.0,False,False,False,0.7187,0.1816,0.9003,-0.3103,0.6553,False,1.1868,0.4971,False
+RMD-X8-25,MyActuator,qdd,0.71,planetary+frameless,10.0,25.0,9.0,110.0,False,False,False,0.4833,0.4209,0.9043,-0.1943,0.7852,False,1.1513,0.6167,False
+RMD-X8-20,MyActuator,qdd,0.78,planetary+frameless,10.0,20.0,6.0,190.0,False,False,False,0.4847,0.4639,0.9486,-0.1686,0.8223,False,1.2455,0.6262,False
+RMD-X8-60,MyActuator,planetary,0.9,planetary+frameless,30.0,60.0,36.0,40.0,False,False,False,1.023,0.2778,1.3008,-0.4008,0.6919,False,1.6957,0.5308,False
+RMD-X10-40,MyActuator,qdd,1.15,planetary+frameless,15.0,40.0,7.0,165.0,False,False,False,0.6407,0.6667,1.3074,-0.1574,0.8796,False,1.7649,0.6516,False
+RMD-X10-100,MyActuator,planetary,1.7,planetary+frameless,50.0,100.0,35.0,50.0,False,False,False,1.4564,0.386,1.8423,-0.1423,0.9227,False,2.5068,0.6782,False
+GO-M8010-6,Unitree,qdd,0.53,planetary+frameless,9.48,23.7,6.33,287.0,True,False,False,0.4669,0.4603,0.9272,-0.3972,0.5716,False,1.2873,0.4117,True
+M107,Unitree,qdd,1.9,planetary+frameless,144.0,360.0,50.0,60.0,True,True,True,3.0177,0.653,3.6707,-1.7707,0.5176,False,5.3711,0.3537,True
+qdd100 beta 3,mjbots,qdd,0.507,planetary+frameless,3.3,16.0,6.0,60.0,False,False,True,0.2253,0.4941,0.7193,-0.2123,0.7048,False,0.7612,0.6661,True
+T5-1,HEBI,series-elastic,0.45,all+all,1.3,2.5,272.0,90.0,False,False,False,0.1126,0.0086,0.1212,0.3288,3.7126,True,0.1212,3.7126,False
+T5-4,HEBI,series-elastic,0.45,all+all,4.0,7.0,762.0,32.0,False,False,False,0.2473,0.0086,0.2559,0.1941,1.7584,True,0.2559,1.7584,False
+T5-9,HEBI,series-elastic,0.45,all+all,8.0,13.0,1742.0,14.0,False,False,False,0.3975,0.0074,0.4048,0.0452,1.1115,True,0.4048,1.1115,False
+T8-3+,HEBI,series-elastic,0.575,all+all,4.0,8.0,272.0,110.0,False,False,False,0.262,0.0207,0.2827,0.2923,2.034,True,0.2827,2.034,False
+T8-9+,HEBI,series-elastic,0.575,all+all,10.0,23.0,762.0,39.0,False,False,False,0.4923,0.0211,0.5134,0.0616,1.1199,True,0.5134,1.1199,False
+T8-16+,HEBI,series-elastic,0.575,all+all,20.0,44.0,1462.0,20.0,False,False,False,0.7991,0.021,0.8201,-0.2451,0.7011,True,0.8201,0.7011,False
+T25-8,HEBI,series-elastic,1.5,all+all,8.0,16.0,254.0,118.0,False,False,False,0.4428,0.0365,0.4793,1.0207,3.1297,True,0.4793,3.1297,False
+T25-20,HEBI,series-elastic,1.5,all+all,20.0,40.0,639.0,47.0,False,False,False,0.837,0.0364,0.8734,0.6266,1.7174,True,0.8734,1.7174,False
+T25-40,HEBI,series-elastic,1.5,all+all,40.0,80.0,1301.0,23.0,False,False,False,1.3541,0.0359,1.39,0.11,1.0791,True,1.39,1.0791,False
+X5-1,HEBI,series-elastic,0.33,all+all,1.3,2.5,272.0,90.0,False,False,False,0.1126,0.0086,0.1212,0.2088,2.7226,True,0.1212,2.7226,False
+X5-4,HEBI,series-elastic,0.345,all+all,4.0,7.0,762.0,32.0,False,False,False,0.2473,0.0086,0.2559,0.0891,1.3481,True,0.2559,1.3481,False
+X5-9,HEBI,series-elastic,0.36,all+all,8.0,13.0,1742.0,14.0,False,False,False,0.3975,0.0074,0.4048,-0.0448,0.8892,True,0.4048,0.8892,False
+X8-3,HEBI,series-elastic,0.455,all+all,3.0,7.0,272.0,84.0,False,False,False,0.2111,0.0185,0.2296,0.2254,1.982,True,0.2296,1.982,False
+X8-9,HEBI,series-elastic,0.475,all+all,8.0,20.0,762.0,30.0,False,False,False,0.4163,0.0188,0.4351,0.0399,1.0917,True,0.4351,1.0917,False
+X8-16,HEBI,series-elastic,0.49,all+all,16.0,38.0,1462.0,15.0,False,False,False,0.6757,0.0186,0.6943,-0.2043,0.7057,True,0.6943,0.7057,False
+R8-3+,HEBI,series-elastic,0.67,all+all,4.0,8.0,272.0,110.0,False,False,False,0.262,0.0207,0.2827,0.3873,2.37,True,0.2827,2.37,False
+R8-9+,HEBI,series-elastic,0.685,all+all,10.0,23.0,762.0,39.0,False,False,False,0.4923,0.0211,0.5134,0.1716,1.3342,True,0.5134,1.3342,False
+R8-16+,HEBI,series-elastic,0.715,all+all,20.0,44.0,1462.0,20.0,False,False,False,0.7991,0.021,0.8201,-0.1051,0.8718,True,0.8201,0.8718,False
+R25-8,HEBI,series-elastic,1.9,all+all,8.0,16.0,254.0,118.0,False,False,False,0.4428,0.0365,0.4793,1.4207,3.9643,True,0.4793,3.9643,False
+R25-20,HEBI,series-elastic,1.9,all+all,20.0,40.0,639.0,47.0,False,False,False,0.837,0.0364,0.8734,1.0266,2.1754,True,0.8734,2.1754,False
+R25-40,HEBI,series-elastic,1.9,all+all,40.0,80.0,1301.0,23.0,False,False,False,1.3541,0.0359,1.39,0.51,1.3669,True,1.39,1.3669,False
+XL430-W250-T,ROBOTIS,hobby-servo,0.0572,all+all,0.6,1.5,258.5,61.0,True,False,False,0.0632,0.006,0.0691,-0.0119,0.8272,True,0.0691,0.8272,True
+XM430-W210-T,ROBOTIS,hobby-servo,0.082,all+all,1.2,3.0,212.6,77.0,True,False,False,0.1075,0.0116,0.1191,-0.0371,0.6883,True,0.1191,0.6883,True
+XM430-W350-T,ROBOTIS,hobby-servo,0.082,all+all,1.64,4.1,353.5,46.0,True,False,False,0.1321,0.0101,0.1422,-0.0602,0.5768,True,0.1422,0.5768,True
+XM540-W150-T,ROBOTIS,hobby-servo,0.165,all+all,2.92,7.3,152.3,53.0,True,False,False,0.2136,0.028,0.2416,-0.0766,0.6829,True,0.2416,0.6829,True
+XM540-W270-T,ROBOTIS,hobby-servo,0.165,all+all,4.24,10.6,272.5,30.0,True,False,False,0.2737,0.024,0.2976,-0.1326,0.5543,True,0.2976,0.5543,True
+XH430-W350-T,ROBOTIS,hobby-servo,0.082,all+all,1.36,3.4,353.5,30.0,True,False,False,0.1148,0.0086,0.1233,-0.0413,0.6648,True,0.1233,0.6648,True
+XH540-W270-T,ROBOTIS,hobby-servo,0.165,all+all,3.96,9.9,272.5,39.0,True,False,False,0.26,0.0231,0.2831,-0.1181,0.5829,True,0.2831,0.5829,True
+XH540-V270-R,ROBOTIS,hobby-servo,0.165,all+all,3.68,9.2,272.5,34.0,True,False,False,0.2461,0.0217,0.2677,-0.1027,0.6163,True,0.2677,0.6163,True
+PH42-020-S300-R,ROBOTIS,cycloidal,0.34,cycloidal+frameless,5.1,12.75,303.75,29.2,True,False,False,0.4341,0.017,0.4511,-0.1111,0.7537,True,0.338,1.006,True
+PM42-010-S260-R,ROBOTIS,cycloidal,0.27,cycloidal+frameless,1.7,4.25,257.019,26.0,True,False,False,0.2034,0.0096,0.2129,0.0571,1.268,True,0.1507,1.7915,True
+PM54-040-S250-R,ROBOTIS,cycloidal,0.71,cycloidal+frameless,3.9,9.75,251.417,24.2,True,False,False,0.3611,0.0173,0.3784,0.3316,1.8764,True,0.2818,2.5199,True
+PM54-060-S250-R,ROBOTIS,cycloidal,0.855,cycloidal+frameless,10.1,25.25,251.417,28.3,True,False,False,0.6969,0.032,0.7289,0.1261,1.173,True,0.5761,1.4842,True
+PH54-100-S500-R,ROBOTIS,cycloidal,0.74,cycloidal+frameless,25.3,63.25,501.923,29.2,True,False,False,1.3083,0.0327,1.341,-0.601,0.5518,True,1.0715,0.6906,True
+PH54-200-S500-R,ROBOTIS,cycloidal,0.855,cycloidal+frameless,44.7,111.75,501.923,29.0,True,False,False,1.9388,0.0481,1.9869,-1.1319,0.4303,True,1.6431,0.5204,True
+eRob 70F,ZeroErr,harmonic,0.77,harmonic+frameless,14.0,35.0,50.0,60.0,True,False,False,0.6943,0.1524,0.8468,-0.0768,0.9093,False,0.935,0.8235,True
+eRob 70I,ZeroErr,harmonic,0.82,harmonic+frameless,10.0,70.0,100.0,30.0,False,False,False,0.5477,0.1524,0.7001,0.1199,1.1712,False,0.7482,1.096,False
+eRob 80I,ZeroErr,harmonic,1.03,harmonic+frameless,57.2,143.0,100.0,60.0,True,False,False,1.8278,0.2174,2.0452,-1.0152,0.5036,False,2.3915,0.4307,True
+eRob 90I,ZeroErr,harmonic,1.506,harmonic+frameless,52.0,191.0,100.0,30.0,False,False,False,1.7113,0.3008,2.0121,-0.5061,0.7485,False,2.3192,0.6493,False
+eRob 110I,ZeroErr,harmonic,2.57,harmonic+frameless,163.2,408.0,100.0,60.0,True,False,False,3.7721,0.4422,4.2143,-1.6443,0.6098,False,5.2529,0.4893,True
+eRob 142I,ZeroErr,harmonic,6.7,harmonic+frameless,356.8,892.0,100.0,40.0,True,False,False,6.4765,0.8097,7.2861,-0.5861,0.9196,True,9.422,0.7111,True
+eRob 170I,ZeroErr,harmonic,9.5,harmonic+frameless,472.0,1180.0,100.0,40.0,True,True,False,7.858,0.9786,8.8366,0.6634,1.0751,True,13.0333,0.7289,True
+FHA-8C-100,Harmonic Drive,harmonic,0.4,harmonic+frameless,4.8,12.0,100.0,60.0,True,False,False,0.3298,0.0406,0.3704,0.0296,1.0799,False,0.3724,1.0741,True
+FHA-11C-100,Harmonic Drive,harmonic,0.62,harmonic+frameless,11.0,27.5,100.0,60.0,True,False,False,0.585,0.0712,0.6562,-0.0362,0.9449,False,0.6939,0.8935,True
+FHA-14C-100,Harmonic Drive,harmonic,1.2,harmonic+frameless,28.0,70.0,100.0,60.0,True,False,False,1.1157,0.134,1.2497,-0.0497,0.9602,False,1.3991,0.8577,True
+FHA-17C-100,Harmonic Drive,harmonic,2.5,harmonic+frameless,22.8,57.0,100.0,48.0,True,False,False,0.968,0.1215,1.0896,1.4104,2.2945,False,1.1973,2.088,True
+FHA-25C-100,Harmonic Drive,harmonic,4.0,harmonic+frameless,92.0,230.0,100.0,45.0,True,False,False,2.5384,0.3164,2.8548,1.1452,1.4012,False,3.4096,1.1731,True
+FHA-32C-100,Harmonic Drive,harmonic,6.5,harmonic+frameless,159.2,398.0,100.0,40.0,True,False,False,3.708,0.4688,4.1768,2.3232,1.5562,False,5.1416,1.2642,True
+FHA-40C-100,Harmonic Drive,harmonic,12.0,harmonic+frameless,276.0,690.0,100.0,35.0,True,False,False,5.4234,0.6975,6.121,5.879,1.9605,True,7.7635,1.5457,True
+SHA-20A-51,Harmonic Drive,harmonic,2.0,harmonic+frameless,21.0,73.0,51.0,118.0,False,False,False,0.9188,0.2174,1.1362,0.8638,1.7603,False,1.3466,1.4852,False
+SHA-25A-101-SG,Harmonic Drive,harmonic,2.95,harmonic+frameless,81.0,204.0,101.0,55.4,False,False,False,2.3244,0.2782,2.6027,0.3473,1.1334,False,3.1012,0.9512,False
+SHA-32A-101-SG,Harmonic Drive,harmonic,5.9,harmonic+frameless,178.0,433.0,101.0,47.5,False,False,False,4.0051,0.4766,4.4817,1.4183,1.3165,False,5.5734,1.0586,False
+SHA-40A-101-SG,Harmonic Drive,harmonic,9.9,harmonic+frameless,198.0,738.0,101.0,39.6,False,False,False,4.3109,0.7074,5.0183,4.8817,1.9728,False,6.3409,1.5613,False
+SHA-58A-101-SG,Harmonic Drive,harmonic,29.5,harmonic+frameless,826.8,2067.0,101.0,29.7,True,False,False,11.575,1.4988,13.0739,16.4261,2.2564,True,17.6433,1.672,True
+SHA-65A-101-SG,Harmonic Drive,harmonic,37.5,harmonic+frameless,1196.0,2990.0,101.0,27.7,True,False,False,14.9389,1.9496,16.8885,20.6115,2.2205,True,23.2657,1.6118,True
+LPA-20-101,Harmonic Drive,harmonic,1.4,harmonic+frameless,16.9,57.0,101.0,29.7,False,False,False,0.787,0.1317,0.9188,0.4812,1.5238,False,0.9852,1.421,False
+HEJ 50-48-30,maxon,planetary,0.57,planetary+frameless,11.0,30.0,50.0,201.0,False,True,False,0.5103,0.097,0.6072,-0.0372,0.9387,False,0.8018,0.7109,True
+HEJ 70-48-60,maxon,planetary,1.05,planetary+frameless,27.0,62.0,50.0,170.0,False,True,False,0.949,0.1635,1.1126,-0.0626,0.9438,False,1.526,0.6881,True
+HDT DT38S-WGA14,maxon,harmonic,0.9,harmonic+frameless,7.6,19.0,100.0,85.0,True,True,False,0.4531,0.0519,0.505,0.395,1.7821,False,0.5934,1.5167,True
+HDT DT38M-WGU14,maxon,harmonic,0.9,harmonic+frameless,14.4,36.0,100.0,65.0,True,True,False,0.7047,0.0842,0.7888,0.1112,1.1409,False,0.9557,0.9417,True
+HDT DT50S-WGA20,maxon,harmonic,1.5,harmonic+frameless,25.6,64.0,100.0,32.0,True,True,False,1.0487,0.1417,1.1904,0.3096,1.26,False,1.4611,1.0266,True
+HDT DT50M-WGU20,maxon,harmonic,1.8,harmonic+frameless,48.0,120.0,100.0,22.0,True,True,False,1.6192,0.2326,1.8518,-0.0518,0.972,False,2.3329,0.7716,True
+HDT DT65S-WGA25,maxon,harmonic,2.6,harmonic+frameless,49.2,123.0,100.0,23.0,True,True,False,1.6471,0.2346,1.8817,0.7183,1.3818,False,2.3775,1.0936,True
+HDT DT65M-WGU25,maxon,harmonic,3.4,harmonic+frameless,91.6,229.0,100.0,12.0,True,True,False,2.5308,0.4032,2.934,0.466,1.1588,False,3.7662,0.9028,True
+HDT DT85M-WGA32,maxon,harmonic,5.0,harmonic+frameless,104.4,261.0,100.0,16.0,True,True,False,2.7702,0.4176,3.1878,1.8122,1.5685,False,4.1658,1.2002,True
+HDT DT85L-WGU32,maxon,harmonic,5.3,harmonic+frameless,193.6,484.0,100.0,8.6,True,True,False,4.2447,0.712,4.9567,0.3433,1.0693,False,6.5822,0.8052,True
+HDT DT85L-WGU32-low,maxon,harmonic,5.3,harmonic+frameless,112.4,281.0,100.0,29.0,True,True,False,2.9152,0.3931,3.3083,1.9917,1.602,False,4.4283,1.1968,True
+HPJ RJ45,maxon,harmonic,1.3,harmonic+frameless,5.2,13.0,100.0,24.0,True,True,False,0.3486,0.0508,0.3994,0.9006,3.2551,False,0.4408,2.9494,True
+HPJ RJ60,maxon,harmonic,1.8,harmonic+frameless,26.0,65.0,100.0,29.0,True,True,False,1.06,0.1459,1.2059,0.5941,1.4927,False,1.4768,1.2188,True
+HPJ RJ90,maxon,harmonic,3.0,harmonic+frameless,48.8,122.0,100.0,16.0,True,True,False,1.6378,0.2495,1.8874,1.1126,1.5895,False,2.3547,1.274,True
+HPJ RJ90L,maxon,harmonic,3.4,harmonic+frameless,104.0,260.0,100.0,9.5,True,True,False,2.7629,0.4589,3.2217,0.1783,1.0553,False,4.1335,0.8225,True
+HPJ RJ110,maxon,harmonic,3.7,harmonic+frameless,140.0,350.0,100.0,32.0,True,True,False,3.3929,0.4479,3.8408,-0.1408,0.9633,False,5.2262,0.708,True
+KAH-14C,Leaderdrive,harmonic,1.3,harmonic+frameless,13.5,34.0,101.0,36.0,False,False,False,0.6739,0.0896,0.7635,0.5365,1.7028,False,0.8058,1.6133,False
+KAH-17C,Leaderdrive,harmonic,1.8,harmonic+frameless,49.0,66.0,101.0,31.0,False,False,False,1.6424,0.1443,1.7867,0.0133,1.0074,False,2.0072,0.8968,False
+KAH-20C,Leaderdrive,harmonic,2.2,harmonic+frameless,61.0,102.0,101.0,31.0,False,False,False,1.9108,0.1938,2.1046,0.0954,1.0453,False,2.4045,0.915,False
+KAH-25C,Leaderdrive,harmonic,3.2,harmonic+frameless,133.0,194.0,101.0,26.0,False,False,False,3.2745,0.3095,3.584,-0.384,0.8929,False,4.2686,0.7497,False
+KAH-32C,Leaderdrive,harmonic,6.2,harmonic+frameless,267.0,411.0,101.0,21.0,False,False,False,5.3002,0.5354,5.8356,0.3644,1.0624,True,7.2243,0.8582,False
+KAH-40C,Leaderdrive,harmonic,9.1,harmonic+frameless,460.0,702.0,101.0,15.0,False,False,False,7.7189,0.8189,8.5378,0.5622,1.0659,True,10.8445,0.8391,False
+WPM-42,Nidec,harmonic,0.545,harmonic+frameless,10.0,20.0,50.0,60.0,False,False,False,0.5503,0.1043,0.6546,-0.1096,0.8325,False,0.703,0.7752,False
+WPM-50,Nidec,harmonic,0.86,harmonic+frameless,24.0,51.0,81.0,37.0,False,False,False,1.0044,0.1419,1.1463,-0.2863,0.7502,False,1.2593,0.6829,False
+WPM-63,Nidec,harmonic,1.6,harmonic+frameless,47.0,110.0,101.0,36.0,False,False,False,1.5957,0.1984,1.7941,-0.1941,0.8918,False,2.0396,0.7845,False
+DRA25-E-100,HIWIN,harmonic,3.3,harmonic+frameless,62.8,157.0,100.0,30.0,True,False,False,1.9497,0.2634,2.2131,1.0869,1.4911,False,2.553,1.2926,True
+DRA32-E-80,HIWIN,harmonic,6.9,harmonic+frameless,121.6,304.0,80.0,37.0,True,False,False,3.0828,0.4804,3.5632,3.3368,1.9365,False,4.3431,1.5887,True
+ReBeL 80,igus,harmonic,0.33,harmonic+frameless,2.0,3.0,50.0,10.0,False,False,False,0.181,0.0403,0.2212,0.1088,1.4917,True,0.2,1.6497,False
+ReBeL 105,igus,harmonic,1.0,harmonic+frameless,10.0,12.5,50.0,10.0,False,False,False,0.5503,0.1059,0.6562,0.3438,1.524,False,0.6572,1.5215,False
+KA-58,Kinova,harmonic,0.357,harmonic+frameless,3.6,6.8,100.0,15.0,False,True,False,0.2704,0.0357,0.3061,0.0509,1.1663,False,0.3204,1.1142,True
+KA-75+,Kinova,harmonic,0.57,harmonic+frameless,12.0,30.5,100.0,9.4,False,True,False,0.6212,0.1077,0.729,-0.159,0.7819,False,0.8199,0.6952,True
+HEJ 90-48-140,maxon,planetary,1.99,planetary+frameless,75.0,140.0,50.0,99.0,False,True,False,1.9227,0.3139,2.2365,-0.2465,0.8898,False,3.1721,0.6273,True
+HPJM-RE30-40-PRO-101,Honpine,harmonic,0.18,harmonic+frameless,2.8,4.8,101.0,45.0,False,False,False,0.2272,0.0228,0.2501,-0.0701,0.7198,True,0.2389,0.7535,False
+HPJM-RE40-52-PRO-101,Honpine,harmonic,0.3,harmonic+frameless,6.5,8.9,101.0,40.0,False,False,False,0.4067,0.0354,0.4421,-0.1421,0.6786,False,0.4415,0.6796,False
+HPJM-RE50-60-PRO-101,Honpine,harmonic,0.42,harmonic+frameless,9.6,13.5,101.0,37.0,False,False,False,0.5324,0.0477,0.5801,-0.1601,0.724,False,0.5926,0.7088,False
+HPJM-RE60-80-PRO-101,Honpine,harmonic,0.96,harmonic+frameless,30.0,49.0,101.0,34.0,False,False,False,1.1701,0.116,1.2861,-0.3261,0.7465,False,1.4094,0.6812,False
+HPJM-RE80-97-PRO-101,Honpine,harmonic,1.5,harmonic+frameless,84.0,133.0,101.0,27.0,False,False,False,2.3836,0.238,2.6216,-1.1216,0.5722,False,3.0421,0.4931,False
+HPJM-RE80-110-PRO-101,Honpine,harmonic,2.1,harmonic+frameless,84.0,133.0,101.0,27.0,False,False,False,2.3836,0.238,2.6216,-0.5216,0.801,False,3.0421,0.6903,False
+HPJM-RE100-142-PRO-101,Honpine,harmonic,3.8,harmonic+frameless,169.0,267.0,101.0,22.0,False,False,False,3.864,0.3963,4.2603,-0.4603,0.8919,False,5.1358,0.7399,False
+HPJM-RE110-170-PRO-121,Honpine,harmonic,6.85,harmonic+frameless,363.0,586.0,121.0,12.0,False,False,False,6.5455,0.6463,7.1918,-0.3418,0.9525,True,8.9157,0.7683,False
+ TD-30-40-PRO-101,Avatar,harmonic,0.18,harmonic+frameless,2.8,4.8,101.0,45.0,False,False,False,0.2272,0.0228,0.2501,-0.0701,0.7198,True,0.2389,0.7535,False
+TD-70-80-PRO-101,Avatar,harmonic,0.95,harmonic+frameless,50.0,102.0,101.0,30.0,False,False,False,1.6655,0.195,1.8605,-0.9105,0.5106,False,2.1062,0.451,False
+TD-80-110-PRO-101,Avatar,harmonic,2.1,harmonic+frameless,84.0,194.0,101.0,27.0,False,False,False,2.3836,0.3073,2.6909,-0.5909,0.7804,False,3.1438,0.668,False
