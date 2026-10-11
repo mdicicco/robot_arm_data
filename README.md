@@ -25,50 +25,7 @@ Zoom on arms with **PF > 0.4** and **reach < 2 m**:
 
 ### Human & humanoid comparison (`robot_arm_human_comparison_hulls.png`)
 
-![Robot arms vs humans / humanoids (hulls)](robot_arm_human_comparison_hulls.png)
-
-Compares **serial robot-arm design space** to **human** and **humanoid** arm references on the same axes (reach vs payload factor):
-
-- **Type convex hulls** from every arm with mass, payload, and reach (~500 rows)
-- **Dots** for every arm with payload in the humanoid range (**1–7.5 kg**), priced or not. They're coloured by robot type, all the same size, with no price or repeatability weighting (201 of ~500 arms).
-- **Human** references (yellow ★) and **humanoid** arm estimates (orange ▲)
-- Landmark labels: **LWR III (1:1)**, **Mico 4** (research), collaborative max, **myCobot 280**
-- **Cyan band**: the actuator-only payload-ratio bound from `arm_mass_model.py` (no structure). It uses the pooled `all` gearbox + motor fits, SF 1.0, and yaw/roll joints at 50 %, for a 7-DOF arm. The band spans the humanoid payload range (**1–7.5 kg** per arm at full reach, after the derates below).
-  - **Solid** = the full arm, including both shoulder actuators.
-  - **Dashed** = shoulder yaw + pitch actuators removed. On a humanoid those sit in the torso and aren't part of the ~5 % arm mass, so this is the fairer comparison.
-
-  Optimus, Figure 02, Apollo and Atlas (5–7.5 kg) sit *above* the solid band but well inside the dashed band. Their arm-mass estimate only works if the shoulder actuators are counted as torso mass.
-
-Human/humanoid reference numbers live in `data/human_humanoid_arm_data.csv`. The hull figure applies the humanoid assumptions below at plot time (it does not rewrite that CSV).
-
-### Assumptions (humanoids)
-
-All humanoids are treated as one family (orange) with a shared mass rule:
-
-1. **Arm mass ≈ 5% of whole-robot body mass**  
-   Used for G1 / G1 EDU / R1 / GR-1 / Optimus Gen2 / Figure 02 / Apollo / Digit / Atlas.
-
-2. **Published “carry” ratings are whole-robot, close-to-body**  
-   For Optimus, Figure, Apollo, Digit, and Atlas we convert to a **single-arm, full-reach** estimate as:
-   - ÷2 for two arms sharing the load  
-   - ÷2 again because carry is near the torso, not at full reach  
-   - → **per-arm full-reach payload ≈ carry / 4**
-
-   | Robot | Published carry | Per-arm full-reach (÷4) |
-   |---|---|---|
-   | Optimus Gen2 | 20 kg | 5.0 kg |
-   | Figure 02 | 20 kg | 5.0 kg |
-   | Apollo | 25 kg | 6.25 kg |
-   | Digit | 16 kg | 4.0 kg |
-   | Atlas | 30 kg sustained | 7.5 kg |
-
-3. **Official one-arm ratings** (Unitree G1 / G1 EDU / R1, Fourier GR-1) are already per-arm; we only apply a **÷2 full-reach derate** (not the bimanual ÷2).
-
-4. **Reach** for the five “leading” platforms is a **pixel estimate** from full-body photos (shoulder → hand / fingertip scaled by published height). Atlas uses a human-proportioned estimate (~0.44 × stature) when a clean arms-down photo was unavailable. BD’s published **2.3 m** figure is treated as whole-body workspace reach, not shoulder→hand arm length.
-
-5. **Humans** use separate anthropometric estimates (not the 5% humanoid rule): continuous full-reach hold payloads and shoulder→fingertip reaches for Child / Woman / Man (**0.75 m**) / Strong.
-
-6. These humanoid points are **illustrative**, not datasheet arm specs. Payload factor above ~1 is rare for production serial arms (DLR **LWR III** is the classic research 1:1; Kinova arms are classified here as **research** for separation from cobot fleets — **Mico 4** / **Jaco 4** exceed PF 1 mainly on mid-range continuous ratings with light structures).
+The third summary figure compares arm design space with human and humanoid arms. It and its assumptions are documented in [HUMANOIDS.md](HUMANOIDS.md#humanoid-arms-vs-the-robot-arm-design-space).
 
 ### Assumptions (robot hulls)
 
@@ -88,58 +45,12 @@ All data is collected from corporate websites, company catalogs, resellers, or r
 
 Updated info is welcome via pull request.
 
-## Humanoid robots (whole-body catalog)
+## Analyses
 
-Whole-robot humanoid hardware lives in **`data/humanoid_robot_data.csv`** (67 platforms). This is separate from `data/human_humanoid_arm_data.csv`, which only stores the **per-arm** points used in the reach–PF humanoid comparison plot.
+This README covers the serial-arm dataset and the arm actuator sizing model. Two companion articles cover the rest:
 
-| Field | Meaning |
-|---|---|
-| `Height_m` / `Weight_kg` | Standing height and body mass (with battery when published) |
-| `Total_DOF` / `Arm_DOF` / `Leg_DOF` / `Hand_DOF` | Joint counts; leave blank when unpublished |
-| `Payload_kg` | Published whole-robot / bimanual carry (or Atlas instant capacity) |
-| `Arm_Payload_kg` / `Arm_Reach_m` | Per-arm rated load and arm length/span when known |
-| `Speed_mps` / `Battery_h` | Walk speed and runtime (walking when both given) |
-| `Cost_KUSD` | USD ÷ 1000 |
-| `Cost_Flag` | `listed` (shop/OEM price) · `target` (maker scale goal) · `estimate` (press/FX midpoint) · `quote` · `raas` |
-| `Status` | `shipping` · `production` · `pilot` · `preorder` · `internal` · `prototype` |
-| `Notes` | Source URL / caveats |
-
-Empty cells mean unpublished — do not invent numbers. Many enterprise platforms (Atlas, Digit, Figure, Apollo) have solid hardware specs but **no public list price**.
-
-### Humanoid plots
-
-One hardware figure (arm reach–vs–PF analog): **height vs carry/mass**, circle size = body mass. Cyan arrows connect successive generations of the same platform when both gens have height + mass + carry (e.g. Optimus Gen1→Gen2, Digit→Digit v5, Figure 02→03).
-
-```bash
-pixi run humanoid-plot
-```
-
-Output: `humanoid_payload_efficiency.png`. Hardware only — no status coloring.
-
-### Humanoid arm specs vs the arm model
-
-```bash
-pixi run humanoid-analysis
-```
-
-`analyze_humanoid_scaling.py` uses the arm data and `arm_mass_model.py` to sanity-check humanoid specs.
-
-![Humanoid arm actuator share](humanoid_arm_actuator_share.png)
-
-**`humanoid_arm_actuator_share.png`** checks whether each humanoid's per-arm payload rating is plausible. For each one, it sizes a single arm at the rated payload and reach (actuators only: pooled gearbox + motor fits, SF 1.0, yaw/rolls at 50 %). It then plots the minimum actuator mass as a % of body mass, with and without the shoulder actuators (on a humanoid those sit in the torso).
-
-A human arm is ~5 % of body mass. **1X NEO (5 kg/arm on a 30 kg body), Kepler K2 (15 kg/arm), Optimus (9 kg/arm) and PUDU D9 (10 kg/arm) need ~5–6 % of body mass per arm in elbow + wrist actuators alone.** That leaves essentially nothing for links, cabling or hands under the "arm ≈ 5 % body" rule. Light-arm robots (AgiBot A2, AiMOGA M1, Unitree G1) need only 1–2 %. Reach falls back to 0.44 × height when it isn't published.
-
-![Humanoid vs arm payload scaling](humanoid_vs_arm_payload_scaling.png)
-
-**`humanoid_vs_arm_payload_scaling.png`** plots payload factor against own mass (log-log) for 566 arms and 28 humanoids:
-
-- **Arms:** payload factor falls slowly with size (PF ∝ mass^−0.14, weak).
-- **Comparable humanoids:** **median 0.30 (IQR 0.21–0.34)** across 23–101 kg, right at the adult-human ~0.32. Between 48 and 101 kg the trend is flat (PF ∝ mass^−0.09, R² 0.00). **Fauna Sprout** (22.7 kg, 2 kg carry, PF 0.09) is the only small whole-body point and alone tips the fit to PF ∝ mass^+0.65 (R² 0.15). Its 2 kg comes from aggregator sites, not the company page, and isn't labelled whole-robot vs per-arm. If it is per-arm, it belongs with the excluded single-arm ratings below.
-- **Excluded from the fit (hollow):** Unitree G1 / G1 EDU / R1, whose "payload" is a single-arm rating, and Fourier GR-1, whose 40 kg is 6.7× its two-arm rating. With them in, the humanoid fit shows a spurious PF ∝ mass^+1.2.
-- **Not like-for-like:** humanoid carry is whole-body and close to the body, while arm payload is at full reach.
-
-Most whole-body carry ratings equal 2 × the per-arm rating (K2, D9, H2, Optimus). So humanoid carry is arm-limited, not leg-limited.
+- **[HUMANOIDS.md](HUMANOIDS.md):** the whole-body humanoid catalog, humanoid payload and scaling analyses, and the arm-vs-human/humanoid comparison.
+- **[ACTUATORS.md](ACTUATORS.md):** joint modules (price model, module vs bare gearbox + motor), BLDC motors and gearboxes, with the mass fits the arm model uses.
 
 ## Running the Analysis App
 
@@ -179,229 +90,6 @@ pixi run plot
 
 This runs `generate_summary_plot.py` and writes the three arm figures described above (summary, high-PF zoom with Man-reach line, human/humanoid hull comparison).
 
-## Joint modules
-
-The same repo also tracks **complete robot joints** (motor + gear + encoder, usually with a driver) in `data/robot_joint_data.csv`.
-
-![Joint price fit](robot_joint_price_fit.png)
-
-### Dataset
-
-**142 modules** from 19 manufacturers, in six classes: harmonic (67), QDD (31), series-elastic (21), planetary (9), hobby-servo (8), cycloidal (6).
-
-`Cost_USD` is a one-off street or quote price. `Cost_Flag` says how it was filled:
-
-- **listed** — shop, Alibaba sample, or official list price
-- **user** — Maxon HDT ~$5k and HEJ $7.5k quotes
-- **estimate** — analog / brand-ladder fill for quote-only catalog parts (Harmonic Drive FHA/SHA, Leaderdrive, Nidec, HIWIN, leftover eRob, etc.)
-
-Empty spec cells stay empty when a datasheet does not publish them. Notes cite the source.
-
-### Price estimator
-
-The joint app fits a two-stage log-price model on **listed + user rows only** (97 training points). Estimates are shown in the CSV but are not used to train.
-
-- Stage 1: `log(price) = a[type] + b·log(torque) + c·log(1/accuracy)`
-- Stage 2: weakly regularized residual on speed, size, mass, encoder, brake, driver
-- Accuracy is a class default (harmonic 0.25 arcmin, QDD 12, etc.) unless you override it
-- Current fit: in-sample R²(log) **0.77**, leave-one-out R² **0.69**, LOO MAE **~$950**
-- Torque elasticity is shallow (~0.19): class (QDD vs harmonic vs SEA) moves price more than Nm
-- Example: 20 Nm QDD, 90 mm, 0.6 kg → **~$316**. A 50 Nm harmonic in a similar envelope → **~$2.1k**
-
-```bash
-pixi run joint-app
-pixi run joint-analyze
-pixi run python analyze_joint_prices.py --torque 20 --speed 120 --od 90 --mass 0.6 --type qdd
-```
-
-`joint-app` is a Streamlit estimator with the same dark theme as the arm app. `joint-analyze` reprints the fit and regenerates `robot_joint_price_fit.png`. Do not insert a bare `--` between the pixi task and argparse flags.
-
-### Module mass vs. bare gearbox + motor
-
-![Joint module overhead](robot_joint_module_overhead.png)
-
-Each module is a single-DOF joint. `analyze_joint_module_overhead.py` takes each module's own spec (rated torque, peak torque, ratio, rated speed), sizes a bare gearbox + motor with the fits from `arm_mass_model.py`, and divides the module's published mass by that prediction. No integration factor is applied. It is the same per-module ratio whose median the arm model uses as its integration factor, and the script prints a check that the medians match (they do, to three decimals).
-
-- **Gearbox** is sized on rated torque and ratio. **Motor** is sized on peak torque ÷ (ratio · η) and rated rpm × ratio. Missing rated or peak torque is filled with the 2.5× rule, a missing ratio with the type default, and a missing speed with 60 rpm. These are the same fills the integration-factor calibration uses, and they're flagged in the CSV.
-- **harmonic / cycloidal / planetary / qdd** use the type-matched gearbox fit and the frameless motor fit (qdd uses the planetary gearbox fit). **series-elastic / hobby-servo** use the pooled `all` fits. The pooled result is also in the CSV for every module.
-- 136 of 142 modules have a published mass. Per-module numbers are in `robot_joint_module_overhead.csv`.
-
-| Type | n | Median module ÷ theory | Lighter than theory |
-|---|---|---|---|
-| hobby-servo | 8 | 0.64× | 100 % |
-| qdd | 31 | 0.65× | 94 % |
-| planetary | 9 | 0.69× | 100 % |
-| cycloidal | 6 | 0.96× | 50 % |
-| harmonic | 61 | 1.07× | 41 % |
-| series-elastic | 21 | 1.37× | 19 % |
-
-**The module is not reliably heavier than its components.** 57 % of modules come in *lighter* than the bare gearbox + motor the fits predict (77 % among the 53 modules whose inputs are all published and inside the fitted ranges). The spread is large (0.4×–3.3×) and depends mostly on type:
-
-- **qdd and planetary** modules are about 0.65× theory with little scatter, and all of them sit inside the fitted ranges. The fits were trained on standalone catalog parts, which likely carry their own housing, bearings and flanges that an integrated module shares.
-- **harmonic** is bimodal. Compact integrated servos (eRob I, TD, HPJM-PRO) are only 0.5–0.6× theory. Harmonic Drive's SHA / FHA actuators with their large housings are about 2.2×, which is where the "structure" overhead is most visible.
-- **series-elastic, hobby-servo and cycloidal** are all more than 25 % outside the fitted torque / ratio / speed ranges (series-elastic ratios are 254–1742:1 against fitted gearboxes of at most ~110:1), so treat those medians as indicative only.
-
-So `Module_kg − Theory_kg` understates the real structure + electronics mass wherever the fits over-predict.
-
-```bash
-pixi run joint-overhead
-```
-
-## BLDC motors
-
-Bare brushless motors (not geared joint modules) live in `data/bldc_motor_data.csv`.
-
-![Motor mass fit](robot_motor_mass_fit.png)
-
-![Motor mass contour](robot_motor_mass_contour.png)
-
-### Dataset
-
-**120 motors** (119 used in the fit: listed mass + peak torque + max speed). Sources span CubeMars (frameless RI/RO + GL gimbal), Maxon (EC / ECX SPEED / ECX FLAT), Faulhaber (micro through 32 mm), Kollmorgen (AKM2G LV), Teknic ClearPath, ODrive, T-Motor, plus **AliExpress/Alibaba OEM** (MOSRAC/TSL U-series, SteadyWin WK/GB, Maintex LW, Honpine FM1, XRobotek XMD031, Flipsky, HXC, scooter/QS hubs). Dense below **5 Nm** (~94 rows), especially **&lt;1 Nm** (~54 rows).
-
-| Peak torque | Count |
-|---|---|
-| &lt;0.05 Nm | 6 |
-| 0.05–0.2 | 18 |
-| 0.2–0.5 | 15 |
-| 0.5–1 | 15 |
-| 1–2 | 12 |
-| 2–5 | 28 |
-| 5–10 | 9 |
-| 10+ | 17 |
-
-| Form | Count | Role in catalog |
-|---|---|---|
-| **frameless** | 59 | Robot joint kits (CubeMars, MOSRAC, Honpine, …) |
-| **outrunner** | 19 | Prop / gimbal / hub-adjacent BLDC |
-| **inrunner** | 16 | Precision micros (Maxon ECX SPEED, Faulhaber) |
-| **industrial** | 11 | Packaged servos (Kollmorgen AKM2G) |
-| **flat** | 7 | Maxon EC / ECX FLAT pancakes |
-| **integrated** | 4 | ClearPath-style drive-in-motor |
-| **hub** | 3 | Wheel / hub motors |
-
-Core fields:
-
-- **Max_Torque_Nm** — peak / stall / short-term max (primary torque for the mass model)
-- **Max_Speed_rpm** — no-load or catalog max speed
-- **Weight_kg** — published motor mass (`Weight_Flag=listed`, or `estimate` when only a class analog exists)
-- **Form** — categorical form used as the type dummy (like gearbox `Type`)
-- Optional: continuous torque, OD/length, Kv, pole pairs, voltage, street price
-
-Notes cite the catalog / shop page. Empty cells mean the source did not publish that number.
-
-### Mass models
-
-Same pattern as the gearbox type model: a shared torque/speed slope with a **form-specific intercept**, plus optional per-form `mass∝τ^b` lines on the plot.
-
-#### 1. Form-aware global (primary estimator)
-
-```
-log(mass) = a[form] + b · log(τ_max) + c · log(ω_max)
-```
-
-Current fit (n=119 listed-mass rows):
-
-| | Value |
-|---|---|
-| **b** (torque) | **+0.677** |
-| **c** (speed) | **−0.186** |
-| R²(log) | **0.956** |
-| LOO R² | **0.947** |
-| MAE | **0.241 kg** |
-| LOO MAE | **0.275 kg** |
-
-Effective intercepts `a[form]` (log-mass units; lower = lighter for the same τ, ω):
-
-| Form | a[form] | n |
-|---|---|---|
-| frameless | −0.348 | 59 |
-| outrunner | −0.182 | 19 |
-| flat | +0.181 | 7 |
-| hub | +0.365 | 3 |
-| inrunner | +0.744 | 16 |
-| integrated | +1.036 | 4 |
-| industrial | +1.079 | 11 |
-
-So for a given torque/speed, **frameless / outrunner are lightest**; **industrial / integrated are heaviest** (~4× heavier than frameless at the same point). Example at **τ = 2 Nm, ω = 4000 rpm**:
-
-| Form | Estimated mass |
-|---|---|
-| frameless | **0.24 kg** |
-| outrunner | 0.29 kg |
-| flat | 0.41 kg |
-| inrunner | 0.72 kg |
-| industrial | **1.01 kg** |
-
-#### 2. Pooled (no form) — contour backdrop
-
-```
-log(mass) = a + b · log(τ_max) + c · log(ω_max)
-```
-
-Used only for the torque–speed **contour map** (one surface for all forms). Weaker than the form-aware model: R²(log) **0.868**, LOO R² **0.861**, MAE **0.429 kg**. Contours are nearly vertical → mass is mostly a torque story once form is ignored.
-
-#### 3. Per-form torque lines (plot overlays)
-
-For each form with **≥5** rows, a simple `log(m) = a + b·log(τ)` is fit and drawn on the left panel of `robot_motor_mass_fit.png` (colored line matching the dots). Speed-only slopes are printed for diagnostics but are weak for most forms.
-
-| Form | mass ∝ τ^b | R² | MAE | n |
-|---|---|---|---|---|
-| outrunner | **τ^0.79** | 0.95 | 0.04 kg | 19 |
-| frameless | **τ^0.76** | 0.93 | 0.29 kg | 59 |
-| flat | **τ^0.63** | 0.93 | 0.04 kg | 7 |
-| industrial | **τ^0.62** | 0.95 | 0.27 kg | 11 |
-| inrunner | **τ^0.50** | 0.88 | 0.02 kg | 16 |
-
-`integrated` and `hub` are too sparse (&lt;5 rows) for a per-form line; they still get a global `a[form]` intercept in the primary estimator.
-
-### Plots
-
-- **`robot_motor_mass_fit.png`** — left: mass vs peak torque by form (marker size ∝ 1/speed), with per-form `mass∝τ^b` lines; right: form-aware predicted vs actual (identity line, R²≈0.96).
-- **`robot_motor_mass_contour.png`** — pooled mass contours on the τ–ω plane; dots are measured motors colored by mass, shaped by form.
-
-```bash
-pixi run motor-analyze
-pixi run python analyze_motor_mass.py --torque 2.0 --speed 4000 --form frameless
-```
-
-## Gearboxes / reducers
-
-Bare reducers (not full joint modules) live in `data/gearbox_data.csv`.
-
-![Gearbox mass fit](robot_gearbox_mass_fit.png)
-
-### Dataset
-
-**~146 reducers** spanning ratios **~4:1–100:1** (a few up to 111:1), sized so **rated input torque** overlaps the motor set (~0.01–40 Nm input; ~94 rows in the 0.5–30 Nm motor-matched band).
-
-| Type | Sources | Notes |
-|---|---|---|
-| **harmonic** | Harmonic Drive CSF-2UH / LW; AliExpress HBK/SHF | Mass fixed per frame across 30/50/80/100 |
-| **cycloidal** | Nabtesco RV-E | Heavy, high torque; mass per frame |
-| **planetary** | Neugart PLE; Maxon GPX; AliExpress FLE42/GP42 | 1-stage ≈ QDD (5–10); 2–3 stage for 25–100 |
-| **worm** | NMRV 030–075 | Mass fixed per size; ratios 7.5–100 |
-| **spur** | Small industrial / Boston-class analogs | Thin coverage |
-
-Core fields: `Ratio`, `Stages`, `Rated_Output_Torque_Nm`, `Weight_kg`, `OD_mm`, `Length_mm`, derived `Rated_Input_Torque_Nm ≈ T_out / ratio`. Price filled where street listings were clear.
-
-### Mass / size model
-
-Important empirical result: **within a frame, mass barely changes with ratio**. Ratio alone is a weak predictor; **output torque capacity (frame size) and type** dominate:
-
-```
-log(mass) = a[type] + b · log(T_out) + c · log(ratio)
-```
-
-Typical fit on this set: **b ≈ 0.70**, **c ≈ −0.02**, R²(log) **~0.92**. Per-type mass∝T^b: harmonic ~0.61, planetary ~0.76, worm ~0.57, cycloidal ~0.65. Mass∝ratio alone has R² ≈ 0 for harmonic/worm.
-
-```bash
-pixi run gearbox-analyze
-pixi run python analyze_gearbox_mass.py --ratio 50 --torque-out 40 --type harmonic
-```
-
-Writes `robot_gearbox_mass_fit.png` (mass vs ratio + mass vs torque by type) and `robot_gearbox_od_fit.png` (housing OD vs torque).
-
 ## Arm actuator mass model
 
 Estimates **motor + gearbox mass for every joint of a 6- or 7-DOF arm** from just **reach** and **payload**. Actuators are sized one at a time, starting at the wrist and working back to the shoulder. Structure mass comes next. The loop already has a placeholder for it.
@@ -439,7 +127,7 @@ T = SF · g · [ m_payload · x_payload + Σ_distal m_i · x_i ]      (SF defaul
 m_actuator = k[gearbox] · ( m_gearbox(type, T, ratio) + m_motor(form, τ_motor, ω_motor) )
 ```
 
-The wrist pitch carries its own cluster's wrist roll, so the sizing is a fixed-point iteration. The loop re-runs wrist → elbow → shoulder until no mass changes by more than 10 µg (typically 4–5 passes). `k` is an **integration factor** calibrated on `robot_joint_data.csv`: complete module mass ÷ predicted bare gearbox + motor. It comes out to 0.98 for harmonic, 0.96 for cycloidal, 0.65 for planetary/QDD, and 1.0 where there is no module data (worm/spur).
+The wrist pitch carries its own cluster's wrist roll, so the sizing is a fixed-point iteration. The loop re-runs wrist → elbow → shoulder until no mass changes by more than 10 µg (typically 4–5 passes). `k` is an **integration factor** calibrated on `robot_joint_data.csv` (see [ACTUATORS.md](ACTUATORS.md#module-mass-vs-bare-gearbox--motor)): complete module mass ÷ predicted bare gearbox + motor. It comes out to 0.98 for harmonic, 0.96 for cycloidal, 0.65 for planetary/QDD, and 1.0 where there is no module data (worm/spur).
 
 **Validation:** with each arm's real geometry, the actuator-only torques fall below the published joint ratings. That gap is the link structure and dynamics this model doesn't include yet. Model actuator mass is a median **~31 %** of whole-cobot mass (27 % across all arms). Industrial arms sit much lower because their castings are heavy.
 
