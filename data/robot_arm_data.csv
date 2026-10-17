@@ -3,6 +3,7 @@ xArm 5,uFactory,collaborative,5,3,0.70,11.2,0.1,5.3,
 xArm 6,uFactory,collaborative,6,5,0.70,12.2,0.1,8.4,
 xArm 7,uFactory,collaborative,7,3.5,0.70,13.7,0.1,10,
 Lite 6,uFactory,collaborative,6,1,0.440,,,3,
+uFactory 850,uFactory,collaborative,6,5,0.85,20,0.02,10.5,"docs.850.ufactory.cc tech specs: 5 kg / 850 mm / 20 kg body / ±0.02 mm / 180°/s joints / 1 m/s TCP; $10,500 Blue Sky Robotics + Robotic Vision AI (Top3DShop $9,849; RobotShop $10,259 incl. tariffs)"
 IRB14000 YUMI,ABB,collaborative,7,0.5,0.559,9.6,0.02,18,updated price based on alibaba listing
 Gofa,ABB,collaborative,6,5,0.95,27,0.05,25,cost is estimate based on article saying 25-35k
 Swifti,ABB,collaborative,6,4,0.58,21,0.01,35,cost is estimate based on article saying 25-35k
@@ -397,7 +398,7 @@ PR2,Willow Garage,research,7,1.8,0.881,,,115,cost is delta between full robot an
 Research 3,Franka,research,7,3,0.855,18.3,0.1,30.4,Generation Robots €27650 excl VAT (~$30.4k at 1.10 USD/EUR); official datasheet 3 kg / 855 mm / ~18.3 kg / ±0.1 mm; torque sensors; successor to Panda. Distinct from Fairino FR3
 LBR Med 7 R800,KUKA,research,7,7,0.8,25.5,0.1,,kuka.com medical LBR; quote-only
 LBR Med 14 R820,KUKA,research,7,14,0.82,32.3,0.15,,kuka.com medical LBR; quote-only
-SO-101,Hugging Face,research,6,0.5,0.5,0.8,,0.24,LeRobot flagship (TheRobotStudio); 5 arm + gripper; Seeed kit ~$240; DIY follower ~$100-200; ~500 g / 500 mm / 800 g PLA; Feetech STS3215
+SO-101,Hugging Face,hobby,6,0.5,0.5,0.8,,0.24,LeRobot flagship (TheRobotStudio); 5 arm + gripper; Seeed kit ~$240; DIY follower ~$100-200; ~500 g / 500 mm / 800 g PLA; Feetech STS3215
 PA-10-7C,Mitsubishi,research,7,10,1.0,40,0.1,,DFKI / MHI; 7-axis open-architecture lab arm; ~1 m reach; 40 kg arm; ±0.1 mm
 Katana 450,Neuronics,research,6,0.4,0.517,5.2,,,FAPS FAU; 400 g flange payload; 517 mm; 5.2 kg without controller/gripper; Harmonic Drive
 OpenMANIPULATOR-X,ROBOTIS,research,5,0.5,0.38,0.7,0.2,1.417,robotis.com shop $1416.60; 4 DoF + gripper; XM430; <0.2 mm; 500 g / 380 mm / 0.70 kg
