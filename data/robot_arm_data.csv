@@ -573,3 +573,4 @@ LARA 30,Neura Robotics,collaborative,6,30,1.300,98,0.02,,NEURA LARA 30; 30 kg; 1
 LARA 30L,Neura Robotics,collaborative,6,30,1.800,126,0.02,,NEURA LARA 30L long; 30 kg; 1800 mm; 126 kg; neura-robotics.com
 xMate CR5,ROKAE,collaborative,6,5,1.406,36,0.03,,ROKAE xMate CR5-5/1.4C; 5 kg; 1406 mm; ~36 kg; ROKAE CR brochure
 xMate CR20-17,ROKAE,collaborative,5,17,2.047,71,0.05,,ROKAE xMate CR20-17/2.0C-5; 17 kg; 2047 mm; ~71 kg; 5-axis
+KIMA,Kinova,research,7,3,0.75,12.6,0.1,,Kinova medical OEM arm (May/June 2026 launch); 7-DOF; payload 3 kg; reach 750 mm (total length 1200 mm); mass 12.6 kg; repeatability <0.1 mm; accuracy <1 mm; controller-less EtherCAT; IEC 60601-1 / IEC 62304 Class C; kinovarobotics.com/medical/kima-robotic-arm
