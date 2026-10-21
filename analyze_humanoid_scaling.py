@@ -44,7 +44,9 @@ GRID = '#2a4060'
 INK = '#e8f4fc'
 MUTED = '#6b8ba4'
 TITLE = '#00d4ff'
-HUMANOID_COLOR = '#ff9f43'
+HUMANOID_COLOR = '#ff9f43'          # commercial humanoids
+RESEARCH_HUMANOID_COLOR = '#fd79a8' # research / open-source humanoids (Category column)
+CATEGORY_COLORS = {'commercial': HUMANOID_COLOR, 'research': RESEARCH_HUMANOID_COLOR}
 HUMAN_COLOR = '#f1c40f'
 BOUND_COLOR = '#00d4ff'
 # Same arm-type colors as the README arm figures (generate_summary_plot.py)
@@ -66,6 +68,18 @@ HUMANOID_NOT_CARRY = {
     'Unitree R1': 'single-arm rating',
     'Fourier GR-1': '40 kg = 6.7× the 2-arm rating',
 }
+
+
+def is_research(frame: pd.DataFrame) -> pd.Series:
+    """True for research / open-source humanoids (Category column of humanoid_robot_data.csv)."""
+    return frame['Category'].fillna('commercial').eq('research')
+
+
+def color_research_ticks(ax, research_flags) -> None:
+    """Pink y-tick labels for research humanoids on a per-robot chart."""
+    for tick, research in zip(ax.get_yticklabels(), research_flags):
+        if research:
+            tick.set_color(RESEARCH_HUMANOID_COLOR)
 
 
 def style(ax):
@@ -112,6 +126,7 @@ def arm_actuator_shares(humanoids: pd.DataFrame) -> pd.DataFrame:
         body = float(r['Weight_kg'])
         rows.append({
             'Name': r['Name'],
+            'Research': r.get('Category') == 'research',
             'Arm_Payload_kg': float(r['Arm_Payload_kg']),
             'Reach_m': reach,
             'Reach_listed': reach_listed,
@@ -154,6 +169,7 @@ def plot_share(share: pd.DataFrame, out: str) -> None:
 
     ax.set_yticks(y)
     ax.set_yticklabels(share['Name'], fontsize=10, color=INK)
+    color_research_ticks(ax, share['Research'])
     ax.set_xlim(0, x_max)
     ax.set_ylim(-0.7, len(share) - 0.1)
     ax.set_xlabel('Minimum actuator mass per arm, % of body mass (actuators only — no links, cabling, hand)')
@@ -167,11 +183,15 @@ def plot_share(share: pd.DataFrame, out: str) -> None:
             Line2D([0], [0], marker='o', color='none', markerfacecolor=BG,
                    markeredgecolor=BOUND_COLOR, markeredgewidth=2, markersize=8,
                    label='Shoulder actuators in torso (elbow + wrist only)'),
+            Line2D([0], [0], color='none', label='Robot name: commercial'),
+            Line2D([0], [0], color='none', label='Robot name: research / open-source'),
         ],
         loc='lower right', fontsize=9.5, facecolor=PANEL, edgecolor=GRID, labelcolor=INK,
         framealpha=0.95,
     )
     leg.set_zorder(5)
+    for text, c in zip(leg.get_texts()[-2:], (INK, RESEARCH_HUMANOID_COLOR)):
+        text.set_color(c)
     fig.text(
         0.01, 0.005,
         'arm_mass_model.py: pooled gearbox + motor fits, SF 1.0, yaw/rolls at 50 %, 7-DOF (6 if the arm has fewer '
@@ -199,10 +219,12 @@ def plot_scaling(arms: pd.DataFrame, hum: pd.DataFrame, out: str) -> dict:
                    edgecolors='none', label=f'{typ.capitalize()} arm ({len(d)})', zorder=2)
     odd = hum['Name'].isin(HUMANOID_NOT_CARRY)
     clean, flagged = hum[~odd], hum[odd]
-    ax.scatter(clean['Weight_kg'], clean['PF'], s=120, marker='^', color=HUMANOID_COLOR,
-               edgecolors='white', linewidths=0.8, label=f'Humanoid, whole-body carry ({len(clean)})', zorder=4)
+    for cat, color in CATEGORY_COLORS.items():
+        d = clean[clean['Category'].fillna('commercial') == cat]
+        ax.scatter(d['Weight_kg'], d['PF'], s=120, marker='^', color=color, edgecolors='white',
+                   linewidths=0.8, label=f'Humanoid, {cat}, whole-body carry ({len(d)})', zorder=4)
     ax.scatter(flagged['Weight_kg'], flagged['PF'], s=120, marker='^', facecolors='none',
-               edgecolors=HUMANOID_COLOR, linewidths=1.6,
+               edgecolors=[CATEGORY_COLORS[c] for c in flagged['Category'].fillna('commercial')], linewidths=1.6,
                label=f'Humanoid rating not comparable — excluded from fit ({len(flagged)})', zorder=4)
     ax.scatter([HUMAN_MASS_KG], [HUMAN_CARRY_KG / HUMAN_MASS_KG], s=260, marker='*', color=HUMAN_COLOR,
                edgecolors='white', linewidths=0.8, label='Adult human (~25 kg carry / 78 kg)', zorder=5)
@@ -225,13 +247,13 @@ def plot_scaling(arms: pd.DataFrame, hum: pd.DataFrame, out: str) -> dict:
                     xytext=(10, -4), textcoords='offset points', fontsize=8.5, color=HUMANOID_COLOR, zorder=6)
     for name, (dx, dy) in {'Atlas (Electric)': (10, 4), 'PNDbotics Adam SP': (10, -10),
                            'HRP-5P': (10, -2), 'Kepler K2 Bumblebee': (10, 6),
-                           'Fauna Sprout': (-8, 10)}.items():
+                           'Fauna Sprout': (-8, 10), 'K-Scale K-Bot': (-8, -12)}.items():
         hit = clean[clean['Name'] == name]
         if not hit.empty:
             r = hit.iloc[0]
             ax.annotate(name, (r['Weight_kg'], r['PF']), xytext=(dx, dy), textcoords='offset points',
                         ha='right' if dx < 0 else 'left',
-                        fontsize=8.5, color=HUMANOID_COLOR, fontweight='bold', zorder=6)
+                        fontsize=8.5, color=CATEGORY_COLORS[r['Category']], fontweight='bold', zorder=6)
     med = float(clean['PF'].median())
     ax.text(0.99, 0.985,
             f'Humanoid carry is whole-body, close to the body; arm payload is at full reach — not like-for-like.\n'

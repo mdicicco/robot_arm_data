@@ -31,7 +31,7 @@ The third summary figure compares arm design space with human and humanoid arms.
 
 - Payload factor = `Payload_kg / Weight_kg` using the CSV values as published (no carry÷4 derate on industrial/cobot rows).
 - Hull vertices are the convex hull of each `Type` in reach–PF space after dropping rows missing reach, mass, or payload.
-- On the summary and humanoid-comparison figures, dots still require price + repeatability; the high-PF zoom does **not**.
+- On the summary figure, dots require price + repeatability (circle size = value). The high-PF zoom does **not**. The humanoid-comparison figure shows every arm in the humanoid payload range, all the same size.
 
 ```bash
 pixi run plot

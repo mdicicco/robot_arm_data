@@ -269,7 +269,7 @@ def plausibility(hum: pd.DataFrame, budgets: tuple[float, float, float], peak: f
         else:
             verdict = 'sustained' if p <= mid['close'] else 'peak' if p <= mid['close_peak'] else 'beyond'
         rows.append({
-            'Name': r['Name'], 'Payload_kg': p, 'Body_kg': float(r['Weight_kg']), 'Reach_m': reach,
+            'Name': r['Name'], 'Research': r.get('Category') == 'research', 'Payload_kg': p, 'Body_kg': float(r['Weight_kg']), 'Reach_m': reach,
             'Reach_listed': listed,
             **{f'{k}_{t}': caps[t][k] for t in caps for k in caps[t]},
             'Sustained_kg': rated if is_peak else np.nan,
@@ -315,6 +315,7 @@ def plot_plausibility(df: pd.DataFrame, budgets, peak: float, out: str) -> None:
     ax.set_yticks(y)
     ax.set_yticklabels([n + ('' if listed else '*') for n, listed in zip(df['Name'], df['Reach_listed'])],
                        color=INK, fontsize=9.5)
+    hs.color_research_ticks(ax, df['Research'])
     ax.set_ylim(-0.7, len(df) + 0.2)
     ax.set_xlabel('Two-arm payload (kg, log)')
     counts = df['Verdict'].value_counts()
@@ -342,7 +343,8 @@ def plot_plausibility(df: pd.DataFrame, budgets, peak: float, out: str) -> None:
     fig.text(0.01, 0.005,
              f'Each arm sized so its actuators are {mid:.1f} % of body mass (median of humanoids with per-arm '
              f'ratings; band = quartiles). Pooled gearbox + motor fits, SF 1.0.  Red = the load must ride on the '
-             f'torso / hips or the arms are heavier than typical.  * reach not published — 0.44 × height.',
+             f'torso / hips or the arms are heavier than typical.  * reach not published — 0.44 × height.  '
+             f'Pink names = research / open-source humanoids.',
              color=MUTED, fontsize=8, wrap=True)
     fig.tight_layout(rect=(0, 0.07, 1, 1))
     fig.savefig(out, dpi=160, facecolor=BG, bbox_inches='tight')

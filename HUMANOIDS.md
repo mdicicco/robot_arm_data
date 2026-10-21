@@ -23,6 +23,7 @@ Whole-robot humanoid hardware lives in **`data/humanoid_robot_data.csv`** (73 pl
 | `Cost_KUSD` | USD ÷ 1000 |
 | `Cost_Flag` | `listed` (shop/OEM price) · `target` (maker scale goal) · `estimate` (press/FX midpoint) · `quote` · `raas` |
 | `Status` | `shipping` · `production` · `pilot` · `preorder` · `internal` · `prototype` |
+| `Category` | `commercial` (company products, pilots, prototypes) or `research` (lab, academic or open-source platforms: every `Status = research` row plus ROBOTIS OP3, Reachy 2, HopeJR and K-Bot). Research humanoids plot in pink (dashed hull on the height plot, pink names on the per-robot charts); commercial in orange |
 | `Notes` | Source URL / caveats |
 
 Empty cells mean unpublished — do not invent numbers. Many enterprise platforms (Atlas, Digit, Figure, Apollo) have solid hardware specs but **no public list price**.

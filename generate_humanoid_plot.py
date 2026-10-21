@@ -5,6 +5,7 @@ One plot (arm-plot analog):
   X = height
   Y = payload factor = published carry / body mass
   Circle size = body mass
+  Color / hull = Category (commercial orange, research / open-source pink)
   Lines = generation progress within a product family
 
 Outputs:
@@ -31,7 +32,10 @@ plot['Payload_Factor'] = plot['Payload_kg'] / plot['Weight_kg']
 m_min, m_max = plot['Weight_kg'].min(), plot['Weight_kg'].max()
 plot['marker_size'] = 36 + (plot['Weight_kg'] - m_min) / (m_max - m_min) * 180
 
-COLOR = '#ff9f43'
+COLOR = '#ff9f43'            # commercial
+RESEARCH_COLOR = '#fd79a8'   # research / open-source (Category column)
+CATEGORY_COLORS = {'commercial': COLOR, 'research': RESEARCH_COLOR}
+plot['Category'] = plot['Category'].fillna('commercial')
 PROGRESS_COLOR = '#7ec8e3'
 HUMAN_COLOR = '#f1c40f'
 
@@ -64,6 +68,7 @@ PROGRESS_CHAINS = [
 
 # Label offsets in points (dx, dy). Mid-height cluster is fanned hard.
 LABEL_OFFSETS = {
+    'K-Scale K-Bot': (-12, -16),
     'Fourier GR-1': (-28, 8),
     'Atlas (Electric)': (-18, 20),
     'ASIMO (2011)': (-18, 14),
@@ -131,25 +136,27 @@ fig, ax = plt.subplots(figsize=(14, 9))
 fig.patch.set_facecolor('#0a1628')
 ax.set_facecolor('#0a1628')
 
-pts = plot[['Height_m', 'Payload_Factor']].values
-if len(pts) >= 3:
+for cat, color in CATEGORY_COLORS.items():
+    pts = plot.loc[plot['Category'] == cat, ['Height_m', 'Payload_Factor']].values
+    if len(pts) < 3:
+        continue
     try:
         hull = ConvexHull(pts)
         ax.add_patch(Polygon(
             pts[hull.vertices],
-            alpha=0.18, facecolor=COLOR, edgecolor=COLOR,
-            linewidth=2, zorder=1,
+            alpha=0.18 if cat == 'commercial' else 0.12, facecolor=color, edgecolor=color,
+            linewidth=2, linestyle='-' if cat == 'commercial' else '--', zorder=1,
         ))
     except Exception as e:
-        print(f'Hull skipped: {e}')
+        print(f'Hull skipped ({cat}): {e}')
 
 n_prog = draw_progress_lines(ax, plot)
 print(f'Progress segments drawn: {n_prog}')
 
 ax.scatter(
     plot['Height_m'], plot['Payload_Factor'],
-    s=plot['marker_size'], c=COLOR,
-    alpha=0.55, edgecolors='white', linewidths=0.7, zorder=3,
+    s=plot['marker_size'], c=plot['Category'].map(CATEGORY_COLORS),
+    alpha=0.7, edgecolors='white', linewidths=0.7, zorder=3,
 )
 
 ax.axvspan(1.60, 1.85, color=HUMAN_COLOR, alpha=0.06, zorder=0)
@@ -180,7 +187,7 @@ ax.annotate(
 )
 
 label_style = dict(
-    fontsize=9, color='#e8f4fc', fontweight='bold', va='center', zorder=5,
+    fontsize=9, fontweight='bold', va='center', zorder=5,
     annotation_clip=False,
     arrowprops=dict(arrowstyle='-', color='#6b8ba4', lw=0.75, shrinkA=0, shrinkB=4),
 )
@@ -194,7 +201,8 @@ for _, row in plot[~in_cluster].iterrows():
     ax.annotate(
         row['Name'], (row['Height_m'], row['Payload_Factor']),
         xytext=(dx, dy), textcoords='offset points',
-        ha='left' if dx >= 0 else 'right', **label_style,
+        ha='left' if dx >= 0 else 'right',
+        color='#e8f4fc' if row['Category'] == 'commercial' else RESEARCH_COLOR, **label_style,
     )
 
 # Cluster: two stacked columns, ordered by PF so leader lines don't cross much
@@ -206,7 +214,8 @@ for side, col_x in zip(('left', 'right'), CLUSTER_COL_X):
         ax.annotate(
             row['Name'], (row['Height_m'], row['Payload_Factor']),
             xytext=(col_x, y), textcoords='data',
-            ha='right' if side == 'left' else 'left', **label_style,
+            ha='right' if side == 'left' else 'left',
+            color='#e8f4fc' if row['Category'] == 'commercial' else RESEARCH_COLOR, **label_style,
         )
 
 ax.set_xlabel('Height (m)', fontsize=13, color='#e8f4fc', fontweight='bold')
@@ -234,14 +243,18 @@ legend = ax.legend(
                markersize=5, label=f'~{m_min:.0f} kg', linestyle='None'),
         Line2D([0], [0], marker='o', color='w', markerfacecolor=COLOR,
                markersize=11, label=f'~{m_max:.0f} kg', linestyle='None'),
+        Line2D([0], [0], marker='o', color='w', markerfacecolor=COLOR, markersize=9, linestyle='None',
+               label=f"Commercial ({(plot['Category'] == 'commercial').sum()})"),
+        Line2D([0], [0], marker='o', color='w', markerfacecolor=RESEARCH_COLOR, markersize=9, linestyle='None',
+               label=f"Research / open-source ({(plot['Category'] == 'research').sum()}, dashed hull)"),
         Line2D([0], [0], color=PROGRESS_COLOR, linewidth=2, label='Generation progress'),
         Line2D([0], [0], marker='*', color='w', markerfacecolor=HUMAN_COLOR,
                markersize=14, label=f'Adult human (~{HUMAN_PF:.2f}; band {HUMAN_PF_LO:.2f}–{HUMAN_PF_HI:.2f})',
                linestyle='None'),
     ],
-    loc='lower right', fontsize=10, framealpha=0.9,
+    loc='upper right', fontsize=10, framealpha=0.9,
     facecolor='#121f36', edgecolor='#2a4060', labelcolor='#e8f4fc',
-    title='Body mass (circle size)', title_fontsize=11,
+    title='Category (color) · body mass (size)', title_fontsize=11,
 )
 legend.get_title().set_color('#00d4ff')
 
