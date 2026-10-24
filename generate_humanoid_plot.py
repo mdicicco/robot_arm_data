@@ -68,6 +68,7 @@ PROGRESS_CHAINS = [
 
 # Label offsets in points (dx, dy). Mid-height cluster is fanned hard.
 LABEL_OFFSETS = {
+    'Tuesday Labs Voxel Series-1': (4, 30),
     'K-Scale K-Bot': (-12, -16),
     'Fourier GR-1': (-28, 8),
     'Atlas (Electric)': (-18, 20),
