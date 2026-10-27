@@ -387,7 +387,7 @@ SARA,DLR,research,7,12,1.024,22.6,,,
 LWR III,DLR,research,7,14,0.936,14,,,DLR official (2003): 14 kg mass / 14 kg payload / 936 mm reach — landmark 1:1 load-to-weight; CF link structures + integrated joint electronics; licensed to KUKA → LBR 4 → iiwa
 LWR II,DLR,research,7,7,1.024,18,,,DLR ca 2000: 18 kg mass / 7 kg payload at full speed; predecessor to LWR III
 LWR I,DLR,research,7,7,1.338,14.5,,,DLR ca 1995: 14.5 kg mass / 7 kg payload / 1338 mm; first DLR lightweight arm
-KIT Arm,Kit.edu,research,8,11,1.077,25,,,
+KIT Arm,Kit.edu,research,8,11,1.077,25,,,Rader et al. 2016 'Development of a Human Size and Strength Compliant Bi-Manual Platform' Table IV (KIT Arm single): 8 DOF incl. clavicle joint; 11 kg max payload at stretched configuration; 25 kg arm; payload-to-weight 0.44; reach 1077 mm to last joint (same basis as UR reach in that table) / 1224 mm to flange; peak torques clavicle+shoulder 176 Nm / Sho3 100 Nm / elbow 100 Nm / wrist 34 Nm; modular sensor-actuator-control units in a hollow frame; became the ARMAR-6 arms (10 kg per arm on the robot); h2t.iar.kit.edu/pdf/Rader2016.pdf
 MER,NASA,research,5,5,0.5,10,,,
 MSL,NASA,research,5,15,2.1,50,,,
 MGS,NASA,research,4,1,2,5,0.5,,
@@ -575,3 +575,5 @@ LARA 30L,Neura Robotics,collaborative,6,30,1.800,126,0.02,,NEURA LARA 30L long; 
 xMate CR5,ROKAE,collaborative,6,5,1.406,36,0.03,,ROKAE xMate CR5-5/1.4C; 5 kg; 1406 mm; ~36 kg; ROKAE CR brochure
 xMate CR20-17,ROKAE,collaborative,5,17,2.047,71,0.05,,ROKAE xMate CR20-17/2.0C-5; 17 kg; 2047 mm; ~71 kg; 5-axis
 KIMA,Kinova,research,7,3,0.75,12.6,0.1,,Kinova medical OEM arm (May/June 2026 launch); 7-DOF; payload 3 kg; reach 750 mm (total length 1200 mm); mass 12.6 kg; repeatability <0.1 mm; accuracy <1 mm; controller-less EtherCAT; IEC 60601-1 / IEC 62304 Class C; kinovarobotics.com/medical/kima-robotic-arm
+OpenPyRo-A1,OpenPyRo-A1 authors,research,7,5,,,0.2,7,"one arm of the OpenPyRo-A1 open Python low-cost bimanual torso (IEEE Xplore 11260951; openpyro-a1.github.io); 7-DOF + 1-DOF parallel gripper (Damiao DM-J4310); 5 kg per arm; ±0.2 mm repeatability; ~$14k whole robot so cost halved per arm (same convention as OpenArm); eyoubot ph-series joint motors (ph20b shoulder, ph17b/ph14b/ph11b distal - BOM mapping inconsistent); CNC aluminium + 3D-printed; Reach_m and Weight_kg TODO - pull from published URDF/STEP"
+Blue,UC Berkeley (Berkeley Open Arms),research,7,2,,,4,3.328,"Gealy et al. 2019 'Quasi-Direct Drive for Low-Cost Compliant Robotic Manipulation' (arXiv 1904.03815; berkeleyopenarms.github.io): 7-DOF QDD arm with iFlight outrunner gimbal motors + timing-belt 2-DOF differential modules and 3D-printed shells; >2 kg at arm's length; return-to-home within 4 mm radius (avg 2.6 mm); 7.5 Hz position bandwidth; BoM $3328 per arm in a 7-unit in-house run (target <$5000 at >1500 units); Reach_m and Weight_kg TODO - in the paper's Table I (image, not extractable)"
