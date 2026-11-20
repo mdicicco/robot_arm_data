@@ -578,3 +578,48 @@ xMate CR20-17,ROKAE,collaborative,5,17,2.047,71,0.05,,ROKAE xMate CR20-17/2.0C-5
 KIMA,Kinova,research,7,3,0.75,12.6,0.1,,Kinova medical OEM arm (May/June 2026 launch); 7-DOF; payload 3 kg; reach 750 mm (total length 1200 mm); mass 12.6 kg; repeatability <0.1 mm; accuracy <1 mm; controller-less EtherCAT; IEC 60601-1 / IEC 62304 Class C; kinovarobotics.com/medical/kima-robotic-arm
 OpenPyRo-A1,OpenPyRo-A1 authors,research,7,5,,,0.2,7,"one arm of the OpenPyRo-A1 open Python low-cost bimanual torso (IEEE Xplore 11260951; openpyro-a1.github.io); 7-DOF + 1-DOF parallel gripper (Damiao DM-J4310); 5 kg per arm; ±0.2 mm repeatability; ~$14k whole robot so cost halved per arm (same convention as OpenArm); eyoubot ph-series joint motors (ph20b shoulder, ph17b/ph14b/ph11b distal - BOM mapping inconsistent); CNC aluminium + 3D-printed; Reach_m and Weight_kg TODO - pull from published URDF/STEP"
 Blue,UC Berkeley (Berkeley Open Arms),research,7,2,,,4,3.328,"Gealy et al. 2019 'Quasi-Direct Drive for Low-Cost Compliant Robotic Manipulation' (arXiv 1904.03815; berkeleyopenarms.github.io): 7-DOF QDD arm with iFlight outrunner gimbal motors + timing-belt 2-DOF differential modules and 3D-printed shells; >2 kg at arm's length; return-to-home within 4 mm radius (avg 2.6 mm); 7.5 Hz position bandwidth; BoM $3328 per arm in a 7-unit in-house run (target <$5000 at >1500 units); Reach_m and Weight_kg TODO - in the paper's Table I (image, not extractable)"
+CRX-5iA,FANUC,collaborative,6,5,0.994,25,0.03,,FANUC datasheet via Sky Team Labs / Unchained; ISO 9283 ±0.03 mm; 25 kg
+CRX-20iA/L,FANUC,collaborative,6,20,1.418,41,0.04,,FANUC CRX-20iA/L; 41 kg (Addoobot; QVIRO 40 kg); ±0.04 mm
+CRX-25iA,FANUC,collaborative,6,25,1.889,135,0.04,,FANUC CRX-25iA: 25 kg at full 1889 mm reach (30 kg rating at reduced reach per Unchained); 135 kg per Unchained - same large frame as CRX-30iA (135 kg); QVIRO lists 40 kg (likely error); ±0.04 mm (QVIRO) / 0.05 (Unchained)
+A0509,Doosan Robotics,collaborative,6,5,0.9,21,0.03,,doosanrobotics.com A-series: 5 kg / 900 mm / ±0.03 mm; 21 kg (Unchained Robotics)
+A0912,Doosan Robotics,collaborative,6,9,1.2,31,0.05,,doosanrobotics.com A-series: 9 kg / 1200 mm / ±0.05 mm; 31 kg (HESCO)
+H2017,Doosan Robotics,collaborative,6,20,1.7,74,,,doosanrobotics.com H-series: 20 kg / 1700 mm; 74 kg (Unchained; HESCO 79 kg); repeatability not found
+H2515,Doosan Robotics,collaborative,6,25,1.5,72,0.1,,doosanrobotics.com H-series: 25 kg / 1500 mm / ±0.1 mm; 72 kg (Unchained; HESCO 77 kg)
+E0509,Doosan Robotics,collaborative,6,5,0.9,,0.05,,"doosanrobotics.com E-series (food / hygienic, IP66): 5 kg / 900 mm / ±0.05 mm; weight not found"
+P3020,Doosan Robotics,collaborative,5,30,2.03,83,0.1,,"doosanrobotics.com P-series palletizing cobot: 5-axis / 30 kg / 2030 mm / ±0.1 mm; 83 kg (RobotVerse, which lists 1900 mm reach - official 2030 used)"
+TM16,Techman,collaborative,6,16,0.9,32,0.1,,Techman / Omron TM16: 16 kg / 900 mm (Techman lists 917) / ~32 kg / ±0.1 mm
+TM20,Techman,collaborative,6,20,1.3,32.8,0.1,,Techman TM20: 20 kg / 1300 mm / ~32.8 kg (Temas); ±0.1 mm as TM16 sibling
+TM25S,Techman,collaborative,6,25,1.902,82.1,0.03,,tm-robot.com TM25S official: 25 kg / 1902 mm / 82.1 kg / ±0.03 mm (resellers ±0.05)
+HC10DTP,Yaskawa-Motoman,collaborative,6,10,1.379,58,0.05,,Yaskawa HC10DTP launch info: 10 kg / 1379 mm max (1200 effective) / ±0.05 mm; 58 kg (Unchained)
+HC20DTP,Yaskawa-Motoman,collaborative,6,20,1.7,140,0.05,,Yaskawa HC20DTP: 20 kg / 1700 mm effective (1900 max) / ±0.05 mm; 140 kg (Unchained) - same frame as HC20XP (140 kg)
+HC30PL,Yaskawa-Motoman,collaborative,6,30,1.7,,0.05,,motoman.com HC30PL palletizing cobot: 30 kg / 1700 mm horizontal (yaskawa-global lists 1600) / ±0.05 mm (reseller); weight not found
+CL103N,Kawasaki,collaborative,6,3,0.59,,0.02,,Kawasaki CL series (built on NEURA platform): 3 kg / 590 mm / ±0.02 mm; weight not published
+CL105N,Kawasaki,collaborative,6,5,0.8,,0.02,,Kawasaki CL series: 5 kg / 800 mm / ±0.02 mm; weight not published
+CL108N,Kawasaki,collaborative,6,8,1.3,,0.02,,kawasakirobotics.com CL108N: 8 kg / 1300 mm / ±0.02 mm; weight not published
+CL110N,Kawasaki,collaborative,6,10,1.0,,0.02,,Kawasaki CL series: 10 kg / 1000 mm / ±0.02 mm; weight not published
+Elfin 15,Han's Robot,collaborative,6,15,1.3,60,0.05,,hanslaser.net Elfin E15: 15 kg / 1300 mm / 60 kg / ±0.05 mm (distributor lists 55 kg / ±0.1 mm); no Elfin 12 or 20 exists
+CS625,Elite Robots,collaborative,6,25,1.5,58,0.08,,eliterobots.com CS625: 25 kg / 1500 mm / ±0.08 mm / 58 kg
+CS630,Elite Robots,collaborative,6,30,1.3,58,0.05,,eliterobots.com CS630: 30 kg / 1300 mm / ±0.05 mm / ~58 kg; IP68
+PoWa 10 (CRB 1910),ABB,collaborative,6,11,1.52,42,0.03,,ABB PoWa (Apr 2026) CRB 1910: up to 11 kg / 1.52 m wrist (1.67 m flange) / 42 kg (retailer); family repeatability down to 0.03 mm
+PoWa 13 (CRB 1910),ABB,collaborative,6,14,1.34,,0.03,,ABB PoWa CRB 1910: up to 14 kg (ABB main page 13 kg) / 1.34 m wrist; weight not found
+PoWa 16 (CRB 1920),ABB,collaborative,6,16,1.96,63,0.03,,ABB PoWa CRB 1920: 16 kg / 1.96 m wrist (2.10 m flange) / 63 kg (retailer)
+PoWa 20 (CRB 1920),ABB,collaborative,6,20,1.67,,0.03,,ABB PoWa CRB 1920: 20 kg / 1.67 m wrist; weight not found
+PoWa 30 (CRB 1920),ABB,collaborative,6,30,1.35,,0.03,,ABB PoWa CRB 1920: 30 kg / 1.35 m wrist (1.50 m flange); weight not found; PoWa 7 also exists (specs not found)
+UR7e,UR,collaborative,6,7.5,0.85,20.7,,,universal-robots.com UR7e manual: 7.5 kg / 850 mm / 20.7 kg
+UR8 Long,UR,collaborative,6,8,1.75,44.7,,,UR Series page: 8 kg (10 kg extended on CB5) / 1750 mm / 44.7 kg
+UR18,UR,collaborative,6,18,0.95,39.2,,,universal-robots.com UR18 official: 18 kg / 950 mm / 39.2 kg (one aggregator says 1300 mm)
+MiniCobo,JAKA,collaborative,6,1,0.58,9.4,,,"jaka.com MiniCobo: 1 kg / 580 mm / 9.4 kg incl. cables; Zu50 (50 kg / 2100 mm, CIIF 2026) not added - specs unpublished"
+I7,AUBO,collaborative,6,7,0.7865,23.2,0.02,,AUBO-i7: 7 kg / 786.5 mm working radius / 23.2 kg / ±0.02 mm (Knox Labs; AUBO page lists 1150 mm / 32 kg / ±0.03 - older rating?)
+I12,AUBO,collaborative,6,12,1.25,40,0.03,,AUBO-i12: 12 kg / 1250 mm / ~40 kg / ±0.03 mm
+CR7,DOBOT,collaborative,6,7,0.8,24.5,0.02,,Dobot CR7: 7 kg / 800 mm working radius (990 mm max) / 24.5 kg / ±0.02 mm
+RB3-1200,Rainbow Robotics,collaborative,6,3,1.2,22.4,0.05,,rainbow-robotics.com RB3-1200 official: 3 kg / 1200 mm / 22.4 kg / ±0.05 mm
+RB5-850,Rainbow Robotics,collaborative,6,5,0.928,22,0.05,,Rainbow RB5-850: 5 kg / 927.7 mm / 22 kg (QVIRO; N-series 20.3) / ±0.05 mm
+RB10-1300,Rainbow Robotics,collaborative,6,10,1.3,37.1,,,Rainbow RB10-1300: 10 kg / 1300 mm / 37.1 kg (QVIRO; Rainbow N-series page 22.2 kg - conflict)
+RB16-900,Rainbow Robotics,collaborative,6,16,0.9,32,0.05,,Rainbow RB16-900: 16 kg / 900 mm / 32 kg / ±0.05 mm (QVIRO)
+RM65,Realman,research,6,5,0.61,7.2,0.05,,realman-robotics.com RM65 official: 5 kg rated (9 kg peak) / 610 mm / 7.2 kg / ±0.05 mm; ultra-light arm used on humanoids and mobile manipulators
+RM75,Realman,research,7,5,0.61,7.8,0.05,,realman-robotics.com RM75 official: 7-DOF / 5 kg rated (9 kg peak) / 610 mm / 7.8 kg / ±0.05 mm
+Diana 7,Agile Robots,collaborative,7,7,0.923,28,0.05,,agile-robots.com Diana 7 (2026 flyer): 7-DOF torque-sensing / 7 kg / 923 mm / 28 kg (older flyer 26 kg) / ±0.05 mm
+COBOTTA PRO 900,Denso,collaborative,6,6,0.908,29,0.03,,densorobotics.com: 6 kg / 908 mm arm length (1066 mm max reach) / ~29 kg / ±0.03 mm
+COBOTTA PRO 1300,Denso,collaborative,6,12,1.303,41,0.04,,densorobotics.com: 12 kg / 1303 mm arm length (1463 mm max reach) / ~41 kg / ±0.04 mm
+MELFA ASSISTA RV-5AS-D,Mitsubishi,collaborative,6,5,0.91,32,0.03,,Mitsubishi Electric eShop: 5 kg (5.5 max) / 910 mm / 32 kg / ±0.03 mm
+A1,Galaxea,research,6,2,0.7,6,1,,docs.galaxea-ai.com A1 hardware guide: 6-DOF / 2 kg rated (3.5-5 kg max) / 700 mm / 6 kg / 1 mm repeatability; used on Galaxea R1 humanoid

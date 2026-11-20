@@ -68,6 +68,8 @@ PROGRESS_CHAINS = [
 
 # Label offsets in points (dx, dy). Mid-height cluster is fanned hard.
 LABEL_OFFSETS = {
+    'Noetix N2': (-10, 10),
+    'UBTECH Walker X': (-26, 22),
     'Booster T2': (-6, -44),
     'Tuesday Labs Voxel Series-1': (4, 30),
     'K-Scale K-Bot': (-12, -16),
@@ -94,7 +96,7 @@ LABEL_OFFSETS = {
 # Full-size cluster: labels go in two columns beside it (sorted by PF, evenly
 # spaced, leader lines to each point) instead of per-point offsets, so new
 # robots in the 1.7–1.85 m band don't need hand-tuned positions.
-CLUSTER_H = (1.66, 1.87)
+CLUSTER_H = (1.66, 1.91)
 CLUSTER_PF = (0.10, 0.45)
 CLUSTER_SPLIT_H = 1.745          # left column for shorter robots, right for taller
 CLUSTER_COL_X = (1.56, 1.95)     # data-x of the left / right label columns

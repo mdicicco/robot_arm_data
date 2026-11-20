@@ -12,7 +12,7 @@ This dataset contains specifications for hundreds of robot arms across 4 categor
 
 - **Reach vs Payload Factor** — Payload factor is `payload / robot mass`. Higher values indicate more efficient designs that can lift more relative to their own weight.
 - **Color by Type** — Collaborative (green), industrial (red), hobby (blue), research (purple).
-- **Convex Hulls** — Shaded regions use **every** arm in that type with mass, payload, and reach (~500 rows). Price is **not** required for hull membership.
+- **Convex Hulls** — Shaded regions use **every** arm in that type with mass, payload, and reach (~600 rows). Price is **not** required for hull membership.
 - **Dots** — Placed only when **price and repeatability** are both known (~160 rows). Circle size is the value metric `1 / (repeatability × price)` (larger = better value). Legend counts are `priced-dots / hull-members`.
 
 ### High payload-efficiency box (`robot_arm_high_pf.png`)

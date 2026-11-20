@@ -11,7 +11,7 @@ pixi run plot                   # also writes robot_arm_human_comparison_hulls.p
 
 ## Humanoid robots (whole-body catalog)
 
-Whole-robot humanoid hardware lives in **`data/humanoid_robot_data.csv`** (73 platforms). This is separate from `data/human_humanoid_arm_data.csv`, which only stores the **per-arm** points used in the reach–PF humanoid comparison plot.
+Whole-robot humanoid hardware lives in **`data/humanoid_robot_data.csv`** (108 platforms). This is separate from `data/human_humanoid_arm_data.csv`, which only stores the **per-arm** points used in the reach–PF humanoid comparison plot.
 
 | Field | Meaning |
 |---|---|
@@ -22,7 +22,7 @@ Whole-robot humanoid hardware lives in **`data/humanoid_robot_data.csv`** (73 pl
 | `Speed_mps` / `Battery_h` | Walk speed and runtime (walking when both given) |
 | `Cost_KUSD` | USD ÷ 1000 |
 | `Cost_Flag` | `listed` (shop/OEM price) · `target` (maker scale goal) · `estimate` (press/FX midpoint) · `quote` · `raas` |
-| `Status` | `shipping` · `production` · `pilot` · `preorder` · `internal` · `prototype` |
+| `Status` | `shipping` · `production` · `pilot` · `preorder` · `internal` · `prototype` · `research` · `discontinued` |
 | `Category` | `commercial` (company products, pilots, prototypes) or `research` (lab, academic or open-source platforms: every `Status = research` row plus ROBOTIS OP3, Reachy 2, HopeJR and K-Bot). Research humanoids plot in pink (dashed hull on the height plot, pink names on the per-robot charts); commercial in orange |
 | `Notes` | Source URL / caveats |
 
@@ -54,7 +54,7 @@ A human arm is ~5 % of body mass. **1X NEO (5 kg/arm on a 30 kg body), Kepler K2
 
 ![Humanoid vs arm payload scaling](humanoid_vs_arm_payload_scaling.png)
 
-**`humanoid_vs_arm_payload_scaling.png`** plots payload factor against own mass (log-log) for 566 arms and 31 humanoids:
+**`humanoid_vs_arm_payload_scaling.png`** plots payload factor against own mass (log-log) for 605 arms and 39 humanoids:
 
 - **Arms:** payload factor falls slowly with size (PF ∝ mass^−0.14, weak).
 - **Comparable humanoids:** **median 0.30 (IQR 0.21–0.35)** across 23–101 kg, right at the adult-human ~0.32, with no trend (PF ∝ mass^−0.03, R² 0.00). The two smallest whole-body points pull in opposite directions: **Fauna Sprout** (22.7 kg, 2 kg carry, PF 0.09) and **1X NEO** (30 kg, 25 kg whole-body carry, PF 0.83). Fauna's 2 kg comes from aggregator sites, not the company page, and isn't labelled whole-robot vs per-arm. If it is per-arm, it belongs with the excluded single-arm ratings below.
@@ -105,8 +105,8 @@ The figures above use only `HM` and set the rest to 1, so the NIOSH curve is a b
 
 Compares **serial robot-arm design space** to **human** and **humanoid** arm references on the same axes (reach vs payload factor):
 
-- **Type convex hulls** from every arm with mass, payload, and reach (~500 rows)
-- **Dots** for every arm with payload in the humanoid range (**1–7.5 kg**), priced or not. They're coloured by robot type, all the same size, with no price or repeatability weighting (201 of ~500 arms).
+- **Type convex hulls** from every arm with mass, payload, and reach (~600 rows)
+- **Dots** for every arm with payload in the humanoid range (**1–7.5 kg**), priced or not. They're coloured by robot type, all the same size, with no price or repeatability weighting (242 of ~600 arms).
 - **Human** references (yellow ★) and **humanoid** arm estimates (orange ▲)
 - Landmark labels: **LWR III (1:1)**, **Mico 4** (research), collaborative max, **myCobot 280**
 - **Cyan band**: the actuator-only payload-ratio bound from `arm_mass_model.py` (no structure). It uses the pooled `all` gearbox + motor fits, SF 1.0, and yaw/roll joints at 50 %, for a 7-DOF arm. The band spans the humanoid payload range (**1–7.5 kg** per arm at full reach, after the derates below).
